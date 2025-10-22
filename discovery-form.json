@@ -1,0 +1,185 @@
+Comprehensive Requirements and features for Website Discovery Form, structured clearly.
+
+This document outlines the specifications for "The Astra Flow Website Discovery Form," a critical component of the client onboarding process.
+
+---
+## ## General Requirements
+
+* **Multi-Step Layout:** The form **must be broken down into logical sections** or pages (e.g., "Step 1: Brand Identity," "Step 2: Content") with "Next" and "Back" buttons to prevent overwhelming the user.
+* **Branding:** The form's design (colors, fonts, logo) **must perfectly match** the branding of `theastraflow.com`.
+* **Responsive Design:** The form **must be fully functional and easy to use** on all devices, including desktops, tablets, and mobile phones.
+* **Data Security:** All data submitted through the form **must be transmitted securely** over HTTPS.
+
+---
+## ## Functional Requirements & Features
+
+### **1. Form Fields & Input Types**
+
+The form must support the following fields, broken down by section:
+
+**Section: Business & Brand Identity**
+* `Official Business Name`: (Text Input, Required)
+* `Business Tagline`: (Text Input, Optional)
+* `High-Resolution Logo`: (File Upload, Required)
+    * **Constraints:** Accepts only `.png`, `.svg`, `.jpg` files. Maximum file size of 5MB.
+* `Social Media Links`: (**Repeater Field**)
+    * A group of fields allowing the user to add multiple social media profiles. Each entry should have a dropdown for the platform (Facebook, Instagram, etc.) and a text input for the URL. The user must be able to click an "**Add Another Profile**" button.
+* `Brand Style`: (Text Area, Required) - *Short paragraph.*
+* `Inspiration Websites`: (Text Input x 2, Required) - *Must validate that the input is a valid URL.*
+* `Main Website Goal`: (Dropdown Menu, Required)
+
+**Section: Domain Name**
+* `Desired Domain Name`: (Text Input, Required)
+* `Alternative Domain Name #1`: (Text Input, Required)
+* `Alternative Domain Name #2`: (Text Input, Required)
+
+**Section: Website Content (Page by Page)**
+* **Homepage Section:**
+    * `Main Headline`: (Text Input, Required)
+    * `Introductory Paragraph`: (Text Area, Required)
+    * `Homepage Banner Image`: (File Upload, Required) - *Constraints: Accepts `.jpg`, `.png`, `.webp`. Max size 10MB.*
+* **About Us Page Section:**
+    * `Page Headline`: (Text Input, Required)
+    * `Company History/Description`: (Text Area, Required)
+    * `Team Photos`: (**Multiple File Upload**, Optional) - *Allow up to 10 files. Constraints: Accepts `.jpg`, `.png`, `.webp`. Max size 5MB per file.*
+* **Services/Products Page Section:**
+    * `Page Headline`: (Text Input, Required)
+    * `List Your Services/Products`: (**Repeater Field**, Required)
+        * This is the most critical feature. It must be a group of fields (`Service Name`, `Service Description`, `Service Image`) that the user can duplicate by clicking an "**Add Another Service**" button.
+* **Gallery Page Section:**
+    * `Page Headline`: (Text Input, Required)
+    * `Gallery Images`: (**Multiple File Upload**, Required) - *Allow up to 20 files. Constraints: Accepts `.jpg`, `.png`, `.webp`. Max size 5MB per file.*
+* **Contact Us Page Section:**
+    * `Business Phone Number`: (Phone Input, Required)
+    * `Business Email Address`: (Email Input, Required) - *Must validate format.*
+    * `Physical Address`: (Text Area, Required)
+    * `Contact Form Recipient`: (Email Input, Required) - *Must validate format.*
+
+**Section: Final Confirmation**
+* `Content Sign-off`: (Checkbox, Required) - *The form cannot be submitted unless this is checked.*
+
+### **2. User Experience (UX) Features**
+
+* **Input Validation:** The form **must validate inputs in real-time** (e.g., showing a red border around an empty required field) with clear, user-friendly error messages (e.g., "Please enter a valid email address").
+* **Progress Indicator:** A visual element (like a progress bar or step counter) **must be present** to show the user how far they are in the process (e.g., "Step 2 of 4").
+* **Save and Continue Later:** The form **should ideally have a feature** that allows a user to save their progress and return later to complete it via a secure link sent to their email. This is a crucial feature for a long form.
+
+### **3. Submission & Automation Logic**
+
+* **Confirmation Screen:** Upon successful submission, the user **must be redirected** to a "Thank You" page on the website.
+* **Automated Email Notifications:**
+    * An email **must be sent to the client** confirming that their submission was received. This email should reiterate the project timeline.
+    * An email **must be sent to The Astra Flow's admin address** containing all the submitted data, with any uploaded files included as secure links.
+* **Data Forwarding (Webhooks):** The form **must have the capability to send the submitted data** to a third-party service (like Trello or Asana) via a webhook. This is essential for automating the project management workflow.
+
+
+
+*** Comprehensive form fields for client onboarding process: the initial Checkout Form and the subsequent Website Discovery Form.
+
+### \#\# Part 1: Initial Checkout & Sign-up Form
+
+This form is presented immediately after a client clicks "Get Started" on a pricing plan. Its purpose is to capture essential contact details, process the initial payment, and secure legal agreement.
+
+  * **Confirm Your Plan**
+
+      * This field should be pre-selected and locked based on the plan the user chose. (e.g., "You have selected: **Business Commerce - ₵2000/month**").
+
+  * **Your Contact Information**
+
+      * **Full Name:** (Text Field)
+      * **Business Name:** (Text Field)
+      * **Email Address:** (Email Field) - *This will be your primary login and communication email.*
+      * **Phone Number:** (Phone Field)
+
+ Activate Your Plan
+
+You are starting your 12-month all-in-one service plan. As part of your plan, we will design and build your professional [selected website plan] website for free.
+
+First Month's Subscription Fee: [selected plan's fee]
+
+Your payment today activates your account, secures your domain name, and officially starts the development process for your new website.
+
+      * An integrated and secure payment module powered by **Paystack** or **Flutterwave**, for credit/debit card and Mobile Money recurring payments.
+
+  * **Agreement**
+
+      * **Terms & Conditions:** (Mandatory Checkbox)
+        > ☐ I have read, understood, and agree to The Astra Flow's **[Terms of Service](https://www.google.com/search?q=link)** and **[Service Level Agreement (SLA)](https://www.google.com/search?q=link)**.
+
+-----
+
+### \#\# Part 2: Website Discovery Page/Form
+
+A link to this page is sent automatically via email *after* the payment is successfully processed. The form's purpose is to gather all the necessary brand and content assets to build the website.
+
+The dedicated page allows us to do more than just display a form. We will craft a premium onboarding experience. The page (theastraflow.com/discovery-form) can include:
+
+A personalized welcome message: "Welcome aboard, [Client Name]! We're excited to start building your new website."
+Helpful tips and reminders alongside the form fields to ensure we get high-quality content.
+FAQs for frequently asked questions.
+
+#### **Section 1: Business & Brand Identity**
+
+  * **Official Business Name:** (Text Field) - *As you want it to appear on the website.*
+  * **Business Tagline/Slogan:** (Text Field, Optional)
+  * **High-Resolution Logo:** (File Upload) - *Please upload a PNG file with a transparent background.*
+  * **Social Media Links:** (Repeater Field) - *Add https://www.google.com/search?q=links to all your business social media pages (Facebook, Instagram, LinkedIn, X/Twitter, etc.).*
+  * **Brand Style:** (Text Area) - *Please describe your brand in 3-5 words (e.g., "Modern, Professional, Friendly").*
+  * **Inspiration Websites:** (URL Fields x 2) - *Please share the web addresses of 2 websites you like the look and feel of.*
+  * **Main Website Goal:** (Dropdown Menu)
+      * Get customers to call me
+      * Get customers to fill out a contact form
+      * Showcase my work/portfolio
+      * Provide information about my business
+      * Sell products online (for Commerce/Growth+ plans)
+
+-----
+
+#### **Section 2: Domain Name**
+
+  * **Desired Domain Name:** (Text Field) - *e.g., mybusiness.com or mybusiness.com.gh*
+  * **Alternative Domain Name \#1:** (Text Field)
+  * **Alternative Domain Name \#2:** (Text Field)
+
+-----
+
+#### **Section 3: Website Content (Page by Page)**
+
+##### **Homepage**
+
+  * **Main Headline:** (Text Field) - *The first big text a visitor sees (e.g., "Quality Plumbing Services in Accra").*
+  * **Introductory Paragraph:** (Text Area) - *A short paragraph introducing your business.*
+  * **Homepage Banner Image:** (File Upload) - *A high-quality photo for the top of your homepage.*
+
+##### **About Us Page**
+
+  * **Page Headline:** (Text Field) - *e.g., "Our Story" or "About [Your Business Name]".*
+  * **Company History/Description:** (Text Area) - *Tell us about your business, your mission, and your team.*
+  * **Team Photos:** (Multiple File Upload, Optional)
+
+##### **Services / Products Page**
+
+  * **Page Headline:** (Text Field) - *e.g., "Our Services" or "What We Offer".*
+  * **List Your Services/Products:** (Repeater Field)
+      * **Service/Product Name:** (Text Field)
+      * **Description:** (Text Area)
+      * **Image:** (File Upload)
+
+##### **Gallery Page**
+
+  * **Page Headline:** (Text Field) - *e.g., "Our Work" or "Portfolio".*
+  * **Gallery Images:** (Multiple File Upload) - *Please upload up to 20 high-quality photos.*
+
+##### **Contact Us Page**
+
+  * **Business Phone Number:** (Phone Field) - *The number you want displayed on the site.*
+  * **Business Email Address:** (Email Field) - *The public email for customer inquiries.*
+  * **Physical Address:** (Text Area) - *For your location map. Please be as precise as possible.*
+  * **Contact Form Recipient:** (Email Field) - *Enter the private email address where you want to receive messages from the website's contact form.*
+
+-----
+
+#### **Section 4: Final Confirmation**
+
+  * **Content Sign-off:** (Mandatory Checkbox)
+    > ☐ I confirm that I have provided all the final content for my website. I understand that the project timeline begins now and that major changes after this submission may require a separate quote.

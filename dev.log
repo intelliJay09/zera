@@ -1,0 +1,15 @@
+
+> the-astra-flow@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use by process 7571, using available port 3001 instead.
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.100.44:3001
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 1632ms
+[?25h
