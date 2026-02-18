@@ -4,6 +4,7 @@
     "next/typescript",
     "plugin:@typescript-eslint/recommended"
   ],
+  "ignorePatterns": ["mav-mysql-mcp-server/**/*"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2022,

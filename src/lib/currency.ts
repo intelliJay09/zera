@@ -1,10 +1,22 @@
-import { CurrencyCode, CURRENCY_CONFIGS, MultiCurrencyPrice } from '@/types/currency';
+import { CurrencyCode, CURRENCY_CONFIGS, ExchangeRates } from '@/types/currency';
+import { convertCurrency } from './exchange-rates';
 
 /**
  * Format a price value in the specified currency
+ * Amount is always in USD, conversion happens here if needed
  */
-export function formatPrice(amount: number, currency: CurrencyCode): string {
+export function formatPrice(
+  usdAmount: number,
+  currency: CurrencyCode,
+  rates?: ExchangeRates
+): string {
   const config = CURRENCY_CONFIGS[currency];
+
+  // Convert if not USD
+  let amount = usdAmount;
+  if (currency !== 'USD' && rates) {
+    amount = convertCurrency(usdAmount, currency, rates);
+  }
 
   const formatted = new Intl.NumberFormat(config.locale, {
     style: 'decimal',
@@ -15,22 +27,4 @@ export function formatPrice(amount: number, currency: CurrencyCode): string {
   return config.position === 'before'
     ? `${config.symbol}${formatted}`
     : `${formatted}${config.symbol}`;
-}
-
-/**
- * Get the price value for a specific currency from a multi-currency price object
- */
-export function getPrice(price: MultiCurrencyPrice, currency: CurrencyCode): number {
-  return price[currency];
-}
-
-/**
- * Format a multi-currency price in the specified currency
- */
-export function formatMultiCurrencyPrice(
-  price: MultiCurrencyPrice,
-  currency: CurrencyCode
-): string {
-  const amount = getPrice(price, currency);
-  return formatPrice(amount, currency);
 }

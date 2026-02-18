@@ -1,196 +1,105 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
 
 interface Testimonial {
-  quote: string;
-  author: string;
-  title: string;
-  company: string;
-  industry: string;
+  headline: string;
   metric: string;
+  narrative: string;
+  author: string;
+  role: string;
+  company: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    quote:
-      "The Astra Flow didn't just improve our digital presence—they fundamentally transformed how we compete in our market. Within 6 months, we went from regional player to national contender. Their strategic approach is unmatched.",
-    author: 'Marcus Chen',
-    title: 'CEO',
-    company: 'TechFlow Solutions',
-    industry: 'B2B SaaS',
-    metric: '320% lead increase',
+    headline: "We finally have a digital asset that matches our reputation.",
+    metric: "#1 Search Ranking",
+    narrative: "Before Zera, our digital presence was non-existent. We were losing contracts to smaller competitors simply because they looked better online. Zera didn't just build a website; they architected a commercial headquarters. We now rank #1 for our category in Accra, and the quality of our inbound inquiries has tripled.",
+    author: "Kwame A.",
+    role: "Managing Director",
+    company: "Apex Capital Partners"
   },
   {
-    quote:
-      "Working with The Astra Flow was the smartest investment we made this year. They understand business challenges intimately and deliver enterprise-grade results without the enterprise price tag. Truly exceptional partnership.",
-    author: 'Sarah Mitchell',
-    title: 'Marketing Director',
-    company: 'Luxe Wellness',
-    industry: 'E-commerce',
-    metric: '210% revenue growth',
+    headline: "They turned our chaotic sales process into a predictable machine.",
+    metric: "240% Increase in Qualified Leads",
+    narrative: "We had traffic, but we weren't capturing it. The Zera team installed their 'Lead Capture Engine' and completely automated our follow-up. We went from chasing leads manually to waking up to booked appointments. It's not just marketing; it's an engineered revenue system.",
+    author: "Sarah T.",
+    role: "Founder",
+    company: "Lumina Lifestyle"
   },
   {
-    quote:
-      "What sets The Astra Flow apart is their obsessive attention to ROI. Every recommendation is backed by data, every campaign is meticulously tracked. They're not just marketers—they're growth architects.",
-    author: 'David Park',
-    title: 'Founder',
-    company: 'Meridian Financial',
-    industry: 'Financial Services',
-    metric: '500% organic traffic increase',
-  },
-  {
-    quote:
-      "As a B2B manufacturer, we were skeptical about digital marketing. The Astra Flow changed our perspective entirely. Their strategic campaigns positioned us as thought leaders and doubled our enterprise deal pipeline.",
-    author: 'Jennifer Torres',
-    title: 'VP of Business Development',
-    company: 'Apex Manufacturing',
-    industry: 'Industrial B2B',
-    metric: '180% enterprise deal increase',
-  },
+    headline: "Zera is the partner that secured our category leadership.",
+    metric: "35% Increase in Customer LTV",
+    narrative: "Scale usually brings chaos. Zera brought structure. Their 'Lifecycle Ecosystem' allowed us to retain customers automatically while expanding into two new markets. They act less like an agency and more like a strategic Directorate. A critical asset to our board.",
+    author: "E. Mensah",
+    role: "CEO",
+    company: "West African Logistics Group"
+  }
 ];
 
 export default function ClientTestimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const handlePrevious = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [currentIndex]);
-
-  const currentTestimonial = testimonials[currentIndex];
-
   return (
-    <section className="relative bg-near-black py-16 sm:py-24 md:py-32 lg:py-40 overflow-hidden">
-      {/* Ambient copper glow */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-copper-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-copper-500/5 rounded-full blur-[120px] pointer-events-none" />
-
-      {/* Decorative lines */}
-      <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-copper-500/20 to-transparent" />
-      <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-copper-500/20 to-transparent" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
+    <section className="relative bg-cream py-16 sm:py-24 md:py-32 lg:py-40">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-copper-500 mb-6">
-            Client Testimonials
+          <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-6">
+            TRUSTED BY MARKET LEADERS
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light font-playfair text-cream-200 tracking-tight max-w-3xl mx-auto leading-tight">
-            What Our Partners Say
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light font-display uppercase text-gray-900 tracking-brand-header max-w-3xl mx-auto leading-tight">
+            WHAT OUR PARTNERS SAY
           </h2>
         </div>
 
-        {/* Testimonial Carousel */}
-        <div className="relative">
-          {/* Quote Icon */}
-          <div className="absolute -top-8 left-0 lg:left-1/4 transform -translate-x-1/2 opacity-10">
-            <Quote className="w-32 h-32 text-copper-500" />
-          </div>
-
-          {/* Testimonial Content */}
-          <div className="max-w-5xl mx-auto">
-            <div
-              className={`transition-all duration-500 ${
-                isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
-              }`}
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.19, 0.91, 0.38, 0.98] }}
+              className="group relative overflow-hidden rounded-sm bg-white transition-all duration-500 p-8 lg:p-10 flex flex-col hover:-translate-y-2 hover:shadow-xl"
             >
-              {/* Quote */}
-              <blockquote className="text-center mb-8 sm:mb-12">
-                <p className="text-xl sm:text-2xl lg:text-3xl font-light font-playfair text-cream-200 leading-relaxed tracking-tight mb-6 sm:mb-8 px-4 sm:px-0">
-                  {currentTestimonial.quote}
+              {/* Copper accent border that expands on hover */}
+              <div className="absolute top-0 left-0 w-16 h-px bg-copper-500 group-hover:w-full transition-all duration-700" />
+
+              {/* Quote Icon */}
+              <div className="absolute top-6 right-6 opacity-10">
+                <Quote className="w-12 h-12 text-copper-500" />
+              </div>
+
+              {/* Headline */}
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 relative z-10 leading-tight">
+                {testimonial.headline}
+              </h3>
+
+              {/* Metric - Highlighted in Copper */}
+              <div className="mb-6">
+                <p className="text-2xl font-bold text-copper-500 tracking-tight">
+                  {testimonial.metric}
                 </p>
+              </div>
+
+              {/* Narrative Quote */}
+              <blockquote className="text-base text-gray-700 leading-relaxed mb-8 flex-grow italic">
+                &ldquo;{testimonial.narrative}&rdquo;
               </blockquote>
 
-              {/* Author Info */}
-              <div className="flex flex-col items-center gap-4">
-                <div className="text-center">
-                  <p className="text-lg sm:text-xl font-medium font-montserrat text-cream-200 mb-2">
-                    {currentTestimonial.author}
-                  </p>
-                  <p className="text-sm font-light text-light-gray tracking-wide mb-1">
-                    {currentTestimonial.title}, {currentTestimonial.company}
-                  </p>
-                  <div className="flex items-center justify-center gap-3 mt-4">
-                    <span className="text-xs font-medium tracking-[0.2em] uppercase text-copper-500 bg-copper-500/10 px-3 py-1.5 backdrop-blur-sm rounded-sm">
-                      {currentTestimonial.industry}
-                    </span>
-                    <span className="w-1 h-1 rounded-full bg-copper-500/30" />
-                    <span className="text-xs font-medium text-copper-500 tracking-wide">
-                      {currentTestimonial.metric}
-                    </span>
-                  </div>
-                </div>
+              {/* Authority */}
+              <div className="border-t border-gray-200 pt-6">
+                <p className="text-base font-semibold text-gray-900 mb-1">
+                  {testimonial.author}
+                </p>
+                <p className="text-sm text-gray-600">
+                  {testimonial.role}, {testimonial.company}
+                </p>
               </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-6 sm:gap-8 mt-12 sm:mt-16">
-            <button
-              onClick={handlePrevious}
-              disabled={isTransitioning}
-              className="group flex items-center justify-center w-16 h-16 sm:w-14 sm:h-14 rounded-full border border-copper-500/30 text-copper-500 hover:bg-copper-500/10 hover:border-copper-500/60 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform duration-300" />
-            </button>
-
-            {/* Pagination Dots */}
-            <div className="flex items-center gap-3">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (!isTransitioning) {
-                      setIsTransitioning(true);
-                      setCurrentIndex(index);
-                    }
-                  }}
-                  disabled={isTransitioning}
-                  className={`transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center ${
-                    index === currentIndex
-                      ? ''
-                      : ''
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                >
-                  <div
-                    className={`transition-all duration-300 ${
-                      index === currentIndex
-                        ? 'w-12 h-1.5 bg-copper-500'
-                        : 'w-1.5 h-1.5 bg-copper-500/30 hover:bg-copper-500/60'
-                    }`}
-                  />
-                </button>
-              ))}
-            </div>
-
-            <button
-              onClick={handleNext}
-              disabled={isTransitioning}
-              className="group flex items-center justify-center w-16 h-16 sm:w-14 sm:h-14 rounded-full border border-copper-500/30 text-copper-500 hover:bg-copper-500/10 hover:border-copper-500/60 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform duration-300" />
-            </button>
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

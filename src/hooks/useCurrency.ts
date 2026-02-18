@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { CurrencyCode, DEFAULT_CURRENCY } from '@/types/currency';
+import { CurrencyCode, DEFAULT_CURRENCY, ExchangeRates } from '@/types/currency';
+import { getExchangeRates } from '@/lib/exchange-rates';
 
 const CURRENCY_STORAGE_KEY = 'preferred-currency';
 
@@ -20,12 +21,32 @@ export function useCurrency() {
   // This prevents hydration mismatches
   const [currency, setCurrencyState] = useState<CurrencyCode>(DEFAULT_CURRENCY);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [exchangeRates, setExchangeRates] = useState<ExchangeRates | null>(null);
+  const [isLoadingRates, setIsLoadingRates] = useState(false);
+
+  // Fetch exchange rates on mount
+  useEffect(() => {
+    async function fetchRates() {
+      setIsLoadingRates(true);
+      try {
+        const rates = await getExchangeRates();
+        setExchangeRates(rates);
+      } catch (error) {
+        console.error('Failed to load exchange rates:', error);
+        // exchangeRates will remain null, components will show USD only
+      } finally {
+        setIsLoadingRates(false);
+      }
+    }
+
+    fetchRates();
+  }, []);
 
   // Initialize from URL or localStorage ONLY on client after mount
   useEffect(() => {
     // Priority 1: URL parameter
     const urlCurrency = searchParams?.get('currency')?.toUpperCase() as CurrencyCode;
-    if (urlCurrency === 'USD' || urlCurrency === 'GHS') {
+    if (urlCurrency === 'USD' || urlCurrency === 'GBP' || urlCurrency === 'EUR') {
       setCurrencyState(urlCurrency);
       localStorage.setItem(CURRENCY_STORAGE_KEY, urlCurrency);
       setIsInitialized(true);
@@ -34,7 +55,7 @@ export function useCurrency() {
 
     // Priority 2: localStorage
     const stored = localStorage.getItem(CURRENCY_STORAGE_KEY);
-    if (stored === 'USD' || stored === 'GHS') {
+    if (stored === 'USD' || stored === 'GBP' || stored === 'EUR') {
       setCurrencyState(stored as CurrencyCode);
       setIsInitialized(true);
       return;
@@ -66,5 +87,7 @@ export function useCurrency() {
     currency,
     setCurrency,
     isInitialized,
+    exchangeRates,
+    isLoadingRates,
   };
 }

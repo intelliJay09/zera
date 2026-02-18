@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, useInView } from 'framer-motion';
 import {
   ArrowRight,
@@ -9,7 +10,6 @@ import {
   Linkedin,
   MessageCircle,
   Users,
-  Heart,
   TrendingUp,
   Target,
   BarChart3,
@@ -18,13 +18,17 @@ import {
   ChevronDown,
   Calendar,
   Trophy,
-  Zap,
   Share2,
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { Button } from '@/components/ui/button';
+import { socialMediaPricingConfig } from '@/data/social-media-pricing';
+
+const PricingSection = dynamic(() => import('@/components/pricing/PricingSection'));
 
 export default function SocialMediaManagementPage() {
+  const router = useRouter();
   const prefersReducedMotion = usePrefersReducedMotion();
 
   // Section refs for scroll triggers
@@ -33,7 +37,6 @@ export default function SocialMediaManagementPage() {
   const whySocialRef = useRef(null);
   const approachRef = useRef(null);
   const resultsRef = useRef(null);
-  const pricingRef = useRef(null);
   const faqRef = useRef(null);
 
   const isServicesInView = useInView(servicesRef, { once: true, amount: 0.15 });
@@ -41,7 +44,6 @@ export default function SocialMediaManagementPage() {
   const isWhySocialInView = useInView(whySocialRef, { once: true, amount: 0.2 });
   const isApproachInView = useInView(approachRef, { once: true, amount: 0.15 });
   const isResultsInView = useInView(resultsRef, { once: true, amount: 0.2 });
-  const isPricingInView = useInView(pricingRef, { once: true, amount: 0.15 });
   const isFaqInView = useInView(faqRef, { once: true, amount: 0.2 });
 
   // Animation variants
@@ -64,7 +66,7 @@ export default function SocialMediaManagementPage() {
       filter: 'blur(0px)',
       transition: {
         duration: 1.4,
-        ease: [0.19, 0.91, 0.38, 0.98],
+        ease: [0.19, 0.91, 0.38, 0.98] as const,
       },
     },
   };
@@ -96,7 +98,7 @@ export default function SocialMediaManagementPage() {
       filter: 'blur(0px)',
       transition: {
         duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -115,7 +117,7 @@ export default function SocialMediaManagementPage() {
       filter: 'blur(0px)',
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
   };
@@ -132,7 +134,7 @@ export default function SocialMediaManagementPage() {
       filter: 'blur(0px)',
       transition: {
         duration: 0.7,
-        ease: [0.33, 0.82, 0.44, 0.99],
+        ease: [0.33, 0.82, 0.44, 0.99] as const,
       },
     },
   };
@@ -362,65 +364,6 @@ export default function SocialMediaManagementPage() {
     },
   ];
 
-  const pricingPlans = [
-    {
-      name: 'Foundation',
-      price: '$2,500',
-      period: 'per month',
-      description: 'Essential social presence for businesses ready to build engaged communities',
-      features: [
-        '2-3 platforms managed',
-        '12 custom posts per month',
-        'Monthly content calendar',
-        'Basic community management',
-        'Monthly performance reports',
-        'Hashtag research & optimization',
-      ],
-      cta: 'Start Building',
-      href: '/contact?service=social-media&plan=foundation',
-      featured: false,
-    },
-    {
-      name: 'Growth',
-      price: '$4,500',
-      period: 'per month',
-      description: 'Comprehensive social strategy for businesses serious about turning followers into customers',
-      features: [
-        'Everything in Foundation',
-        '4-5 platforms managed',
-        '20 custom posts per month',
-        'Stories & Reels production',
-        'Active community engagement',
-        'Basic paid social campaigns',
-        'Influencer outreach coordination',
-        'Bi-weekly strategy calls',
-      ],
-      cta: 'Accelerate Growth',
-      href: '/contact?service=social-media&plan=growth',
-      featured: true,
-    },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: 'tailored pricing',
-      description: 'White-glove social media management for established brands and high-growth campaigns',
-      features: [
-        'Everything in Growth',
-        'All major platforms',
-        'Unlimited custom content',
-        'Professional photo/video shoots',
-        'Advanced paid social campaigns',
-        'Influencer partnership management',
-        'Real-time community management',
-        'Dedicated social media strategist',
-        'Weekly strategy sessions',
-      ],
-      cta: 'Get Custom Quote',
-      href: '/contact?service=social-media&plan=enterprise',
-      featured: false,
-    },
-  ];
-
   const faqs = [
     {
       question: 'Which social platforms should we focus on for our industry?',
@@ -482,7 +425,7 @@ export default function SocialMediaManagementPage() {
             {/* Overline */}
             <motion.p
               variants={heroItem}
-              className="text-copper-500 font-montserrat font-semibold text-sm sm:text-base tracking-[0.2em] uppercase mb-6"
+              className="text-copper-500 font-montserrat font-semibold text-sm sm:text-base tracking-brand-label uppercase mb-6"
             >
               Social Media Excellence
             </motion.p>
@@ -490,18 +433,18 @@ export default function SocialMediaManagementPage() {
             {/* Main Headline */}
             <motion.h1
               variants={heroItem}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-playfair font-light text-cream-50 tracking-tight leading-[1.1] mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-cream-50 uppercase tracking-tight sm:tracking-brand-header leading-[1.1] mb-6"
             >
-              Transform Passive Followers Into{' '}
+              TRANSFORM PASSIVE FOLLOWERS INTO{' '}
               <span className="bg-gradient-to-r from-copper-400 to-copper-600 bg-clip-text text-transparent">
-                Active Customers
+                ACTIVE CUSTOMERS
               </span>
             </motion.h1>
 
             {/* Description */}
             <motion.p
               variants={heroItem}
-              className="text-lg sm:text-xl lg:text-2xl font-montserrat font-light text-cream-200 leading-relaxed tracking-wide max-w-2xl mb-10"
+              className="text-lg sm:text-xl lg:text-2xl font-montserrat font-light text-cream-200 leading-relaxed tracking-normal max-w-2xl mb-10"
             >
               Strategic social media management that builds engaged communities, drives conversions, and amplifies your brand across every platform that matters.
             </motion.p>
@@ -514,7 +457,7 @@ export default function SocialMediaManagementPage() {
                 size="default"
                 className="group w-full sm:w-fit"
               >
-                <Link href="/contact?service=social-media">
+                <Link href="/contact">
                   Get Your Social Strategy
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
@@ -556,7 +499,7 @@ export default function SocialMediaManagementPage() {
               >
                 <Instagram className="w-8 h-8 text-pink-400 mb-2" />
                 <p className="text-copper-400 text-xs font-medium mb-1">Engagement</p>
-                <p className="text-cream-50 text-2xl font-playfair font-bold">8.7%</p>
+                <p className="text-cream-50 text-2xl font-display font-bold">8.7%</p>
               </motion.div>
 
               <motion.div
@@ -574,7 +517,7 @@ export default function SocialMediaManagementPage() {
               >
                 <Linkedin className="w-8 h-8 text-blue-400 mb-2" />
                 <p className="text-blue-400 text-xs font-medium mb-1">Leads Generated</p>
-                <p className="text-cream-50 text-2xl font-playfair font-bold">450+</p>
+                <p className="text-cream-50 text-2xl font-display font-bold">450+</p>
               </motion.div>
 
               <motion.div
@@ -592,7 +535,7 @@ export default function SocialMediaManagementPage() {
               >
                 <MessageCircle className="w-8 h-8 text-cyan-400 mb-2" />
                 <p className="text-cyan-400 text-xs font-medium mb-1">Video Views</p>
-                <p className="text-cream-50 text-2xl font-playfair font-bold">4.8M</p>
+                <p className="text-cream-50 text-2xl font-display font-bold">4.8M</p>
               </motion.div>
 
               {/* Central icon */}
@@ -625,8 +568,8 @@ export default function SocialMediaManagementPage() {
             animate={isServicesInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-near-black tracking-tight leading-tight mb-4">
-              Comprehensive Social Media Services
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-near-black tracking-brand-header leading-tight mb-4">
+              COMPREHENSIVE SOCIAL MEDIA SERVICES
             </h2>
             <p className="text-base sm:text-lg text-near-black/70 font-montserrat max-w-3xl mx-auto">
               From content creation to community building, we handle every aspect of your social presence
@@ -658,11 +601,11 @@ export default function SocialMediaManagementPage() {
                       <Icon className="w-8 h-8" strokeWidth={1.5} />
                     </motion.div>
 
-                    <h3 className="text-xl sm:text-2xl font-playfair font-semibold text-near-black mb-2 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-display uppercase font-semibold text-near-black mb-2 tracking-brand-header">
                       {service.title}
                     </h3>
 
-                    <p className="text-copper-600 font-montserrat font-medium text-sm mb-4 tracking-wide">{service.tagline}</p>
+                    <p className="text-copper-600 font-montserrat font-medium text-sm mb-4 tracking-normal">{service.tagline}</p>
 
                     <p className="text-near-black/70 font-montserrat text-sm sm:text-base leading-relaxed mb-6">{service.description}</p>
 
@@ -691,8 +634,8 @@ export default function SocialMediaManagementPage() {
             animate={isPlatformsInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-cream-50 tracking-tight leading-tight mb-4">
-              Platforms We Master
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-cream-50 tracking-brand-header leading-tight mb-4">
+              PLATFORMS WE MASTER
             </h2>
             <p className="text-base sm:text-lg text-cream-200 font-montserrat max-w-3xl mx-auto">
               Strategic presence across every platform where your audience lives
@@ -718,7 +661,7 @@ export default function SocialMediaManagementPage() {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-playfair font-semibold text-cream-50 mb-3 tracking-tight">{platform.name}</h3>
+                    <h3 className="text-xl font-display uppercase font-semibold text-cream-50 mb-3 tracking-brand-header">{platform.name}</h3>
                     <p className="text-cream-200/80 font-montserrat text-sm leading-relaxed">{platform.description}</p>
                   </div>
                 </motion.div>
@@ -737,11 +680,11 @@ export default function SocialMediaManagementPage() {
             animate={isWhySocialInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-near-black tracking-tight leading-tight mb-4">
-              The Numbers Don't Lie
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-near-black tracking-brand-header leading-tight mb-4">
+              THE NUMBERS DON&apos;T LIE
             </h2>
             <p className="text-base sm:text-lg text-near-black/70 font-montserrat max-w-3xl mx-auto">
-              Social media isn't optional—it's where your customers discover, engage, and buy
+              Social media isn&apos;t optional—it&apos;s where your customers discover, engage, and buy
             </p>
           </motion.div>
 
@@ -774,9 +717,9 @@ export default function SocialMediaManagementPage() {
                       <Icon className="w-6 h-6" strokeWidth={2} />
                     </div>
 
-                    <p className="text-4xl sm:text-5xl font-playfair font-bold text-near-black mb-2">{stat.metric}</p>
+                    <p className="text-4xl sm:text-5xl font-display font-bold text-near-black mb-2">{stat.metric}</p>
 
-                    <p className="text-copper-600 font-montserrat font-semibold text-sm tracking-wide uppercase mb-3">{stat.label}</p>
+                    <p className="text-copper-600 font-montserrat font-semibold text-sm tracking-normal uppercase mb-3">{stat.label}</p>
 
                     <p className="text-near-black/70 font-montserrat text-sm leading-relaxed">{stat.description}</p>
                   </div>
@@ -796,8 +739,8 @@ export default function SocialMediaManagementPage() {
             animate={isApproachInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-near-black tracking-tight leading-tight mb-4">
-              From Strategy to Scroll-Stopping Success
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-near-black tracking-brand-header leading-tight mb-4">
+              FROM STRATEGY TO SCROLL-STOPPING SUCCESS
             </h2>
             <p className="text-base sm:text-lg text-near-black/70 font-montserrat max-w-3xl mx-auto">
               A proven 6-step process that transforms social media from noise into strategic business infrastructure
@@ -814,12 +757,12 @@ export default function SocialMediaManagementPage() {
 
             {approachSteps.map((step, index) => (
               <motion.div key={index} variants={timelineStep} className="relative flex gap-6 items-start">
-                <div className="relative flex-shrink-0 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-copper-500 to-copper-600 text-white rounded-full font-playfair font-bold text-xl shadow-lg shadow-copper-500/30 z-10">
+                <div className="relative flex-shrink-0 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-copper-500 to-copper-600 text-white rounded-full font-display font-bold text-xl shadow-lg shadow-copper-500/30 z-10">
                   {step.number}
                 </div>
 
                 <div className="flex-1 bg-white p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-xl sm:text-2xl font-playfair font-semibold text-near-black mb-3 tracking-tight">{step.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-display uppercase font-semibold text-near-black mb-3 tracking-brand-header">{step.title}</h3>
                   <p className="text-near-black/70 font-montserrat text-sm sm:text-base leading-relaxed mb-5">{step.description}</p>
 
                   <div className="flex flex-wrap gap-2">
@@ -836,6 +779,13 @@ export default function SocialMediaManagementPage() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <PricingSection
+        config={socialMediaPricingConfig}
+        className="bg-cream-50"
+        onSelectPlan={() => router.push('/contact')}
+      />
+
       {/* Results Section */}
       <section ref={resultsRef} className="relative bg-gradient-to-br from-near-black via-[#1a1a1a] to-near-black px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-36">
         <div className="max-w-7xl mx-auto">
@@ -845,8 +795,8 @@ export default function SocialMediaManagementPage() {
             animate={isResultsInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-cream-50 tracking-tight leading-tight mb-4">
-              Real Results. Real Businesses.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-cream-50 tracking-brand-header leading-tight mb-4">
+              REAL RESULTS. REAL BUSINESSES.
             </h2>
             <p className="text-base sm:text-lg text-cream-200 font-montserrat max-w-3xl mx-auto">
               See how strategic social media transformed followers into revenue-driving customers
@@ -871,10 +821,10 @@ export default function SocialMediaManagementPage() {
                     <div className="w-10 h-10 flex items-center justify-center bg-copper-500/20 text-copper-400 rounded-lg group-hover:bg-copper-500 group-hover:text-white transition-all duration-500">
                       <Icon className="w-5 h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-copper-400 font-montserrat font-medium text-sm tracking-wide uppercase">{item.industry}</span>
+                    <span className="text-copper-400 font-montserrat font-medium text-sm tracking-normal uppercase">{item.industry}</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-playfair font-semibold text-cream-50 mb-3 tracking-tight">{item.result}</h3>
+                  <h3 className="text-xl sm:text-2xl font-display uppercase font-semibold text-cream-50 mb-3 tracking-brand-header">{item.result}</h3>
 
                   <div className="flex items-center gap-2 mb-4">
                     <Calendar className="w-4 h-4 text-cream-300" />
@@ -886,7 +836,7 @@ export default function SocialMediaManagementPage() {
                   <div className="grid grid-cols-3 gap-3 pt-6 border-t border-white/10">
                     {item.metrics.map((metric, idx) => (
                       <div key={idx} className="text-center">
-                        <p className="text-copper-400 font-playfair font-bold text-lg mb-1">{metric.value}</p>
+                        <p className="text-copper-400 font-display font-bold text-lg mb-1">{metric.value}</p>
                         <p className="text-cream-300 font-montserrat text-xs">{metric.label}</p>
                       </div>
                     ))}
@@ -894,76 +844,6 @@ export default function SocialMediaManagementPage() {
                 </motion.div>
               );
             })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section ref={pricingRef} className="relative bg-cream-100 px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16 sm:mb-20"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 40, filter: 'blur(15px)' }}
-            animate={isPricingInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-near-black tracking-tight leading-tight mb-4">
-              Transparent Pricing,{' '}
-              <span className="bg-gradient-to-r from-copper-500 to-copper-600 bg-clip-text text-transparent">Compounding Results</span>
-            </h2>
-            <p className="text-base sm:text-lg text-near-black/70 font-montserrat max-w-3xl mx-auto">
-              Invest in social infrastructure that builds community and drives revenue month after month
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
-            initial={prefersReducedMotion ? false : 'hidden'}
-            animate={isPricingInView ? 'visible' : 'hidden'}
-            variants={staggerContainer}
-          >
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariant}
-                className={`relative bg-white p-8 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ${
-                  plan.featured ? 'ring-2 ring-copper-500' : ''
-                }`}
-              >
-                {plan.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r from-copper-500 to-copper-600 text-white font-montserrat font-semibold text-xs tracking-wider uppercase">
-                    Most Popular
-                  </div>
-                )}
-
-                <h3 className="text-2xl font-playfair font-semibold text-near-black mb-2 tracking-tight">{plan.name}</h3>
-
-                <div className="mb-4">
-                  <span className="text-4xl font-playfair font-bold text-copper-600">{plan.price}</span>
-                  <span className="text-near-black/60 font-montserrat text-sm ml-2">{plan.period}</span>
-                </div>
-
-                <p className="text-near-black/70 font-montserrat text-sm leading-relaxed mb-6 pb-6 border-b border-near-black/10">{plan.description}</p>
-
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-near-black/80 font-montserrat text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-copper-500 shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href={plan.href}
-                  className={`block w-fit mx-auto px-8 py-3 text-center font-montserrat font-semibold text-sm tracking-wide transition-all duration-300 ${
-                    plan.featured ? 'bg-gradient-to-r from-copper-500 to-copper-600 text-white hover:shadow-lg hover:shadow-copper-500/40' : 'bg-cream-200 text-near-black hover:bg-copper-500 hover:text-white'
-                  }`}
-                >
-                  {plan.cta}
-                </Link>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </section>
@@ -977,8 +857,8 @@ export default function SocialMediaManagementPage() {
             animate={isFaqInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-light text-near-black tracking-tight leading-tight mb-4">
-              Questions About Social Media?
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-near-black tracking-brand-header leading-tight mb-4">
+              QUESTIONS ABOUT SOCIAL MEDIA?
             </h2>
             <p className="text-base sm:text-lg text-near-black/70 font-montserrat max-w-2xl mx-auto">
               Get answers to common questions about our approach, process, and what to expect
@@ -994,7 +874,7 @@ export default function SocialMediaManagementPage() {
             {faqs.map((faq, index) => (
               <motion.details key={index} variants={timelineStep} className="group bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
                 <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <h3 className="text-lg font-playfair font-semibold text-near-black tracking-tight pr-4">{faq.question}</h3>
+                  <h3 className="text-base sm:text-lg font-display uppercase font-semibold text-near-black tracking-brand-header pr-4 leading-tight">{faq.question}</h3>
                   <ChevronDown className="w-5 h-5 text-copper-500 shrink-0 transition-transform duration-300 group-open:rotate-180" />
                 </summary>
                 <p className="mt-4 text-near-black/70 font-montserrat text-sm sm:text-base leading-relaxed">{faq.answer}</p>
@@ -1026,13 +906,13 @@ export default function SocialMediaManagementPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-playfair font-light text-cream-50 tracking-tight leading-tight mb-6">
-              Ready to Turn Followers Into{' '}
-              <span className="bg-gradient-to-r from-copper-400 to-copper-600 bg-clip-text text-transparent">Revenue?</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display uppercase font-bold text-cream-50 tracking-brand-header leading-tight mb-6">
+              READY TO TURN FOLLOWERS INTO{' '}
+              <span className="bg-gradient-to-r from-copper-400 to-copper-600 bg-clip-text text-transparent">REVENUE?</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-cream-200 font-montserrat font-light leading-relaxed max-w-2xl mx-auto mb-10">
-              Get a free social media audit and strategy session. We'll show you exactly where the opportunities are and how we'll capitalize on them.
+            <p className="text-lg sm:text-xl text-cream-200 font-montserrat font-normal leading-relaxed max-w-2xl mx-auto mb-10">
+              Get a free social media audit and strategy session. We&apos;ll show you exactly where the opportunities are and how we&apos;ll capitalize on them.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1042,7 +922,7 @@ export default function SocialMediaManagementPage() {
                 size="default"
                 className="group w-full sm:w-fit"
               >
-                <Link href="/contact?service=social-media">
+                <Link href="/contact">
                   Get Your Free Audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
@@ -1054,14 +934,15 @@ export default function SocialMediaManagementPage() {
                 size="default"
                 className="w-full sm:w-fit bg-transparent border-2 border-cream-50/40 text-cream-50 hover:bg-copper-500/10 hover:border-cream-50 backdrop-blur-md"
               >
-                <Link href="/waas-plans">
-                  Explore WaaS Plans
+                <Link href="/contact">
+                  Get a Quote
                 </Link>
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
+
     </main>
   );
 }

@@ -1,6 +1,6 @@
-# The Astra Flow - Foundation Setup Complete
+# ZERA - Digital Growth Systems Platform
 
-Premium digital marketing and web development website built with Next.js 15, TypeScript, and Tailwind CSS.
+ZERA Digital Growth Systems - Commercial web design, SEO, and revenue automation platform built with Next.js 15, TypeScript, and Tailwind CSS.
 
 ## ✅ What's Been Set Up
 
@@ -15,8 +15,8 @@ Premium digital marketing and web development website built with Next.js 15, Typ
   - Cream: `#F3E9DC` (primary background)
   - Copper: `#B87333` (accent/CTA)
 - **Typography:**
-  - Montserrat (sans-serif) - Body text
-  - Playfair Display (serif) - Headlines
+  - Lato Regular (400) - Body text
+  - Lato Bold (700) - Headlines (uppercase, luxury brand standard)
 - **Spacing:** 8px grid system
 
 ### Essential Dependencies
@@ -99,6 +99,130 @@ npm run lint
 - Static pages: React components
 - Blog/case studies (when needed): Add MDX or hardcode data
 
+## 🔐 Security Features
+
+ZERA implements comprehensive security measures to protect against common web vulnerabilities:
+
+### Input Sanitization
+All user inputs are sanitized with DOMPurify before processing or storage:
+- **XSS Protection**: Strips malicious scripts from form submissions
+- **HTML Cleaning**: Removes dangerous HTML tags while preserving content
+- **URL Validation**: Ensures URLs use safe protocols (http/https only)
+- **Email Validation**: Regex-based email format verification
+
+**Implementation**: `src/lib/sanitize.ts`
+
+### CSRF Protection
+Token-based CSRF protection on all form submissions:
+- **Token Generation**: Cryptographically secure random tokens (32 bytes)
+- **HTTP-Only Cookies**: Tokens stored in secure, HTTP-only cookies
+- **Timing-Safe Comparison**: Prevents timing attacks on token verification
+- **Per-Session Tokens**: New token generated for each session
+
+**Endpoints**:
+- `GET /api/csrf-token` - Obtain CSRF token before form submission
+- All POST requests require `x-csrf-token` header
+
+**Implementation**: `src/lib/csrf.ts`, `src/app/api/csrf-token/route.ts`
+
+### Rate Limiting
+Database-backed rate limiting prevents API abuse:
+- **5 requests per hour** per IP address on form submissions
+- **MariaDB storage** for persistent tracking across server restarts
+- **Automatic cleanup** of expired rate limit records
+- **429 responses** with `Retry-After` header when limit exceeded
+
+**Implementation**: `src/lib/rate-limit.ts`
+
+### Server-Side Validation
+Zod schema validation on all API inputs:
+- **Type safety**: Ensures data matches expected types
+- **Length limits**: Prevents oversized inputs
+- **Format validation**: Email, URL, enum validation
+- **Required fields**: Enforces mandatory data
+- **Detailed errors**: Returns validation issues for client handling
+
+**Example Schema**:
+```typescript
+const quoteRequestSchema = z.object({
+  type: z.enum(['audit_request', 'social_media_request', ...]),
+  fullName: z.string().min(2).max(100),
+  email: z.string().email(),
+  // ... additional fields
+});
+```
+
+### Environment Security
+- **Credentials**: Sensitive data stored in `.env.local` (gitignored)
+- **CSRF Secret**: Unique secret for token signing
+- **Database passwords**: Never committed to version control
+- **API keys**: Rotated regularly, never exposed client-side
+
+## 🔌 API Endpoints
+
+### POST /api/submit-quote
+Submit a custom quote request (audit, service inquiry, etc.)
+
+**Rate Limit**: 5 requests per hour per IP
+
+**Required Headers**:
+```
+Content-Type: application/json
+x-csrf-token: <token>
+```
+
+**Request Body**:
+```typescript
+{
+  type: 'audit_request' | 'social_media_request' | ...,
+  service: string,
+  plan: string,
+  fullName: string,
+  email: string,
+  phone?: string,
+  companyName?: string,
+  websiteUrl?: string,
+  // ... additional fields based on type
+}
+```
+
+**Responses**:
+- `200` - Success
+- `400` - Invalid form data (returns Zod validation errors)
+- `403` - Invalid CSRF token
+- `429` - Rate limit exceeded (includes `Retry-After` header)
+- `500` - Server error
+
+**Security**: Input sanitization, CSRF protection, rate limiting, Zod validation
+
+### GET /api/csrf-token
+Obtain CSRF token for form submission
+
+**Response**:
+```json
+{
+  "token": "abc123..."
+}
+```
+
+**Behavior**: Sets `csrf-token` HTTP-only cookie automatically
+
+**Usage**:
+```typescript
+const response = await fetch('/api/csrf-token');
+const { token } = await response.json();
+
+// Use token in subsequent POST requests
+fetch('/api/submit-quote', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-csrf-token': token
+  },
+  body: JSON.stringify(data)
+});
+```
+
 ## 🔐 Environment Variables
 
 Required for production:
@@ -108,6 +232,25 @@ RESEND_API_KEY=your_key_here
 UPSTASH_REDIS_REST_URL=your_url_here
 UPSTASH_REDIS_REST_TOKEN=your_token_here
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+
+# Security
+CSRF_SECRET=generate-a-random-32-byte-hex-string-for-production
+
+# Database (MariaDB)
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=your_db_user
+DB_PASSWORD=your_secure_password
+DB_NAME=zera_db
+
+# Email (SMTP)
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=your_smtp_user
+SMTP_PASSWORD=your_smtp_password
+SMTP_FROM_NAME=ZERA
+SMTP_FROM_EMAIL=noreply@example.com
+EMAIL_TO=hello@example.com
 ```
 
 ## 📚 Documentation

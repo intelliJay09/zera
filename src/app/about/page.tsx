@@ -1,14 +1,12 @@
+import { Metadata } from 'next';
+import AboutContent from './AboutContent';
+
+export const metadata: Metadata = {
+  title: 'About The Directorate',
+  description:
+    'We are not creatives. We are Revenue Architects. Learn about the Zera doctrine, our cloud-native operations in Ghana, and our engineering philosophy.',
+};
+
 export default function AboutPage() {
-  return (
-    <main className="min-h-screen bg-cream-200 pt-32 pb-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h1 className="font-playfair text-4xl font-light text-near-black sm:text-5xl mb-6 tracking-tight">
-          About Us
-        </h1>
-        <p className="text-lg text-near-black/70 font-light tracking-wide">
-          Content coming soon...
-        </p>
-      </div>
-    </main>
-  );
+  return <AboutContent />;
 }

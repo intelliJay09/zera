@@ -9,14 +9,14 @@ export default function CurrencyToggle() {
   const { currency, setCurrency, isInitialized } = useCurrency();
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  const currencies: CurrencyCode[] = ['GHS', 'USD'];
+  const currencies: CurrencyCode[] = ['USD', 'GBP', 'EUR'];
 
   // Prevent rendering until currency is initialized to avoid hydration mismatch
   if (!isInitialized) {
     return (
       <div className="flex justify-center py-8">
         <div className="relative inline-flex items-center gap-3 rounded-full bg-cream-100/50 p-2 backdrop-blur-sm border border-cream-300/30">
-          <div className="h-14 w-72 opacity-50" />
+          <div className="h-14 w-96 opacity-50" />
         </div>
       </div>
     );

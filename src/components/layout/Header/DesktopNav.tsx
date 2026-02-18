@@ -6,15 +6,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { NAV_LINKS, SERVICE_ITEMS } from './navigation';
+import { NAV_LINKS, PRODUCT_ITEMS } from './navigation';
 
 interface DesktopNavProps {
   variant?: 'default' | 'light';
   scrolled?: boolean;
+  onConsultationClick?: () => void;
 }
 
 export default function DesktopNav({ variant = 'default', scrolled = false }: DesktopNavProps) {
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const isLight = variant === 'light';
   // When scrolled, both variants use cream background, so use dark text
   const useWhiteText = isLight && !scrolled;
@@ -27,13 +28,13 @@ export default function DesktopNav({ variant = 'default', scrolled = false }: De
           <div
             key={link.name}
             className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={() => setProductsOpen(true)}
+            onMouseLeave={() => setProductsOpen(false)}
           >
             <Link
               href={link.href}
               className={cn(
-                "group flex items-center gap-1.5 text-[15px] font-medium tracking-wide transition-all duration-300 ease-out hover:-translate-y-0.5",
+                "group flex items-center gap-1.5 text-[16px] font-medium tracking-wide transition-all duration-300 ease-out hover:-translate-y-0.5 uppercase",
                 useWhiteText
                   ? "text-white/95 hover:text-copper-400"
                   : "text-gray-900 hover:text-copper-500"
@@ -49,7 +50,7 @@ export default function DesktopNav({ variant = 'default', scrolled = false }: De
             </Link>
 
             <AnimatePresence>
-              {servicesOpen && (
+              {productsOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -58,13 +59,15 @@ export default function DesktopNav({ variant = 'default', scrolled = false }: De
                   className="absolute left-0 mt-4 w-72 rounded-none backdrop-blur-xl shadow-2xl ring-1 bg-cream-200/95 ring-black/5 shadow-black/10"
                 >
                   <div className="p-3">
-                    {SERVICE_ITEMS.map((service) => (
+                    {PRODUCT_ITEMS.map((product) => (
                       <Link
-                        key={service.href}
-                        href={service.href}
-                        className="block rounded-none px-5 py-3.5 text-[15px] font-medium transition-all duration-200 hover:translate-x-1 text-gray-700 hover:bg-cream-300/40 hover:text-copper-600"
+                        key={product.href}
+                        href={product.href}
+                        className="block rounded-none px-5 py-3.5 transition-all duration-200 hover:translate-x-1 hover:bg-cream-300/40"
                       >
-                        {service.name}
+                        <div className="font-medium text-[16px] text-gray-900 tracking-wide uppercase group-hover:text-copper-600">
+                          {product.name}
+                        </div>
                       </Link>
                     ))}
                   </div>
@@ -77,7 +80,7 @@ export default function DesktopNav({ variant = 'default', scrolled = false }: De
             key={link.name}
             href={link.href}
             className={cn(
-              "text-[15px] font-medium tracking-wide transition-all duration-300 ease-out hover:-translate-y-0.5",
+              "text-[16px] font-medium tracking-wide transition-all duration-300 ease-out hover:-translate-y-0.5 uppercase",
               useWhiteText
                 ? "text-white/95 hover:text-copper-400"
                 : "text-gray-900 hover:text-copper-500"
@@ -95,8 +98,8 @@ export default function DesktopNav({ variant = 'default', scrolled = false }: De
         size="sm"
         className="group"
       >
-        <Link href="/contact">
-          Get Started
+        <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="navbar">
+          Book Strategy Session
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
         </Link>
       </Button>

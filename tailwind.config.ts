@@ -78,8 +78,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        sans: ['var(--font-lato-regular)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-lato-bold)', 'Impact', 'sans-serif'],
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -106,6 +106,11 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      letterSpacing: {
+        'brand-header': '0.05em',        // 50 units - minimum brand spec
+        'brand-header-wide': '0.075em',  // 75 units - maximum brand spec
+        'brand-label': '0.05em',         // 50 units - labels/overlines
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',

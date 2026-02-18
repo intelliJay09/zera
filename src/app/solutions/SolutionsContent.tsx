@@ -19,13 +19,13 @@ export default function SolutionsContent() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
           <div className="max-w-4xl">
-            <p className="text-sm font-medium tracking-[0.25em] uppercase text-copper-500 mb-6">
+            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
               Our Solutions
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light font-playfair text-cream-50 tracking-tight leading-tight mb-6 sm:mb-8">
-              Strategic Digital Marketing Solutions
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display uppercase text-cream-50 tracking-tight sm:tracking-brand-header leading-tight mb-6 sm:mb-8">
+              STRATEGIC DIGITAL MARKETING SOLUTIONS
             </h1>
-            <p className="text-lg sm:text-xl font-light text-cream-100/80 leading-relaxed tracking-wide max-w-3xl">
+            <p className="text-lg sm:text-xl font-normal text-cream-100/80 leading-relaxed tracking-normal max-w-3xl">
               Transform your digital presence with strategic marketing solutions designed to accelerate growth and market dominance. Our comprehensive suite of services—from custom web development and data-driven SEO to premium brand design and social media management—delivers measurable results for ambitious businesses ready to lead their industries.
             </p>
           </div>
@@ -38,20 +38,20 @@ export default function SolutionsContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-sm font-medium tracking-[0.25em] uppercase text-copper-500 mb-6">
+              <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
                 Our Philosophy
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light font-playfair text-near-black tracking-tight leading-tight mb-6">
-                Strategic Partnership,{' '}
-                <span className="text-copper-500">Not Vendor Relationship</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header leading-tight mb-6">
+                STRATEGIC PARTNERSHIP,{' '}
+                <span className="text-copper-500">NOT VENDOR RELATIONSHIP</span>
               </h2>
-              <p className="text-lg font-light text-near-black/70 leading-relaxed tracking-wide mb-8">
+              <p className="text-lg font-normal text-near-black/70 leading-relaxed tracking-normal mb-8">
                 We don&apos;t believe in cookie-cutter solutions or transactional engagements. Every
                 business has unique challenges, audiences, and opportunities. Our solutions are built
                 on deep strategic collaboration, data-driven insights, and a relentless focus on
                 measurable outcomes.
               </p>
-              <p className="text-base font-light text-near-black/60 leading-relaxed tracking-wide">
+              <p className="text-base font-normal text-near-black/60 leading-relaxed tracking-normal">
                 From Fortune 500 enterprises to ambitious startups, we&apos;ve partnered with businesses
                 across industries to architect digital strategies that drive sustainable competitive
                 advantage.
@@ -67,10 +67,10 @@ export default function SolutionsContent() {
                 { number: '$50M+', label: 'Revenue Generated for Clients' },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl lg:text-5xl font-light font-playfair text-copper-500 mb-2">
+                  <div className="text-4xl lg:text-5xl font-bold font-display uppercase text-copper-500 mb-2 tracking-brand-header">
                     {stat.number}
                   </div>
-                  <div className="text-sm font-light text-near-black/60 tracking-wide">
+                  <div className="text-sm font-normal text-near-black/60 tracking-normal">
                     {stat.label}
                   </div>
                 </div>
@@ -80,18 +80,15 @@ export default function SolutionsContent() {
         </div>
       </section>
 
-      {/* Our Process - SCROLLYTELLING SECTION */}
-      <ProcessScrollytelling />
-
       {/* All Solutions */}
       <section className="bg-white py-16 sm:py-24 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
           <div className="text-center mb-16 sm:mb-20">
-            <p className="text-sm font-medium tracking-[0.25em] uppercase text-copper-500 mb-6">
+            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
               Our Services
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light font-playfair text-near-black tracking-tight max-w-3xl mx-auto leading-tight">
-              Comprehensive Digital Marketing Solutions
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header max-w-3xl mx-auto leading-tight">
+              COMPREHENSIVE DIGITAL MARKETING SOLUTIONS
             </h2>
           </div>
 
@@ -101,13 +98,25 @@ export default function SolutionsContent() {
                 title: 'Custom Web Development',
                 description:
                   'Bespoke websites and web applications built to your exact specifications. From business websites to SaaS platforms, we create scalable digital experiences that convert.',
-                link: '/solutions/web-development',
+                link: '/products/digital-hq',
               },
               {
-                title: 'SEO',
+                title: 'Software Development',
+                description:
+                  'Custom software solutions, mobile applications, and enterprise systems built with cutting-edge technologies. From MVP to full-scale production applications.',
+                link: '/solutions/software-development',
+              },
+              {
+                title: 'Strategic Brand Development',
+                description:
+                  'Complete brand strategy, visual identity systems, and positioning for premium brands. Create distinctive brand experiences that resonate with your target audience.',
+                link: '/solutions/branding-design',
+              },
+              {
+                title: 'SEO & Digital Marketing',
                 description:
                   'Data-driven search engine optimization that increases organic visibility, drives qualified traffic, and establishes your brand as an industry authority.',
-                link: '/solutions/seo',
+                link: '/products/digital-hq',
               },
               {
                 title: 'Social Media Management',
@@ -116,16 +125,10 @@ export default function SolutionsContent() {
                 link: '/solutions/social-media-management',
               },
               {
-                title: 'Branding & Design',
+                title: 'Content Creation',
                 description:
-                  'Complete brand strategy and visual identity systems that differentiate your business, resonate with your target audience, and communicate premium value.',
-                link: '/solutions/branding-design',
-              },
-              {
-                title: 'Content Marketing',
-                description:
-                  'Strategic content creation and distribution that attracts, educates, and converts your ideal customers while establishing thought leadership in your industry.',
-                link: '/solutions/content-marketing',
+                  'AI-powered content creation with human creativity. Blog posts, social media campaigns, email marketing, and video scripts that engage audiences and deliver measurable results.',
+                link: '/products/growth-system',
               },
             ].map((service, index) => (
               <Link
@@ -139,12 +142,12 @@ export default function SolutionsContent() {
                   {service.title}
                 </h3>
 
-                <p className="text-base font-light text-near-black/70 leading-relaxed tracking-wide mb-6">
+                <p className="text-base font-normal text-near-black/70 leading-relaxed tracking-normal mb-6">
                   {service.description}
                 </p>
 
                 <div className="flex items-center gap-2 text-copper-500 group-hover:gap-4 transition-all duration-300">
-                  <span className="text-xs font-medium tracking-[0.15em] uppercase">Learn More</span>
+                  <span className="text-xs font-medium tracking-brand-label uppercase">Learn More</span>
                   <ArrowRight className="w-5 h-5" />
                 </div>
               </Link>
@@ -153,21 +156,24 @@ export default function SolutionsContent() {
         </div>
       </section>
 
+      {/* Our Process - SCROLLYTELLING SECTION */}
+      <ProcessScrollytelling />
+
       {/* Final CTA */}
       <section className="bg-gradient-to-br from-near-black via-near-black/95 to-near-black/90 py-16 sm:py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-copper-500/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1000px] relative text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light font-playfair text-cream-200 tracking-tight mb-6">
-            Let&apos;s Build Your Growth Story
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-cream-200 tracking-brand-header mb-6">
+            LET&apos;S BUILD YOUR GROWTH STORY
           </h2>
-          <p className="text-lg font-light text-cream-100/80 leading-relaxed tracking-wide mb-10 max-w-2xl mx-auto">
+          <p className="text-lg font-normal text-cream-100/80 leading-relaxed tracking-normal mb-10 max-w-2xl mx-auto">
             Schedule a complimentary strategy consultation to explore how our solutions can transform
             your digital presence and drive measurable business growth.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-10 py-4 bg-copper-500 text-cream-50 font-medium text-sm tracking-[0.15em] uppercase hover:bg-copper-600 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-copper-500 text-cream-50 font-medium text-sm tracking-brand-label uppercase hover:bg-copper-600 transition-all duration-300 group"
           >
             <span>Book Strategy Call</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -341,11 +347,11 @@ function ProcessScrollytelling() {
     <section ref={sectionRef} className="bg-cream-200 py-16 sm:py-24 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <div className="text-center mb-16 sm:mb-20">
-          <p className="text-sm font-medium tracking-[0.25em] uppercase text-copper-500 mb-6">
+          <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
             How We Work
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light font-playfair text-near-black tracking-tight max-w-3xl mx-auto leading-tight">
-            Our Collaborative Process
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header max-w-3xl mx-auto leading-tight">
+            OUR COLLABORATIVE PROCESS
           </h2>
         </div>
 
@@ -378,7 +384,7 @@ function ProcessScrollytelling() {
                       filter: isActive ? 'blur(0px)' : 'blur(4px)',
                     }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="text-[200px] font-light font-playfair text-copper-500/5 leading-none mb-8"
+                    className="text-[200px] font-light font-display text-copper-500/5 leading-none mb-8"
                     style={{
                       transformOrigin: 'center',
                       transform: 'translateZ(-30px)',
@@ -409,7 +415,7 @@ function ProcessScrollytelling() {
                       x: isActive ? 0 : -20,
                     }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="text-3xl font-light font-playfair text-near-black mb-6 tracking-tight"
+                    className="text-3xl font-bold font-display uppercase text-near-black mb-6 tracking-brand-header"
                     style={{ transform: 'translateZ(10px)' }}
                   >
                     {step.title}
@@ -423,7 +429,7 @@ function ProcessScrollytelling() {
                       x: isActive ? 0 : -10,
                     }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="text-lg font-light text-near-black/70 leading-relaxed tracking-wide mb-10"
+                    className="text-lg font-normal text-near-black/70 leading-relaxed tracking-normal mb-10"
                     style={{ transform: 'translateZ(5px)' }}
                   >
                     {step.description}
@@ -540,10 +546,10 @@ function DesktopTimelineZone({
 
                 {/* Content with hover translation */}
                 <div className="transition-all duration-300 group-hover:translate-x-2">
-                  <h4 className="text-xl font-medium tracking-[0.02em] text-near-black mb-2 transition-colors group-hover:text-copper-600">
+                  <h4 className="text-xl font-medium tracking-normal text-near-black mb-2 transition-colors group-hover:text-copper-600">
                     {item.title}
                   </h4>
-                  <p className="text-base font-light tracking-[0.03em] text-near-black/70 leading-relaxed transition-colors group-hover:text-near-black/90">
+                  <p className="text-base font-normal tracking-normal text-near-black/70 leading-relaxed transition-colors group-hover:text-near-black/90">
                     {item.description}
                   </p>
                 </div>
@@ -575,7 +581,7 @@ function MobileStepItem({ step, Icon }: { step: any; index: number; Icon: any })
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
         transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-        className="text-[100px] font-light font-playfair text-copper-500/5 leading-none mb-6"
+        className="text-[100px] font-light font-display text-copper-500/5 leading-none mb-6"
         style={{ transform: 'translateZ(-20px)' }}
       >
         {step.number}
@@ -597,7 +603,7 @@ function MobileStepItem({ step, Icon }: { step: any; index: number; Icon: any })
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-2xl font-light font-playfair text-near-black mb-4 tracking-tight"
+        className="text-2xl font-bold font-display uppercase text-near-black mb-4 tracking-brand-header"
       >
         {step.title}
       </motion.h3>
@@ -607,7 +613,7 @@ function MobileStepItem({ step, Icon }: { step: any; index: number; Icon: any })
         initial={{ opacity: 0, x: -10 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="text-base font-light text-near-black/70 leading-relaxed tracking-wide mb-8"
+        className="text-base font-normal text-near-black/70 leading-relaxed tracking-normal mb-8"
       >
         {step.description}
       </motion.p>
@@ -654,10 +660,10 @@ function MobileStepItem({ step, Icon }: { step: any; index: number; Icon: any })
 
                 {/* Content */}
                 <div>
-                  <h4 className="text-lg font-medium tracking-[0.02em] text-near-black mb-1">
+                  <h4 className="text-lg font-medium tracking-normal text-near-black mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-sm font-light tracking-[0.03em] text-near-black/70 leading-relaxed">
+                  <p className="text-sm font-normal tracking-normal text-near-black/70 leading-relaxed">
                     {item.description}
                   </p>
                 </div>

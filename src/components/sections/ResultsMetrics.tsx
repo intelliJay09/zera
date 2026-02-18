@@ -51,15 +51,14 @@ export default function ResultsMetrics() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-copper-500 mb-4">
-            Proven Excellence
+          <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-4">
+            The Operating Record
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light font-playfair text-near-black tracking-tight mb-4 sm:mb-6">
-            Results That Speak Volumes
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light font-display uppercase text-near-black tracking-brand-header mb-4 sm:mb-6">
+            DATA, NOT PROMISES.
           </h2>
-          <p className="text-base font-light text-near-black/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            We don&apos;t just promise growth—we architect it. Every strategy we deploy is
-            precision-engineered to transform ambitious brands into market leaders.
+          <p className="text-base sm:text-lg font-normal text-near-black/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
+            We engineer revenue infrastructure. Every growth system we deploy is precision-calibrated for measurable ROI. The numbers don&apos;t lie.
           </p>
         </motion.div>
 
@@ -68,13 +67,13 @@ export default function ResultsMetrics() {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
-                duration: 0.6,
+                duration: 0.8,
                 delay: index * 0.15,
-                ease: [0.22, 1, 0.36, 1]
+                ease: [0.19, 0.91, 0.38, 0.98]
               }}
             >
               <MetricCard stat={stat} index={index} />

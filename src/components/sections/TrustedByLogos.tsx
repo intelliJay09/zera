@@ -1,40 +1,88 @@
-import React from 'react';
-import { getFeaturedClientLogos } from '@/data/client-logos';
+'use client';
+
+import { motion } from 'framer-motion';
+
+const brands = [
+  'Gwen Addo',
+  'Apex Capital Partners',
+  'Lumina Lifestyle',
+  'West African Logistics Group',
+  'TechFlow Solutions',
+  'Luxe Wellness',
+  'Meridian Financial',
+  'Apex Manufacturing',
+  'Verde Organics',
+  'Modern Threads',
+  'Zenith Partners',
+  'Elevation Studio',
+];
 
 export default function TrustedByLogos() {
-  const logos = getFeaturedClientLogos(12);
-
   return (
-    <section className="bg-cream-200 py-16 border-t border-copper-500/10">
+    <section className="bg-cream-100 py-16 border-t border-copper-500/10 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
-        <p className="text-center text-sm font-medium tracking-[0.25em] uppercase text-copper-500/70 mb-10">
-          Trusted By Forward-Thinking Brands
+        <p className="text-center text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-10">
+          TRUSTED BY MARKET LEADERS
         </p>
 
-        {/* Logo Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-10 items-center">
-          {logos.map((logo) => (
-            <div
-              key={logo.id}
-              className="flex items-center justify-center opacity-50 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-500"
+        {/* Infinite Marquee */}
+        <div className="relative">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-cream-100 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-cream-100 to-transparent z-10 pointer-events-none" />
+
+          {/* Marquee Container */}
+          <div className="flex overflow-hidden">
+            {/* First set of brands */}
+            <motion.div
+              className="flex gap-12 lg:gap-16 items-center whitespace-nowrap"
+              animate={{
+                x: ['0%', '-100%'],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                  duration: 40,
+                  ease: 'linear',
+                },
+              }}
             >
-              {/* Placeholder for logo images - replace with actual Image components when assets are ready */}
-              <div className="w-full h-16 flex items-center justify-center">
-                <div className="text-xs font-medium text-near-black/40 tracking-wide text-center">
-                  {logo.name}
+              {brands.map((brand, index) => (
+                <div
+                  key={`first-${index}`}
+                  className="flex-shrink-0 text-lg font-medium text-near-black/60 tracking-wide uppercase"
+                >
+                  {brand}
                 </div>
-              </div>
-              {/* When logos are ready, use this structure:
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={120}
-                height={60}
-                className="w-auto h-12 object-contain"
-              />
-              */}
-            </div>
-          ))}
+              ))}
+            </motion.div>
+
+            {/* Duplicate set for seamless loop */}
+            <motion.div
+              className="flex gap-12 lg:gap-16 items-center whitespace-nowrap ml-12 lg:ml-16"
+              animate={{
+                x: ['0%', '-100%'],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                  duration: 40,
+                  ease: 'linear',
+                },
+              }}
+            >
+              {brands.map((brand, index) => (
+                <div
+                  key={`second-${index}`}
+                  className="flex-shrink-0 text-lg font-medium text-near-black/60 tracking-wide uppercase"
+                >
+                  {brand}
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

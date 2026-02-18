@@ -5,28 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { X, ChevronDown, ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
 import { useFocusTrap } from '@/hooks/useFocusTrap';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-import { NAV_LINKS, SERVICE_ITEMS } from './navigation';
+import { NAV_LINKS, PRODUCT_ITEMS } from './navigation';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   variant?: 'default' | 'light';
   scrolled?: boolean;
+  onConsultationClick?: () => void;
 }
 
-export default function MobileMenu({ isOpen, onClose, variant = 'default', scrolled = false }: MobileMenuProps) {
-  const [servicesOpen, setServicesOpen] = useState(false);
+export default function MobileMenu({ isOpen, onClose, variant: _variant = 'default', scrolled: _scrolled = false }: MobileMenuProps) {
+  const [productsOpen, setProductsOpen] = useState(false);
   useMobileMenu({ isOpen, onClose });
   const containerRef = useFocusTrap(isOpen);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const isLight = variant === 'light';
-  // Mobile menu always uses cream background for consistency
-  const useWhiteElements = false; // Mobile menu always dark text on cream
 
   const animationConfig = prefersReducedMotion
     ? { duration: 0.01 }
@@ -69,7 +66,7 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
             />
 
             {/* Height container */}
-            <div className="h-screen flex flex-col backdrop-blur-xl shadow-2xl sm:ring-1 bg-cream-200/98 sm:ring-black/5">
+            <div className="min-h-screen max-h-screen flex flex-col backdrop-blur-xl shadow-2xl sm:ring-1 bg-cream-200/98 sm:ring-black/5">
 
               {/* Isolated scroll container */}
               <div
@@ -86,23 +83,23 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
 
                 <div className="px-6">
                 {/* Header */}
-                <div className="flex items-center justify-between py-6">
+                <div className="flex items-center justify-between py-3">
                   <Link
                     href="/"
                     onClick={onClose}
                     className="transition-transform active:scale-95 -m-2 p-2 focus:outline-none focus-visible:outline-none"
                   >
                     <Image
-                      src="/logo.png"
-                      alt="The Astra Flow"
-                      width={160}
-                      height={53}
-                      className="h-11 w-auto"
+                      src="/zera-logo-primary.png"
+                      alt="ZERA Digital Growth Systems"
+                      width={81}
+                      height={29}
+                      className="h-7 w-auto"
                     />
                   </Link>
                   <button
                     type="button"
-                    className="rounded-none p-3 min-w-[44px] min-h-[44px] flex items-center justify-center group text-gray-900"
+                    className="rounded-none p-2 min-w-[44px] min-h-[44px] flex items-center justify-center group text-gray-900"
                     onClick={onClose}
                     aria-label="Close menu"
                   >
@@ -114,10 +111,10 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
                 </div>
 
                 {/* Separator */}
-                <div className="h-px bg-gradient-to-r from-transparent to-transparent mb-8 via-gray-200" />
+                <div className="h-px bg-gradient-to-r from-transparent to-transparent mb-6 via-gray-200" />
 
                 {/* Navigation */}
-                <div className="space-y-1 pb-8">
+                <div className="space-y-1 pb-6">
                   {NAV_LINKS.map((link, index) => (
                     <motion.div
                       key={link.name}
@@ -132,19 +129,19 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
                       {link.hasDropdown ? (
                         <div>
                           <button
-                            onClick={() => setServicesOpen(!servicesOpen)}
-                            className="w-full flex items-center justify-between px-6 py-4 text-[15px] font-normal tracking-wide transition-all min-h-[44px] rounded-none text-gray-900 hover:bg-cream-300/40 hover:text-copper-500 active:bg-cream-300/60"
+                            onClick={() => setProductsOpen(!productsOpen)}
+                            className="w-full flex items-center justify-between px-6 py-4 text-[15px] font-normal tracking-wide transition-all min-h-[44px] rounded-none text-gray-900 hover:bg-cream-300/40 hover:text-copper-500 active:bg-cream-300/60 uppercase"
                           >
                             {link.name}
                             <ChevronDown
                               className={`h-4 w-4 transition-transform duration-300 ${
-                                servicesOpen ? 'rotate-180' : ''
+                                productsOpen ? 'rotate-180' : ''
                               }`}
                               strokeWidth={1.5}
                             />
                           </button>
                           <AnimatePresence>
-                            {servicesOpen && (
+                            {productsOpen && (
                               <motion.div
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
@@ -153,14 +150,19 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
                                 className="overflow-hidden"
                               >
                                 <div className="space-y-1 mt-1">
-                                  {SERVICE_ITEMS.map((service) => (
+                                  {PRODUCT_ITEMS.map((product) => (
                                     <Link
-                                      key={service.href}
-                                      href={service.href}
-                                      className="block px-6 pl-10 py-3.5 text-[15px] font-normal transition-all hover:translate-x-1 min-h-[44px] flex items-center rounded-none text-gray-600 hover:bg-cream-300/40 active:bg-cream-300/60 hover:text-copper-500"
+                                      key={product.href}
+                                      href={product.href}
+                                      className="block px-6 pl-10 py-3.5 transition-all hover:translate-x-1 min-h-[44px] rounded-none hover:bg-cream-300/40 active:bg-cream-300/60"
                                       onClick={onClose}
                                     >
-                                      {service.name}
+                                      <div className="font-medium text-[16px] text-gray-900 tracking-wide uppercase hover:text-copper-500">
+                                        {product.name}
+                                      </div>
+                                      <div className="text-xs text-gray-500 mt-1 font-normal">
+                                        {product.subtitle}
+                                      </div>
                                     </Link>
                                   ))}
                                 </div>
@@ -171,7 +173,7 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
                       ) : (
                         <Link
                           href={link.href}
-                          className="block px-6 py-4 text-[15px] font-normal tracking-wide transition-all hover:translate-x-1 min-h-[44px] flex items-center rounded-none text-gray-900 hover:bg-cream-300/40 hover:text-copper-500 active:bg-cream-300/60"
+                          className="block px-6 py-4 text-[15px] font-normal tracking-wide transition-all hover:translate-x-1 min-h-[44px] flex items-center rounded-none text-gray-900 hover:bg-cream-300/40 hover:text-copper-500 active:bg-cream-300/60 uppercase"
                           onClick={onClose}
                         >
                           {link.name}
@@ -182,15 +184,15 @@ export default function MobileMenu({ isOpen, onClose, variant = 'default', scrol
                 </div>
 
                 {/* CTA */}
-                <div className="border-t pt-8 pb-8 border-gray-200/50">
+                <div className="border-t pt-6 pb-6 border-gray-200/50">
                   <Button
                     asChild
                     variant="primary"
                     size="sm"
                     className="w-full justify-center group"
                   >
-                    <Link href="/contact" onClick={onClose}>
-                      Get Started
+                    <Link href="/booking" onClick={onClose} data-gtm-event="cta_book_strategy" data-gtm-location="mobile_nav">
+                      Book Strategy Session
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                     </Link>
                   </Button>

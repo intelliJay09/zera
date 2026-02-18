@@ -36,18 +36,22 @@ export default function Header({ variant = 'default' }: HeaderProps) {
           className="flex items-center transition-transform duration-300 hover:scale-105 active:scale-95 -m-2 p-2 min-h-[44px]"
         >
           <Image
-            src={useWhiteElements ? "/logo-white.png" : "/logo.png"}
-            alt="The Astra Flow"
-            width={400}
-            height={146}
+            src={useWhiteElements ? "/zera-logo-white.png" : "/zera-logo-primary.png"}
+            alt="ZERA Digital Growth Systems"
+            width={135}
+            height={49}
             priority
-            className="h-14 w-[153px]"
+            unoptimized
+            className="h-7 lg:h-11 w-auto"
             style={{ objectFit: 'contain' }}
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <DesktopNav variant={variant} scrolled={scrolled} />
+        <DesktopNav
+          variant={variant}
+          scrolled={scrolled}
+        />
 
         {/* Mobile Menu Button */}
         <button
@@ -70,7 +74,12 @@ export default function Header({ variant = 'default' }: HeaderProps) {
       </nav>
 
       {/* Mobile Menu */}
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} variant={variant} scrolled={scrolled} />
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        variant={variant}
+        scrolled={scrolled}
+      />
     </header>
   );
 }

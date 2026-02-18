@@ -1,4 +1,4 @@
-export type CurrencyCode = 'USD' | 'GHS';
+export type CurrencyCode = 'USD' | 'GBP' | 'EUR';
 
 export interface CurrencyConfig {
   code: CurrencyCode;
@@ -9,9 +9,14 @@ export interface CurrencyConfig {
   position: 'before' | 'after';
 }
 
-export interface MultiCurrencyPrice {
-  USD: number;
-  GHS: number;
+export interface ExchangeRates {
+  base: 'USD';
+  rates: {
+    GBP: number;
+    EUR: number;
+  };
+  timestamp: number;
+  source: 'frankfurter' | 'fallback';
 }
 
 export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
@@ -23,14 +28,32 @@ export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
     decimalPlaces: 0,
     position: 'before',
   },
-  GHS: {
-    code: 'GHS',
-    symbol: '₵',
-    name: 'Ghana Cedi',
-    locale: 'en-GH',
+  GBP: {
+    code: 'GBP',
+    symbol: '£',
+    name: 'British Pound',
+    locale: 'en-GB',
     decimalPlaces: 0,
     position: 'before',
   },
+  EUR: {
+    code: 'EUR',
+    symbol: '€',
+    name: 'Euro',
+    locale: 'de-DE',
+    decimalPlaces: 0,
+    position: 'before',
+  },
+};
+
+export const FALLBACK_EXCHANGE_RATES: ExchangeRates = {
+  base: 'USD',
+  rates: {
+    GBP: 0.79,
+    EUR: 0.95,
+  },
+  timestamp: 0,
+  source: 'fallback',
 };
 
 export const DEFAULT_CURRENCY: CurrencyCode = 'USD';

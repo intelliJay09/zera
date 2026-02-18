@@ -6,17 +6,36 @@
 import mysql from 'mysql2/promise';
 
 // Connection pool configuration
-const poolConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-  enableKeepAlive: true,
-  keepAliveInitialDelay: 0,
-};
+// Separates socket-only config (for system users with no password) from TCP config (for other users)
+// System users like 'root' or 'jacqueline' on macOS can use unix socket authentication without password
+const isSystemUserWithoutPassword = !process.env.DB_PASSWORD &&
+  (process.env.DB_USER === 'root' || process.env.DB_USER === 'jacqueline');
+
+const poolConfig: mysql.PoolOptions = isSystemUserWithoutPassword
+  ? {
+      // Socket-only config for system users (macOS unix socket auth)
+      // Completely omits host, port, and password to prevent TCP fallback
+      socketPath: '/tmp/mysql.sock',
+      user: process.env.DB_USER,
+      database: process.env.DB_NAME,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
+      enableKeepAlive: true,
+      keepAliveInitialDelay: 0,
+    }
+  : {
+      // TCP config for other users (production setup)
+      host: process.env.DB_HOST || 'localhost',
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
+      enableKeepAlive: true,
+      keepAliveInitialDelay: 0,
+    };
 
 // Create connection pool
 let pool: mysql.Pool | null = null;

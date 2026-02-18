@@ -1,0 +1,103 @@
+1. The SEO Metadata (<Head>)
+
+Title: ZERA | Digital Growth Systems & Marketing Agency (Ghana/Global)
+
+Meta Description: Zera is a premier digital growth agency specializing in commercial web design, SEO, lead generation systems, and revenue automation. We engineer market dominance.
+
+Keywords: Digital Marketing Agency Ghana, Web Design Services, SEO Expert, Lead Generation System, Revenue Operations, Zera HQ.
+
+2. The Hero Section (<HeroSection>)
+
+Strategy: We combine the "Big Claim" with the "Category Definition" so Google knows what you do.
+
+H1 (The Brand Promise): WE ENGINEER MARKET SOVEREIGNTY.
+
+H2 (The SEO Definition - Smaller Text): The Global Digital Growth System for High-Performance Brands.
+
+Body Text: Stop relying on chaotic marketing tactics. ZERA replaces random ads and scattered social posts with a permanent Revenue Infrastructure. We combine commercial Web Design, SEO, and Automated Sales Pipelines into a single system that scales your business autonomously.
+
+Primary CTA: [ CHECK AVAILABILITY ]
+
+3. The Services Grid (<ServiceTierGrid>)
+
+Strategy: We keep your proprietary names (The Asset) but immediately define them with "Money Keywords" (The Service).
+
+Card 1: THE DIGITAL HQ
+
+Subtitle: Phase I: Foundation (Web & SEO) The Promise: We build your permanent base of operations. What we deliver:
+
+Commercial Web Architecture: A high-performance website built to convert traffic, not just display information.
+
+Search Engine Authority (SEO): We optimize your site structure so you rank #1 for your brand entity on Google.
+
+Brand Identity Codex: A complete visual and verbal identity system to ensure consistency.
+
+Card 2: THE GROWTH SYSTEM
+
+Subtitle: Phase II: Velocity (Funnels & Ads) The Promise: We install the machinery that brings customers to you. What we deliver:
+
+Lead Acquisition Pipelines: Automated landing pages and forms that capture leads 24/7.
+
+The Lead Capture Engine: We connect your CRM to catch every inquiry instantly—whether from Google, Social, or Direct traffic.
+
+Conversion Rate Optimization (CRO): We analyze visitor data to tweak your site and turn more clicks into customers.
+
+Card 3: THE MARKET MONOPOLY
+
+Subtitle: Phase III: Sovereignty (Retention & Scale) The Promise: We turn one-time buyers into lifetime revenue. What we deliver:
+
+The Lifecycle Ecosystem: Automated Email & SMS marketing flows that drive repeat sales without manual effort.
+
+The Win-Back Protocol: A dedicated system to reactivate "dead" leads and lost customers.
+
+Lifetime Value Strategy: A 12-month campaign calendar designed to maximize the profit from every client.
+
+4. The "SEO Honey Pot" (<FAQSection>)
+
+Strategy: This is the ultimate SEO trick. We ask the questions your clients type into Google, and we answer them with your keywords.
+
+H2: FREQUENTLY ASKED QUESTIONS
+
+Q: What is the difference between a Digital Agency and a Growth System? A: A traditional digital marketing agency often focuses on "vanity metrics" like likes and views. ZERA (A Growth System) focuses on Revenue Operations. We build assets—like SEO structures and Automated Funnels—that belong to you and generate returns long after the campaign ends.
+
+Q: Does ZERA handle Web Design and SEO? A: Yes. The Digital HQ package is our proprietary approach to Web Design. We do not just make sites look good; we engineer them for Search Engine Optimization (SEO) and lead conversion from day one.
+
+Q: Who is ZERA designed for? A: We work with ambitious companies in Ghana and globally who are ready to move beyond "freelancer" support and install a professional Lead Generation System.
+
+5. The Footer (<Footer>)
+
+Strategy: Use the footer to reinforce your location for Local SEO.
+
+Column 1: ZERA Digital Growth Systems
+
+Column 2 (Services):
+
+Web Design & Development
+
+Search Engine Optimization (SEO)
+
+Lead Generation Funnels
+
+Email Marketing Automation
+
+Column 3 (Contact):
+
+Accra, Ghana (Global HQ)
+
+hello@zerahq.com
+
+🛠️ Updated Developer Instructions for Claude Code
+
+"Act as a Senior Frontend Developer & SEO Specialist.
+
+Critical SEO Requirement: You must use semantic HTML tags (<article>, <section>, <h1>, <h2>).
+
+The H1 must be 'WE ENGINEER MARKET SOVEREIGNTY'.
+
+The H2s must include 'Digital Growth System', 'Web Design', 'SEO', and 'Lead Generation'.
+
+Wrap the Service Titles (e.g., 'THE DIGITAL HQ') in <h3> tags.
+
+Content Strategy: Use the revised copy provided above. It balances the 'Zera' brand voice with standard industry keywords to ensure we rank on Google.
+
+Schema Markup: Please include a JSON-LD script in the head for a 'MarketingAgency' schema, listing 'ZERA' as the name and 'Ghana' as the location."

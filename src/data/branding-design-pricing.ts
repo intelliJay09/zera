@@ -1,0 +1,61 @@
+import { ServicePricingConfig } from '@/types/pricing';
+
+export const brandingDesignPricingConfig: ServicePricingConfig = {
+  serviceName: 'Brand Development',
+  serviceSlug: 'branding-design',
+  sectionTitle: 'Professional Brand Identity That Stands Out',
+  sectionSubtitle: 'Build a brand that resonates with your audience and drives business growth',
+  plans: [
+    {
+      name: 'Launch',
+      price: 199,
+      period: '2-3 weeks',
+      bestFor: 'New businesses establishing professional brand identity',
+      features: [
+        'Logo design (3 concepts)',
+        'Color palette & typography',
+        'Basic brand guidelines',
+        'Business card design',
+        '2 revision rounds',
+      ],
+      cta: 'Get Started',
+      href: '/contact?service=branding-design&plan=launch',
+      featured: false,
+    },
+    {
+      name: 'Scale',
+      price: 399,
+      period: '3-4 weeks',
+      bestFor: 'Growing businesses elevating brand consistency',
+      features: [
+        'Logo design (5 concepts)',
+        'Complete visual identity',
+        'Comprehensive brand guidelines',
+        'Stationery package',
+        'Social media templates',
+        'Brand voice development',
+        '3 revision rounds',
+      ],
+      cta: 'Scale Your Brand',
+      href: '/contact?service=branding-design&plan=scale',
+      featured: true,
+    },
+    {
+      name: 'Dominate',
+      price: 799,
+      period: '4-6 weeks',
+      bestFor: 'Established brands requiring complete brand ecosystem',
+      features: [
+        'Logo design (unlimited concepts)',
+        'Complete brand ecosystem',
+        'Detailed brand strategy',
+        'Brand photography direction',
+        'Implementation support',
+        '6 revision rounds',
+      ],
+      cta: 'Get Started',
+      href: '/contact?service=branding-design&plan=dominate',
+      featured: false,
+    },
+  ],
+};

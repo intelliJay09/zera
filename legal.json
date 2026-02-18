@@ -1,0 +1,104 @@
+### 1. PRIVACY POLICY (`/legal/privacy`)
+
+*The Data Protection Protocol.*
+
+**Title:** **PRIVACY POLICY**
+
+**Effective Date:** January 1, 2026
+
+**Identity:** ZERA DYNAMICS LTD. ("The Company")
+
+**1. THE PREAMBLE**
+
+Zera Dynamics respects the sovereignty of your data. This policy outlines how we collect, process, and fortify the information you transmit to our Digital HQ. By accessing `zerahq.com`, you consent to the protocols defined herein.
+
+**2. DATA COLLECTION ARCHITECTURE**
+
+We collect two categories of data:
+
+- **Voluntary Transmissions:** Information you explicitly provide via our Strategy Session forms, including Name, Email, Phone Number, and Revenue Data.
+- **Telemetry Data:** Information automatically collected by our infrastructure, including IP address, browser type, and engagement metrics via Google Analytics 4 (GA4).
+
+**3. PURPOSE OF PROCESSING**
+
+We process data solely for the following objectives:
+
+- **Operational:** To schedule Strategy Sessions and deploy client services.
+- **Transactional:** To process payments via our secure gateway (Paystack).
+- **Optimization:** To analyze traffic patterns and improve the performance of our digital assets.
+
+**4. DATA SOVEREIGNTY & SHARING**
+
+We do not sell your data to third-party brokers. Data is only shared with trusted infrastructure partners required to deliver our service:
+
+- **Payment Processing:** Paystack (PCI-DSS Compliant).
+- **Analytics:** Google (Alphabet Inc.).
+- **Communication:** WhatsApp and Enterprise Email Providers.
+
+**5. INTERNATIONAL TRANSFER**
+
+Zera Dynamics operates from **Accra, Ghana**. If you are accessing this site from the EU or USA, you acknowledge that your data will be transferred to and processed in Ghana under the Data Protection Act, 2012 (Act 843).
+
+**6. YOUR RIGHTS**
+
+You retain the right to request a copy of your data or demand its deletion from our servers. To initiate a **Data Purge Request**, contact: `legal@zerahq.com`.
+
+---
+
+### 2. TERMS OF SERVICE (`/legal/terms`)
+
+*The Rules of Engagement.*
+
+**Title:** **TERMS OF SERVICE**
+
+**Jurisdiction:** Republic of Ghana
+
+**1. ACCEPTANCE OF TERMS**
+
+By accessing or using the Zera Dynamics website, you agree to be bound by these Terms. If you do not agree to these protocols, you are prohibited from using this site.
+
+**2. INTELLECTUAL PROPERTY (THE ASSET)**
+
+All content on this site—including the "Zera" brand, the "Digital HQ" methodology, copy, code, and visual architecture—is the exclusive intellectual property of Zera Dynamics Ltd.
+
+- **Prohibition:** You may not copy, replicate, or reverse-engineer our proprietary frameworks for commercial use without written authorization from the Directorate.
+
+**3. SERVICE DISCLAIMER**
+
+The content provided on this site is for educational and informational purposes. While we engineer high-performance growth systems, Zera Dynamics makes no absolute guarantees regarding specific revenue figures, as market conditions vary. **Results are a function of execution.**
+
+**4. LIMITATION OF LIABILITY**
+
+To the fullest extent permitted by Ghanaian law, Zera Dynamics shall not be liable for any indirect, incidental, or consequential damages arising from your use of this site or our services.
+
+**5. GOVERNING LAW**
+
+These Terms shall be governed by the laws of the **Republic of Ghana**. Any disputes arising from the use of this website shall be resolved exclusively in the courts of Accra.
+
+---
+
+### 3. COOKIE POLICY (`/legal/cookies`)
+
+*The Tracking Protocol.*
+
+**Title:** **COOKIE POLICY**
+
+**Status:** Active
+
+**1. DEFINITION**
+
+Cookies are small data beacons deployed by our server to your device. They allow our Digital HQ to recognize you and optimize your experience.
+
+**2. COOKIE CLASSIFICATION**
+
+- **Essential Cookies:** Required for the site to function (e.g., Security tokens, Payment session data). These cannot be disabled.
+- **Intelligence Cookies (Analytics):** We use **Google Analytics 4** to track user behavior, dwell time, and conversion paths. This data is anonymized.
+- **Marketing Cookies:** Used to retarget visitors who have engaged with our high-value content.
+
+**3. CONSENT PROTOCOL**
+
+Upon your first arrival at the Zera Digital HQ, you were presented with a **Consent Control Panel**. You may alter your preferences at any time by clearing your browser cache.
+
+**4. THIRD-PARTY BEACONS**
+
+Our site may utilize infrastructure from third-party providers (e.g., YouTube embeds, Paystack Checkout). These entities may deploy their own cookies, which are governed by their respective privacy policies.

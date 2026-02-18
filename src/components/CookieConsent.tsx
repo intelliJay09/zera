@@ -12,7 +12,7 @@ interface CookiePreferences {
   marketing: boolean;
 }
 
-const CONSENT_KEY = 'astra-flow-cookie-consent';
+const CONSENT_KEY = 'zera-cookie-consent';
 const CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 1 year
 
 export default function CookieConsent() {
@@ -151,21 +151,21 @@ export default function CookieConsent() {
                       <>
                         <button
                           onClick={acceptAll}
-                          className="px-6 py-3 min-h-[44px] bg-gradient-to-r from-copper-500 to-copper-600 text-cream-50 font-bold text-sm rounded-lg hover:from-copper-600 hover:to-copper-700 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
+                          className="whitespace-nowrap px-6 py-3 min-h-[44px] bg-gradient-to-r from-copper-500 to-copper-600 text-cream-50 font-bold text-sm rounded-lg hover:from-copper-600 hover:to-copper-700 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
                         >
                           Accept All
                         </button>
 
                         <button
                           onClick={acceptEssentialOnly}
-                          className="px-6 py-3 min-h-[44px] bg-cream-200/60 backdrop-blur-sm text-near-black font-bold text-sm rounded-lg hover:bg-cream-300/70 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
+                          className="whitespace-nowrap px-6 py-3 min-h-[44px] bg-cream-200/60 backdrop-blur-sm text-near-black font-bold text-sm rounded-lg hover:bg-cream-300/70 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
                         >
                           Essential Only
                         </button>
 
                         <button
                           onClick={() => setShowCustomize(true)}
-                          className="px-5 py-3 min-h-[44px] text-copper-600 font-bold text-sm hover:text-copper-700 transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2 rounded-lg"
+                          className="whitespace-nowrap px-5 py-3 min-h-[44px] text-copper-600 font-bold text-sm hover:text-copper-700 transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2 rounded-lg"
                         >
                           Customize
                         </button>
@@ -197,7 +197,7 @@ export default function CookieConsent() {
               >
                 {/* Header */}
                 <div className="flex items-center justify-between">
-                  <h3 className="font-playfair text-xl sm:text-2xl font-bold text-near-black tracking-tight">
+                  <h3 className="font-display uppercase text-xl sm:text-2xl font-bold text-near-black tracking-brand-header">
                     Customize Cookie Preferences
                   </h3>
                 </div>

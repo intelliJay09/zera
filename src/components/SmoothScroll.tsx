@@ -3,13 +3,6 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
-// Extend window to include lenis
-declare global {
-  interface Window {
-    lenis?: Lenis;
-  }
-}
-
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({

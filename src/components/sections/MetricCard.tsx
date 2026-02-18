@@ -75,13 +75,13 @@ function AnimatedCounter({ target, suffix }: { target: string; suffix: string })
   return (
     <div ref={ref} className="relative">
       <h3
-        className="text-6xl sm:text-7xl lg:text-8xl font-light font-playfair text-copper-500 mb-4 tracking-tight transition-all duration-300"
+        className="text-5xl sm:text-6xl lg:text-8xl font-light font-display uppercase text-copper-500 mb-4 tracking-brand-header transition-all duration-300"
         style={{
           textShadow: '0 2px 30px rgba(184, 115, 51, 0.2)',
         }}
       >
         {displayValue}
-        <span className={suffix === '★' ? 'text-4xl sm:text-5xl ml-1' : 'text-5xl sm:text-6xl'}>{suffix}</span>
+        <span className={suffix === '★' ? 'text-3xl sm:text-4xl lg:text-5xl ml-1' : 'text-4xl sm:text-5xl lg:text-6xl'}>{suffix}</span>
       </h3>
     </div>
   );
@@ -89,7 +89,7 @@ function AnimatedCounter({ target, suffix }: { target: string; suffix: string })
 
 export default function MetricCard({ stat }: MetricCardProps) {
   return (
-    <div className="group relative bg-white backdrop-blur-sm px-8 py-12 sm:px-12 sm:py-16 lg:px-14 lg:py-20 text-center hover:shadow-2xl rounded-3xl shadow-lg transition-all duration-500 border border-copper-500/10 hover:border-copper-500/20">
+    <div className="group relative bg-white backdrop-blur-sm px-6 py-10 sm:px-12 sm:py-16 lg:px-14 lg:py-20 text-center hover:shadow-2xl rounded-3xl shadow-lg transition-all duration-500 border border-copper-500/10 hover:border-copper-500/20">
       {/* Hover gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-copper-500/0 via-copper-500/5 to-copper-500/10 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500" />
 
@@ -99,7 +99,7 @@ export default function MetricCard({ stat }: MetricCardProps) {
         <AnimatedCounter target={stat.number} suffix={stat.suffix} />
 
         {/* Label */}
-        <p className="text-base sm:text-lg font-semibold tracking-[0.1em] uppercase text-near-black/80 mt-2">
+        <p className="text-base sm:text-lg font-semibold tracking-brand-label uppercase text-near-black/80 mt-2">
           {stat.label}
         </p>
 

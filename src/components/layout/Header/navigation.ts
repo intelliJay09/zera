@@ -4,25 +4,22 @@ export interface NavigationLink {
   hasDropdown?: boolean;
 }
 
-export interface ServiceItem {
+export interface ProductItem {
   name: string;
   href: string;
+  subtitle: string;
 }
 
 export const NAV_LINKS: NavigationLink[] = [
   { name: 'Home', href: '/' },
-  { name: 'Plans & Pricing', href: '/waas-plans' },
-  { name: 'Solutions', href: '/solutions', hasDropdown: true },
-  { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Products', href: '/products', hasDropdown: true },
   { name: 'About', href: '/about' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ];
 
-export const SERVICE_ITEMS: ServiceItem[] = [
-  { name: 'Custom Web Development', href: '/solutions/web-development' },
-  { name: 'SEO', href: '/solutions/seo' },
-  { name: 'Social Media Management', href: '/solutions/social-media-management' },
-  { name: 'Branding & Design', href: '/solutions/branding-design' },
-  { name: 'Content Marketing', href: '/solutions/content-marketing' },
+export const PRODUCT_ITEMS: ProductItem[] = [
+  { name: 'The Digital HQ', href: '/products/digital-hq', subtitle: 'Secure the territory.' },
+  { name: 'The Growth System', href: '/products/growth-system', subtitle: 'Automate the momentum.' },
+  { name: 'The Market Monopoly', href: '/products/market-monopoly', subtitle: 'Maximize the yield.' },
 ];

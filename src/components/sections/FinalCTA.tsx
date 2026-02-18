@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function FinalCTA() {
@@ -23,6 +22,14 @@ export default function FinalCTA() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
+
+      // Push lead form event to GTM dataLayer
+      (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer?.push({
+        event: 'lead_form_submitted',
+        form_location: 'homepage_final_cta',
+        company_name: formData.company,
+      });
+
       setFormData({ name: '', email: '', company: '', phone: '', message: '' });
 
       // Reset success message after 5 seconds
@@ -50,58 +57,56 @@ export default function FinalCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
           {/* Left: Content */}
           <div>
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-copper-500 mb-6">
-              Ready to Begin?
+            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6 text-center lg:text-left">
+              The Executive Diagnostic
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light font-playfair text-cream-200 tracking-tight leading-tight mb-6 sm:mb-8">
-              Let&apos;s Build Your
-              <span className="block text-copper-500">Growth Story</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light font-display uppercase text-cream-200 tracking-brand-header leading-tight mb-6 sm:mb-8 text-center lg:text-left">
+              Your Revenue Infrastructure
+              <span className="block text-copper-500">Is Leaking.</span>
             </h2>
-            <p className="text-base sm:text-lg font-light text-light-gray leading-relaxed mb-12">
-              Choose your path: quick-start website packages or strategic custom partnerships. Both paths lead to growth—just in different ways.
+            <p className="text-base sm:text-lg font-normal text-light-gray leading-relaxed mb-12 text-center lg:text-left">
+              We engineer precision diagnostics. 60 minutes to identify the failure points in your growth architecture—then deploy the fix protocol.
             </p>
 
-            {/* Dual CTAs */}
-            <div className="space-y-6">
-              {/* WaaS CTA */}
-              <div className="group relative bg-white/5 backdrop-blur-sm border border-copper-500/20 hover:border-copper-500/40 p-8 rounded-sm transition-all duration-500 hover:bg-white/10">
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-light font-playfair text-cream-200 mb-3 tracking-tight">
-                      Website as a Service
-                    </h3>
-                    <p className="text-sm font-light text-light-gray/70 leading-relaxed mb-4">
-                      Launch your business online in 14 days with transparent monthly plans starting at $299/mo.
-                    </p>
-                    <Link
-                      href="/waas-plans"
-                      className="inline-flex items-center gap-2 text-copper-500 hover:gap-4 transition-all duration-300 font-medium text-sm tracking-wide"
-                    >
-                      <span>View WaaS Plans</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
+            {/* What You Get */}
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-copper-500 flex-shrink-0 mt-1" strokeWidth={1.5} />
+                <div>
+                  <h3 className="text-base font-medium text-cream-200 mb-1">Digital HQ Infrastructure Audit</h3>
+                  <p className="text-sm text-light-gray/70">Core Web Vitals analysis, conversion physics diagnosis, and revenue leak identification</p>
                 </div>
               </div>
 
-              {/* Solutions CTA */}
-              <div className="group relative bg-white/5 backdrop-blur-sm border border-copper-500/20 hover:border-copper-500/40 p-8 rounded-sm transition-all duration-500 hover:bg-white/10">
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-light font-playfair text-cream-200 mb-3 tracking-tight">
-                      Digital Marketing Solutions
-                    </h3>
-                    <p className="text-sm font-light text-light-gray/70 leading-relaxed mb-4">
-                      Comprehensive services including SEO, social media, web development, branding, and content marketing.
-                    </p>
-                    <Link
-                      href="/solutions"
-                      className="inline-flex items-center gap-2 text-copper-500 hover:gap-4 transition-all duration-300 font-medium text-sm tracking-wide"
-                    >
-                      <span>Explore Our Solutions</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-copper-500 flex-shrink-0 mt-1" strokeWidth={1.5} />
+                <div>
+                  <h3 className="text-base font-medium text-cream-200 mb-1">Search Authority Diagnostic</h3>
+                  <p className="text-sm text-light-gray/70">Entity mapping, schema architecture gaps, and organic visibility failure points</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-copper-500 flex-shrink-0 mt-1" strokeWidth={1.5} />
+                <div>
+                  <h3 className="text-base font-medium text-cream-200 mb-1">Lead Capture Protocol Review</h3>
+                  <p className="text-sm text-light-gray/70">CRM integration status, automation infrastructure, and pipeline efficiency analysis</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-copper-500 flex-shrink-0 mt-1" strokeWidth={1.5} />
+                <div>
+                  <h3 className="text-base font-medium text-cream-200 mb-1">Traffic Quality Assessment</h3>
+                  <p className="text-sm text-light-gray/70">Source integrity verification, visitor qualification metrics, and growth ceiling analysis</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-copper-500 flex-shrink-0 mt-1" strokeWidth={1.5} />
+                <div>
+                  <h3 className="text-base font-medium text-cream-200 mb-1">The Fix Protocol</h3>
+                  <p className="text-sm text-light-gray/70">Priority-ranked implementation roadmap with projected revenue impact per intervention</p>
                 </div>
               </div>
             </div>
@@ -110,20 +115,19 @@ export default function FinalCTA() {
           {/* Right: Form */}
           <div className="relative">
             {/* Background glow */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-copper-500/10 via-transparent to-transparent rounded-sm blur-xl" />
+            <div className="absolute -inset-1 bg-gradient-to-br from-copper-500/10 via-copper-500/5 to-transparent rounded-sm blur-3xl" />
 
-            <div className="relative bg-white/5 backdrop-blur-sm border border-copper-500/20 rounded-sm p-6 sm:p-8 lg:p-10">
+            <div className="relative bg-[#2a2a2a] border border-copper-500/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] rounded-sm p-6 sm:p-8 lg:p-10">
               {submitStatus === 'success' ? (
                 <div className="text-center py-8 sm:py-12">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-copper-500/20 flex items-center justify-center mx-auto mb-4 sm:mb-6">
                     <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-copper-500" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-normal font-montserrat text-cream-200 mb-2 sm:mb-3 tracking-wide">
-                    Thank You!
+                  <h3 className="text-xl sm:text-2xl font-normal font-montserrat text-cream-200 mb-2 sm:mb-3 tracking-normal">
+                    Request Received!
                   </h3>
-                  <p className="text-sm sm:text-base font-light text-light-gray leading-relaxed">
-                    We&apos;ve received your inquiry and will respond within 24 hours with strategic
-                    insights tailored to your business.
+                  <p className="text-sm sm:text-base font-normal text-light-gray leading-relaxed">
+                    We&apos;ll review your business details and send you payment instructions for the strategy session within 24 hours.
                   </p>
                 </div>
               ) : (
@@ -131,7 +135,7 @@ export default function FinalCTA() {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-cream-200 mb-2 tracking-wide"
+                      className="block text-sm font-medium text-cream-200 mb-2 tracking-normal"
                     >
                       Full Name *
                     </label>
@@ -151,7 +155,7 @@ export default function FinalCTA() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-sm font-medium text-cream-200 mb-2 tracking-wide"
+                        className="block text-sm font-medium text-cream-200 mb-2 tracking-normal"
                       >
                         Email *
                       </label>
@@ -170,7 +174,7 @@ export default function FinalCTA() {
                     <div>
                       <label
                         htmlFor="phone"
-                        className="block text-sm font-medium text-cream-200 mb-2 tracking-wide"
+                        className="block text-sm font-medium text-cream-200 mb-2 tracking-normal"
                       >
                         Phone
                       </label>
@@ -189,7 +193,7 @@ export default function FinalCTA() {
                   <div>
                     <label
                       htmlFor="company"
-                      className="block text-sm font-medium text-cream-200 mb-2 tracking-wide"
+                      className="block text-sm font-medium text-cream-200 mb-2 tracking-normal"
                     >
                       Company Name *
                     </label>
@@ -208,9 +212,9 @@ export default function FinalCTA() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-cream-200 mb-2 tracking-wide"
+                      className="block text-sm font-medium text-cream-200 mb-2 tracking-normal"
                     >
-                      Tell us about your goals
+                      What&apos;s broken in your revenue infrastructure?
                     </label>
                     <textarea
                       id="message"
@@ -219,26 +223,26 @@ export default function FinalCTA() {
                       onChange={handleChange}
                       rows={4}
                       className="w-full px-4 py-3 bg-white/5 border border-copper-500/20 rounded-sm text-cream-200 placeholder-light-gray/50 focus:outline-none focus:border-copper-500/60 transition-colors duration-300 resize-none"
-                      placeholder="What are your biggest marketing challenges? What growth objectives are you targeting?"
+                      placeholder="Describe your biggest challenges: slow site speed, low conversion rates, SEO issues, lead generation problems, etc."
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group w-full bg-copper-500 hover:bg-copper-600 text-cream-200 font-medium text-sm tracking-[0.15em] uppercase px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group w-full bg-copper-600 hover:bg-copper-700 text-cream-200 font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-none transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                   >
                     {isSubmitting ? (
                       'Sending...'
                     ) : (
                       <>
-                        Schedule Strategy Call
-                        <ArrowRight className="w-5 h-5" />
+                        Book Strategy Session
+                        <ArrowRight className="w-5 h-5 flex-shrink-0" />
                       </>
                     )}
                   </button>
 
-                  <p className="text-xs font-light text-light-gray/60 text-center tracking-wide">
+                  <p className="text-xs font-normal text-light-gray/60 text-center tracking-normal">
                     By submitting, you agree to our privacy policy. We respect your data and never
                     share it with third parties.
                   </p>

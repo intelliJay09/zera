@@ -195,3 +195,51 @@
     backdrop-filter: none;
   }
 }
+
+/* Hide scrollbar for horizontal scroll containers */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+}
+
+/* 3D Transform Performance Optimizations - EngagementProtocol Timeline Corridor */
+@supports (transform: translateZ(0)) {
+  /* Enable GPU acceleration for 3D transforms */
+  [style*="perspective"] {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* Optimize phase nodes with depth transforms */
+  [style*="translateZ"] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+}
+
+/* Fallback for browsers without 3D transform support */
+@supports not (transform: translateZ(0)) {
+  [style*="perspective"] {
+    perspective: none !important;
+  }
+
+  [style*="translateZ"] {
+    transform: none !important;
+  }
+}
+
+/* Arc Cascade Reveal Animation - Opacity only, transforms handled inline */
+@keyframes arcCascadeReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

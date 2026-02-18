@@ -1,0 +1,75 @@
+Testimonials
+
+The Formula:
+
+The Headline: The specific financial or structural outcome.
+
+The Data: A hard number (Revenue, Leads, Speed).
+
+The Quote: A statement about the process (The System), not just the people (The Team).
+
+The Authority: Name, Role, and Company Logo.
+
+2. The Copy: 3 Optimized Archetypes
+
+Since we need to cover our 3 Tiers (HQ, Growth, Monopoly), here are three engineered testimonials. We can replace the names with our actual clients, but keep this structure.
+
+Tier I Client (The Digital HQ)
+
+Target Audience: Service businesses needing legitimacy.
+
+The Headline: "We finally have a digital asset that matches our reputation."
+
+The Metric: #1 Search Ranking (Google Entity)
+
+The Narrative: "Before Zera, our digital presence was non-existent. We were losing contracts to smaller competitors simply because they looked better online. Zera didn't just build a website; they architected a commercial headquarters. We now rank #1 for our category in Accra, and the quality of our inbound inquiries has tripled."
+
+The Authority: Kwame A. | Managing Director, Apex Capital Partners
+
+Tier II Client (The Growth System)
+
+Target Audience: Companies needing leads/sales.
+
+The Headline: "They turned our chaotic sales process into a predictable machine."
+
+The Metric: 240% Increase in Qualified Leads
+
+The Narrative: "We had traffic, but we weren't capturing it. The Zera team installed their 'Lead Capture Engine' and completely automated our follow-up. We went from chasing leads manually to waking up to booked appointments. It’s not just marketing; it’s an engineered revenue system."
+
+The Authority: Sarah T. | Founder, Lumina Lifestyle
+
+Tier III Client (The Market Monopoly)
+
+Target Audience: Large firms needing scale/retention.
+
+The Headline: "Zera is the partner that secured our category leadership."
+
+The Metric: 35% Increase in Customer LTV
+
+The Narrative: "Scale usually brings chaos. Zera brought structure. Their 'Lifecycle Ecosystem' allowed us to retain customers automatically while expanding into two new markets. They act less like an agency and more like a strategic Directorate. A critical asset to our board."
+
+The Authority: E. Mensah | CEO, West African Logistics Group
+
+3. The Visual Component (<TestimonialGrid>)
+
+Instructions for Claude Code / Design Team
+
+Do not use a "Carousel" (sliders hide content). Use a Grid Layout so all three are visible at once.
+
+The Design Block:
+
+Background: White or "Zera Vellum" (Cream).
+
+Border: Thin 1px border in "Zera Charcoal" (Industrial look).
+
+The "Metric" Highlight: Make the specific number (e.g., "240% Increase") Bold and in Conductive Copper. This draws the eye to the result immediately.
+
+4. The "Trust Bar" (Logos)
+
+Below the Hero section and above the Testimonials, you need a "Logo Strip."
+
+The Rule: Even if you only have small clients, convert their logos to Single-Color (Charcoal or Black).
+
+Why: Mismatched colored logos look messy (like a discount flyer). Single-color logos look like an Alliance.
+
+The Header: Do not say "Our Clients." Say: "TRUSTED BY MARKET LEADERS"

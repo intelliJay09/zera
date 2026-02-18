@@ -2,11 +2,11 @@
 
 import { Suspense } from 'react';
 import { useCurrency } from '@/hooks/useCurrency';
-import { formatMultiCurrencyPrice } from '@/lib/currency';
-import { MultiCurrencyPrice, DEFAULT_CURRENCY } from '@/types/currency';
+import { formatPrice } from '@/lib/currency';
+import { DEFAULT_CURRENCY } from '@/types/currency';
 
 interface PriceDisplayProps {
-  price: MultiCurrencyPrice;
+  price: number; // USD amount
   className?: string;
   period?: string;
   variant?: 'large' | 'inline';
@@ -18,11 +18,18 @@ function PriceDisplayInner({
   period,
   variant = 'large'
 }: PriceDisplayProps) {
-  const { currency, isInitialized } = useCurrency();
+  const { currency, isInitialized, exchangeRates } = useCurrency();
 
   // Use the current currency if initialized, otherwise use default to match SSR
   const displayCurrency = isInitialized ? currency : DEFAULT_CURRENCY;
-  const formattedPrice = formatMultiCurrencyPrice(price, displayCurrency);
+
+  // Fallback to USD if rates unavailable for non-USD currencies
+  const effectiveCurrency =
+    displayCurrency !== 'USD' && !exchangeRates
+      ? 'USD'
+      : displayCurrency;
+
+  const formattedPrice = formatPrice(price, effectiveCurrency, exchangeRates || undefined);
 
   if (variant === 'inline') {
     return (
@@ -34,7 +41,7 @@ function PriceDisplayInner({
 
   return (
     <div className={`flex items-baseline gap-1 ${className}`}>
-      <span className="text-5xl font-light font-playfair text-copper-500">
+      <span className="text-5xl font-light font-display text-copper-500">
         {formattedPrice}
       </span>
       {period && (
@@ -51,7 +58,7 @@ export default function PriceDisplay(props: PriceDisplayProps) {
         <span className="font-light text-copper-500">...</span>
       ) : (
         <div className="flex items-baseline gap-1">
-          <span className="text-5xl font-light font-playfair text-copper-500">...</span>
+          <span className="text-5xl font-light font-display text-copper-500">...</span>
         </div>
       )
     }>
