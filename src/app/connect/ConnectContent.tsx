@@ -4,18 +4,30 @@ import Image from 'next/image';
 import { Download, Mail, Phone, Globe, MapPin } from 'lucide-react';
 
 export default function ConnectContent() {
-  const generateVCard = () => {
+  const generateVCard = async () => {
+    const response = await fetch('/images/jacqueline-amoako.png');
+    const imageBlob = await response.blob();
+    const base64 = await new Promise<string>((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const result = reader.result as string;
+        resolve(result.split(',')[1]);
+      };
+      reader.readAsDataURL(imageBlob);
+    });
+
     const vCardData = [
       'BEGIN:VCARD',
       'VERSION:3.0',
       'N:Amoako;Jacqueline;F.;;',
       'FN:Jacqueline F. Amoako',
       'ORG:ZERA | Digital Growth Systems;',
-      'TITLE:Principal Architect',
-      'TEL;type=CELL;type=VOICE;type=pref:+233557158014',
+      'TITLE:Digital Growth Strategist',
+      'TEL;type=CELL;type=VOICE;type=pref:+233246492873',
       'EMAIL;type=WORK:jacqueline@zerahq.com',
       'URL;type=WORK:https://zerahq.com',
       'ADR;type=WORK:;;Accra;;;;Ghana',
+      `PHOTO;ENCODING=b;TYPE=PNG:${base64}`,
       'NOTE:Engineering Revenue Systems for Global Brands.',
       'END:VCARD',
     ].join('\n');
@@ -50,7 +62,7 @@ export default function ConnectContent() {
           <h1 className="font-display text-3xl font-bold mb-2 tracking-tight">
             Jacqueline F. Amoako
           </h1>
-          <p className="text-white/60 font-medium mb-1">Principal Architect</p>
+          <p className="text-white/60 font-medium mb-1">Digital Growth Strategist</p>
           <p className="text-copper-500 font-semibold text-sm uppercase tracking-wider">
             ZERA | Digital Growth Systems
           </p>
