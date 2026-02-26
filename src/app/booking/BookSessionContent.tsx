@@ -191,7 +191,7 @@ export default function BookSessionContent() {
               <span className="font-semibold text-near-black">Investment:</span>
             </p>
             <p className="text-3xl sm:text-4xl font-bold text-copper-500 mb-4">
-              $100 USD / GHS 2,000
+              $100 USD / GHS 1,000
             </p>
             <p className="text-base text-near-black/60 leading-relaxed">
               Includes Pre-Session Audit + 60-Min Call + Roadmap

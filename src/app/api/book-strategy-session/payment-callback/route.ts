@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
           [
             paystackData.customer?.customer_code || null,
             paystackData.currency || 'GHS',
-            (paystackData.amount || 0) / 100, // Convert from kobo/cents
+            (paystackData.amount || 0) / 100, // Convert from pesewas/cents
             sessionId,
           ]
         );

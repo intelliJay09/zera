@@ -350,7 +350,7 @@ export async function POST(request: NextRequest) {
           revenueRange: sanitizedData.revenueRange,
           growthObstacle: sanitizedData.growthObstacle,
         },
-        'GHS', // GHS 2,000 (Paystack merchant account currency)
+        'GHS', // GHS 1,000 (Paystack merchant account currency)
         paymentReference // Use the same reference stored in database
       );
 

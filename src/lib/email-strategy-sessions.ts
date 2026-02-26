@@ -550,7 +550,7 @@ export async function sendAbandonedBookingEmail(
         COMPLETE PAYMENT NOW
       </a>
       <p style="margin: 15px 0 0; font-size: 13px; color: #666;">
-        Only <strong>$100 USD / GHS 2,000</strong> - Investment in your growth
+        Only <strong>$100 USD / GHS 1,000</strong> - Investment in your growth
       </p>
     </div>
 
@@ -576,7 +576,7 @@ export async function sendAbandonedBookingEmail(
     to: `${data.fullName} <${data.businessEmail}>`,
     subject: `⏳ Complete Your ZERA Strategy Session Booking - Expires in ${data.expiresIn}`,
     html: emailWrapper(content),
-    text: `COMPLETE YOUR BOOKING\n\nHi ${data.fullName},\n\nYou started booking a strategy session for ${data.companyName} but didn't complete payment. Your spot expires in ${data.expiresIn}.\n\nWhat you'll get:\n- Pre-call comprehensive audit\n- 60-minute strategy session\n- Custom growth roadmap\n- Revenue opportunities worth $50K-$500K\n\nInvestment: $100 USD / GHS 2,000\n\nComplete payment: ${data.resumePaymentUrl}\n\nQuestions? Email hello@zerahq.com or WhatsApp +233246492873`,
+    text: `COMPLETE YOUR BOOKING\n\nHi ${data.fullName},\n\nYou started booking a strategy session for ${data.companyName} but didn't complete payment. Your spot expires in ${data.expiresIn}.\n\nWhat you'll get:\n- Pre-call comprehensive audit\n- 60-minute strategy session\n- Custom growth roadmap\n- Revenue opportunities worth $50K-$500K\n\nInvestment: $100 USD / GHS 1,000\n\nComplete payment: ${data.resumePaymentUrl}\n\nQuestions? Email hello@zerahq.com or WhatsApp +233246492873`,
   });
 
   console.log(`Abandoned booking email sent to: ${data.fullName}`);

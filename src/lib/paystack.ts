@@ -5,7 +5,7 @@
  * - NO fallback values (fail explicitly if env vars missing)
  * - Use crypto.timingSafeEqual() for signature comparison
  * - Verify signature on raw body before parsing JSON
- * - All amounts in kobo (Naira) or cents (USD/other)
+ * - All amounts in pesewas (GHS) or cents (USD/other)
  */
 
 import crypto from 'crypto';
@@ -51,7 +51,7 @@ const PAYSTACK_API_BASE = 'https://api.paystack.co';
 
 // Strategy session pricing
 const STRATEGY_SESSION_PRICE_USD = 100; // $100 USD
-const STRATEGY_SESSION_PRICE_GHS = 2000; // GHS 2,000
+const STRATEGY_SESSION_PRICE_GHS = 1000; // GHS 1,000
 
 // ============================================================
 // REFERENCE GENERATION
@@ -112,10 +112,10 @@ export async function initializePayment(
     // Use provided reference or generate new one
     const reference = paymentReference || generatePaymentReference();
 
-    // Calculate amount in smallest currency unit (kobo for GHS, cents for USD)
+    // Calculate amount in smallest currency unit (pesewas for GHS, cents for USD)
     const amount =
       currency === 'GHS'
-        ? STRATEGY_SESSION_PRICE_GHS * 100 // GHS 2,000 = 200,000 kobo
+        ? STRATEGY_SESSION_PRICE_GHS * 100 // GHS 1,000 = 100,000 pesewas
         : STRATEGY_SESSION_PRICE_USD * 100; // $100 = 10,000 cents
 
     const payload: PaystackInitializeRequest = {
@@ -285,22 +285,22 @@ export function verifyWebhookSignature(rawBody: string, signature: string): bool
 // ============================================================
 
 /**
- * Convert amount from kobo/cents to main currency unit
+ * Convert amount from pesewas/cents to main currency unit
  *
- * @param amountInMinorUnit - Amount in kobo (GHS) or cents (USD)
+ * @param amountInMinorUnit - Amount in pesewas (GHS) or cents (USD)
  * @param currency - Currency code
- * @returns Amount in main currency unit (e.g., 200000 kobo → 2000 GHS)
+ * @returns Amount in main currency unit (e.g., 100000 pesewas → 1000 GHS)
  */
 export function convertToMainUnit(amountInMinorUnit: number, _currency: string): number {
   return amountInMinorUnit / 100;
 }
 
 /**
- * Convert amount from main currency unit to kobo/cents
+ * Convert amount from main currency unit to pesewas/cents
  *
  * @param amount - Amount in main currency unit
  * @param currency - Currency code
- * @returns Amount in kobo/cents (e.g., 2000 GHS → 200000 kobo)
+ * @returns Amount in pesewas/cents (e.g., 1000 GHS → 100000 pesewas)
  */
 export function convertToMinorUnit(amount: number, _currency: string): number {
   return Math.round(amount * 100);

@@ -37,7 +37,7 @@ async function handleChargeSuccess(event: PaystackWebhookEvent): Promise<void> {
     throw new Error('Missing session_id in payment metadata');
   }
 
-  // Convert amount from kobo/cents to main currency
+  // Convert amount from pesewas/cents to main currency
   const amount = convertToMainUnit(data.amount, data.currency);
 
   try {

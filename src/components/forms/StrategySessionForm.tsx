@@ -32,10 +32,10 @@ const revenueOptions = [
 ];
 
 const obstacleOptions = [
-  { value: 'visibility', label: 'Visibility: "We are invisible. Nobody knows we exist."' },
-  { value: 'lead-flow', label: 'Lead Flow: "We have traffic, but no predictable leads."' },
-  { value: 'retention', label: 'Retention: "We are losing customers / Need to scale LTV."' },
-  { value: 'chaos', label: 'Chaos: "Our systems are messy and manual."' },
+  { value: 'visibility', label: 'Visibility: We are invisible. Nobody knows we exist.' },
+  { value: 'lead-flow', label: 'Lead Flow: We have traffic, but no predictable leads.' },
+  { value: 'retention', label: 'Retention: We are losing customers / Need to scale LTV.' },
+  { value: 'chaos', label: 'Chaos: Our systems are messy and manual.' },
 ];
 
 export default function StrategySessionForm() {
@@ -445,7 +445,7 @@ export default function StrategySessionForm() {
                   STEP 3: SECURE YOUR SESSION
                 </h3>
                 <p className="text-sm text-white/80 leading-relaxed">
-                  The Strategy Session fee is <span className="text-copper-400 font-semibold">$100 USD / GHS 2,000</span>. This secures your 60-minute deep-dive and includes your customized Roadmap Report.
+                  The Strategy Session fee is <span className="text-copper-400 font-semibold">$100 USD / GHS 1,000</span>. This secures your 60-minute deep-dive and includes your customized Roadmap Report.
                 </p>
               </div>
 

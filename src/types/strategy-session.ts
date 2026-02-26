@@ -158,7 +158,7 @@ export interface VerifyPaymentResponse {
  */
 export interface PaystackInitializeRequest {
   email: string;
-  amount: number; // In kobo (cents)
+  amount: number; // In pesewas (GHS) or cents (USD)
   reference: string;
   callback_url: string;
   metadata: {
