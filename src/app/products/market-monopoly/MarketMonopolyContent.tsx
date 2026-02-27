@@ -108,7 +108,7 @@ export default function MarketMonopolyContent() {
               size="default"
               className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 font-semibold shadow-xl"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_hero">Book Your Growth Audit</Link>
+              <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_hero">Book Your Growth Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -417,7 +417,7 @@ export default function MarketMonopolyContent() {
               size="default"
               className="w-full sm:w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-xl font-semibold"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_cta">Book Your Growth Audit</Link>
+              <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_cta">Book Your Growth Audit</Link>
             </Button>
             <Button
               asChild

@@ -64,7 +64,7 @@ export default function ContactPageContent() {
                 Start a Project
               </h3>
               <Link
-                href="/booking"
+                href="/growth-audit"
                 data-gtm-event="cta_book_strategy"
                 data-gtm-location="contact"
                 className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-500 hover:text-copper-400 transition-colors group-hover:gap-3 duration-300"

@@ -286,7 +286,7 @@ export default function AboutContent() {
               The seed has been planted. It is time to water it.
             </p>
             <Link
-              href="/booking"
+              href="/growth-audit"
               data-gtm-event="cta_book_strategy"
               data-gtm-location="about"
               className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"

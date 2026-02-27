@@ -99,7 +99,7 @@ export default function HomePage() {
               className="flex flex-col items-center gap-4"
             >
               <Button asChild variant="primary" size="lg" className="group">
-                <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
+                <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
                   BOOK YOUR GROWTH AUDIT
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                 </Link>

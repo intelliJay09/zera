@@ -210,7 +210,7 @@ export default function NotFound() {
               Intelligence Briefings
             </Link>
             <Link
-              href="/booking"
+              href="/growth-audit"
               data-gtm-event="cta_book_strategy"
               data-gtm-location="not_found"
               className="text-sm font-medium text-copper-500 hover:text-copper-400 transition-colors duration-200 uppercase tracking-wide"

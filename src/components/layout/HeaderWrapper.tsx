@@ -16,7 +16,7 @@ export default function HeaderWrapper() {
   const darkBackgroundPages = [
     '/',
     '/contact',
-    '/booking',
+    '/growth-audit',
     '/products/digital-hq',
     '/products/growth-system',
     '/products/market-monopoly',

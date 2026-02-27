@@ -135,7 +135,7 @@ export async function GET(request: NextRequest) {
       // Redirect to success page with token
       const redirectUrl = createRedirectUrl(
         request,
-        `/booking/success?sessionId=${sessionId}&token=${bookingToken}`
+        `/growth-audit/success?sessionId=${sessionId}&token=${bookingToken}`
       );
       console.log(`[Callback] Redirecting to: ${redirectUrl}`);
       return NextResponse.redirect(redirectUrl);
@@ -163,7 +163,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(
         createRedirectUrl(
           request,
-          `/booking/failed?sessionId=${sessionId}&reason=${encodeURIComponent(failureReason)}`
+          `/growth-audit/failed?sessionId=${sessionId}&reason=${encodeURIComponent(failureReason)}`
         )
       );
     }

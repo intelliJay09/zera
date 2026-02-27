@@ -26,7 +26,7 @@ export const BLOG_POSTS: BlogPost[] = [
     keywords: ["Commercial Web Design", "Digital HQ", "High-Performance Website", "Web Architecture"],
     cta: {
       text: "Deploy a Digital HQ",
-      link: "/booking"
+      link: "/growth-audit"
     },
     content: `
 Most businesses treat their website like a **Digital Brochure**—something pretty to show investors or clients during a pitch. It sits there. It costs money to host. It generates zero return.
@@ -119,7 +119,7 @@ Stop building brochures. Deploy infrastructure that generates return.
     keywords: ["Search Entity Optimization", "Google Knowledge Panel", "Semantic SEO", "Brand Authority"],
     cta: {
       text: "Claim Your Entity",
-      link: "/booking"
+      link: "/growth-audit"
     },
     content: `
 Old SEO was simple. Stuff the word Best Pizza 50 times on a page. Watch the traffic roll in.
@@ -505,7 +505,7 @@ Wake it up.
     keywords: ["Digital Marketing Agency vs Consultant", "Revenue Operations", "Growth System", "Zera Dynamics"],
     cta: {
       text: "Book Your Growth Audit",
-      link: "/booking"
+      link: "/growth-audit"
     },
     content: `
 This is the Us vs. Them post.
@@ -757,7 +757,7 @@ Secure your territory. Build an asset you actually control.
     keywords: ["Revenue Operations vs Marketing", "RevOps Strategy", "Data Driven Marketing", "Business Silos"],
     cta: {
       text: "Book Your Growth Audit",
-      link: "/booking"
+      link: "/growth-audit"
     },
     content: `
 Marketing is about pretty pictures. Sales is about closing. **RevOps** is the engineering that connects them.
@@ -910,7 +910,7 @@ Stop doing "marketing." Start engineering revenue.
     keywords: ["International Brand Positioning", "Trust Signals", "Corporate Identity Design", "Global Market Entry"],
     cta: {
       text: "Audit Your Brand",
-      link: "/booking"
+      link: "/growth-audit"
     },
     content: `
 International clients do not care **where** you are located. They care about **Risk**.
@@ -1204,7 +1204,7 @@ Automate the boring. Elevate the human.
     keywords: ["Customer Acquisition Cost", "Lifetime Value Calculation", "Unit Economics", "Business Scaling Strategy"],
     cta: {
       text: "Book Your Growth Audit",
-      link: "/booking"
+      link: "/growth-audit"
     },
     content: `
 Most Founders obsess over **Revenue**. We did $100K last month! We hit $1M ARR!
