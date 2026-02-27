@@ -1378,7 +1378,7 @@ Do you know your ratio? Let us calculate it for you.
     slug: "why-ads-fail-infrastructure-problem",
     excerpt: "You've tested 12 ad creatives. You've hired three copywriters. The ROAS is still broken. The problem was never the ad. It was the infrastructure.",
     category: "Paid Traffic",
-    publishedDate: "2025-06-15",
+    publishedDate: "2026-06-15",
     readTime: "7 min read",
     keywords: ["Paid Traffic Strategy", "Meta Pixel Setup", "Landing Page Optimization", "Ad Campaign Infrastructure", "ROAS Improvement"],
     cta: {
@@ -1497,7 +1497,7 @@ Fix the infrastructure. Then scale the ads.
     slug: "client-onboarding-system",
     excerpt: "Closing the deal is not an achievement. It is the starting line. What happens in the 72 hours after a client signs determines whether you keep them for 5 years or lose them in 30 days.",
     category: "Customer Retention",
-    publishedDate: "2025-06-01",
+    publishedDate: "2026-06-01",
     readTime: "7 min read",
     keywords: ["Client Onboarding System", "Customer Retention Strategy", "Churn Reduction", "Automated Onboarding", "LTV Optimization"],
     cta: {
@@ -1625,7 +1625,7 @@ Closing the deal is easy. Keeping the client is the real infrastructure.
     slug: "conversion-rate-optimization-guide",
     excerpt: "You want more traffic. Wrong answer. If your site converts at 1%, doubling traffic doubles your cost but not your conversion problem. The lever you are ignoring is worth more than your next ad campaign.",
     category: "Conversion Optimization",
-    publishedDate: "2025-05-20",
+    publishedDate: "2026-05-20",
     readTime: "7 min read",
     keywords: ["Conversion Rate Optimization", "CRO Strategy", "Landing Page Conversion", "Heatmap Analysis", "Core Web Vitals"],
     cta: {
@@ -1761,7 +1761,7 @@ The lever you are ignoring is worth more than your next ad campaign.
     slug: "referral-system-strategy",
     excerpt: "The best leads you will ever receive cost you $0. They come from your happiest clients. Most businesses leave referrals to chance. ZERA engineers them.",
     category: "Business Growth",
-    publishedDate: "2025-05-05",
+    publishedDate: "2026-05-05",
     readTime: "6 min read",
     keywords: ["Referral Marketing System", "Word of Mouth Strategy", "Client Referral Program", "Customer LTV", "Growth Without Ads"],
     cta: {
@@ -1885,7 +1885,7 @@ Your happiest clients are your best salespeople. Give them the tools.
     slug: "analytics-infrastructure-for-ceos",
     excerpt: "Which marketing channel generated the most revenue last month? If you can't answer that in 30 seconds, you have a data blindness problem. And it's costing you more than any bad ad campaign.",
     category: "Revenue Operations",
-    publishedDate: "2025-04-20",
+    publishedDate: "2026-04-20",
     readTime: "7 min read",
     keywords: ["Business Analytics Infrastructure", "Marketing Attribution", "CEO Dashboard", "GA4 Setup", "Revenue Tracking"],
     cta: {
