@@ -24,7 +24,7 @@ function BlogContent() {
       filtered = filtered.filter(post => post.category === activeCategory);
     }
 
-    return filtered;
+    return filtered.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
   }, [activeCategory]);
 
   // Handler functions
