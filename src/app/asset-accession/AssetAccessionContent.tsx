@@ -1159,7 +1159,7 @@ export default function AssetAccessionContent() {
                         <p className="text-xs text-near-black/50 leading-relaxed">
                           Once submitted, ZERA will perform a Security Audit of your credentials within
                           24 hours. Your project will then move into the Mobilization Phase. Please note
-                          that the 90-day build cycle begins only once all Critical Assets marked with an
+                          that the 180-day build cycle begins only once all Critical Assets marked with an
                           asterisk (<span className="text-red-400">*</span>) have been received.
                         </p>
                       </div>

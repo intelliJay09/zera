@@ -504,7 +504,7 @@ Wake it up.
     readTime: "6 min read",
     keywords: ["Digital Marketing Agency vs Consultant", "Revenue Operations", "Growth System", "Zera Dynamics"],
     cta: {
-      text: "Book Strategy Session",
+      text: "Book Your Growth Audit",
       link: "/booking"
     },
     content: `
@@ -569,7 +569,7 @@ Our mission is not to keep you on a retainer forever. Our mission is to **instal
 
 ### Phase 1: Build
 
-We engineer your Digital HQ, your CRM, your automation stack. This takes 30-90 days depending on complexity.
+We engineer your Digital HQ, your CRM, your automation stack. This takes up to 180 days depending on complexity and scope.
 
 ### Phase 2: Train
 
@@ -756,7 +756,7 @@ Secure your territory. Build an asset you actually control.
     readTime: "7 min read",
     keywords: ["Revenue Operations vs Marketing", "RevOps Strategy", "Data Driven Marketing", "Business Silos"],
     cta: {
-      text: "Book Strategy Session",
+      text: "Book Your Growth Audit",
       link: "/booking"
     },
     content: `
@@ -1203,7 +1203,7 @@ Automate the boring. Elevate the human.
     readTime: "7 min read",
     keywords: ["Customer Acquisition Cost", "Lifetime Value Calculation", "Unit Economics", "Business Scaling Strategy"],
     cta: {
-      text: "Book Strategy Session",
+      text: "Book Your Growth Audit",
       link: "/booking"
     },
     content: `

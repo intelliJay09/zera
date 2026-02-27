@@ -34,7 +34,7 @@ const phases = [
     title: 'THE DEPLOYMENT',
     subtitle: '',
     description:
-      'We execute the build. Whether it is a Digital HQ or a Growth System, we deploy within a 90-day sprint cycle.',
+      'We execute the build. Whether it is a Digital HQ or a Growth System, we deploy within your agreed project timeline — systematically and on schedule.',
     icon: Cog,
   },
   {
@@ -42,7 +42,7 @@ const phases = [
     title: 'OPTIMIZATION & SCALE',
     subtitle: '',
     description:
-      'Launch is just Day 1. For the next 90 days, we analyze live traffic, calibrate user behavior, and harden the security. We turn the build into a performing asset.',
+      'Launch is just Day 1. Post-launch, we analyze live traffic, calibrate user behavior, and harden the system. We turn the build into a performing asset.',
     icon: TrendingUp,
   },
 ];
@@ -335,7 +335,7 @@ export default function EngagementProtocol({
         >
           <Button asChild variant="primary" size="lg" className="group">
             <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="engagement_protocol">
-              SECURE DIAGNOSTIC SESSION
+              SECURE GROWTH AUDIT
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
             </Link>
           </Button>

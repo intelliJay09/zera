@@ -14,6 +14,7 @@ export default function HeaderWrapper() {
 
   // Pages with dark backgrounds require light header (white logo/text)
   const darkBackgroundPages = [
+    '/',
     '/contact',
     '/booking',
     '/products/digital-hq',

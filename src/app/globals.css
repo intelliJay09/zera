@@ -234,6 +234,11 @@
   }
 }
 
+/* Hide reCAPTCHA badge (disclosure required in privacy policy / terms) */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
 /* Arc Cascade Reveal Animation - Opacity only, transforms handled inline */
 @keyframes arcCascadeReveal {
   from {

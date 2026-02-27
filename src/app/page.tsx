@@ -62,7 +62,7 @@ export default function HomePage() {
       />
 
       {/* Hero Section */}
-      <main className="relative min-h-screen flex items-center">
+      <main className="relative min-h-[80vh] sm:min-h-screen flex items-center">
         <LiquidEther />
         <div className="mx-auto max-w-7xl px-4 pt-44 pb-32 sm:px-6 sm:py-40 md:py-48 lg:px-8 w-full">
           <div className="text-center">
@@ -72,11 +72,11 @@ export default function HomePage() {
               animate="visible"
               variants={heroHeadline}
             >
-              WE ENGINEER MARKET SOVEREIGNTY.
+              DIGITAL GROWTH SYSTEMS. ENGINEERED.
             </motion.h1>
 
             <motion.h2
-              className="text-xl sm:text-2xl lg:text-4xl font-normal text-near-black/80 tracking-normal mb-10"
+              className="text-lg sm:text-xl lg:text-3xl font-normal text-cream-50/70 tracking-normal mb-10"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -85,7 +85,7 @@ export default function HomePage() {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
             >
-              The Global Digital Growth System for High-Performance Brands.
+              Web architecture, SEO authority, and marketing automation — built for market leaders.
             </motion.h2>
 
             <motion.div
@@ -100,7 +100,7 @@ export default function HomePage() {
             >
               <Button asChild variant="primary" size="lg" className="group">
                 <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
-                  BOOK STRATEGY SESSION
+                  BOOK YOUR GROWTH AUDIT
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                 </Link>
               </Button>

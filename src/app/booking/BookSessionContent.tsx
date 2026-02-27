@@ -47,7 +47,7 @@ export default function BookSessionContent() {
                 className="text-4xl leading-[1.3em] sm:text-5xl sm:leading-[1.1] lg:text-5xl xl:text-6xl font-bold font-display uppercase text-white tracking-brand-header mb-6 sm:mb-8 w-full text-center lg:text-left"
                 variants={contactHeroHeadline}
               >
-                THE ZERA STRATEGY SESSION
+                THE GROWTH INFRASTRUCTURE AUDIT
               </motion.h1>
 
               <motion.p
@@ -173,7 +173,7 @@ export default function BookSessionContent() {
                 THE SOVEREIGN ROADMAP
               </h3>
               <p className="text-base text-near-black/70 leading-relaxed">
-                You leave the session with a documented architectural plan. Whether you hire us or not, you
+                You leave the session with a clear growth roadmap. Whether you hire us or not, you
                 will know exactly what systems you need to build to dominate your category.
               </p>
             </motion.div>
@@ -245,8 +245,8 @@ export default function BookSessionContent() {
                   >
                     <div className="px-8 pb-8">
                       <p className="text-base text-near-black/70 leading-relaxed">
-                        Most agencies offer &ldquo;Free Consultations&rdquo; which are thinly veiled sales pitches. The Zera
-                        Strategy Session is a <span className="font-semibold">consulting product</span>, not a
+                        Most agencies offer &ldquo;Free Consultations&rdquo; which are thinly veiled sales pitches. The Growth
+                        Infrastructure Audit is a <span className="font-semibold">consulting product</span>, not a
                         sales call. You get actionable data, a technical audit, and a strategy roadmap that
                         provides value regardless of whether we work together long-term.
                       </p>

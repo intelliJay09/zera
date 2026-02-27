@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Zap, Shield, BarChart3 } from 'lucide-react';
+import { Zap, Shield, BarChart3, Search, CreditCard } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { elegantEase } from '@/lib/animation-variants';
@@ -108,7 +108,7 @@ export default function DigitalHQContent() {
               size="default"
               className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 font-semibold shadow-xl"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_hero">DEPLOY SYSTEM</Link>
+              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_hero">Book Your Growth Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -200,7 +200,7 @@ export default function DigitalHQContent() {
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE B</span>
                   <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
-                    Search Entity Setup (SEO)
+                    Search Entity & Authority Registration
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -244,6 +244,71 @@ export default function DigitalHQContent() {
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
                     <div className="text-sm sm:text-base text-cream-50/90">Real-time event tracking, traffic attribution analysis, search performance monitoring, and conversion funnel intelligence</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            {/* Feature D */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.8, ease: elegantEase, delay: 0.45 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-8 bg-near-black/50 border border-copper-500/20 hover:border-copper-500/40 transition-colors duration-500"
+            >
+              <div className="md:col-span-2 flex items-start">
+                <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
+                  <Search className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                </div>
+              </div>
+              <div className="md:col-span-10 space-y-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE D</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
+                    Technical SEO Foundation
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Core Web Vitals, Site Architecture & On-Page SEO</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Site speed optimization, internal linking architecture, XML sitemap, robots.txt, and on-page SEO across all pages. Built to rank from day one.</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Feature E */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.8, ease: elegantEase, delay: 0.6 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-8 bg-near-black/50 border border-copper-500/20 hover:border-copper-500/40 transition-colors duration-500"
+            >
+              <div className="md:col-span-2 flex items-start">
+                <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
+                  <CreditCard className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                </div>
+              </div>
+              <div className="md:col-span-10 space-y-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE E</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
+                    Payment Infrastructure
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Payment Gateway Integration & Revenue Collection</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Full payment gateway integration so your website accepts money directly — services, bookings, and products. A website that cannot collect revenue is incomplete.</div>
                   </div>
                 </div>
               </div>
@@ -301,8 +366,16 @@ export default function DigitalHQContent() {
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Real-Time Event Tracking & Traffic Attribution</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Technical SEO</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Core Web Vitals + On-Page SEO Across All Pages</td>
+                </tr>
+                <tr className="border-b border-near-black/10">
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Payment Integration</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Gateway Integration for Services, Bookings & Products</td>
+                </tr>
+                <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Deployment Timeline</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">90-Day Foundation Cycle (Discovery → Build → Launch)</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">180-Day Foundation Cycle / 6 Months (Discovery → Build → Launch)</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Hosting Infrastructure</td>
@@ -343,7 +416,7 @@ export default function DigitalHQContent() {
               size="default"
               className="w-full sm:w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-xl font-semibold"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_cta">Book Your Strategy Session</Link>
+              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_cta">Book Your Growth Audit</Link>
             </Button>
             <Button
               asChild

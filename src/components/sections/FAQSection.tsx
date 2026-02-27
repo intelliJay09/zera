@@ -18,7 +18,7 @@ const faqs = [
   {
     question: 'What is the difference between a Digital Agency and a Growth System?',
     answer:
-      'A traditional digital marketing agency often focuses on "vanity metrics" like likes and views. ZERA (A Growth System) focuses on Revenue Operations. We build assets—like SEO structures and Automated Funnels—that belong to you and generate returns long after the campaign ends.',
+      'A traditional digital marketing agency often focuses on vanity metrics like likes and views. ZERA (A Growth System) focuses on Revenue Operations. We build assets—like SEO structures and Automated Funnels—that belong to you and generate returns long after the campaign ends.',
   },
   {
     question: 'Does ZERA handle Web Design and SEO?',
@@ -28,7 +28,7 @@ const faqs = [
   {
     question: 'Who is ZERA designed for?',
     answer:
-      'We work with ambitious companies in Ghana and globally who are ready to move beyond "freelancer" support and install a professional Lead Generation System.',
+      'We work with ambitious companies in Ghana and globally who are ready to move beyond freelancer support and install a professional Lead Generation System.',
   },
 ];
 

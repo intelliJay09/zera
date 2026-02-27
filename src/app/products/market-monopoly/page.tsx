@@ -4,7 +4,7 @@ import MarketMonopolyContent from './MarketMonopolyContent';
 export const metadata: Metadata = {
   title: 'The Market Monopoly | Customer Retention & LTV Strategy',
   description:
-    'Maximize yield from your existing database. We engineer the "Win-Back Protocols" and lifecycle ecosystems that turn customers into a recurring asset class.',
+    'Maximize yield from your existing database. We engineer the Win-Back Protocols and lifecycle ecosystems that turn customers into a recurring asset class.',
   keywords: [
     'customer retention systems',
     'lifetime value optimization',

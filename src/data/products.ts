@@ -20,7 +20,7 @@ export const PRODUCT_TIERS: ProductTier[] = [
   {
     tier: 'I',
     tierNumber: 1,
-    duration: '90 Days',
+    duration: '180 Days',
     assetName: 'THE DIGITAL HQ',
     promise: 'Secure the territory.',
     tagline: 'We build your permanent base of operations.',
@@ -28,12 +28,27 @@ export const PRODUCT_TIERS: ProductTier[] = [
       {
         title: 'Commercial Web Architecture',
         description:
-          'A high-performance website built to convert, not just look good.',
+          'A high-performance website engineered for conversion and speed.',
       },
       {
-        title: 'Search Entity Setup',
+        title: 'Search Entity & Authority Registration',
         description:
-          'We register your business as an authority with Google so you rank for your own name.',
+          'We make Google recognize your business as an authority — not just a website.',
+      },
+      {
+        title: 'Technical SEO Foundation',
+        description:
+          'Site architecture, Core Web Vitals, and structured data. Built to rank from day one.',
+      },
+      {
+        title: 'Analytics Foundation',
+        description:
+          'GTM and GA4 with conversion tracking. The intelligence layer everything else depends on.',
+      },
+      {
+        title: 'Payment Infrastructure',
+        description:
+          'Payment gateway integration so your website collects revenue directly.',
       },
     ],
     slug: 'digital-hq',
@@ -51,17 +66,27 @@ export const PRODUCT_TIERS: ProductTier[] = [
         title: 'Lead Acquisition Pipelines',
         description:
           'We build pages and forms that guide visitors to a single goal—booking a call or buying a product.',
-        why: 'A standard "Contact Us" page leaks revenue. A "Pipeline" captures it.',
+        why: 'A standard Contact Us page leaks revenue. A Pipeline captures it.',
       },
       {
         title: 'The Lead Capture Engine',
         description:
-          'We connect your website directly to a CRM database. Whether a lead comes from Google, a referral, or a cold email, they are instantly captured, tagged, and sent an automated "Welcome" email.',
+          'CRM integration that instantly captures, tags, and sequences every lead — regardless of source.',
       },
       {
         title: 'The Traffic Converter (CRO)',
         description:
-          'We install tracking tools (heatmaps/analytics) to watch how people use your site. We then tweak your headlines, buttons, and layouts to turn more of your existing visitors into customers.',
+          'Heatmaps and behavioral data used to turn more of your existing visitors into paying customers.',
+      },
+      {
+        title: 'The Lead Magnet System',
+        description:
+          'A downloadable asset that converts cold visitors into owned subscribers — no social platform required.',
+      },
+      {
+        title: 'Paid Traffic Infrastructure',
+        description:
+          'Meta Pixel and Google Ads tracking — the prerequisite layer for profitable retargeting campaigns.',
       },
     ],
     slug: 'growth-system',
@@ -81,14 +106,24 @@ export const PRODUCT_TIERS: ProductTier[] = [
           'We build automated email & SMS flows that resell to your customers automatically.',
       },
       {
-        title: 'The "Win-Back" Protocol',
+        title: 'The Win-Back Protocol',
         description:
-          'A dedicated system to reactivate "dead" leads and turn them into revenue.',
+          'A dedicated system to reactivate dead leads and turn them into revenue.',
       },
       {
         title: 'The LTV Strategy',
         description:
           'A year-long campaign calendar designed to maximize the Lifetime Value (LTV) of every client.',
+      },
+      {
+        title: 'The Audience Infrastructure',
+        description:
+          'Automated onboarding and engagement systems that turn new contacts into loyal, long-term clients.',
+      },
+      {
+        title: 'Scalable Revenue Architecture',
+        description:
+          'Additional revenue streams beyond one-to-one delivery — digital assets, events, and automated monetization.',
       },
     ],
     slug: 'market-monopoly',

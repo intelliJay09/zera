@@ -170,7 +170,7 @@ export default function Footer() {
               <Link href="/" className="hover:text-copper-600 transition-colors">
                 Zera Dynamics
               </Link>
-              . All rights reserved.
+              . All Rights Reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 order-1 md:order-2">
               {legalLinks.map((link) => (

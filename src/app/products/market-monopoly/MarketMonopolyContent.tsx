@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Mail, RefreshCcw, BarChart2 } from 'lucide-react';
+import { Mail, RefreshCcw, BarChart2, Users, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { elegantEase } from '@/lib/animation-variants';
@@ -108,7 +108,7 @@ export default function MarketMonopolyContent() {
               size="default"
               className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 font-semibold shadow-xl"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_hero">DEPLOY SYSTEM</Link>
+              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_hero">Book Your Growth Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -200,7 +200,7 @@ export default function MarketMonopolyContent() {
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE B</span>
                   <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
-                    Win-Back Protocol
+                    The Win-Back Protocol
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -244,6 +244,72 @@ export default function MarketMonopolyContent() {
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
                     <div className="text-sm sm:text-base text-cream-50/90">You stop acting like a startup and start acting like a Conglomerate. We provide quarterly deep-dive reports on your LTV (Lifetime Value) and CAC (Cost of Acquisition) to guide your next boardroom move</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Feature D */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.8, ease: elegantEase, delay: 0.45 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-8 bg-near-black/50 border border-copper-500/20 hover:border-copper-500/40 transition-colors duration-500"
+            >
+              <div className="md:col-span-2 flex items-start">
+                <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
+                  <Users className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                </div>
+              </div>
+              <div className="md:col-span-10 space-y-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE D</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
+                    The Audience Infrastructure
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Automated Onboarding & Year-Round Engagement Systems</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We build automated onboarding sequences that activate new contacts the moment they enter your ecosystem, plus year-round engagement cadences that keep your audience warm, loyal, and primed to buy again — without manual effort</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Feature E */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.8, ease: elegantEase, delay: 0.6 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-8 bg-near-black/50 border border-copper-500/20 hover:border-copper-500/40 transition-colors duration-500"
+            >
+              <div className="md:col-span-2 flex items-start">
+                <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
+                  <Layers className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                </div>
+              </div>
+              <div className="md:col-span-10 space-y-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE E</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
+                    Scalable Revenue Architecture
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Digital Products, Event Funnels & Automated Monetization</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We engineer additional revenue streams beyond one-to-one service delivery — digital assets, event funnels, and automated monetization systems. Your business generates income while you sleep, independent of hours worked</div>
                   </div>
                 </div>
               </div>
@@ -301,6 +367,14 @@ export default function MarketMonopolyContent() {
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Real-Time Customer Lifetime Value (LTV) Intelligence</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Audience Infrastructure</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Automated Onboarding + Year-Round Engagement Cadences</td>
+                </tr>
+                <tr className="border-b border-near-black/10">
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Revenue Architecture</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Digital Products + Event Funnels + Passive Monetization Systems</td>
+                </tr>
+                <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Deployment Timeline</td>
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">365-Day Sovereignty Cycle (Annual Retainer)</td>
                 </tr>
@@ -343,7 +417,7 @@ export default function MarketMonopolyContent() {
               size="default"
               className="w-full sm:w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-xl font-semibold"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_cta">Book Your Strategy Session</Link>
+              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_market_monopoly_cta">Book Your Growth Audit</Link>
             </Button>
             <Button
               asChild

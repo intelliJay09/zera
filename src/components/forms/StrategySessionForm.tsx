@@ -163,7 +163,7 @@ export default function StrategySessionForm() {
       {/* Form Header */}
       <div className="text-center border-b border-copper-500/40 pb-6">
         <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase text-white mb-2 tracking-brand-header">
-          STRATEGY SESSION INTAKE
+          GROWTH AUDIT INTAKE
         </h2>
         <p className="text-sm text-cream-200/80 italic">
           Confidential Data Collection for Pre-Session Analysis.
@@ -464,7 +464,7 @@ export default function StrategySessionForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group w-full bg-copper-500 hover:bg-copper-600 text-white font-medium text-base tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group w-full bg-copper-500 hover:bg-copper-600 text-white font-medium text-sm sm:text-base tracking-brand-label uppercase px-6 sm:px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -474,7 +474,7 @@ export default function StrategySessionForm() {
                 ) : (
                   <>
                     <Lock className="w-5 h-5" />
-                    <span>BOOK STRATEGY SESSION</span>
+                    <span>SECURE GROWTH AUDIT</span>
                   </>
                 )}
               </button>

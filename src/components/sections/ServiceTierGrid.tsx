@@ -120,7 +120,7 @@ export default function ServiceTierGrid() {
 
                   {/* Promise */}
                   <p className="text-base font-normal text-cream-50 opacity-70 italic leading-relaxed tracking-normal mb-10">
-                    &quot;{tier.promise}&quot;
+                    {tier.promise}
                   </p>
 
                   {/* Deliverables (titles only) */}
@@ -142,7 +142,7 @@ export default function ServiceTierGrid() {
                   <Link
                     href={`/products/${tier.slug}`}
                     aria-label={`Explore ${tier.assetName}`}
-                    className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 bg-copper-600 text-cream-50 hover:bg-copper-700 font-medium text-sm sm:text-base tracking-normal transition-all duration-300 group/btn mt-auto uppercase w-full"
+                    className="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3.5 bg-copper-600 text-cream-50 hover:bg-copper-700 font-medium text-xs sm:text-sm lg:text-base tracking-normal transition-all duration-300 group/btn mt-auto uppercase w-full whitespace-nowrap"
                   >
                     <span>Explore {tier.assetName}</span>
                     <ArrowRight className="w-5 h-5 flex-shrink-0 group-hover/btn:translate-x-1 transition-transform duration-300" />

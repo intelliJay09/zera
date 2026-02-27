@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Target, Database, TrendingUp } from 'lucide-react';
+import { Target, Database, TrendingUp, Gift, Crosshair } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { elegantEase } from '@/lib/animation-variants';
@@ -108,7 +108,7 @@ export default function GrowthSystemContent() {
               size="default"
               className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 font-semibold shadow-xl"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_growth_system_hero">DEPLOY SYSTEM</Link>
+              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_growth_system_hero">Book Your Growth Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -248,6 +248,72 @@ export default function GrowthSystemContent() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Feature D */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.8, ease: elegantEase, delay: 0.45 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-8 bg-near-black/50 border border-copper-500/20 hover:border-copper-500/40 transition-colors duration-500"
+            >
+              <div className="md:col-span-2 flex items-start">
+                <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
+                  <Gift className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                </div>
+              </div>
+              <div className="md:col-span-10 space-y-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE D</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
+                    The Lead Magnet System
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">High-Value Opt-In Asset + Dedicated Landing Page</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We engineer a downloadable resource — checklist, blueprint, or guide — positioned as essential to your audience. Paired with a dedicated opt-in page and CRM integration, every download automatically builds your owned list</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Feature E */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.8, ease: elegantEase, delay: 0.6 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 p-8 bg-near-black/50 border border-copper-500/20 hover:border-copper-500/40 transition-colors duration-500"
+            >
+              <div className="md:col-span-2 flex items-start">
+                <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
+                  <Crosshair className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                </div>
+              </div>
+              <div className="md:col-span-10 space-y-4">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE E</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
+                    Paid Traffic Infrastructure
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Meta Pixel & Google Ads Conversion Tracking</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Server-side Meta Pixel and Google Ads conversion tags — installed, configured, and verified. This is the data layer that makes every future paid campaign profitable from day one, eliminating wasted ad spend before it starts</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -301,6 +367,14 @@ export default function GrowthSystemContent() {
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Behavioral Intelligence & Heatmap Surveillance</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Lead Magnet System</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Opt-In Asset + Dedicated Landing Page + CRM Integration</td>
+                </tr>
+                <tr className="border-b border-near-black/10">
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Paid Traffic Infrastructure</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Meta Pixel + Google Ads Conversion API (Server-Side)</td>
+                </tr>
+                <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Deployment Timeline</td>
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">180-Day Velocity Cycle (Discovery → Build → Scale)</td>
                 </tr>
@@ -343,7 +417,7 @@ export default function GrowthSystemContent() {
               size="default"
               className="w-full sm:w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-xl font-semibold"
             >
-              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_growth_system_cta">Book Your Strategy Session</Link>
+              <Link href="/booking" data-gtm-event="cta_book_strategy" data-gtm-location="product_growth_system_cta">Book Your Growth Audit</Link>
             </Button>
             <Button
               asChild

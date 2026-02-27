@@ -144,7 +144,7 @@ export default function ProductsPage() {
               size="default"
               className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Link href="/contact">Book Strategy Session</Link>
+              <Link href="/contact">Book Your Growth Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -207,7 +207,7 @@ export default function ProductsPage() {
 
                   {/* Promise */}
                   <p className="text-lg italic text-near-black/80 mb-8 border-l-2 border-copper-500/30 pl-4">
-                    &quot;{product.promise}&quot;
+                    {product.promise}
                   </p>
 
                   {/* Deliverables */}
@@ -373,7 +373,7 @@ export default function ProductsPage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-cream-50 mb-6 tracking-brand-header">
-              BOOK YOUR ZERA STRATEGY SESSION
+              BOOK YOUR GROWTH AUDIT
             </h2>
             <p className="text-xl text-cream-50/90 mb-10 max-w-2xl mx-auto">
               60-minute strategy session. No pitch. Just infrastructure analysis and a clear roadmap.
@@ -383,7 +383,7 @@ export default function ProductsPage() {
               size="default"
               className="w-fit bg-cream-50 text-copper-500 hover:bg-cream-100 shadow-xl"
             >
-              <Link href="/contact">Book Your Strategy Session</Link>
+              <Link href="/contact">Book Your Growth Audit</Link>
             </Button>
           </motion.div>
         </div>

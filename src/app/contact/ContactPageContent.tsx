@@ -69,7 +69,7 @@ export default function ContactPageContent() {
                 data-gtm-location="contact"
                 className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-500 hover:text-copper-400 transition-colors group-hover:gap-3 duration-300"
               >
-                BOOK STRATEGY SESSION
+                BOOK YOUR GROWTH AUDIT
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
