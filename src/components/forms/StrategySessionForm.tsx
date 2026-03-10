@@ -159,7 +159,7 @@ export default function StrategySessionForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-8">
       {/* Form Header */}
       <div className="text-center border-b border-copper-500/40 pb-6">
         <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase text-white mb-2 tracking-brand-header">
