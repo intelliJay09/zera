@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
         company_name,
         payment_reference,
         created_at
-       FROM strategy_sessions
+       FROM growth_audit
        WHERE payment_status = 'pending'
          AND abandoned_email_sent = FALSE
          AND created_at < DATE_SUB(NOW(), INTERVAL 24 HOUR)
@@ -131,7 +131,7 @@ export async function GET(request: NextRequest) {
 
         // Update database
         await query(
-          `UPDATE strategy_sessions
+          `UPDATE growth_audit
            SET abandoned_email_sent = TRUE,
                abandoned_email_sent_at = NOW(),
                payment_status = 'abandoned'
@@ -162,7 +162,7 @@ export async function GET(request: NextRequest) {
     // Delete sessions abandoned > 7 days ago (optional cleanup)
     try {
       const deleteResult = await query(
-        `DELETE FROM strategy_sessions
+        `DELETE FROM growth_audit
          WHERE payment_status = 'abandoned'
            AND created_at < DATE_SUB(NOW(), INTERVAL 7 DAY)`,
         []

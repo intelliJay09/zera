@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
         company_name,
         calendly_scheduled_at,
         calendly_event_uri
-       FROM strategy_sessions
+       FROM growth_audit
        WHERE booking_stage = 'calendar_booked'
          AND reminder_email_sent = FALSE
          AND calendly_scheduled_at BETWEEN DATE_ADD(NOW(), INTERVAL 23 HOUR)
@@ -147,7 +147,7 @@ export async function GET(request: NextRequest) {
 
         // Update database
         await query(
-          `UPDATE strategy_sessions
+          `UPDATE growth_audit
            SET reminder_email_sent = TRUE,
                reminder_email_sent_at = NOW()
            WHERE id = ?`,
@@ -178,7 +178,7 @@ export async function GET(request: NextRequest) {
     try {
       const overdueResult = await query(
         `SELECT COUNT(*) as overdue_count
-         FROM strategy_sessions
+         FROM growth_audit
          WHERE booking_stage = 'calendar_booked'
            AND reminder_email_sent = FALSE
            AND calendly_scheduled_at < DATE_ADD(NOW(), INTERVAL 23 HOUR)

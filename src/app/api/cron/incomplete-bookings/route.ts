@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
         payment_currency,
         booking_token,
         paid_at
-       FROM strategy_sessions
+       FROM growth_audit
        WHERE payment_status = 'completed'
          AND calendly_status = 'not_booked'
          AND incomplete_booking_email_sent = FALSE
@@ -135,7 +135,7 @@ export async function GET(request: NextRequest) {
 
         // Update database tracking
         await query(
-          `UPDATE strategy_sessions
+          `UPDATE growth_audit
            SET incomplete_booking_email_sent = TRUE,
                incomplete_booking_email_sent_at = NOW()
            WHERE id = ?`,

@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
         payment_status,
         paid_at,
         booking_stage
-       FROM strategy_sessions
+       FROM growth_audit
        WHERE id = ?
        LIMIT 1`,
       [sessionId]

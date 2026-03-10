@@ -109,7 +109,7 @@ export async function sendToCRM(session: Partial<StrategySession>): Promise<void
 
     // Update database - CRM webhook sent successfully
     await query(
-      `UPDATE strategy_sessions
+      `UPDATE growth_audit
        SET crm_webhook_sent = TRUE,
            crm_webhook_sent_at = NOW(),
            crm_webhook_response = ?,
@@ -126,7 +126,7 @@ export async function sendToCRM(session: Partial<StrategySession>): Promise<void
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     await query(
-      `UPDATE strategy_sessions
+      `UPDATE growth_audit
        SET crm_webhook_error = ?,
            crm_webhook_last_retry_at = NOW(),
            crm_webhook_retry_count = crm_webhook_retry_count + 1
@@ -185,7 +185,7 @@ export async function retryFailedWebhooks(): Promise<void> {
     // Find sessions with failed CRM webhooks that are due for retry
     const failedSessions = await query(
       `SELECT *
-       FROM strategy_sessions
+       FROM growth_audit
        WHERE payment_status = 'completed'
          AND crm_webhook_sent = FALSE
          AND crm_webhook_retry_count < ?
@@ -242,7 +242,7 @@ export async function getCRMStats(): Promise<{
         SUM(CASE WHEN crm_webhook_sent = TRUE THEN 1 ELSE 0 END) as sent,
         SUM(CASE WHEN crm_webhook_sent = FALSE AND crm_webhook_retry_count = 0 THEN 1 ELSE 0 END) as pending,
         SUM(CASE WHEN crm_webhook_sent = FALSE AND crm_webhook_retry_count >= ${RETRY_CONFIG.maxRetries} THEN 1 ELSE 0 END) as failed
-      FROM strategy_sessions
+      FROM growth_audit
       WHERE payment_status = 'completed'
     `);
 

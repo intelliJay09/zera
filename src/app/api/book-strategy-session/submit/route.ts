@@ -284,7 +284,7 @@ export async function POST(request: NextRequest) {
     // 6. INSERT INTO DATABASE
     // ========================================
     const insertSql = `
-      INSERT INTO strategy_sessions (
+      INSERT INTO growth_audit (
         id,
         full_name,
         business_email,
@@ -369,7 +369,7 @@ export async function POST(request: NextRequest) {
     } catch (paymentError) {
       // Payment initialization failed - update database
       await query(
-        `UPDATE strategy_sessions
+        `UPDATE growth_audit
          SET payment_status = 'failed',
              payment_error_message = ?
          WHERE id = ?`,

@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
       try {
         // Fetch session data and Calendly details in parallel
         const [sessionResult, eventDetails, inviteeDetails] = await Promise.all([
-          query(`SELECT * FROM strategy_sessions WHERE id = ?`, [sessionId]),
+          query(`SELECT * FROM growth_audit WHERE id = ?`, [sessionId]),
           fetchCalendlyEvent(calendlyEvent.eventUri),
           fetchCalendlyInvitee(calendlyEvent.inviteeUri),
         ]);
@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
 
         // Update database with Calendly booking details including scheduled time
         await query(
-          `UPDATE strategy_sessions
+          `UPDATE growth_audit
            SET calendly_event_uri = ?,
                calendly_invitee_uri = ?,
                calendly_scheduled_at = ?,
@@ -192,7 +192,7 @@ export async function POST(request: NextRequest) {
 
           // Update email tracking
           await query(
-            `UPDATE strategy_sessions
+            `UPDATE growth_audit
              SET calendar_confirmation_email_sent = TRUE,
                  calendar_confirmation_email_sent_at = NOW()
              WHERE id = ?`,
@@ -240,7 +240,7 @@ export async function POST(request: NextRequest) {
 
           // Update email tracking
           await query(
-            `UPDATE strategy_sessions
+            `UPDATE growth_audit
              SET team_notification_sent = TRUE,
                  team_notification_sent_at = NOW()
              WHERE id = ?`,

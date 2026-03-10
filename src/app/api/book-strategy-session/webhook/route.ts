@@ -43,7 +43,7 @@ async function handleChargeSuccess(event: PaystackWebhookEvent): Promise<void> {
   try {
     // Update session record with payment details
     await query(
-      `UPDATE strategy_sessions
+      `UPDATE growth_audit
        SET payment_status = 'completed',
            paid_at = NOW(),
            payment_amount = ?,
@@ -60,7 +60,7 @@ async function handleChargeSuccess(event: PaystackWebhookEvent): Promise<void> {
 
     // Fetch session data for email and CRM
     const sessionResult = await query(
-      `SELECT * FROM strategy_sessions WHERE id = ?`,
+      `SELECT * FROM growth_audit WHERE id = ?`,
       [sessionId]
     );
 
@@ -131,7 +131,7 @@ async function handleChargeFailed(event: PaystackWebhookEvent): Promise<void> {
   try {
     // Update session record with failure details
     await query(
-      `UPDATE strategy_sessions
+      `UPDATE growth_audit
        SET payment_status = 'failed',
            payment_error_message = ?,
            updated_at = NOW()

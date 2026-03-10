@@ -29,10 +29,7 @@ export default function PrivacyPage() {
           <h1 className="text-4xl sm:text-5xl font-normal text-near-black mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
             PRIVACY POLICY
           </h1>
-          <p className="text-base text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
-            The Data Protection Protocol.
-          </p>
-          <div className="mt-6 space-y-1 text-sm text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
+<div className="mt-6 space-y-1 text-sm text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
             <p><strong>Effective Date:</strong> January 1, 2026</p>
             <p><strong>Identity:</strong> ZERA DYNAMICS LTD. (&ldquo;The Company&rdquo;)</p>
           </div>

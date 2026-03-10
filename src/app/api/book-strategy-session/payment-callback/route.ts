@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
     // ========================================
     const sessionResult = await query(
       `SELECT id, payment_status, booking_stage, business_email, full_name
-       FROM strategy_sessions
+       FROM growth_audit
        WHERE payment_reference = ?
        LIMIT 1`,
       [paymentReference]
@@ -107,7 +107,7 @@ export async function GET(request: NextRequest) {
       // Update database if not already completed
       if (session.payment_status !== 'completed') {
         await query(
-          `UPDATE strategy_sessions
+          `UPDATE growth_audit
            SET payment_status = 'completed',
                booking_stage = 'payment_completed',
                paid_at = NOW(),
@@ -174,7 +174,7 @@ export async function GET(request: NextRequest) {
 
       // Update database
       await query(
-        `UPDATE strategy_sessions
+        `UPDATE growth_audit
          SET payment_status = 'abandoned'
          WHERE id = ?`,
         [sessionId]

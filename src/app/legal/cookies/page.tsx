@@ -29,10 +29,7 @@ export default function CookiesPage() {
           <h1 className="text-4xl sm:text-5xl font-normal text-near-black mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
             COOKIE POLICY
           </h1>
-          <p className="text-base text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
-            The Tracking Protocol.
-          </p>
-          <div className="mt-6 space-y-1 text-sm text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
+<div className="mt-6 space-y-1 text-sm text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
             <p><strong>Status:</strong> Active</p>
           </div>
         </div>

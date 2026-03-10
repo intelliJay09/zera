@@ -29,10 +29,7 @@ export default function TermsPage() {
           <h1 className="text-4xl sm:text-5xl font-normal text-near-black mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
             TERMS OF SERVICE
           </h1>
-          <p className="text-base text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
-            The Rules of Engagement.
-          </p>
-          <div className="mt-6 space-y-1 text-sm text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
+<div className="mt-6 space-y-1 text-sm text-near-black/60" style={{ fontFamily: 'Lato, sans-serif' }}>
             <p><strong>Jurisdiction:</strong> Republic of Ghana</p>
           </div>
         </div>
