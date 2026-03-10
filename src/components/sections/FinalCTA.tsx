@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const StrategySessionForm = dynamic(() => import('@/components/forms/StrategySessionForm'));

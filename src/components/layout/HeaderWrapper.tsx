@@ -17,6 +17,8 @@ export default function HeaderWrapper() {
     '/',
     '/contact',
     '/growth-audit',
+    '/ghana-executive-audit',
+    '/success',
     '/products/digital-hq',
     '/products/growth-system',
     '/products/market-monopoly',
