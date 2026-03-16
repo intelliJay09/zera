@@ -14,9 +14,6 @@ const nextConfig: NextConfig = {
   // Remove X-Powered-By: Next.js header
   poweredByHeader: false,
 
-  // Standalone output for VPS deployment
-  output: 'standalone',
-
   // Image optimization configuration
   images: {
     formats: ['image/webp', 'image/avif'],
