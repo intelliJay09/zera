@@ -11,8 +11,7 @@
  * 5. Send reminder to complete booking on Calendly
  * 6. Update incomplete_booking_email_sent flag
  *
- * Email Template: Uses sendStrategySessionConfirmation() (same as payment confirmation)
- * Subject: "Payment Confirmed - Next: Book Your Time Slot"
+ * Email Template: Uses sendAbandonedBookingEmail() with booking URL + token
  *
  * Authorization: Requires CRON_SECRET in request header or Vercel cron header
  */

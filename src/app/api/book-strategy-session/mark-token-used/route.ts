@@ -1,11 +1,11 @@
 /**
- * Mark Booking Token as Used and Send Email 2
+ * Mark Booking Token as Used and Send Confirmation Emails
  *
- * Called when user successfully schedules Calendly event
+ * Called when user successfully schedules via Cal.com
  * 1. Marks token as consumed to prevent reuse
- * 2. Fetches real event details from Calendly API (date/time, meeting link, reschedule/cancel URLs)
- * 3. Updates database with Calendly booking details
- * 4. Sends customer calendar confirmation email with real data
+ * 2. Uses event details from Cal.com postMessage payload (no API call needed)
+ * 3. Updates database with booking details
+ * 4. Sends customer calendar confirmation email
  * 5. Sends team notification email
  */
 
@@ -15,82 +15,12 @@ import { query } from '@/lib/db';
 import { sendCalendarBookingConfirmation } from '@/lib/email-strategy-sessions';
 
 // ============================================================
-// CALENDLY API HELPERS
-// ============================================================
-
-interface CalendlyEventDetails {
-  start_time: string;
-  end_time: string;
-  name: string;
-  status: string;
-  location?: {
-    join_url?: string;
-    type?: string;
-  };
-}
-
-interface CalendlyInviteeDetails {
-  reschedule_url: string;
-  cancel_url: string;
-  email: string;
-  name: string;
-  timezone: string;
-}
-
-async function fetchCalendlyEvent(eventUri: string): Promise<CalendlyEventDetails | null> {
-  const pat = process.env.CALENDLY_PAT;
-  if (!pat) {
-    console.error('[Calendly API] CALENDLY_PAT not configured');
-    return null;
-  }
-
-  try {
-    const response = await fetch(eventUri, {
-      headers: { Authorization: `Bearer ${pat}` },
-    });
-
-    if (!response.ok) {
-      console.error(`[Calendly API] Event fetch failed: ${response.status} ${response.statusText}`);
-      return null;
-    }
-
-    const data = await response.json();
-    return data.resource;
-  } catch (error) {
-    console.error('[Calendly API] Event fetch error:', error);
-    return null;
-  }
-}
-
-async function fetchCalendlyInvitee(inviteeUri: string): Promise<CalendlyInviteeDetails | null> {
-  const pat = process.env.CALENDLY_PAT;
-  if (!pat) return null;
-
-  try {
-    const response = await fetch(inviteeUri, {
-      headers: { Authorization: `Bearer ${pat}` },
-    });
-
-    if (!response.ok) {
-      console.error(`[Calendly API] Invitee fetch failed: ${response.status} ${response.statusText}`);
-      return null;
-    }
-
-    const data = await response.json();
-    return data.resource;
-  } catch (error) {
-    console.error('[Calendly API] Invitee fetch error:', error);
-    return null;
-  }
-}
-
-// ============================================================
 // POST HANDLER
 // ============================================================
 
 export async function POST(request: NextRequest) {
   try {
-    const { sessionId, token, calendlyEvent } = await request.json();
+    const { sessionId, token, calEvent } = await request.json();
 
     if (!sessionId || !token) {
       return NextResponse.json(
@@ -99,20 +29,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(`[Mark Token] Calendly event received for session: ${sessionId}`);
+    console.log(`[Mark Token] Cal.com event received for session: ${sessionId}`);
 
     // Mark token as used (existing functionality)
     await markTokenAsUsed(sessionId, token);
 
-    // If Calendly event details provided, update database and send confirmation
-    if (calendlyEvent) {
+    // If Cal.com event details provided, update database and send confirmation
+    if (calEvent) {
       try {
-        // Fetch session data and Calendly details in parallel
-        const [sessionResult, eventDetails, inviteeDetails] = await Promise.all([
-          query(`SELECT * FROM growth_audit WHERE id = ?`, [sessionId]),
-          fetchCalendlyEvent(calendlyEvent.eventUri),
-          fetchCalendlyInvitee(calendlyEvent.inviteeUri),
-        ]);
+        const sessionResult = await query(
+          `SELECT * FROM growth_audit WHERE id = ?`,
+          [sessionId]
+        );
 
         if (!sessionResult || !sessionResult[0] || (sessionResult[0] as any).length === 0) {
           console.error('[Mark Token] Session not found:', sessionId);
@@ -124,11 +52,10 @@ export async function POST(request: NextRequest) {
 
         const session = (sessionResult[0] as any)[0];
 
-        // Parse scheduled time from Calendly API
-        const scheduledAt = eventDetails?.start_time ? new Date(eventDetails.start_time) : null;
-        const inviteeTimezone = inviteeDetails?.timezone || 'UTC';
+        // Parse scheduled time from Cal.com event payload
+        const scheduledAt = calEvent.startTime ? new Date(calEvent.startTime) : null;
+        const inviteeTimezone = calEvent.timezone || 'UTC';
 
-        // Format date and time in the invitee's timezone
         let scheduledDate: string | undefined;
         let scheduledTime: string | undefined;
 
@@ -147,28 +74,17 @@ export async function POST(request: NextRequest) {
           });
         }
 
-        if (eventDetails) {
-          console.log(`[Mark Token] Calendly API: scheduled at ${eventDetails.start_time}, timezone: ${inviteeTimezone}`);
-        } else {
-          console.warn('[Mark Token] Could not fetch Calendly event details — email will be sent without schedule data');
-        }
+        console.log(`[Mark Token] Cal.com: scheduled at ${calEvent.startTime}, timezone: ${inviteeTimezone}`);
 
-        // Update database with Calendly booking details including scheduled time
+        // Update database with Cal.com booking details
         await query(
           `UPDATE growth_audit
-           SET calendly_event_uri = ?,
-               calendly_invitee_uri = ?,
-               calendly_scheduled_at = ?,
+           SET calendly_scheduled_at = ?,
                calendly_status = 'booked',
                booking_stage = 'calendar_booked',
                updated_at = NOW()
            WHERE id = ?`,
-          [
-            calendlyEvent.eventUri,
-            calendlyEvent.inviteeUri,
-            scheduledAt,
-            sessionId
-          ]
+          [scheduledAt, sessionId]
         );
 
         console.log(`[Mark Token] Updated session with booking details`);
@@ -185,12 +101,9 @@ export async function POST(request: NextRequest) {
             scheduledDate,
             scheduledTime,
             timezone: scheduledAt ? inviteeTimezone : undefined,
-            meetingLink: eventDetails?.location?.join_url,
-            rescheduleLink: inviteeDetails?.reschedule_url,
-            cancelLink: inviteeDetails?.cancel_url,
+            meetingLink: calEvent.meetingLink || undefined,
           });
 
-          // Update email tracking
           await query(
             `UPDATE growth_audit
              SET calendar_confirmation_email_sent = TRUE,
@@ -238,7 +151,6 @@ export async function POST(request: NextRequest) {
             sessionId
           );
 
-          // Update email tracking
           await query(
             `UPDATE growth_audit
              SET team_notification_sent = TRUE,
@@ -247,9 +159,9 @@ export async function POST(request: NextRequest) {
             [sessionId]
           );
 
-          console.log(`[Mark Token] ✅ Team notification sent for session: ${sessionId}`);
+          console.log(`[Mark Token] Team notification sent for session: ${sessionId}`);
         } catch (teamEmailError) {
-          console.error('[Mark Token] ❌ FAILED to send team notification:', teamEmailError);
+          console.error('[Mark Token] FAILED to send team notification:', teamEmailError);
           console.error('[Mark Token] Team email error details:', {
             name: (teamEmailError as Error).name,
             message: (teamEmailError as Error).message,
@@ -257,7 +169,7 @@ export async function POST(request: NextRequest) {
           });
         }
       } catch (emailError) {
-        console.error('[Mark Token] ❌ Critical error in email sending block:', emailError);
+        console.error('[Mark Token] Critical error in email sending block:', emailError);
         // Don't fail the request - token is already marked as used
       }
     }

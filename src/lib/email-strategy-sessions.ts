@@ -1,12 +1,11 @@
 /**
  * ZERA Strategy Session - Email Templates
  *
- * 5 Email Templates:
- * 1. Customer Payment Confirmation
- * 2. Team Notification
- * 3. Calendar Booking Confirmation
- * 4. 24h Session Reminder
- * 5. Abandoned Booking Recovery
+ * 4 Email Templates:
+ * 1. Team Notification (bookings@zerahq.com, CC: jacque.amoako@gmail.com)
+ * 2. Calendar Booking Confirmation (customer)
+ * 3. 24h Session Reminder (customer)
+ * 4. Abandoned Booking Recovery (customer)
  *
  * Style: Copper (#B87333) and Cream (#F3E9DC) colors
  * UPPERCASE headlines with Lato Bold, HTML with inline CSS, mobile-responsive
@@ -14,7 +13,6 @@
 
 import nodemailer from 'nodemailer';
 import type {
-  ConfirmationEmailData,
   TeamNotificationEmailData,
   CalendarConfirmationEmailData,
   ReminderEmailData,
@@ -37,7 +35,8 @@ const transporter = nodemailer.createTransport({
 
 const FROM_EMAIL = process.env.SMTP_FROM_EMAIL || 'hello@zerahq.com';
 const FROM_NAME = 'ZERA';
-const TEAM_EMAIL = 'jacque.amoako@gmail.com';
+const TEAM_EMAIL = 'bookings@zerahq.com';
+const TEAM_EMAIL_CC = 'jacque.amoako@gmail.com';
 
 // Brand colors
 const COPPER = '#B87333';
@@ -106,111 +105,7 @@ function emailWrapper(content: string): string {
 }
 
 // ============================================================
-// 1. CUSTOMER PAYMENT CONFIRMATION
-// ============================================================
-
-export async function sendStrategySessionConfirmation(
-  data: ConfirmationEmailData
-): Promise<void> {
-  const content = `
-    <div style="text-align: center; margin-bottom: 30px;">
-      <div style="display: inline-block; background-color: ${COPPER}; color: white; border-radius: 50%; width: 60px; height: 60px; line-height: 60px; font-size: 30px; margin-bottom: 20px;">
-        ✓
-      </div>
-      <h2 style="margin: 0 0 10px; font-size: 28px; font-weight: 700; color: ${NEAR_BLACK}; text-transform: uppercase; letter-spacing: 1px;">
-        PAYMENT CONFIRMED
-      </h2>
-      <p style="margin: 0; font-size: 16px; color: #666;">
-        Your strategy session is secured
-      </p>
-    </div>
-
-    <div style="background-color: ${CREAM}; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
-      <p style="margin: 0 0 10px; font-size: 14px; color: #666;">
-        <strong>Payment Reference:</strong>
-      </p>
-      <p style="margin: 0; font-size: 16px; color: ${NEAR_BLACK}; font-family: monospace; background-color: #fff; padding: 10px; border-radius: 4px;">
-        ${data.paymentReference}
-      </p>
-    </div>
-
-    <div style="margin-bottom: 30px;">
-      <p style="margin: 0 0 15px; font-size: 16px; color: ${NEAR_BLACK};">
-        Hi <strong>${data.fullName}</strong>,
-      </p>
-      <p style="margin: 0 0 15px; font-size: 15px; color: #444; line-height: 1.6;">
-        Thank you for booking your ZERA Strategy Session. Your payment of <strong>${data.paymentCurrency} ${data.paymentAmount.toFixed(2)}</strong> has been successfully processed.
-      </p>
-    </div>
-
-    <div style="background: linear-gradient(135deg, ${COPPER}15 0%, ${COPPER}05 100%); padding: 25px; border-radius: 6px; border-left: 4px solid ${COPPER}; margin-bottom: 30px;">
-      <h3 style="margin: 0 0 15px; font-size: 18px; font-weight: 700; color: ${NEAR_BLACK}; text-transform: uppercase;">
-        NEXT STEP: BOOK YOUR TIME SLOT
-      </h3>
-      <p style="margin: 0 0 20px; font-size: 14px; color: #555;">
-        Choose a convenient time for your 60-minute strategy session:
-      </p>
-      <div style="text-align: center;">
-        <a href="${data.calendlyBookingUrl}" style="display: inline-block; background-color: ${COPPER}; color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">
-          BOOK YOUR TIME SLOT
-        </a>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 30px;">
-      <h3 style="margin: 0 0 15px; font-size: 18px; font-weight: 700; color: ${NEAR_BLACK}; text-transform: uppercase;">
-        WHAT HAPPENS NEXT
-      </h3>
-      <div style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-        <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background-color: ${COPPER}; color: white; border-radius: 50%; text-align: center; line-height: 24px; font-size: 13px; font-weight: 700;">
-          1
-        </div>
-        <p style="margin: 0; font-size: 14px; color: #444;">
-          <strong>Pre-Call Audit:</strong> Our team conducts a comprehensive analysis of your digital infrastructure. Findings will be shared during your session.
-        </p>
-      </div>
-      <div style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-        <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background-color: ${COPPER}; color: white; border-radius: 50%; text-align: center; line-height: 24px; font-size: 13px; font-weight: 700;">
-          2
-        </div>
-        <p style="margin: 0; font-size: 14px; color: #444;">
-          <strong>Strategy Session:</strong> 60-minute deep-dive consultation with findings and custom roadmap
-        </p>
-      </div>
-      <div style="padding-left: 30px; position: relative;">
-        <div style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; background-color: ${COPPER}; color: white; border-radius: 50%; text-align: center; line-height: 24px; font-size: 13px; font-weight: 700;">
-          3
-        </div>
-        <p style="margin: 0; font-size: 14px; color: #444;">
-          <strong>Action Plan:</strong> You receive a detailed roadmap you can implement yourself or with our team
-        </p>
-      </div>
-    </div>
-
-    <div style="background-color: ${CREAM}; padding: 20px; border-radius: 6px; text-align: center;">
-      <p style="margin: 0 0 10px; font-size: 13px; color: #666;">
-        Questions or need help?
-      </p>
-      <p style="margin: 0; font-size: 14px;">
-        <a href="mailto:hello@zerahq.com" style="color: ${COPPER}; text-decoration: none; font-weight: 600;">Email Us</a> |
-        <a href="https://wa.me/233246492873" style="color: ${COPPER}; text-decoration: none; font-weight: 600;">WhatsApp</a>
-      </p>
-    </div>
-  `;
-
-  await transporter.sendMail({
-    from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
-    to: `${data.fullName} <${data.businessEmail}>`,
-    subject: `✓ Strategy Session Confirmed - Next: Book Your Time Slot`,
-    html: emailWrapper(content),
-    text: `PAYMENT CONFIRMED\n\nHi ${data.fullName},\n\nThank you for booking your ZERA Strategy Session. Your payment of ${data.paymentCurrency} ${data.paymentAmount.toFixed(2)} has been successfully processed.\n\nPayment Reference: ${data.paymentReference}\n\nNEXT STEP: Book your time slot at ${data.calendlyBookingUrl}\n\nWhat happens next:\n1. Pre-Call Audit: Our team conducts a comprehensive analysis\n2. Strategy Session: 60-minute deep-dive consultation\n3. Action Plan: Detailed roadmap for implementation\n\nQuestions? Email hello@zerahq.com or WhatsApp +233246492873`,
-  });
-
-  console.log(`Confirmation email sent to: ${data.fullName}`);
-}
-
-// ============================================================
-// 2. TEAM NOTIFICATION
+// 1. TEAM NOTIFICATION
 // ============================================================
 
 export async function sendStrategySessionTeamNotification(
@@ -291,7 +186,7 @@ export async function sendStrategySessionTeamNotification(
         </tr>
         <tr>
           <td style="padding: 8px 0; color: #666;"><strong>Amount:</strong></td>
-          <td style="padding: 8px 0; color: ${NEAR_BLACK}; font-weight: 600;">$${data.paymentAmount.toFixed(2)} USD</td>
+          <td style="padding: 8px 0; color: ${NEAR_BLACK}; font-weight: 600;">$${Number(data.paymentAmount).toFixed(2)} USD</td>
         </tr>
         <tr>
           <td style="padding: 8px 0; color: #666;"><strong>Session ID:</strong></td>
@@ -316,16 +211,17 @@ export async function sendStrategySessionTeamNotification(
   await transporter.sendMail({
     from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
     to: TEAM_EMAIL,
+    cc: TEAM_EMAIL_CC,
     subject: `🎯 New Strategy Session - ${data.companyName}`,
     html: emailWrapper(content),
-    text: `NEW STRATEGY SESSION BOOKED\n\nCompany: ${data.companyName}\nContact: ${data.fullName}\nEmail: ${data.businessEmail}\nWebsite: ${data.websiteUrl}\nWhatsApp: ${data.whatsappNumber}\n\nRevenue: ${data.revenueRange}\nObstacle: ${data.growthObstacle}\nDesired Outcome: ${data.magicWandOutcome}\n\nPayment: $${data.paymentAmount.toFixed(2)}\nReference: ${data.paymentReference}\nSession ID: ${sessionId}`,
+    text: `NEW STRATEGY SESSION BOOKED\n\nCompany: ${data.companyName}\nContact: ${data.fullName}\nEmail: ${data.businessEmail}\nWebsite: ${data.websiteUrl}\nWhatsApp: ${data.whatsappNumber}\n\nRevenue: ${data.revenueRange}\nObstacle: ${data.growthObstacle}\nDesired Outcome: ${data.magicWandOutcome}\n\nPayment: $${Number(data.paymentAmount).toFixed(2)}\nReference: ${data.paymentReference}\nSession ID: ${sessionId}`,
   });
 
   console.log(`Team notification sent for session: ${sessionId}`);
 }
 
 // ============================================================
-// 3. CALENDAR BOOKING CONFIRMATION
+// 2. CALENDAR BOOKING CONFIRMATION
 // ============================================================
 
 export async function sendCalendarBookingConfirmation(
@@ -433,7 +329,7 @@ export async function sendCalendarBookingConfirmation(
 }
 
 // ============================================================
-// 4. 24-HOUR REMINDER
+// 3. 24-HOUR REMINDER
 // ============================================================
 
 export async function send24HourReminder(data: ReminderEmailData): Promise<void> {
@@ -505,7 +401,7 @@ export async function send24HourReminder(data: ReminderEmailData): Promise<void>
 }
 
 // ============================================================
-// 5. ABANDONED BOOKING RECOVERY
+// 4. ABANDONED BOOKING RECOVERY
 // ============================================================
 
 export async function sendAbandonedBookingEmail(

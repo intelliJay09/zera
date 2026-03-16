@@ -3,13 +3,14 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { InlineWidget } from 'react-calendly';
 import { CheckCircle2, Calendar, Loader2, AlertCircle, XCircle } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 // Force dynamic rendering - prevents static optimization that breaks useSearchParams
 export const dynamic = 'force-dynamic';
+
+const CAL_LINK = 'zera-dyanamics/digital-audit';
 
 interface SessionData {
   id: string;
@@ -83,19 +84,60 @@ export default function BookingSuccessPage() {
     verifyToken();
   }, [sessionId, bookingToken]);
 
-  // Listen for Calendly booking event
+  // Initialize Cal.com embed once token is verified
   useEffect(() => {
-    const handleCalendlyEvent = async (e: MessageEvent) => {
-      if (e.origin !== 'https://calendly.com') return;
+    if (pageState !== 'valid' || isBooked || !session) return;
 
-      if (e.data.event === 'calendly.event_scheduled') {
-        console.log('[Success Page] Calendly event scheduled');
+    const win = window as any;
 
-        // Extract event details from Calendly payload
-        // NOTE: Embedded widget only provides URIs, not full details
-        const payload = e.data.payload;
+    // Cal.com official pre-init snippet — must run before embed.js loads.
+    // Sets up window.Cal as a queuing proxy; embed.js replaces it on load.
+    (function (C: any, A: string, L: string) {
+      const p = (a: any, ar: any) => { a.q.push(ar); };
+      C.Cal = C.Cal || function (...args: any[]) {
+        const cal = C.Cal;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          const s = document.createElement('script');
+          s.src = A;
+          s.async = true;
+          document.head.appendChild(s);
+          cal.loaded = true;
+        }
+        if (args[0] === L) {
+          const api = (...a: any[]) => { p(api, a); };
+          (api as any).q = [];
+          const ns = args[1];
+          typeof ns === 'string' ? ((cal.ns[ns] = api), p(api, args)) : p(cal, args);
+          return;
+        }
+        p(cal, args);
+      };
+      C.Cal.q = C.Cal.q || [];
+    })(win, 'https://app.cal.com/embed/embed.js', 'init');
 
-        // Mark token as used and send Email 2
+    const Cal = win.Cal;
+
+    Cal('init', { origin: 'https://cal.com' });
+    Cal('inline', {
+      elementOrSelector: '#cal-inline',
+      calLink: CAL_LINK,
+      config: {
+        name: session.full_name,
+        email: session.business_email,
+      },
+    });
+
+    Cal('on', {
+      action: 'bookingSuccessful',
+      callback: async (e: any) => {
+        console.log('[Success Page] Cal.com booking successful');
+
+        const booking = e.detail?.data?.booking;
+        const attendeeTimezone = booking?.attendees?.[0]?.timeZone || 'UTC';
+        const meetingLink = booking?.location || undefined;
+
         try {
           await fetch('/api/book-strategy-session/mark-token-used', {
             method: 'POST',
@@ -103,30 +145,34 @@ export default function BookingSuccessPage() {
             body: JSON.stringify({
               sessionId,
               token: bookingToken,
-              calendlyEvent: {
-                eventUri: payload.event.uri,
-                inviteeUri: payload.invitee.uri
-              }
+              calEvent: {
+                startTime: booking?.startTime,
+                endTime: booking?.endTime,
+                timezone: attendeeTimezone,
+                meetingLink,
+              },
             }),
           });
 
           setIsBooked(true);
           setPageState('booked');
 
-          // Track Calendly booking completed in GTM
+          // Track Cal.com booking completed in GTM
           (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer?.push({
-            event: 'calendly_booking_completed',
+            event: 'cal_booking_completed',
             booking_session_id: sessionId,
           });
         } catch (error) {
           console.error('[Success Page] Failed to mark token as used:', error);
         }
-      }
-    };
+      },
+    });
 
-    window.addEventListener('message', handleCalendlyEvent);
-    return () => window.removeEventListener('message', handleCalendlyEvent);
-  }, [sessionId, bookingToken]);
+    return () => {
+      // Clean up Cal instance on unmount
+      delete win.Cal;
+    };
+  }, [pageState, isBooked, session, sessionId, bookingToken]);
 
   // Loading state
   if (pageState === 'loading') {
@@ -249,30 +295,9 @@ export default function BookingSuccessPage() {
                 </p>
               </div>
 
-              {/* Calendly Embed */}
+              {/* Cal.com Embed */}
               <div className="max-w-4xl mx-auto">
-                <InlineWidget
-                  url={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/zerahq/strategy-session'}
-                  prefill={{
-                    name: session.full_name,
-                    email: session.business_email,
-                    customAnswers: {
-                      a1: session.company_name,
-                      a2: session.payment_reference,
-                    },
-                  }}
-                  pageSettings={{
-                    backgroundColor: 'ffffff',
-                    hideEventTypeDetails: false,
-                    hideLandingPageDetails: true,
-                    primaryColor: 'B87333',
-                    textColor: '1a1a1a',
-                  }}
-                  styles={{
-                    height: '700px',
-                    width: '100%',
-                  }}
-                />
+                <div id="cal-inline" style={{ width: '100%', height: '700px' }} />
               </div>
             </>
           ) : pageState === 'booked' ? (
@@ -315,7 +340,7 @@ export default function BookingSuccessPage() {
                     Confirmation Email
                   </h4>
                   <p className="text-sm text-near-black/70">
-                    You&apos;ll receive a payment confirmation email at <span className="text-copper-500">{session.business_email}</span> within the next few minutes.
+                    You&apos;ll receive a session confirmation email at <span className="text-copper-500">{session.business_email}</span> after booking your time slot.
                   </p>
                 </div>
               </div>
