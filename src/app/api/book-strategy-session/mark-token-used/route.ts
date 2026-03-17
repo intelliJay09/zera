@@ -13,6 +13,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { markTokenAsUsed } from '@/lib/booking-token';
 import { query } from '@/lib/db';
 import { sendCalendarBookingConfirmation } from '@/lib/email-strategy-sessions';
+import { sendToCRM } from '@/lib/crm-webhook';
 
 // ============================================================
 // POST HANDLER
@@ -168,6 +169,22 @@ export async function POST(request: NextRequest) {
             stack: (teamEmailError as Error).stack
           });
         }
+
+        // ========================================
+        // NOTIFY CRM (Make.com) — Path A trigger
+        // ========================================
+        try {
+          await sendToCRM({
+            ...session,
+            booking_stage: 'calendar_booked',
+            calendly_status: 'booked',
+            calendly_scheduled_at: scheduledAt,
+          });
+          console.log(`[Mark Token] CRM webhook fired for session: ${sessionId}`);
+        } catch (crmError) {
+          console.error('[Mark Token] FAILED to send CRM webhook:', crmError);
+        }
+
       } catch (emailError) {
         console.error('[Mark Token] Critical error in email sending block:', emailError);
         // Don't fail the request - token is already marked as used
