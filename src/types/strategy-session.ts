@@ -316,6 +316,7 @@ export interface CRMWebhookPayload {
     custom_revenue?: string;
     growth_obstacle: GrowthObstacle;
     magic_wand_outcome: string;
+    payment_status: PaymentStatus;
     payment_reference: string;
     payment_amount: number;
     payment_currency: string;

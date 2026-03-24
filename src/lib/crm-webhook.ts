@@ -64,6 +64,7 @@ export async function sendToCRM(session: Partial<StrategySession>): Promise<void
         custom_revenue: session.custom_revenue || undefined,
         growth_obstacle: session.growth_obstacle || 'visibility',
         magic_wand_outcome: session.magic_wand_outcome || '',
+        payment_status: session.payment_status || 'pending',
         payment_reference: session.payment_reference || '',
         payment_amount: session.payment_amount || 100,
         payment_currency: session.payment_currency || 'USD',
