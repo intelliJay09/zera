@@ -1,28 +1,41 @@
 'use client';
 
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState, useRef, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, AlertCircle, Loader2, Lock, ArrowRight, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Loader2, Lock, ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { executeRecaptcha } from '@/lib/recaptcha-client';
 
-const strategySessionSchema = z.object({
-  fullName: z.string().min(2, 'Name must be at least 2 characters'),
-  businessEmail: z.string().email('Please enter a valid email address'),
-  companyName: z.string().min(1, 'Company name is required'),
-  websiteUrl: z.string().optional(),
-  phoneNumber: z.string().min(1, 'Phone number is required'),
-  revenueRange: z.enum(['under-25k', '25k-100k', '100k-500k', '500k-2m', '2m+', 'custom']),
-  customRevenue: z.string().optional(),
-  growthObstacle: z.enum(['manual-chaos', 'lead-leakage', 'fragmented-tech', 'client-retention']),
-  hoursWasted: z.string().min(1, 'Please estimate hours wasted per week'),
-  magicWandOutcome: z.string().min(10, 'Please describe your target metric (at least 10 characters)'),
-  investmentQualifier: z.enum(['yes', 'evaluating', 'no-budget']),
-  budgetRange: z.string().optional(),
-});
+const strategySessionSchema = z
+  .object({
+    fullName: z.string().min(2, 'Name must be at least 2 characters'),
+    businessEmail: z.string().email('Please enter a valid email address'),
+    companyName: z.string().min(1, 'Company name is required'),
+    websiteUrl: z.string().optional(),
+    phoneNumber: z.string().min(1, 'Phone number is required'),
+    revenueRange: z.enum(['under-25k', '25k-100k', '100k-500k', '500k-2m', '2m+', 'custom']),
+    customRevenue: z.string().optional(),
+    growthObstacle: z.enum(['manual-chaos', 'lead-leakage', 'fragmented-tech', 'client-retention']),
+    hoursWasted: z.string().min(1, 'Please estimate hours wasted per week'),
+    magicWandOutcome: z.string().min(10, 'Please describe your target metric (at least 10 characters)'),
+    investmentQualifier: z.enum(['yes', 'evaluating', 'no-budget']),
+    budgetRange: z.string().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (
+      (data.investmentQualifier === 'yes' || data.investmentQualifier === 'evaluating') &&
+      (!data.budgetRange || data.budgetRange.trim() === '')
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'Please provide your approximate budget range',
+        path: ['budgetRange'],
+      });
+    }
+  });
 
 type StrategySessionData = z.infer<typeof strategySessionSchema>;
 
@@ -36,8 +49,8 @@ const revenueOptions = [
 ];
 
 const obstacleOptions = [
-  { value: 'manual-chaos', label: 'Manual Chaos - Our team drowns in repetitive, manual processes.' },
-  { value: 'lead-leakage', label: 'Lead Leakage - We have traffic and interest, but leads slip through.' },
+  { value: 'manual-chaos', label: 'Manual Chaos - Team drowns in repetitive, manual processes.' },
+  { value: 'lead-leakage', label: 'Lead Leakage - Traffic and interest, but leads slip through.' },
   { value: 'fragmented-tech', label: 'Fragmented Tech - Our tools do not talk to each other.' },
   { value: 'client-retention', label: 'Client Retention - We acquire customers but struggle to keep them.' },
 ];
@@ -48,14 +61,103 @@ const investmentOptions = [
   { value: 'no-budget', label: 'No - we do not have budget allocated at this time.' },
 ];
 
-const selectStyle = {
-  paddingTop: '12px',
-  paddingBottom: '12px',
-  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23B87333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
-  backgroundPosition: 'right 0.75rem center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: '1.5em 1.5em',
-};
+// ============================================================
+// CUSTOM SELECT COMPONENT
+// ============================================================
+
+function CustomSelect({
+  id,
+  options,
+  placeholder,
+  value,
+  onChange,
+  isError,
+}: {
+  id: string;
+  options: { value: string; label: string }[];
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  isError?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const selected = options.find((o) => o.value === value);
+
+  useEffect(() => {
+    function onOutside(e: MouseEvent | TouchEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', onOutside);
+    document.addEventListener('touchstart', onOutside);
+    return () => {
+      document.removeEventListener('mousedown', onOutside);
+      document.removeEventListener('touchstart', onOutside);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        id={id}
+        onClick={() => setOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className={`w-full px-4 py-3 pr-10 bg-white/10 border rounded-sm text-left text-sm focus:outline-none focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer flex items-center justify-between gap-3 ${
+          isError
+            ? 'border-copper-400'
+            : 'border-copper-500/40 focus:border-copper-500'
+        }`}
+      >
+        <span className={`flex-1 leading-snug ${selected ? 'text-white' : 'text-white/40'}`}>
+          {selected ? selected.label : placeholder}
+        </span>
+        <ChevronDown
+          className={`w-4 h-4 text-copper-500 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 top-full left-0 right-0 mt-1 bg-near-black border border-copper-500/40 rounded-sm shadow-xl max-h-60 overflow-y-auto"
+          >
+            {options.map((option) => (
+              <li
+                key={option.value}
+                role="option"
+                aria-selected={value === option.value}
+                onClick={() => {
+                  onChange(option.value);
+                  setOpen(false);
+                }}
+                className={`px-4 py-3 text-sm cursor-pointer leading-snug transition-colors ${
+                  value === option.value
+                    ? 'text-copper-400 bg-copper-500/10'
+                    : 'text-white hover:bg-white/5'
+                }`}
+              >
+                {option.label}
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// ============================================================
+// FORM COMPONENT
+// ============================================================
 
 export default function StrategySessionForm() {
   const router = useRouter();
@@ -67,6 +169,7 @@ export default function StrategySessionForm() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     watch,
     trigger,
@@ -153,6 +256,9 @@ export default function StrategySessionForm() {
       fieldsToValidate = ['revenueRange', 'growthObstacle', 'hoursWasted', 'magicWandOutcome', 'investmentQualifier'];
       if (revenueRange === 'custom') {
         fieldsToValidate.push('customRevenue');
+      }
+      if (investmentQualifier === 'yes' || investmentQualifier === 'evaluating') {
+        fieldsToValidate.push('budgetRange');
       }
     }
 
@@ -339,20 +445,20 @@ export default function StrategySessionForm() {
                 <label htmlFor="revenueRange" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   Current Annual Revenue Range (Confidential) *
                 </label>
-                <select
-                  id="revenueRange"
-                  {...register('revenueRange')}
-                  aria-invalid={errors.revenueRange ? 'true' : 'false'}
-                  className="w-full appearance-none px-4 py-3 pr-10 bg-white/10 border border-copper-500/40 rounded-sm text-white focus:outline-none focus:border-copper-500 focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer [&>option]:py-2 [&>option]:px-4"
-                  style={selectStyle}
-                >
-                  <option value="" className="bg-near-black text-white py-3">Select revenue range</option>
-                  {revenueOptions.map((option) => (
-                    <option key={option.value} value={option.value} className="bg-near-black text-white py-3">
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  name="revenueRange"
+                  control={control}
+                  render={({ field }) => (
+                    <CustomSelect
+                      id="revenueRange"
+                      options={revenueOptions}
+                      placeholder="Select revenue range"
+                      value={field.value || ''}
+                      onChange={field.onChange}
+                      isError={!!errors.revenueRange}
+                    />
+                  )}
+                />
                 {errors.revenueRange && (
                   <p className="text-sm text-copper-400 font-normal mt-1">{errors.revenueRange.message}</p>
                 )}
@@ -382,20 +488,20 @@ export default function StrategySessionForm() {
                 <label htmlFor="growthObstacle" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   What is your primary operational bottleneck? *
                 </label>
-                <select
-                  id="growthObstacle"
-                  {...register('growthObstacle')}
-                  aria-invalid={errors.growthObstacle ? 'true' : 'false'}
-                  className="w-full appearance-none px-4 py-3 pr-10 bg-white/10 border border-copper-500/40 rounded-sm text-white focus:outline-none focus:border-copper-500 focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer [&>option]:py-2 [&>option]:px-4"
-                  style={selectStyle}
-                >
-                  <option value="" className="bg-near-black text-white py-3">Select your bottleneck</option>
-                  {obstacleOptions.map((option) => (
-                    <option key={option.value} value={option.value} className="bg-near-black text-white py-3">
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  name="growthObstacle"
+                  control={control}
+                  render={({ field }) => (
+                    <CustomSelect
+                      id="growthObstacle"
+                      options={obstacleOptions}
+                      placeholder="Select your bottleneck"
+                      value={field.value || ''}
+                      onChange={field.onChange}
+                      isError={!!errors.growthObstacle}
+                    />
+                  )}
+                />
                 {errors.growthObstacle && (
                   <p className="text-sm text-copper-400 font-normal mt-1">{errors.growthObstacle.message}</p>
                 )}
@@ -442,20 +548,20 @@ export default function StrategySessionForm() {
                 <label htmlFor="investmentQualifier" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   Does your organization have budget allocated for operational systems this year? *
                 </label>
-                <select
-                  id="investmentQualifier"
-                  {...register('investmentQualifier')}
-                  aria-invalid={errors.investmentQualifier ? 'true' : 'false'}
-                  className="w-full appearance-none px-4 py-3 pr-10 bg-white/10 border border-copper-500/40 rounded-sm text-white focus:outline-none focus:border-copper-500 focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer [&>option]:py-2 [&>option]:px-4"
-                  style={selectStyle}
-                >
-                  <option value="" className="bg-near-black text-white py-3">Select an option</option>
-                  {investmentOptions.map((option) => (
-                    <option key={option.value} value={option.value} className="bg-near-black text-white py-3">
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <Controller
+                  name="investmentQualifier"
+                  control={control}
+                  render={({ field }) => (
+                    <CustomSelect
+                      id="investmentQualifier"
+                      options={investmentOptions}
+                      placeholder="Select an option"
+                      value={field.value || ''}
+                      onChange={field.onChange}
+                      isError={!!errors.investmentQualifier}
+                    />
+                  )}
+                />
                 {errors.investmentQualifier && (
                   <p className="text-sm text-copper-400 font-normal mt-1">{errors.investmentQualifier.message}</p>
                 )}
@@ -470,16 +576,19 @@ export default function StrategySessionForm() {
                   transition={{ duration: 0.2 }}
                 >
                   <label htmlFor="budgetRange" className="block text-sm font-medium text-white mb-2 tracking-normal">
-                    What is your approximate budget range for this engagement?
+                    What is your approximate budget range for this engagement? *
                   </label>
                   <input
                     type="text"
                     id="budgetRange"
                     placeholder="e.g. $5,000 - $10,000"
                     {...register('budgetRange')}
+                    aria-invalid={errors.budgetRange ? 'true' : 'false'}
                     className="w-full px-4 py-3 bg-white/10 border border-copper-500/40 rounded-sm text-white placeholder-white/40 focus:outline-none focus:border-copper-500 transition-colors duration-300"
                   />
-                  <p className="text-xs text-white/50 mt-1">Optional - helps us prepare the right scope for your session.</p>
+                  {errors.budgetRange && (
+                    <p className="text-sm text-copper-400 font-normal mt-1">{errors.budgetRange.message}</p>
+                  )}
                 </motion.div>
               )}
             </div>

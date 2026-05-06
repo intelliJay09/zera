@@ -67,7 +67,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 pt-44 pb-32 sm:px-6 sm:py-40 md:py-48 lg:px-8 w-full">
           <div className="text-center">
             <motion.h1
-              className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-display font-bold text-copper-500 uppercase tracking-brand-header leading-[1.1] mb-8"
+              className="text-[3.5rem] sm:text-7xl xl:text-8xl font-display font-bold text-copper-500 uppercase tracking-brand-header leading-[1.1] mb-8"
               initial="hidden"
               animate="visible"
               variants={heroHeadline}
@@ -85,7 +85,7 @@ export default function HomePage() {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
             >
-              Automated pipelines, revenue infrastructure, and operational systems - built for high volume brands.
+              Revenue doesn't scale itself. We engineer the systems that do.
             </motion.h2>
 
             <motion.div
