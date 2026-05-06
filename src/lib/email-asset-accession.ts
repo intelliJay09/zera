@@ -157,7 +157,7 @@ export async function sendAssetAccessionTeamNotification(
 
     <div style="background-color: ${CREAM}; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
       <h3 style="margin: 0 0 15px; font-size: 16px; font-weight: 700; color: ${NEAR_BLACK};">
-        UPLOADED FILES — ${data.filesUploaded} uploaded${data.filesFailed > 0 ? `, ${data.filesFailed} failed` : ''}
+        UPLOADED FILES - ${data.filesUploaded} uploaded${data.filesFailed > 0 ? `, ${data.filesFailed} failed` : ''}
       </h3>
       ${fileListHtml(logoFiles, 'LOGO')}
       ${fileListHtml(secondaryFiles, 'SECONDARY ASSETS')}
@@ -177,7 +177,7 @@ export async function sendAssetAccessionTeamNotification(
   await transporter.sendMail({
     from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
     to: TEAM_EMAIL,
-    subject: `New Asset Accession — ${data.clientName} (${tierLabels[data.clientTier] || data.clientTier})`,
+    subject: `New Asset Accession - ${data.clientName} (${tierLabels[data.clientTier] || data.clientTier})`,
     html: emailWrapper(content),
     text: `NEW ASSET ACCESSION\n\nClient: ${data.clientName}\nTier: ${tierLabels[data.clientTier] || data.clientTier}\nAddress: ${data.registrationAddress}\nDesired Email: ${data.desiredPrimaryEmail}\n\nFiles: ${data.filesUploaded} uploaded, ${data.filesFailed} failed\n\nDrive Folder: ${data.folderUrl}\nFull credentials in ACCESSION_SUMMARY.txt`,
   });

@@ -1,5 +1,9 @@
 # Zera Project - Claude Instructions
 
+## Writing & Copy Style
+
+- **NEVER use the em dash (—)**. Always use a regular hyphen-dash (-) instead.
+
 ## Server Management
 
 ### ngrok Server

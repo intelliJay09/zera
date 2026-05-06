@@ -45,7 +45,7 @@ const LEAKS = [
     number: '01',
     title: 'The 8-Second Death Trap',
     subtitle:
-      'Why your site speed is silently destroying your ad ROI — and why WordPress is the primary culprit in Accra.',
+      'Why your site speed is silently destroying your ad ROI - and why WordPress is the primary culprit in Accra.',
   },
   {
     number: '02',
@@ -57,7 +57,7 @@ const LEAKS = [
     number: '03',
     title: 'The Follow-Up Fatigue',
     subtitle:
-      'Why your competitor closes your leads while your team sleeps — and the automated infrastructure that ends it.',
+      'Why your competitor closes your leads while your team sleeps - and the automated infrastructure that ends it.',
   },
 ];
 
@@ -85,7 +85,7 @@ export default function GhanaAuditContent() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
           <div className="grid lg:grid-cols-[1fr_460px] gap-16 lg:gap-20 items-start">
 
-            {/* ——— LEFT: Headline + Proof ——— */}
+            {/* --- LEFT: Headline + Proof --- */}
             <motion.div
               initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -95,7 +95,7 @@ export default function GhanaAuditContent() {
               <div className="inline-flex items-center gap-2.5 border border-copper-500/40 px-4 py-2 mb-10">
                 <div className="w-1.5 h-1.5 rounded-full bg-copper-500 animate-pulse flex-shrink-0" />
                 <span className="text-xs font-bold tracking-[0.2em] uppercase text-copper-500">
-                  CLASSIFIED — CEO LEVEL REVIEW ONLY
+                  CLASSIFIED - CEO LEVEL REVIEW ONLY
                 </span>
               </div>
 
@@ -111,7 +111,7 @@ export default function GhanaAuditContent() {
               <p className="text-base sm:text-lg text-white/60 leading-relaxed mb-10 max-w-xl">
                 The 2026 Ghana Executive Audit documents the exact infrastructure
                 failures destroying 40% of ad spend across Accra&rsquo;s mid-market
-                operators — and the precision fix for each one.
+                operators - and the precision fix for each one.
               </p>
 
               {/* Stats strip */}
@@ -170,7 +170,7 @@ export default function GhanaAuditContent() {
               </p>
             </motion.div>
 
-            {/* ——— RIGHT: Form Card ——— */}
+            {/* --- RIGHT: Form Card --- */}
             <motion.div
               className="lg:sticky lg:top-28"
               initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}

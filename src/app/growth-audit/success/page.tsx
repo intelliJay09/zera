@@ -90,7 +90,7 @@ export default function BookingSuccessPage() {
 
     const win = window as any;
 
-    // Cal.com official pre-init snippet — must run before embed.js loads.
+    // Cal.com official pre-init snippet - must run before embed.js loads.
     // Sets up window.Cal as a queuing proxy; embed.js replaces it on load.
     (function (C: any, A: string, L: string) {
       const p = (a: any, ar: any) => { a.q.push(ar); };

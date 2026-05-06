@@ -19,7 +19,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: 1,
     title: "Your Website is a Liability (Unless It Is a Digital HQ)",
     slug: "website-vs-digital-hq",
-    excerpt: "Most websites are Digital Brochures—static, pretty, and useless. They cost money to host but generate zero return. A Digital HQ is an asset.",
+    excerpt: "Most websites are Digital Brochures-static, pretty, and useless. They cost money to host but generate zero return. A Digital HQ is an asset.",
     category: "Digital Infrastructure",
     publishedDate: "2025-01-15",
     readTime: "6 min read",
@@ -29,7 +29,7 @@ export const BLOG_POSTS: BlogPost[] = [
       link: "/growth-audit"
     },
     content: `
-Most businesses treat their website like a **Digital Brochure**—something pretty to show investors or clients during a pitch. It sits there. It costs money to host. It generates zero return.
+Most businesses treat their website like a **Digital Brochure**-something pretty to show investors or clients during a pitch. It sits there. It costs money to host. It generates zero return.
 
 That is not a website. That is a **liability**.
 
@@ -39,7 +39,7 @@ A **Digital HQ** is different. It is an asset. It captures data. It ranks for en
 
 The problem with most web design agencies is they think in terms of **aesthetics**. Colors. Fonts. Parallax scrolling. All decoration.
 
-ZERA thinks in terms of **Conversion Physics**—the engineering that moves a visitor from curious to customer.
+ZERA thinks in terms of **Conversion Physics**-the engineering that moves a visitor from curious to customer.
 
 Here is what happens when you hire a designer instead of an engineer:
 
@@ -304,7 +304,7 @@ That is not a strategy. That is **revenue negligence**.
 
 ## Automating the Handshake: How ZERA Connects Your Form to Your CRM for Instant SMS Acknowledgement
 
-ZERA does not build contact forms. We build **Lead Capture Engines**—automated systems that respond in **seconds**, not hours.
+ZERA does not build contact forms. We build **Lead Capture Engines**-automated systems that respond in **seconds**, not hours.
 
 Here is how it works:
 
@@ -381,11 +381,11 @@ The most expensive thing in business is a **new customer**. The most profitable 
 
 And yet, most businesses obsess over acquisition while ignoring their existing database.
 
-That database—full of past clients, dormant leads, and one-time buyers—is a **goldmine**. You already paid to acquire them. They already know your brand. They are **warm**.
+That database-full of past clients, dormant leads, and one-time buyers-is a **goldmine**. You already paid to acquire them. They already know your brand. They are **warm**.
 
 All they need is a reason to come back.
 
-This is the **Win-Back Protocol**—a simple, automated email sequence that generates immediate cash flow without spending $1 on ads.
+This is the **Win-Back Protocol**-a simple, automated email sequence that generates immediate cash flow without spending $1 on ads.
 
 ## The Obsession with New: Why Businesses Burn Cash on Ads While Ignoring Their Database
 
@@ -413,7 +413,7 @@ That is not strategy. That is **ego**.
 
 ## Defining the Dead Lead: Someone Who Hasn't Bought in 90 Days
 
-A **dead lead** is not someone who said "no." It is someone who said yes once—and then disappeared.
+A **dead lead** is not someone who said "no." It is someone who said yes once-and then disappeared.
 
 Examples:
 - A client who completed a project 6 months ago
@@ -510,9 +510,9 @@ Wake it up.
     content: `
 This is the Us vs. Them post.
 
-Traditional agencies want to be paid for **Activity**—posting, blogging, designing. They sell time. They sell effort. They sell monthly retainers that never end.
+Traditional agencies want to be paid for **Activity**-posting, blogging, designing. They sell time. They sell effort. They sell monthly retainers that never end.
 
-ZERA wants to be paid for **Assets**—systems that run themselves. Infrastructure you **own**, not rent.
+ZERA wants to be paid for **Assets**-systems that run themselves. Infrastructure you **own**, not rent.
 
 This is the difference between being a **tenant** and being **sovereign**.
 
@@ -607,7 +607,7 @@ That is confidence. That is sovereignty.
 
 You can keep renting "marketing services" from agencies that need you dependent.
 
-Or you can graduate to **infrastructure**—systems you own, assets you control, sovereignty you deserve.
+Or you can graduate to **infrastructure**-systems you own, assets you control, sovereignty you deserve.
 
 Ready to stop being a tenant?
     `
@@ -636,7 +636,7 @@ We argue that a **Digital HQ** (Website + Email List) is Real Estate, while Soci
 
 ## The Tenant Mindset: Why Building on Zuckerberg's Land is a Strategic Error
 
-Social media platforms are **not your property**. They are someone else's property that you are allowed to use—until you are not.
+Social media platforms are **not your property**. They are someone else's property that you are allowed to use-until you are not.
 
 Here is what you do not control on Instagram, Facebook, TikTok, or LinkedIn:
 
@@ -687,7 +687,7 @@ You own:
 - **The data** – You capture emails, phone numbers, behavior
 - **The rules** – You decide the UX, the offers, the messaging
 
-If Google changes its algorithm, your site may rank lower—but it does not **disappear**. If your email provider shuts down, you migrate to another—but you still **own the list**.
+If Google changes its algorithm, your site may rank lower-but it does not **disappear**. If your email provider shuts down, you migrate to another-but you still **own the list**.
 
 Social media is a **billboard**. You pay to rent space. When the lease ends, your message disappears.
 
@@ -828,7 +828,7 @@ You stop guessing. You start **engineering**.
 
 ## Engineering the Flow: How We Connect the Pipes (Ad → CRM → Email → Bank)
 
-ZERA builds **Revenue Pipelines**—automated data flows that track every dollar from first click to final payment.
+ZERA builds **Revenue Pipelines**-automated data flows that track every dollar from first click to final payment.
 
 Here is the architecture:
 
@@ -867,7 +867,7 @@ When the deal closes, the system links the sale back to:
 - The salesperson who closed it
 - The total cost to acquire
 
-You now know **exactly** which marketing activity generated revenue—and which burned cash.
+You now know **exactly** which marketing activity generated revenue-and which burned cash.
 
 ### Step 5: Customer Retention Loop
 
@@ -964,7 +964,7 @@ Design is not decoration. Design is **risk mitigation**.
 
 ## Signaling Competence: How Visual Precision Equals Operational Trust
 
-International clients make hiring decisions in **30 seconds**—the time it takes to scroll your homepage.
+International clients make hiring decisions in **30 seconds**-the time it takes to scroll your homepage.
 
 In those 30 seconds, they assess:
 
@@ -976,7 +976,7 @@ If any of these fail, you lose the deal before the conversation starts.
 
 ### The Visual Quality Test
 
-Your website should look like it cost **$50,000 to build**—even if it cost $5,000.
+Your website should look like it cost **$50,000 to build**-even if it cost $5,000.
 
 Premium design signals:
 - **High standards** – You care about excellence
@@ -1065,7 +1065,7 @@ They forget to follow up. They make typos in contracts. They get tired after 8 h
 
 **Robots do not.**
 
-ZERA argues that high-value staff should focus on **Strategy**, while the system handles the **Repetition**—data entry, follow-ups, scheduling.
+ZERA argues that high-value staff should focus on **Strategy**, while the system handles the **Repetition**-data entry, follow-ups, scheduling.
 
 This is not about replacing humans. This is about **freeing them** to do work that actually requires human intelligence.
 
@@ -1213,7 +1213,7 @@ Smart Founders obsess over the **Ratio**.
 
 If your **Cost to Acquire (CAC)** is lower than your **Lifetime Value (LTV)**, you have a **money-printing machine**. If CAC is higher than LTV, you are **burning cash to go bankrupt faster**.
 
-This post explains the **Physics of Profit**—the two numbers that determine whether your business is scalable or doomed.
+This post explains the **Physics of Profit**-the two numbers that determine whether your business is scalable or doomed.
 
 ## Beyond Top-Line Revenue: Why Sales Can Be Misleading If Acquisition Is Too Expensive
 
@@ -1440,7 +1440,7 @@ Same budget. Completely different intelligence.
 
 ## The Homepage Mistake: Why Paid Traffic Needs Its Own Destination
 
-A homepage is built for brand visitors—people who already know you and want to explore.
+A homepage is built for brand visitors-people who already know you and want to explore.
 
 Paid traffic is different. It is **cold traffic**: people who have never heard of you and clicked an ad because the hook was interesting.
 
@@ -1462,7 +1462,7 @@ ZERA builds dedicated landing pages for every ad campaign:
 4. **Form above the fold** – No scrolling required to convert
 5. **Thank you page with next step** – Every conversion triggers the CRM
 
-This is **Conversion Architecture**—purpose-built pages that turn paid clicks into captured leads.
+This is **Conversion Architecture**-purpose-built pages that turn paid clicks into captured leads.
 
 ## The CRM Disconnect: Clicks That Go Nowhere
 
@@ -1509,7 +1509,7 @@ Closing a deal is not an achievement. It is the **starting line**.
 
 What happens in the 72 hours after a client signs determines whether they stay for 5 years or cancel in 30 days.
 
-Most businesses treat onboarding as an afterthought—a welcome email, a Zoom call, a shared folder. Then they wonder why clients ghost them after month two.
+Most businesses treat onboarding as an afterthought-a welcome email, a Zoom call, a shared folder. Then they wonder why clients ghost them after month two.
 
 The money is not in the close. The money is in **what comes after**.
 
@@ -1598,7 +1598,7 @@ No client problem goes undetected.
 
 A client retained for 12 months is worth 12x a client retained for 1 month.
 
-But most businesses act like retention is passive—it will happen if the work is good.
+But most businesses act like retention is passive-it will happen if the work is good.
 
 Good work is necessary. It is not sufficient.
 
@@ -1663,7 +1663,7 @@ Here is a comparison most Founders have never done:
 
 Option A costs $5,000/month indefinitely. Option B is a one-time infrastructure investment that works every month after.
 
-Most businesses choose Option A because traffic feels like growth. CRO is invisible—it compounds silently in the background.
+Most businesses choose Option A because traffic feels like growth. CRO is invisible-it compounds silently in the background.
 
 ## What Conversion Rate Actually Measures
 
@@ -1773,7 +1773,7 @@ The best leads you will ever receive cost you **$0**.
 
 They come from your happiest clients.
 
-And yet, most businesses treat referrals as a happy accident—something that occurs organically when a satisfied client mentions you at dinner.
+And yet, most businesses treat referrals as a happy accident-something that occurs organically when a satisfied client mentions you at dinner.
 
 That is not a strategy. That is **luck dressed up as a system**.
 
@@ -1818,7 +1818,7 @@ The single most important variable in a referral request is when you ask.
 
 Most businesses ask too early (before delivering results) or too late (the excitement has faded).
 
-ZERA triggers the referral request at the **Peak Satisfaction Moment**—the specific point where the client is most emotionally engaged with the results.
+ZERA triggers the referral request at the **Peak Satisfaction Moment**-the specific point where the client is most emotionally engaged with the results.
 
 This moment is different per business:
 - For a web agency: the moment the site goes live
@@ -1893,7 +1893,7 @@ Your happiest clients are your best salespeople. Give them the tools.
       link: "/growth-audit"
     },
     content: `
-If I ask you right now—which marketing channel generated the most revenue last month—can you answer in 30 seconds?
+If I ask you right now-which marketing channel generated the most revenue last month-can you answer in 30 seconds?
 
 Most Founders cannot.
 
@@ -1907,7 +1907,7 @@ That is **data blindness**. And it is costing you more than any bad ad campaign.
 
 ## The Decision Tax: What Guessing Costs You
 
-Every business decision made without data carries a **Decision Tax**—the hidden cost of acting on intuition instead of evidence.
+Every business decision made without data carries a **Decision Tax**-the hidden cost of acting on intuition instead of evidence.
 
 Here is what the Decision Tax looks like in practice:
 
@@ -1915,7 +1915,7 @@ Here is what the Decision Tax looks like in practice:
 - You run ads on Meta, Google, and LinkedIn simultaneously
 - All three generate some leads
 - You do not know which generated the most revenue
-- You distribute budget equally—or based on gut
+- You distribute budget equally-or based on gut
 - One channel is generating 70% of your revenue on 30% of your budget
 - You are under-investing in your best channel by $5,000/month
 
@@ -1932,14 +1932,14 @@ Same money. Completely different outcomes. The only variable is **visibility**.
 
 If you cannot answer these in under 60 seconds, you have a data problem:
 
-1. **Which channel generates the most revenue?** (Not the most leads—revenue)
+1. **Which channel generates the most revenue?** (Not the most leads-revenue)
 2. **What is my current conversion rate from lead to closed deal?**
 3. **What is my average Cost to Acquire a Customer this month?**
 4. **Which page on my website generates the most qualified leads?**
 
 These are not advanced analytics questions. They are **basic operational intelligence**.
 
-But without a properly configured analytics stack—GA4, CRM attribution, UTM parameters, conversion tracking—you cannot answer any of them.
+But without a properly configured analytics stack-GA4, CRM attribution, UTM parameters, conversion tracking-you cannot answer any of them.
 
 ## The Analytics Architecture: What ZERA Builds and Why
 
@@ -1966,7 +1966,7 @@ Every high-value action on the site is tracked as a Conversion Event:
 - Payment completed
 - Key page visited (e.g., /products)
 
-These events flow into GA4 and the Meta Pixel simultaneously, enabling Google Analytics to report conversion by source and Meta's algorithm to optimize toward converters—not just clickers.
+These events flow into GA4 and the Meta Pixel simultaneously, enabling Google Analytics to report conversion by source and Meta's algorithm to optimize toward converters-not just clickers.
 
 ### Layer 3: CRM Attribution (Source-to-Close)
 

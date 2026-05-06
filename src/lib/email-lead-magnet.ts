@@ -1,5 +1,5 @@
 /**
- * ZERA Lead Magnet — Email Delivery
+ * ZERA Lead Magnet - Email Delivery
  *
  * Handles:
  * 1. PDF delivery to the lead (with attachment)
@@ -79,7 +79,7 @@ export async function sendGhanaAuditDelivery(data: GhanaAuditLeadData): Promise<
 
     <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 16px 0;">Your copy of the 2026 Ghana Executive Audit is ready. Click the button below to download it now.</p>
 
-    <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 28px 0;">Inside, you will find three documented infrastructure leaks destroying 40% of ad spend across Accra's mid-market operators — and the precise engineering fix for each one.</p>
+    <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 28px 0;">Inside, you will find three documented infrastructure leaks destroying 40% of ad spend across Accra's mid-market operators - and the precise engineering fix for each one.</p>
 
     <div style="text-align: center; margin: 32px 0;">
       <a href="${pdfUrl}" style="display: inline-block; background-color: ${COPPER}; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 16px 36px;">DOWNLOAD YOUR FREE COPY</a>
@@ -92,7 +92,7 @@ export async function sendGhanaAuditDelivery(data: GhanaAuditLeadData): Promise<
       <p style="font-size: 14px; color: #ffffff; margin: 0;">Leak #3 &mdash; The Follow-Up Fatigue<br><span style="color: rgba(255,255,255,0.6); font-size: 13px;">Why your competitor closes your leads while your team sleeps</span></p>
     </div>
 
-    <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 28px 0;">After reading, the logical next step is a private <strong>Infrastructure Diagnostic</strong> — a 60-minute session where we audit your specific numbers and calculate your exact capital recovery potential.</p>
+    <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 28px 0;">After reading, the logical next step is a private <strong>Infrastructure Diagnostic</strong> - a 60-minute session where we audit your specific numbers and calculate your exact capital recovery potential.</p>
 
     <div style="text-align: center; margin: 32px 0;">
       <a href="${siteUrl}/growth-audit" style="display: inline-block; background-color: ${COPPER}; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 16px 36px;">REQUEST YOUR INFRASTRUCTURE DIAGNOSTIC</a>
@@ -104,7 +104,7 @@ export async function sendGhanaAuditDelivery(data: GhanaAuditLeadData): Promise<
   await transporter.sendMail({
     from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
     to: data.email,
-    subject: 'Your 2026 Ghana Executive Audit — Download Link Inside',
+    subject: 'Your 2026 Ghana Executive Audit - Download Link Inside',
     html: emailWrapper(content),
   });
 }
@@ -113,7 +113,7 @@ export async function sendGhanaAuditTeamNotification(data: GhanaAuditLeadData): 
   const sourceRow = (data.utmSource || data.utmMedium || data.utmCampaign)
     ? `<tr>
         <td style="padding: 12px; background-color: #f8f5f0; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #666; width: 40%;">Source</td>
-        <td style="padding: 12px; background-color: #f8f5f0; font-size: 14px; color: ${NEAR_BLACK};">${data.utmSource || '—'} / ${data.utmMedium || '—'} / ${data.utmCampaign || '—'}</td>
+        <td style="padding: 12px; background-color: #f8f5f0; font-size: 14px; color: ${NEAR_BLACK};">${data.utmSource || '-'} / ${data.utmMedium || '-'} / ${data.utmCampaign || '-'}</td>
       </tr>`
     : '';
 
@@ -143,7 +143,7 @@ export async function sendGhanaAuditTeamNotification(data: GhanaAuditLeadData): 
   await transporter.sendMail({
     from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
     to: TEAM_EMAIL,
-    subject: `New Lead — ${data.fullName} downloaded the Ghana Executive Audit`,
+    subject: `New Lead - ${data.fullName} downloaded the Ghana Executive Audit`,
     html: emailWrapper(content),
   });
 }

@@ -308,7 +308,7 @@ export default function DigitalHQContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">Full payment gateway integration so your website accepts money directly — services, bookings, and products. A website that cannot collect revenue is incomplete.</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Full payment gateway integration so your website accepts money directly - services, bookings, and products. A website that cannot collect revenue is incomplete.</div>
                   </div>
                 </div>
               </div>

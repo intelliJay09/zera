@@ -10,7 +10,7 @@ export async function GET() {
   expiresDate.setFullYear(expiresDate.getFullYear() + 1);
 
   const body = [
-    '# ZERA Digital Growth Systems — Security Policy',
+    '# ZERA Digital Growth Systems - Security Policy',
     '#',
     '# If you discover a security vulnerability, please report it responsibly.',
     '',

@@ -684,7 +684,7 @@ export default function SocialMediaManagementPage() {
               THE NUMBERS DON&apos;T LIE
             </h2>
             <p className="text-base sm:text-lg text-near-black/70 font-montserrat max-w-3xl mx-auto">
-              Social media isn&apos;t optional—it&apos;s where your customers discover, engage, and buy
+              Social media isn&apos;t optional-it&apos;s where your customers discover, engage, and buy
             </p>
           </motion.div>
 

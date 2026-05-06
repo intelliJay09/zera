@@ -24,7 +24,7 @@ export default function AboutContent() {
               <span className="text-copper-500">WE ARE ARCHITECTS.</span>
             </h1>
             <p className="text-lg sm:text-xl text-near-black/70 leading-relaxed max-w-3xl mx-auto">
-              Marketing is often treated as Art—subjective and chaotic. We treat it as Engineering—objective and measurable. We exist to replace hope with systems.
+              Most businesses run on manual processes and reactive decisions. We build the operational infrastructure that runs on autopilot - routing revenue, eliminating bottlenecks, and scaling without the overhead. We exist to replace guesswork with systems.
             </p>
           </motion.div>
         </div>
@@ -53,7 +53,7 @@ export default function AboutContent() {
                 A seed contains the entire blueprint of the forest before it even breaks the soil. It is self-replicating, resilient, and designed for exponential scale.
               </p>
               <p className="font-semibold text-near-black text-xl">
-                Most agencies build Billboards—flashy things that eventually rot. We build Seeds—systems that are engineered to grow, multiply, and generate yield long after we have left the building.
+                Most agencies build Billboards-flashy things that eventually rot. We build Seeds-systems that are engineered to grow, multiply, and generate yield long after we have left the building.
               </p>
             </div>
           </motion.div>

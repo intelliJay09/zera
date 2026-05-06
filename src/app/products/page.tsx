@@ -270,7 +270,7 @@ export default function ProductsPage() {
                   number: '02',
                   title: 'The Strategy',
                   description:
-                    'Custom roadmap tailored to your business goals. No cookie-cutter templates—every plan is architected for your specific market position.',
+                    'Custom roadmap tailored to your business goals. No cookie-cutter templates-every plan is architected for your specific market position.',
                   icon: Layers,
                 },
                 {
@@ -330,7 +330,7 @@ export default function ProductsPage() {
                 {
                   question: 'Why tiers instead of packages?',
                   answer:
-                    'Traditional agencies sell you isolated services. We build systems. Each tier is a complete phase in your digital infrastructure—foundation, growth mechanisms, then market dominance. You can\'t skip leg day and expect to run marathons.',
+                    'Traditional agencies sell you isolated services. We build systems. Each tier is a complete phase in your digital infrastructure-foundation, growth mechanisms, then market dominance. You can\'t skip leg day and expect to run marathons.',
                 },
                 {
                   question: 'Can I skip to Tier III?',

@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
     const filesFailed = results.filter((r) => !r.success).length;
 
     console.warn(
-      `[Asset Accession] "${clientName}" — ${filesUploaded} uploaded, ${filesFailed} failed → ${folderUrl}`
+      `[Asset Accession] "${clientName}" - ${filesUploaded} uploaded, ${filesFailed} failed → ${folderUrl}`
     );
 
     // STEP 7: Build and upload submission summary document
@@ -203,7 +203,7 @@ export async function POST(request: NextRequest) {
     const doubleLine = '════════════════════════════════════════════════════════';
 
     let summary = `${doubleLine}
-ZERA — ASSET ACCESSION SUMMARY
+ZERA - ASSET ACCESSION SUMMARY
 ${doubleLine}
 Submitted: ${timestamp}
 
@@ -278,19 +278,19 @@ DOMAIN REGISTRAR
     if (logoResults.length > 0) {
       summary += '\n\nLogo Files:';
       for (const r of logoResults) {
-        summary += `\n  ${r.fileName} — ${r.success ? 'uploaded' : 'FAILED: ' + r.error}`;
+        summary += `\n  ${r.fileName} - ${r.success ? 'uploaded' : 'FAILED: ' + r.error}`;
       }
     }
     if (secondaryResults.length > 0) {
       summary += '\n\nSecondary Assets:';
       for (const r of secondaryResults) {
-        summary += `\n  ${r.fileName} — ${r.success ? 'uploaded' : 'FAILED: ' + r.error}`;
+        summary += `\n  ${r.fileName} - ${r.success ? 'uploaded' : 'FAILED: ' + r.error}`;
       }
     }
     if (guidelineResults.length > 0) {
       summary += '\n\nBrand Guidelines:';
       for (const r of guidelineResults) {
-        summary += `\n  ${r.fileName} — ${r.success ? 'uploaded' : 'FAILED: ' + r.error}`;
+        summary += `\n  ${r.fileName} - ${r.success ? 'uploaded' : 'FAILED: ' + r.error}`;
       }
     }
 

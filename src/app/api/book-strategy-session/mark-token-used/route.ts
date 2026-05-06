@@ -171,7 +171,7 @@ export async function POST(request: NextRequest) {
         }
 
         // ========================================
-        // NOTIFY CRM (Make.com) — Path A trigger
+        // NOTIFY CRM (Make.com) - Path A trigger
         // ========================================
         try {
           await sendToCRM({

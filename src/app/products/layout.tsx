@@ -5,7 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
 export const metadata: Metadata = {
   title: 'Products | Digital Growth Systems',
   description:
-    'Three-tier digital growth systems engineered for market sovereignty. From Digital HQ to Market Monopoly — choose the system that matches your ambition.',
+    'Three-tier digital growth systems engineered for market sovereignty. From Digital HQ to Market Monopoly - choose the system that matches your ambition.',
   keywords: [
     'Digital Growth Systems',
     'Web Development Packages',

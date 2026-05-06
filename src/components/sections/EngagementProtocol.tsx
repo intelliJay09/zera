@@ -34,7 +34,7 @@ const phases = [
     title: 'THE DEPLOYMENT',
     subtitle: '',
     description:
-      'We execute the build. Whether it is a Digital HQ or a Growth System, we deploy within your agreed project timeline — systematically and on schedule.',
+      'We execute the build. Whether it is a Digital HQ or a Growth System, we deploy within your agreed project timeline - systematically and on schedule.',
     icon: Cog,
   },
   {

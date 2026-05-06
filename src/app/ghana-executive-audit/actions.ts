@@ -93,7 +93,7 @@ export async function submitLeadForm(
     // 4. Redirect to success page
     redirect('/success');
   } catch (error) {
-    // Re-throw Next.js redirect — it's not an error
+    // Re-throw Next.js redirect - it's not an error
     if (isRedirectError(error)) throw error;
 
     console.error('[LeadForm] Unexpected error:', error);

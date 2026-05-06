@@ -135,7 +135,7 @@ export interface UploadResult {
 /**
  * Orchestrator: create a client folder, upload all files, return results.
  *
- * Partial failures are tolerated — if some files fail to upload,
+ * Partial failures are tolerated - if some files fail to upload,
  * the successful ones are still reported. The caller decides how to
  * present partial results to the user.
  *

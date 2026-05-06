@@ -10,7 +10,7 @@ export const luxuryEase = [0.25, 0.46, 0.45, 0.94] as const;
 export const powerEase = [0.16, 1, 0.3, 1] as const;
 export const playfulEase = [0.34, 1.56, 0.64, 1] as const;
 
-// Hero section — used by page.tsx
+// Hero section - used by page.tsx
 export const heroHeadline = {
   hidden: {
     opacity: 0,
@@ -29,7 +29,7 @@ export const heroHeadline = {
   },
 };
 
-// Service tier grid — used by ServiceTierGrid.tsx
+// Service tier grid - used by ServiceTierGrid.tsx
 export const twoPillarsOverline = {
   hidden: {
     opacity: 0,
@@ -97,7 +97,7 @@ export const customWebFeaturesCard = {
   },
 };
 
-// Contact / Booking page — used by BookSessionContent.tsx
+// Contact / Booking page - used by BookSessionContent.tsx
 export const contactHeroHeadline = {
   hidden: {
     opacity: 0,
@@ -164,7 +164,7 @@ export const contactInfoContainer = {
   },
 };
 
-// Contact form fields — used by ContactForm.tsx
+// Contact form fields - used by ContactForm.tsx
 export const contactFormFieldStagger = {
   hidden: { opacity: 0 },
   visible: {
@@ -223,7 +223,7 @@ export const contactSuccessIcon = {
   },
 };
 
-// Cookie consent — used by CookieConsent.tsx
+// Cookie consent - used by CookieConsent.tsx
 export const cookieBanner = {
   hidden: {
     opacity: 0,
@@ -275,7 +275,7 @@ export const cookieToggleSwitch = {
   },
 };
 
-// Asset accession — used by AssetAccessionContent.tsx
+// Asset accession - used by AssetAccessionContent.tsx
 export const accessionFieldStagger = {
   hidden: { opacity: 0 },
   visible: {

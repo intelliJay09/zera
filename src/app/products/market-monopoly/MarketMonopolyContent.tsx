@@ -276,7 +276,7 @@ export default function MarketMonopolyContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We build automated onboarding sequences that activate new contacts the moment they enter your ecosystem, plus year-round engagement cadences that keep your audience warm, loyal, and primed to buy again — without manual effort</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We build automated onboarding sequences that activate new contacts the moment they enter your ecosystem, plus year-round engagement cadences that keep your audience warm, loyal, and primed to buy again - without manual effort</div>
                   </div>
                 </div>
               </div>
@@ -309,7 +309,7 @@ export default function MarketMonopolyContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We engineer additional revenue streams beyond one-to-one service delivery — digital assets, event funnels, and automated monetization systems. Your business generates income while you sleep, independent of hours worked</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We engineer additional revenue streams beyond one-to-one service delivery - digital assets, event funnels, and automated monetization systems. Your business generates income while you sleep, independent of hours worked</div>
                   </div>
                 </div>
               </div>

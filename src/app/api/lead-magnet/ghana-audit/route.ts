@@ -1,7 +1,7 @@
 /**
  * POST /api/lead-magnet/ghana-audit
  *
- * Lead Magnet — 2026 Ghana Executive Audit PDF Delivery
+ * Lead Magnet - 2026 Ghana Executive Audit PDF Delivery
  *
  * Flow:
  * 1. Verify CSRF token + rate limit + reCAPTCHA

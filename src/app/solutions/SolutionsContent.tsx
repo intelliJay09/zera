@@ -26,7 +26,7 @@ export default function SolutionsContent() {
               AUTOMATED OPERATIONAL SYSTEMS & REVENUE INFRASTRUCTURE
             </h1>
             <p className="text-lg sm:text-xl font-normal text-cream-100/80 leading-relaxed tracking-normal max-w-3xl">
-              We architect automated operational systems that replace manual bottlenecks with precision infrastructure. From commercial web architecture and search entity authority to CRM automation pipelines and cross-system revenue routing — built for high-volume brands ready to dominate their markets.
+              We architect automated operational systems that replace manual bottlenecks with precision infrastructure. From commercial web architecture and search entity authority to CRM automation pipelines and cross-system revenue routing - built for high-volume brands ready to dominate their markets.
             </p>
           </div>
         </div>

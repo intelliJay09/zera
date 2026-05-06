@@ -243,7 +243,7 @@ export default function GrowthSystemContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We engineer and deploy a custom automation infrastructure across your business. Every lead entry triggers instant tagging, CRM pipeline routing, team notifications, and onboarding sequences — zero manual intervention required</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We engineer and deploy a custom automation infrastructure across your business. Every lead entry triggers instant tagging, CRM pipeline routing, team notifications, and onboarding sequences - zero manual intervention required</div>
                   </div>
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function GrowthSystemContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We engineer a downloadable resource — checklist, blueprint, or guide — positioned as essential to your audience. Paired with a dedicated opt-in page and CRM integration, every download automatically builds your owned list</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We engineer a downloadable resource - checklist, blueprint, or guide - positioned as essential to your audience. Paired with a dedicated opt-in page and CRM integration, every download automatically builds your owned list</div>
                   </div>
                 </div>
               </div>
@@ -309,7 +309,7 @@ export default function GrowthSystemContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We permanently eliminate your team's manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, real-time operational alerts — your business executes without the bottlenecks</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We permanently eliminate your team's manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, real-time operational alerts - your business executes without the bottlenecks</div>
                   </div>
                 </div>
               </div>

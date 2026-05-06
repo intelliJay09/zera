@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     await transporter.sendMail({
       from: `${process.env.SMTP_FROM_NAME} <${process.env.SMTP_FROM_EMAIL}>`,
       to: 'jacque.amoako@gmail.com',
-      subject: `New Contact Inquiry — ${sanitizeForEmail(data.fullName)} (${categoryLabels[data.inquiryType || 'general'] || 'General'})`,
+      subject: `New Contact Inquiry - ${sanitizeForEmail(data.fullName)} (${categoryLabels[data.inquiryType || 'general'] || 'General'})`,
       html: `
         <h2>New Contact Inquiry</h2>
         <p><strong>Category:</strong> ${categoryLabels[data.inquiryType || 'general'] || 'General'}</p>

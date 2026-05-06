@@ -33,7 +33,7 @@ export const PRODUCT_TIERS: ProductTier[] = [
       {
         title: 'Search Entity & Authority Registration',
         description:
-          'We make Google recognize your business as an authority — not just a website.',
+          'We make Google recognize your business as an authority - not just a website.',
       },
       {
         title: 'Technical SEO Foundation',
@@ -65,28 +65,28 @@ export const PRODUCT_TIERS: ProductTier[] = [
       {
         title: 'Lead Acquisition Pipelines',
         description:
-          'We build pages and forms that guide visitors to a single goal—booking a call or buying a product.',
+          'We build pages and forms that guide visitors to a single goal-booking a call or buying a product.',
         why: 'A standard Contact Us page leaks revenue. A Pipeline captures it.',
       },
       {
         title: 'The Lead Capture Engine',
         description:
-          'CRM integration that instantly captures, tags, and sequences every lead — regardless of source.',
+          'CRM integration that instantly captures, tags, and sequences every lead - regardless of source.',
       },
       {
         title: 'The Automation Architecture',
         description:
-          'We engineer and deploy a proprietary workflow automation infrastructure across your entire business. Every lead entry triggers instant tagging, pipeline routing, team notifications, and onboarding sequences — zero manual intervention.',
+          'We engineer and deploy a proprietary workflow automation infrastructure across your entire business. Every lead entry triggers instant tagging, pipeline routing, team notifications, and onboarding sequences - zero manual intervention.',
       },
       {
         title: 'The Lead Magnet System',
         description:
-          'A downloadable asset that converts cold visitors into owned subscribers — no social platform required.',
+          'A downloadable asset that converts cold visitors into owned subscribers - no social platform required.',
       },
       {
         title: 'The Operations Bridge',
         description:
-          'We eliminate your team\'s manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, and real-time operational alerts — your business executes without the bottlenecks.',
+          'We eliminate your team\'s manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, and real-time operational alerts - your business executes without the bottlenecks.',
       },
     ],
     slug: 'growth-system',
@@ -103,7 +103,7 @@ export const PRODUCT_TIERS: ProductTier[] = [
       {
         title: 'The Lifecycle Ecosystem',
         description:
-          'We engineer cross-system data routing that automatically moves leads between CRMs with customized executive follow-up sequences — your entire customer base managed on autopilot.',
+          'We engineer cross-system data routing that automatically moves leads between CRMs with customized executive follow-up sequences - your entire customer base managed on autopilot.',
       },
       {
         title: 'The Win-Back Protocol',
@@ -113,17 +113,17 @@ export const PRODUCT_TIERS: ProductTier[] = [
       {
         title: 'The LTV Strategy',
         description:
-          'A year-long operational calendar engineered to maximize Lifetime Value — structured around your revenue cycles, not arbitrary send schedules.',
+          'A year-long operational calendar engineered to maximize Lifetime Value - structured around your revenue cycles, not arbitrary send schedules.',
       },
       {
         title: 'The Audience Infrastructure',
         description:
-          'Automated onboarding and segmentation systems that route new contacts into the correct pipeline based on their source, behavior, and intent — zero manual sorting.',
+          'Automated onboarding and segmentation systems that route new contacts into the correct pipeline based on their source, behavior, and intent - zero manual sorting.',
       },
       {
         title: 'Scalable Revenue Architecture',
         description:
-          'We build the data infrastructure that allows your business to generate revenue from multiple channels simultaneously — digital assets, events, and automated monetization running in parallel.',
+          'We build the data infrastructure that allows your business to generate revenue from multiple channels simultaneously - digital assets, events, and automated monetization running in parallel.',
       },
     ],
     slug: 'market-monopoly',

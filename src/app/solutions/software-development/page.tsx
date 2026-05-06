@@ -146,7 +146,7 @@ export default function SoftwareDevelopmentPage() {
       title: 'Mobile App Development',
       tagline: 'Native & Cross-Platform Excellence',
       description:
-        'Beautiful, performant mobile applications for iOS and Android. Native Swift/Kotlin or cross-platform React Native/Flutter—optimized for your needs.',
+        'Beautiful, performant mobile applications for iOS and Android. Native Swift/Kotlin or cross-platform React Native/Flutter-optimized for your needs.',
       features: [
         'iOS & Android development',
         'Cross-platform solutions',
@@ -330,7 +330,7 @@ export default function SoftwareDevelopmentPage() {
     {
       question: 'How is software development different from web development?',
       answer:
-        'Web development focuses on websites and browser-based applications—online presence, marketing sites, e-commerce platforms. Software development encompasses custom business tools, mobile applications, SaaS platforms, enterprise systems, and internal automation. Think of web development as your digital storefront; software development as the operational engine that powers your business processes. Both require technical excellence, but software development typically involves more complex logic, data architecture, and system integrations.',
+        'Web development focuses on websites and browser-based applications-online presence, marketing sites, e-commerce platforms. Software development encompasses custom business tools, mobile applications, SaaS platforms, enterprise systems, and internal automation. Think of web development as your digital storefront; software development as the operational engine that powers your business processes. Both require technical excellence, but software development typically involves more complex logic, data architecture, and system integrations.',
     },
     {
       question: 'Do you develop mobile apps for both iOS and Android?',
@@ -340,22 +340,22 @@ export default function SoftwareDevelopmentPage() {
     {
       question: 'What is the typical investment for custom software development?',
       answer:
-        'Projects typically range from $35,000 for MVP mobile apps to $300,000+ for comprehensive enterprise systems. Investment depends on complexity, platform requirements, integrations, expected user load, and security needs. We provide transparent proposals with phase breakdowns after discovery, giving you flexibility to proceed incrementally. Our focus is ROI—the right software investment often delivers returns that justify significantly higher upfront costs through operational efficiency, revenue generation, or competitive differentiation.',
+        'Projects typically range from $35,000 for MVP mobile apps to $300,000+ for comprehensive enterprise systems. Investment depends on complexity, platform requirements, integrations, expected user load, and security needs. We provide transparent proposals with phase breakdowns after discovery, giving you flexibility to proceed incrementally. Our focus is ROI-the right software investment often delivers returns that justify significantly higher upfront costs through operational efficiency, revenue generation, or competitive differentiation.',
     },
     {
       question: 'How long does it take to build custom software?',
       answer:
-        'Most projects launch within 4-8 months from kickoff, though timelines vary based on scope and complexity. Simple mobile apps: 3-4 months. Mid-complexity SaaS platforms: 6-9 months. Enterprise systems: 9-18 months. Our agile approach delivers functional increments every 2-3 weeks, allowing you to see progress continuously. We can also structure phased launches—delivering core functionality first, then iterating based on user feedback and business priorities.',
+        'Most projects launch within 4-8 months from kickoff, though timelines vary based on scope and complexity. Simple mobile apps: 3-4 months. Mid-complexity SaaS platforms: 6-9 months. Enterprise systems: 9-18 months. Our agile approach delivers functional increments every 2-3 weeks, allowing you to see progress continuously. We can also structure phased launches-delivering core functionality first, then iterating based on user feedback and business priorities.',
     },
     {
       question: 'Will we own the source code?',
       answer:
-        'Absolutely. You own 100% of the custom code we write, design assets, and intellectual property developed for your project. We provide complete source code access, comprehensive documentation, deployment guides, and knowledge transfer. Our goal is partnership, not lock-in. You should have the freedom to take development in-house, engage different developers, or continue with us because we deliver exceptional value—not because you&apos;re technically dependent.',
+        'Absolutely. You own 100% of the custom code we write, design assets, and intellectual property developed for your project. We provide complete source code access, comprehensive documentation, deployment guides, and knowledge transfer. Our goal is partnership, not lock-in. You should have the freedom to take development in-house, engage different developers, or continue with us because we deliver exceptional value-not because you&apos;re technically dependent.',
     },
     {
       question: 'Do you provide ongoing support and maintenance?',
       answer:
-        'Yes, and we strongly recommend it. Software requires ongoing attention—security updates, performance monitoring, bug fixes, and evolutionary enhancements. Our support packages include reactive support (issue resolution), proactive maintenance (monitoring and optimization), and evolutionary development (feature enhancements). Most clients choose comprehensive retainers that combine all three, providing dedicated technical partnership without the overhead of in-house development teams.',
+        'Yes, and we strongly recommend it. Software requires ongoing attention-security updates, performance monitoring, bug fixes, and evolutionary enhancements. Our support packages include reactive support (issue resolution), proactive maintenance (monitoring and optimization), and evolutionary development (feature enhancements). Most clients choose comprehensive retainers that combine all three, providing dedicated technical partnership without the overhead of in-house development teams.',
     },
   ];
 

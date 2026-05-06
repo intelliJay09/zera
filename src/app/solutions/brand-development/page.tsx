@@ -329,7 +329,7 @@ export default function BrandDevelopmentPage() {
     {
       question: 'What\'s the difference between branding and a logo?',
       answer:
-        'A logo is just one small part of your brand. Branding encompasses your entire identity: visual design, messaging, voice, values, and how customers perceive you. Your logo is the face, but your brand is the complete personality, promise, and experience. Think of Apple—their logo is iconic, but their brand is minimalism, innovation, and premium quality. We build complete brand systems, not just logos.',
+        'A logo is just one small part of your brand. Branding encompasses your entire identity: visual design, messaging, voice, values, and how customers perceive you. Your logo is the face, but your brand is the complete personality, promise, and experience. Think of Apple-their logo is iconic, but their brand is minimalism, innovation, and premium quality. We build complete brand systems, not just logos.',
     },
     {
       question: 'How long does a brand development project take?',
@@ -339,7 +339,7 @@ export default function BrandDevelopmentPage() {
     {
       question: 'Will I own all the brand assets you create?',
       answer:
-        'Yes, absolutely. You own 100% of the final brand identity we create—logo files, design assets, guidelines, and all deliverables. We provide files in all necessary formats (vector, raster, web-optimized) and comprehensive usage guidelines. You have full ownership and can use, modify, or license your brand identity however you choose. Our goal is partnership, not lock-in.',
+        'Yes, absolutely. You own 100% of the final brand identity we create-logo files, design assets, guidelines, and all deliverables. We provide files in all necessary formats (vector, raster, web-optimized) and comprehensive usage guidelines. You have full ownership and can use, modify, or license your brand identity however you choose. Our goal is partnership, not lock-in.',
     },
     {
       question: 'Can you work with our existing brand or do we start fresh?',
@@ -349,12 +349,12 @@ export default function BrandDevelopmentPage() {
     {
       question: 'What if we don\'t like the initial brand concepts?',
       answer:
-        'We build revision rounds into every package to ensure you love the final result. Launch includes 2 revision rounds, Scale includes 3, and Dominate includes 6. We present multiple initial concepts based on strategic discovery, then refine your preferred direction through collaborative feedback. Our process is iterative by design—your satisfaction is the metric that matters. We don\'t stop until your brand feels right.',
+        'We build revision rounds into every package to ensure you love the final result. Launch includes 2 revision rounds, Scale includes 3, and Dominate includes 6. We present multiple initial concepts based on strategic discovery, then refine your preferred direction through collaborative feedback. Our process is iterative by design-your satisfaction is the metric that matters. We don\'t stop until your brand feels right.',
     },
     {
       question: 'Do you provide brand strategy or just design?',
       answer:
-        'We provide both strategic and creative services. Brand development starts with strategy—understanding your market position, target audience, value proposition, and competitive differentiation. Design comes after strategy, ensuring every visual choice supports business objectives. Scale and Dominate packages include comprehensive brand strategy. Launch packages focus on visual identity but are informed by strategic discovery conversations.',
+        'We provide both strategic and creative services. Brand development starts with strategy-understanding your market position, target audience, value proposition, and competitive differentiation. Design comes after strategy, ensuring every visual choice supports business objectives. Scale and Dominate packages include comprehensive brand strategy. Launch packages focus on visual identity but are informed by strategic discovery conversations.',
     },
   ];
 
