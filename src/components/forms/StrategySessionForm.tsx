@@ -6,19 +6,21 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, AlertCircle, Loader2, Lock, ArrowRight, ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { executeRecaptcha } from '@/lib/recaptcha-client';
 
-// Form validation schema for strategy session
 const strategySessionSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
   businessEmail: z.string().email('Please enter a valid email address'),
   companyName: z.string().min(1, 'Company name is required'),
-  websiteUrl: z.string().min(1, 'Website URL is required (type N/A if you do not have one)'),
-  whatsappNumber: z.string().min(1, 'WhatsApp number is required'),
+  websiteUrl: z.string().optional(),
+  phoneNumber: z.string().min(1, 'Phone number is required'),
   revenueRange: z.enum(['pre-revenue', '50k-250k', '250k-1m', '1m+', 'custom']),
   customRevenue: z.string().optional(),
-  growthObstacle: z.enum(['visibility', 'lead-flow', 'retention', 'chaos']),
-  magicWandOutcome: z.string().min(10, 'Please describe your desired outcome (at least 10 characters)'),
+  growthObstacle: z.enum(['manual-chaos', 'lead-leakage', 'fragmented-tech', 'client-retention']),
+  hoursWasted: z.string().min(1, 'Please estimate hours wasted per week'),
+  magicWandOutcome: z.string().min(10, 'Please describe your target metric (at least 10 characters)'),
+  investmentQualifier: z.enum(['yes', 'evaluating', 'no-budget']),
 });
 
 type StrategySessionData = z.infer<typeof strategySessionSchema>;
@@ -32,13 +34,29 @@ const revenueOptions = [
 ];
 
 const obstacleOptions = [
-  { value: 'visibility', label: 'Visibility: We are invisible. Nobody knows we exist.' },
-  { value: 'lead-flow', label: 'Lead Flow: We have traffic, but no predictable leads.' },
-  { value: 'retention', label: 'Retention: We are losing customers / Need to scale LTV.' },
-  { value: 'chaos', label: 'Chaos: Our systems are messy and manual.' },
+  { value: 'manual-chaos', label: 'Manual Chaos - Our team drowns in repetitive, manual processes.' },
+  { value: 'lead-leakage', label: 'Lead Leakage - We have traffic and interest, but leads slip through.' },
+  { value: 'fragmented-tech', label: 'Fragmented Tech - Our tools do not talk to each other.' },
+  { value: 'client-retention', label: 'Client Retention - We acquire customers but struggle to keep them.' },
 ];
 
+const investmentOptions = [
+  { value: 'yes', label: 'Yes - Budget is allocated. We are ready to move.' },
+  { value: 'evaluating', label: 'Evaluating - This is a priority and we are aligning budget now.' },
+  { value: 'no-budget', label: 'No - This is outside our current budget range.' },
+];
+
+const selectStyle = {
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23B87333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
+  backgroundPosition: 'right 0.75rem center',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '1.5em 1.5em',
+};
+
 export default function StrategySessionForm() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -50,6 +68,7 @@ export default function StrategySessionForm() {
     formState: { errors },
     watch,
     trigger,
+    getValues,
   } = useForm<StrategySessionData>({
     resolver: zodResolver(strategySessionSchema),
     mode: 'onBlur',
@@ -63,18 +82,15 @@ export default function StrategySessionForm() {
     setErrorMessage('');
 
     try {
-      // Execute reCAPTCHA
       const recaptchaToken = await executeRecaptcha('book_strategy_session');
 
       if (!recaptchaToken) {
         throw new Error('Security verification failed. Please try again.');
       }
 
-      // Get CSRF token
       const csrfResponse = await fetch('/api/csrf-token');
       const { token: csrfToken } = await csrfResponse.json();
 
-      // Extract UTM parameters from URL
       const params = new URLSearchParams(window.location.search);
       const utmData = {
         utmSource: params.get('utm_source') || undefined,
@@ -84,7 +100,6 @@ export default function StrategySessionForm() {
         utmContent: params.get('utm_content') || undefined,
       };
 
-      // Submit to strategy session booking endpoint
       const response = await fetch('/api/book-strategy-session/submit', {
         method: 'POST',
         headers: {
@@ -105,9 +120,7 @@ export default function StrategySessionForm() {
 
       const result = await response.json();
 
-      // Redirect to Paystack payment page
       if (result.success && result.authorizationUrl) {
-        // Push form submission event to GTM dataLayer
         (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer?.push({
           event: 'strategy_session_submitted',
           company_name: data.companyName,
@@ -132,9 +145,9 @@ export default function StrategySessionForm() {
     let fieldsToValidate: (keyof StrategySessionData)[] = [];
 
     if (currentStep === 1) {
-      fieldsToValidate = ['fullName', 'businessEmail', 'companyName', 'websiteUrl', 'whatsappNumber'];
+      fieldsToValidate = ['fullName', 'businessEmail', 'companyName', 'phoneNumber'];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['revenueRange', 'growthObstacle', 'magicWandOutcome'];
+      fieldsToValidate = ['revenueRange', 'growthObstacle', 'hoursWasted', 'magicWandOutcome', 'investmentQualifier'];
       if (revenueRange === 'custom') {
         fieldsToValidate.push('customRevenue');
       }
@@ -142,10 +155,14 @@ export default function StrategySessionForm() {
 
     const isValid = await trigger(fieldsToValidate);
     if (isValid) {
+      if (currentStep === 2 && getValues('investmentQualifier') === 'no-budget') {
+        router.push('/systems-audit/not-qualified');
+        return;
+      }
+
       const nextStepNumber = currentStep + 1;
       setCurrentStep(nextStepNumber);
 
-      // Track form step progression in GTM
       (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer?.push({
         event: 'booking_form_step',
         step_number: nextStepNumber,
@@ -165,7 +182,7 @@ export default function StrategySessionForm() {
         <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase text-white mb-2 tracking-brand-header">
           SYSTEMS AUDIT INTAKE
         </h2>
-        <p className="text-sm text-cream-200/80 italic">
+        <p className="text-sm text-cream-200/80">
           Confidential Data Collection for Pre-Session Analysis.
         </p>
       </div>
@@ -209,16 +226,16 @@ export default function StrategySessionForm() {
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="border-l-2 border-copper-500 pl-6">
-                <h3 className="text-lg font-bold text-copper-500 mb-4 uppercase tracking-wide">
+                <h3 className="text-lg font-bold text-copper-500 mb-1 uppercase tracking-wide">
                   STEP 1: THE ENTITY
                 </h3>
+                <p className="text-sm text-white/60">
+                  We pre-analyze every entity before the session. No cold calls.
+                </p>
               </div>
 
               <div>
-                <label
-                  htmlFor="fullName"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
+                <label htmlFor="fullName" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   Full Name *
                 </label>
                 <input
@@ -235,10 +252,7 @@ export default function StrategySessionForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="businessEmail"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
+                <label htmlFor="businessEmail" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   Business Email *
                 </label>
                 <input
@@ -255,10 +269,7 @@ export default function StrategySessionForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="companyName"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
+                <label htmlFor="companyName" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   Company Name *
                 </label>
                 <input
@@ -275,63 +286,54 @@ export default function StrategySessionForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="websiteUrl"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
-                  Current Website URL *
+                <label htmlFor="websiteUrl" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                  Website URL
                 </label>
                 <input
                   type="text"
                   id="websiteUrl"
-                  placeholder="https://www.yoursite.com (or type N/A)"
+                  placeholder="https://www.yoursite.com"
                   {...register('websiteUrl')}
-                  aria-invalid={errors.websiteUrl ? 'true' : 'false'}
                   className="w-full px-4 py-3 bg-white/10 border border-copper-500/40 rounded-sm text-white placeholder-white/40 focus:outline-none focus:border-copper-500 transition-colors duration-300"
                 />
-                {errors.websiteUrl && (
-                  <p className="text-sm text-copper-400 font-normal mt-1">{errors.websiteUrl.message}</p>
-                )}
-                <p className="text-xs text-white/60 mt-1">If you don&rsquo;t have one, type &ldquo;N/A&rdquo;</p>
+                <p className="text-xs text-white/50 mt-1">Optional - leave blank if you do not have one yet.</p>
               </div>
 
               <div>
-                <label
-                  htmlFor="whatsappNumber"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
-                  Direct WhatsApp Number *
+                <label htmlFor="phoneNumber" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                  Phone Number *
                 </label>
                 <input
                   type="tel"
-                  id="whatsappNumber"
-                  placeholder="+233 50 000 0000"
-                  {...register('whatsappNumber')}
-                  aria-invalid={errors.whatsappNumber ? 'true' : 'false'}
+                  id="phoneNumber"
+                  placeholder="+1 555 000 0000"
+                  {...register('phoneNumber')}
+                  aria-invalid={errors.phoneNumber ? 'true' : 'false'}
                   className="w-full px-4 py-3 bg-white/10 border border-copper-500/40 rounded-sm text-white placeholder-white/40 focus:outline-none focus:border-copper-500 transition-colors duration-300"
                 />
-                {errors.whatsappNumber && (
-                  <p className="text-sm text-copper-400 font-normal mt-1">{errors.whatsappNumber.message}</p>
+                {errors.phoneNumber && (
+                  <p className="text-sm text-copper-400 font-normal mt-1">{errors.phoneNumber.message}</p>
                 )}
-                <p className="text-xs text-white/60 mt-1">We&rsquo;ll use this to confirm your meeting</p>
+                <p className="text-xs text-white/50 mt-1">Include country code. We use this to confirm your session.</p>
               </div>
             </div>
           )}
 
-          {/* STEP 2: THE CALIBRATION */}
+          {/* STEP 2: THE DIAGNOSTIC */}
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="border-l-2 border-copper-500 pl-6">
-                <h3 className="text-lg font-bold text-copper-500 mb-4 uppercase tracking-wide">
-                  STEP 2: THE CALIBRATION
+                <h3 className="text-lg font-bold text-copper-500 mb-1 uppercase tracking-wide">
+                  STEP 2: THE DIAGNOSTIC
                 </h3>
+                <p className="text-sm text-white/60">
+                  Operational diagnostics. Tell us where your systems are breaking down.
+                </p>
               </div>
 
+              {/* Revenue Range */}
               <div>
-                <label
-                  htmlFor="revenueRange"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
+                <label htmlFor="revenueRange" className="block text-sm font-medium text-white mb-2 tracking-normal">
                   Current Annual Revenue Range (Confidential) *
                 </label>
                 <select
@@ -339,14 +341,7 @@ export default function StrategySessionForm() {
                   {...register('revenueRange')}
                   aria-invalid={errors.revenueRange ? 'true' : 'false'}
                   className="w-full appearance-none px-4 py-3 pr-10 bg-white/10 border border-copper-500/40 rounded-sm text-white focus:outline-none focus:border-copper-500 focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer [&>option]:py-2 [&>option]:px-4"
-                  style={{
-                    paddingTop: '12px',
-                    paddingBottom: '12px',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23B87333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
-                    backgroundPosition: 'right 0.75rem center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '1.5em 1.5em',
-                  }}
+                  style={selectStyle}
                 >
                   <option value="" className="bg-near-black text-white py-3">Select revenue range</option>
                   {revenueOptions.map((option) => (
@@ -366,10 +361,7 @@ export default function StrategySessionForm() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                 >
-                  <label
-                    htmlFor="customRevenue"
-                    className="block text-sm font-medium text-white mb-2 tracking-normal"
-                  >
+                  <label htmlFor="customRevenue" className="block text-sm font-medium text-white mb-2 tracking-normal">
                     Specify Your Revenue Range *
                   </label>
                   <input
@@ -382,28 +374,19 @@ export default function StrategySessionForm() {
                 </motion.div>
               )}
 
+              {/* Q1: Operational Bottleneck */}
               <div>
-                <label
-                  htmlFor="growthObstacle"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
-                  Primary Growth Obstacle *
+                <label htmlFor="growthObstacle" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                  What is your primary operational bottleneck? *
                 </label>
                 <select
                   id="growthObstacle"
                   {...register('growthObstacle')}
                   aria-invalid={errors.growthObstacle ? 'true' : 'false'}
                   className="w-full appearance-none px-4 py-3 pr-10 bg-white/10 border border-copper-500/40 rounded-sm text-white focus:outline-none focus:border-copper-500 focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer [&>option]:py-2 [&>option]:px-4"
-                  style={{
-                    paddingTop: '12px',
-                    paddingBottom: '12px',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23B87333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
-                    backgroundPosition: 'right 0.75rem center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '1.5em 1.5em',
-                  }}
+                  style={selectStyle}
                 >
-                  <option value="" className="bg-near-black text-white py-3">Select your obstacle</option>
+                  <option value="" className="bg-near-black text-white py-3">Select your bottleneck</option>
                   {obstacleOptions.map((option) => (
                     <option key={option.value} value={option.value} className="bg-near-black text-white py-3">
                       {option.label}
@@ -415,12 +398,28 @@ export default function StrategySessionForm() {
                 )}
               </div>
 
+              {/* Q2: Hours Wasted */}
               <div>
-                <label
-                  htmlFor="magicWandOutcome"
-                  className="block text-sm font-medium text-white mb-2 tracking-normal"
-                >
-                  In 12 months, what specific outcome would make this partnership a massive success? *
+                <label htmlFor="hoursWasted" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                  How many hours per week does your team lose to manual processes? *
+                </label>
+                <input
+                  type="text"
+                  id="hoursWasted"
+                  placeholder="e.g. 15-20 hours across sales, ops, and admin"
+                  {...register('hoursWasted')}
+                  aria-invalid={errors.hoursWasted ? 'true' : 'false'}
+                  className="w-full px-4 py-3 bg-white/10 border border-copper-500/40 rounded-sm text-white placeholder-white/40 focus:outline-none focus:border-copper-500 transition-colors duration-300"
+                />
+                {errors.hoursWasted && (
+                  <p className="text-sm text-copper-400 font-normal mt-1">{errors.hoursWasted.message}</p>
+                )}
+              </div>
+
+              {/* Q3: Commercial Outcome */}
+              <div>
+                <label htmlFor="magicWandOutcome" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                  In 12 months, what commercial metric would prove this engagement succeeded? *
                 </label>
                 <textarea
                   id="magicWandOutcome"
@@ -428,10 +427,34 @@ export default function StrategySessionForm() {
                   aria-invalid={errors.magicWandOutcome ? 'true' : 'false'}
                   rows={4}
                   className="w-full px-4 py-3 bg-white/10 border border-copper-500/40 rounded-sm text-white placeholder-white/40 focus:outline-none focus:border-copper-500 transition-colors duration-300 resize-none"
-                  placeholder="Describe your ideal outcome..."
+                  placeholder="Be specific. e.g. $500k in recurring revenue, 3x lead-to-close rate, 40% reduction in ops overhead..."
                 />
                 {errors.magicWandOutcome && (
                   <p className="text-sm text-copper-400 font-normal mt-1">{errors.magicWandOutcome.message}</p>
+                )}
+              </div>
+
+              {/* Q4: Investment Qualifier */}
+              <div>
+                <label htmlFor="investmentQualifier" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                  Is your organization prepared to invest $2,500 - $15,000+ to install production-grade operational systems? *
+                </label>
+                <select
+                  id="investmentQualifier"
+                  {...register('investmentQualifier')}
+                  aria-invalid={errors.investmentQualifier ? 'true' : 'false'}
+                  className="w-full appearance-none px-4 py-3 pr-10 bg-white/10 border border-copper-500/40 rounded-sm text-white focus:outline-none focus:border-copper-500 focus:ring-2 focus:ring-copper-500/20 transition-colors duration-300 cursor-pointer [&>option]:py-2 [&>option]:px-4"
+                  style={selectStyle}
+                >
+                  <option value="" className="bg-near-black text-white py-3">Select an option</option>
+                  {investmentOptions.map((option) => (
+                    <option key={option.value} value={option.value} className="bg-near-black text-white py-3">
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                {errors.investmentQualifier && (
+                  <p className="text-sm text-copper-400 font-normal mt-1">{errors.investmentQualifier.message}</p>
                 )}
               </div>
             </div>
@@ -449,7 +472,6 @@ export default function StrategySessionForm() {
                 </p>
               </div>
 
-              {/* Error Message */}
               {submitStatus === 'error' && (
                 <motion.div
                   className="flex items-start gap-3 bg-copper-500/10 border border-copper-500/30 p-4 rounded-sm"
@@ -480,7 +502,7 @@ export default function StrategySessionForm() {
               </button>
 
               <p className="text-xs font-normal text-white/70 text-center tracking-normal">
-                Redirects to Secure Payment & Calendar Booking.
+                Redirects to Secure Payment and Calendar Booking.
               </p>
             </div>
           )}

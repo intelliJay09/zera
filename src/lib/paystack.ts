@@ -97,7 +97,7 @@ export async function initializePayment(
     businessEmail: string;
     companyName: string;
     websiteUrl: string;
-    whatsappNumber: string;
+    phoneNumber: string;
     revenueRange: string;
     growthObstacle: string;
   },
@@ -141,9 +141,9 @@ export async function initializePayment(
             value: sessionData.websiteUrl,
           },
           {
-            display_name: 'WhatsApp Number',
-            variable_name: 'whatsapp_number',
-            value: sessionData.whatsappNumber,
+            display_name: 'Phone Number',
+            variable_name: 'phone_number',
+            value: sessionData.phoneNumber,
           },
           {
             display_name: 'Revenue Range',

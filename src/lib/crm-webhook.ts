@@ -62,7 +62,7 @@ export async function sendToCRM(session: Partial<StrategySession>): Promise<void
         whatsapp_number: session.whatsapp_number || '',
         revenue_range: session.revenue_range || 'pre-revenue',
         custom_revenue: session.custom_revenue || undefined,
-        growth_obstacle: session.growth_obstacle || 'visibility',
+        growth_obstacle: session.growth_obstacle || 'manual-chaos',
         magic_wand_outcome: session.magic_wand_outcome || '',
         payment_status: session.payment_status || 'pending',
         payment_reference: session.payment_reference || '',

@@ -8,7 +8,7 @@
 // ============================================================
 
 export type RevenueRange = 'pre-revenue' | '50k-250k' | '250k-1m' | '1m+' | 'custom';
-export type GrowthObstacle = 'visibility' | 'lead-flow' | 'retention' | 'chaos';
+export type GrowthObstacle = 'manual-chaos' | 'lead-leakage' | 'fragmented-tech' | 'client-retention';
 export type PaymentStatus = 'pending' | 'completed' | 'failed' | 'abandoned';
 export type CalendlyStatus = 'not_booked' | 'booked' | 'canceled' | 'rescheduled';
 export type BookingStage =
@@ -25,12 +25,14 @@ export interface StrategySessionFormData {
   fullName: string;
   businessEmail: string;
   companyName: string;
-  websiteUrl: string;
-  whatsappNumber: string;
+  websiteUrl?: string;
+  phoneNumber: string;
   revenueRange: RevenueRange;
   customRevenue?: string;
   growthObstacle: GrowthObstacle;
+  hoursWasted?: string;
   magicWandOutcome: string;
+  investmentQualifier?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -60,8 +62,10 @@ export interface StrategySession {
   // Business Context
   revenue_range: RevenueRange;
   custom_revenue: string | null;
-  growth_obstacle: GrowthObstacle;
+  growth_obstacle: string;
   magic_wand_outcome: string;
+  hours_wasted: string | null;
+  investment_qualifier: string | null;
 
   // Payment Tracking
   payment_status: PaymentStatus;
@@ -314,7 +318,7 @@ export interface CRMWebhookPayload {
     whatsapp_number: string;
     revenue_range: RevenueRange;
     custom_revenue?: string;
-    growth_obstacle: GrowthObstacle;
+    growth_obstacle: string;
     magic_wand_outcome: string;
     payment_status: PaymentStatus;
     payment_reference: string;
@@ -363,10 +367,11 @@ export interface TeamNotificationEmailData {
   businessEmail: string;
   companyName: string;
   websiteUrl: string;
-  whatsappNumber: string;
+  phoneNumber: string;
   revenueRange: RevenueRange;
   customRevenue?: string;
-  growthObstacle: GrowthObstacle;
+  growthObstacle: string;
+  hoursWasted?: string;
   magicWandOutcome: string;
   paymentReference: string;
   paymentAmount: number;

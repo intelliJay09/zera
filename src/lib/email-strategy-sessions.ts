@@ -147,15 +147,15 @@ export async function sendStrategySessionTeamNotification(
           <td style="padding: 8px 0; color: ${NEAR_BLACK};"><a href="${data.websiteUrl}" target="_blank" style="color: ${COPPER}; text-decoration: none;">${data.websiteUrl}</a></td>
         </tr>
         <tr>
-          <td style="padding: 8px 0; color: #666;"><strong>WhatsApp:</strong></td>
-          <td style="padding: 8px 0; color: ${NEAR_BLACK};"><a href="https://wa.me/${data.whatsappNumber.replace(/[^0-9]/g, '')}" style="color: ${COPPER}; text-decoration: none;">${data.whatsappNumber}</a></td>
+          <td style="padding: 8px 0; color: #666;"><strong>Phone:</strong></td>
+          <td style="padding: 8px 0; color: ${NEAR_BLACK};"><a href="tel:${data.phoneNumber.replace(/\s/g, '')}" style="color: ${COPPER}; text-decoration: none;">${data.phoneNumber}</a></td>
         </tr>
       </table>
     </div>
 
     <div style="background-color: ${CREAM}; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
       <h3 style="margin: 0 0 15px; font-size: 16px; font-weight: 700; color: ${NEAR_BLACK};">
-        BUSINESS CONTEXT
+        OPERATIONAL CONTEXT
       </h3>
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-size: 14px;">
         <tr>
@@ -163,12 +163,16 @@ export async function sendStrategySessionTeamNotification(
           <td style="padding: 8px 0; color: ${NEAR_BLACK};">${data.revenueRange}${data.customRevenue ? ` (${data.customRevenue})` : ''}</td>
         </tr>
         <tr>
-          <td style="padding: 8px 0; color: #666;"><strong>Growth Obstacle:</strong></td>
+          <td style="padding: 8px 0; color: #666;"><strong>Bottleneck:</strong></td>
           <td style="padding: 8px 0; color: ${NEAR_BLACK};">${data.growthObstacle}</td>
         </tr>
+        ${data.hoursWasted ? `<tr>
+          <td style="padding: 8px 0; color: #666;"><strong>Hours Wasted:</strong></td>
+          <td style="padding: 8px 0; color: ${NEAR_BLACK};">${data.hoursWasted}</td>
+        </tr>` : ''}
       </table>
       <div style="margin-top: 15px;">
-        <p style="margin: 0 0 8px; font-size: 13px; color: #666; font-weight: 700;">DESIRED OUTCOME:</p>
+        <p style="margin: 0 0 8px; font-size: 13px; color: #666; font-weight: 700;">TARGET COMMERCIAL METRIC:</p>
         <p style="margin: 0; font-size: 14px; color: ${NEAR_BLACK}; background-color: #fff; padding: 15px; border-radius: 4px; line-height: 1.6;">
           ${data.magicWandOutcome}
         </p>
@@ -214,7 +218,7 @@ export async function sendStrategySessionTeamNotification(
     cc: TEAM_EMAIL_CC,
     subject: `🎯 New Strategy Session - ${data.companyName}`,
     html: emailWrapper(content),
-    text: `NEW STRATEGY SESSION BOOKED\n\nCompany: ${data.companyName}\nContact: ${data.fullName}\nEmail: ${data.businessEmail}\nWebsite: ${data.websiteUrl}\nWhatsApp: ${data.whatsappNumber}\n\nRevenue: ${data.revenueRange}\nObstacle: ${data.growthObstacle}\nDesired Outcome: ${data.magicWandOutcome}\n\nPayment: $${Number(data.paymentAmount).toFixed(2)}\nReference: ${data.paymentReference}\nSession ID: ${sessionId}`,
+    text: `NEW STRATEGY SESSION BOOKED\n\nCompany: ${data.companyName}\nContact: ${data.fullName}\nEmail: ${data.businessEmail}\nWebsite: ${data.websiteUrl || 'N/A'}\nPhone: ${data.phoneNumber}\n\nRevenue: ${data.revenueRange}\nBottleneck: ${data.growthObstacle}${data.hoursWasted ? `\nHours Wasted: ${data.hoursWasted}` : ''}\nTarget Metric: ${data.magicWandOutcome}\n\nPayment: $${Number(data.paymentAmount).toFixed(2)}\nReference: ${data.paymentReference}\nSession ID: ${sessionId}`,
   });
 
   console.log(`Team notification sent for session: ${sessionId}`);

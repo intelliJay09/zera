@@ -55,36 +55,22 @@ const strategySessionSchema = z.object({
     .max(255, 'Company name is too long'),
   websiteUrl: z
     .string()
-    .min(1, 'Website URL is required')
     .max(500, 'Website URL is too long')
+    .optional()
     .transform((url) => {
-      // Auto-add https:// if no protocol specified
-      // Accepts: example.com, www.example.com, https://example.com
+      if (!url || !url.trim()) return '';
       const trimmed = url.trim();
       if (!trimmed.startsWith('http://') && !trimmed.startsWith('https://')) {
         return `https://${trimmed}`;
       }
       return trimmed;
-    })
-    .refine(
-      (url) => {
-        try {
-          new URL(url);
-          return true;
-        } catch {
-          return false;
-        }
-      },
-      { message: 'Please enter a valid website (e.g., example.com)' }
-    ),
-  whatsappNumber: z
+    }),
+  phoneNumber: z
     .string()
-    .min(1, 'WhatsApp number is required')
-    .max(50, 'WhatsApp number is too long')
+    .min(1, 'Phone number is required')
+    .max(50, 'Phone number is too long')
     .refine(
       (num) => {
-        // Accept any number-like string (with or without country code)
-        // Examples: 0501234567, +233501234567, 233501234567
         const cleaned = num.replace(/[\s\-\(\)]/g, '');
         return /^[\+]?[0-9]{7,15}$/.test(cleaned);
       },
@@ -94,13 +80,15 @@ const strategySessionSchema = z.object({
     message: 'Please select a revenue range',
   }),
   customRevenue: z.string().max(255, 'Custom revenue is too long').optional(),
-  growthObstacle: z.enum(['visibility', 'lead-flow', 'retention', 'chaos'], {
-    message: 'Please select a growth obstacle',
+  growthObstacle: z.enum(['manual-chaos', 'lead-leakage', 'fragmented-tech', 'client-retention'], {
+    message: 'Please select an operational bottleneck',
   }),
+  hoursWasted: z.string().max(500, 'Response is too long').optional(),
   magicWandOutcome: z
     .string()
-    .min(10, 'Please describe your desired outcome (at least 10 characters)')
-    .max(2000, 'Desired outcome is too long'),
+    .min(10, 'Please describe your target metric (at least 10 characters)')
+    .max(2000, 'Response is too long'),
+  investmentQualifier: z.enum(['yes', 'evaluating', 'no-budget']).optional(),
 
   // Optional UTM parameters
   utmSource: z.string().max(100).optional(),
@@ -227,14 +215,18 @@ export async function POST(request: NextRequest) {
       fullName: sanitizeForEmail(validData.fullName),
       businessEmail: sanitizeEmail(validData.businessEmail),
       companyName: sanitizeForEmail(validData.companyName),
-      websiteUrl: sanitizeUrl(validData.websiteUrl),
-      whatsappNumber: sanitizePhone(validData.whatsappNumber),
+      websiteUrl: sanitizeUrl(validData.websiteUrl || '') || '',
+      phoneNumber: sanitizePhone(validData.phoneNumber),
       revenueRange: validData.revenueRange,
       customRevenue: validData.customRevenue
         ? sanitizeForEmail(validData.customRevenue)
         : null,
       growthObstacle: validData.growthObstacle,
+      hoursWasted: validData.hoursWasted
+        ? sanitizeForEmail(validData.hoursWasted)
+        : null,
       magicWandOutcome: sanitizeForEmail(validData.magicWandOutcome),
+      investmentQualifier: validData.investmentQualifier || null,
       utmSource: validData.utmSource
         ? sanitizeForEmail(validData.utmSource)
         : null,
@@ -257,14 +249,6 @@ export async function POST(request: NextRequest) {
     if (!sanitizedData.businessEmail) {
       return NextResponse.json(
         { error: 'Invalid email address provided' },
-        { status: 400 }
-      );
-    }
-
-    // Verify URL wasn't stripped by sanitization
-    if (!sanitizedData.websiteUrl) {
-      return NextResponse.json(
-        { error: 'Invalid website URL provided' },
         { status: 400 }
       );
     }
@@ -294,7 +278,9 @@ export async function POST(request: NextRequest) {
         revenue_range,
         custom_revenue,
         growth_obstacle,
+        hours_wasted,
         magic_wand_outcome,
+        investment_qualifier,
         payment_status,
         payment_reference,
         payment_amount,
@@ -308,7 +294,7 @@ export async function POST(request: NextRequest) {
         ip_address,
         user_agent,
         booking_stage
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, 100.00, 'USD', ?, ?, ?, ?, ?, ?, ?, ?, 'form_submitted')
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, 100.00, 'USD', ?, ?, ?, ?, ?, ?, ?, ?, 'form_submitted')
     `;
 
     await insert(insertSql, [
@@ -317,11 +303,13 @@ export async function POST(request: NextRequest) {
       sanitizedData.businessEmail,
       sanitizedData.companyName,
       sanitizedData.websiteUrl,
-      sanitizedData.whatsappNumber,
+      sanitizedData.phoneNumber,
       sanitizedData.revenueRange,
       sanitizedData.customRevenue,
       sanitizedData.growthObstacle,
+      sanitizedData.hoursWasted,
       sanitizedData.magicWandOutcome,
+      sanitizedData.investmentQualifier,
       paymentReference,
       sanitizedData.utmSource,
       sanitizedData.utmMedium,
@@ -346,7 +334,7 @@ export async function POST(request: NextRequest) {
           businessEmail: sanitizedData.businessEmail,
           companyName: sanitizedData.companyName,
           websiteUrl: sanitizedData.websiteUrl,
-          whatsappNumber: sanitizedData.whatsappNumber,
+          phoneNumber: sanitizedData.phoneNumber,
           revenueRange: sanitizedData.revenueRange,
           growthObstacle: sanitizedData.growthObstacle,
         },

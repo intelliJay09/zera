@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
               businessEmail: session.business_email,
               companyName: session.company_name,
               websiteUrl: session.website_url,
-              whatsappNumber: session.whatsapp_number,
+              phoneNumber: session.whatsapp_number,
               revenueRange: session.revenue_range,
               customRevenue: session.custom_revenue,
               growthObstacle: session.growth_obstacle,
