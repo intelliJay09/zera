@@ -1377,10 +1377,10 @@ Do you know your ratio? Let us calculate it for you.
     title: "Why Your Ads Are Failing (It's Not the Creative)",
     slug: "why-ads-fail-infrastructure-problem",
     excerpt: "You've tested 12 ad creatives. You've hired three copywriters. The ROAS is still broken. The problem was never the ad. It was the infrastructure.",
-    category: "Paid Traffic",
-    publishedDate: "2026-06-15",
+    category: "Revenue Infrastructure",
+    publishedDate: "2026-05-15",
     readTime: "7 min read",
-    keywords: ["Paid Traffic Strategy", "Meta Pixel Setup", "Landing Page Optimization", "Ad Campaign Infrastructure", "ROAS Improvement"],
+    keywords: ["Acquisition Pipeline Architecture", "Conversion Tracking Infrastructure", "Landing Page Optimization", "Lead Capture Infrastructure", "Revenue Operations"],
     cta: {
       text: "Deploy Growth System",
       link: "/products/growth-system"
@@ -1412,11 +1412,11 @@ This is not a creative problem. This is a **plumbing problem**.
 
 ## The Tracking Gap: Why You Cannot Scale What You Cannot Measure
 
-The first question in any ZERA paid traffic engagement is: Is your Pixel firing correctly?
+The first question in any ZERA pipeline audit is: Is your conversion tracking firing correctly?
 
 Ninety percent of the time, the answer is no.
 
-Without a correctly configured Meta Pixel or Google Ads tag, you cannot:
+Without a correctly configured conversion tracking tag (Meta Pixel, Google Ads, or equivalent), you cannot:
 
 - **Measure conversions** – You do not know if clicks become customers
 - **Build retargeting audiences** – You cannot follow up with warm visitors
@@ -1497,7 +1497,7 @@ Fix the infrastructure. Then scale the ads.
     slug: "client-onboarding-system",
     excerpt: "Closing the deal is not an achievement. It is the starting line. What happens in the 72 hours after a client signs determines whether you keep them for 5 years or lose them in 30 days.",
     category: "Customer Retention",
-    publishedDate: "2026-06-01",
+    publishedDate: "2026-05-01",
     readTime: "7 min read",
     keywords: ["Client Onboarding System", "Customer Retention Strategy", "Churn Reduction", "Automated Onboarding", "LTV Optimization"],
     cta: {
@@ -1624,10 +1624,10 @@ Closing the deal is easy. Keeping the client is the real infrastructure.
     title: "More Traffic Won't Save You. Fix Your Conversion Rate.",
     slug: "conversion-rate-optimization-guide",
     excerpt: "You want more traffic. Wrong answer. If your site converts at 1%, doubling traffic doubles your cost but not your conversion problem. The lever you are ignoring is worth more than your next ad campaign.",
-    category: "Conversion Optimization",
+    category: "Digital Infrastructure",
     publishedDate: "2026-05-20",
     readTime: "7 min read",
-    keywords: ["Conversion Rate Optimization", "CRO Strategy", "Landing Page Conversion", "Heatmap Analysis", "Core Web Vitals"],
+    keywords: ["Conversion Architecture", "Landing Page Performance", "Landing Page Conversion", "Core Web Vitals", "Web Performance Optimization"],
     cta: {
       text: "Deploy a Digital HQ",
       link: "/products/digital-hq"
@@ -1639,7 +1639,7 @@ Wrong answer.
 
 More traffic solves nothing if your site converts at 1%. Doubling traffic doubles your cost. It does not fix the underlying leak.
 
-**Conversion Rate Optimization (CRO)** is the discipline of extracting more revenue from the traffic you already have. It costs a fraction of paid acquisition and compounds permanently.
+**Conversion Architecture** is the discipline of extracting more revenue from the traffic you already have. It costs a fraction of paid acquisition and compounds permanently.
 
 This is the most underused lever in digital growth.
 
@@ -1680,9 +1680,9 @@ Now ask: why are they leaving? The answers are measurable:
 
 This is behavioral intelligence. Most businesses have zero of it installed.
 
-## The CRO Audit: Five Levers ZERA Pulls First
+## The Conversion Architecture Audit: Five Levers ZERA Pulls First
 
-When ZERA runs a CRO engagement, we identify the five highest-impact interventions:
+When ZERA audits your conversion infrastructure, we identify the five highest-impact interventions:
 
 ### 1. The Above-the-Fold Hypothesis
 
@@ -1763,7 +1763,7 @@ The lever you are ignoring is worth more than your next ad campaign.
     category: "Business Growth",
     publishedDate: "2026-05-05",
     readTime: "6 min read",
-    keywords: ["Referral Marketing System", "Word of Mouth Strategy", "Client Referral Program", "Customer LTV", "Growth Without Ads"],
+    keywords: ["Referral Revenue System", "Word of Mouth Strategy", "Client Referral Program", "Customer LTV", "Growth Without Ads"],
     cta: {
       text: "Deploy Market Monopoly",
       link: "/products/market-monopoly"

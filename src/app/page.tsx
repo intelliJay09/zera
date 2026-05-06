@@ -85,7 +85,7 @@ export default function HomePage() {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
             >
-              Automated pipelines, revenue infrastructure, and operational systems - built for high-volume brands.
+              Automated pipelines, revenue infrastructure, and operational systems - built for high volume brands.
             </motion.h2>
 
             <motion.div
