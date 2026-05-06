@@ -59,7 +59,7 @@ export default function Footer() {
             >
               <Image
                 src="/zera-logo-primary.png"
-                alt="ZERA Digital Growth Systems"
+                alt="ZERA Revenue Systems"
                 width={135}
                 height={49}
                 className="h-11 w-auto"

@@ -5,7 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
 export const metadata: Metadata = {
   title: 'Portfolio | Our Work & Case Studies',
   description:
-    'Explore our portfolio of digital growth systems, web architecture, and revenue infrastructure built for high-performance brands worldwide.',
+    'Explore our portfolio of revenue systems, web architecture, and revenue infrastructure built for high-performance brands worldwide.',
   keywords: [
     'Portfolio',
     'Case Studies',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Portfolio | ZERA',
     description:
-      'Explore our portfolio of digital growth systems built for high-performance brands worldwide.',
+      'Explore our portfolio of revenue systems built for high-performance brands worldwide.',
     url: `${baseUrl}/portfolio`,
     siteName: 'ZERA',
     type: 'website',

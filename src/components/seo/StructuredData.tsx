@@ -43,7 +43,7 @@ export function ServiceAreaBusinessSchema() {
   const serviceAreaSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'ZERA | Digital Growth Systems',
+    name: 'ZERA | Revenue Systems',
     image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/images/office-render.jpg`,
     priceRange: '$$$',
     address: {

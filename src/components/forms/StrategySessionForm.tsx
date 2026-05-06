@@ -163,7 +163,7 @@ export default function StrategySessionForm() {
       {/* Form Header */}
       <div className="text-center border-b border-copper-500/40 pb-6">
         <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase text-white mb-2 tracking-brand-header">
-          GROWTH AUDIT INTAKE
+          SYSTEMS AUDIT INTAKE
         </h2>
         <p className="text-sm text-cream-200/80 italic">
           Confidential Data Collection for Pre-Session Analysis.
@@ -474,7 +474,7 @@ export default function StrategySessionForm() {
                 ) : (
                   <>
                     <Lock className="w-5 h-5" />
-                    <span>SECURE GROWTH AUDIT</span>
+                    <span>SECURE SYSTEMS AUDIT</span>
                   </>
                 )}
               </button>

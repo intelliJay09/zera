@@ -21,7 +21,7 @@ export default function ConnectContent() {
       'VERSION:3.0',
       'N:Amoako;Jacqueline;F.;;',
       'FN:Jacqueline F. Amoako',
-      'ORG:ZERA | Digital Growth Systems;',
+      'ORG:ZERA | Revenue Systems;',
       'TITLE:Digital Growth Strategist',
       'TEL;type=CELL;type=VOICE;type=pref:+233246492873',
       'EMAIL;type=WORK:jacqueline@zerahq.com',
@@ -64,7 +64,7 @@ export default function ConnectContent() {
           </h1>
           <p className="text-white/60 font-medium mb-1">Digital Growth Strategist</p>
           <p className="text-copper-500 font-semibold text-sm uppercase tracking-wider">
-            ZERA | Digital Growth Systems
+            ZERA | Revenue Systems
           </p>
         </div>
 

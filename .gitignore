@@ -51,3 +51,6 @@ sanity/dist
 
 # Husky
 .husky/_
+
+#Playwright
+.playwright-mcp

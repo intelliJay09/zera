@@ -68,7 +68,7 @@ function emailWrapper(content: string): string {
                       ZERA
                     </h1>
                     <p style="margin: 10px 0 0; font-size: 12px; color: ${CREAM}; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">
-                      Digital Growth Systems
+                      Revenue Systems
                     </p>
                   </td>
                 </tr>
@@ -84,7 +84,7 @@ function emailWrapper(content: string): string {
                 <tr>
                   <td style="background-color: ${CREAM}; padding: 30px; text-align: center; border-top: 2px solid ${COPPER};">
                     <p style="margin: 0 0 10px; font-size: 14px; color: ${NEAR_BLACK};">
-                      <strong>ZERA Digital Growth Systems</strong>
+                      <strong>ZERA Revenue Systems</strong>
                     </p>
                     <p style="margin: 0 0 15px; font-size: 13px; color: #666;">
                       <a href="mailto:hello@zerahq.com" style="color: ${COPPER}; text-decoration: none;">hello@zerahq.com</a> |

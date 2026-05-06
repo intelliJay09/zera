@@ -4,7 +4,7 @@ import BookSessionContent from './BookSessionContent';
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: 'Growth Infrastructure Audit',
+  title: 'Revenue Systems Audit',
   description:
     'Book a 60-minute executive diagnostic. We audit your revenue operations and engineer a custom roadmap for market sovereignty.',
 };

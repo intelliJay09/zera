@@ -28,7 +28,7 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ProfessionalService',
-            name: 'ZERA Digital Growth Systems',
+            name: 'ZERA Revenue Systems',
             alternateName: 'Zera HQ',
             description:
               'ZERA engineers automated operational systems and revenue infrastructure for high-performance brands. Commercial web architecture, automated lead pipelines, CRM operations, and cross-system revenue routing.',
@@ -72,7 +72,7 @@ export default function HomePage() {
               animate="visible"
               variants={heroHeadline}
             >
-              DIGITAL GROWTH SYSTEMS. ENGINEERED.
+              REVENUE SYSTEMS. ENGINEERED.
             </motion.h1>
 
             <motion.h2
@@ -100,7 +100,7 @@ export default function HomePage() {
             >
               <Button asChild variant="primary" size="lg" className="group">
                 <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
-                  BOOK YOUR GROWTH AUDIT
+                  BOOK YOUR SYSTEMS AUDIT
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                 </Link>
               </Button>

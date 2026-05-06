@@ -60,7 +60,7 @@ function emailWrapper(content: string): string {
                 <tr>
                   <td style="background-color: ${CREAM}; padding: 30px; text-align: center; border-top: 2px solid ${COPPER};">
                     <p style="margin: 0 0 10px; font-size: 14px; color: ${NEAR_BLACK};">
-                      <strong>ZERA Digital Growth Systems</strong>
+                      <strong>ZERA Revenue Systems</strong>
                     </p>
                     <p style="margin: 0; font-size: 12px; color: #999;">
                       &copy; ${new Date().getFullYear()} ZERA. All Rights Reserved.

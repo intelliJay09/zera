@@ -91,7 +91,7 @@ export default function MobileMenu({ isOpen, onClose, variant: _variant = 'defau
                   >
                     <Image
                       src="/zera-logo-primary.png"
-                      alt="ZERA Digital Growth Systems"
+                      alt="ZERA Revenue Systems"
                       width={81}
                       height={29}
                       className="h-7 w-auto"
@@ -192,7 +192,7 @@ export default function MobileMenu({ isOpen, onClose, variant: _variant = 'defau
                     className="w-full justify-center group"
                   >
                     <Link href="/growth-audit" onClick={onClose} data-gtm-event="cta_book_strategy" data-gtm-location="mobile_nav">
-                      Book Your Growth Audit
+                      Book Your Systems Audit
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                     </Link>
                   </Button>

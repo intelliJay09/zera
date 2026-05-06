@@ -162,7 +162,7 @@ Think of it like this:
 
 - **Person Entity:** Elon Musk (not just text, but a verified person with attributes)
 - **Place Entity:** Accra, Ghana (a city with coordinates, population, timezone)
-- **Organization Entity:** ZERA Digital Growth Systems (a company with services, location, history)
+- **Organization Entity:** ZERA Revenue Systems (a company with services, location, history)
 
 When Google sees your brand name, it should trigger a **Knowledge Panel**:
 
@@ -504,7 +504,7 @@ Wake it up.
     readTime: "6 min read",
     keywords: ["Digital Marketing Agency vs Consultant", "Revenue Operations", "Growth System", "Zera Dynamics"],
     cta: {
-      text: "Book Your Growth Audit",
+      text: "Book Your Systems Audit",
       link: "/growth-audit"
     },
     content: `
@@ -756,7 +756,7 @@ Secure your territory. Build an asset you actually control.
     readTime: "7 min read",
     keywords: ["Revenue Operations vs Marketing", "RevOps Strategy", "Data Driven Marketing", "Business Silos"],
     cta: {
-      text: "Book Your Growth Audit",
+      text: "Book Your Systems Audit",
       link: "/growth-audit"
     },
     content: `
@@ -1203,7 +1203,7 @@ Automate the boring. Elevate the human.
     readTime: "7 min read",
     keywords: ["Customer Acquisition Cost", "Lifetime Value Calculation", "Unit Economics", "Business Scaling Strategy"],
     cta: {
-      text: "Book Your Growth Audit",
+      text: "Book Your Systems Audit",
       link: "/growth-audit"
     },
     content: `
@@ -1889,7 +1889,7 @@ Your happiest clients are your best salespeople. Give them the tools.
     readTime: "7 min read",
     keywords: ["Business Analytics Infrastructure", "Marketing Attribution", "CEO Dashboard", "GA4 Setup", "Revenue Tracking"],
     cta: {
-      text: "Book Your Growth Audit",
+      text: "Book Your Systems Audit",
       link: "/growth-audit"
     },
     content: `

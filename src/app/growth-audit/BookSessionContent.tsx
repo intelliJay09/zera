@@ -47,7 +47,7 @@ export default function BookSessionContent() {
                 className="text-4xl leading-[1.3em] sm:text-5xl sm:leading-[1.1] lg:text-5xl xl:text-6xl font-bold font-display uppercase text-white tracking-brand-header mb-6 sm:mb-8 w-full text-center lg:text-left"
                 variants={contactHeroHeadline}
               >
-                THE GROWTH INFRASTRUCTURE AUDIT
+                THE REVENUE SYSTEMS AUDIT
               </motion.h1>
 
               <motion.p

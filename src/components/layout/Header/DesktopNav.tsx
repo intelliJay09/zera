@@ -99,7 +99,7 @@ export default function DesktopNav({ variant = 'default', scrolled = false }: De
         className="group"
       >
         <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="navbar">
-          Book Your Growth Audit
+          Book Your Systems Audit
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
         </Link>
       </Button>

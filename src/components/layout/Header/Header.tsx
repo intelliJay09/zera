@@ -37,7 +37,7 @@ export default function Header({ variant = 'default' }: HeaderProps) {
         >
           <Image
             src={useWhiteElements ? "/zera-logo-white.png" : "/zera-logo-primary.png"}
-            alt="ZERA Digital Growth Systems"
+            alt="ZERA Revenue Systems"
             width={135}
             height={49}
             priority

@@ -21,7 +21,7 @@ export default function FinalCTA() {
           {/* Left: Content */}
           <div className="lg:sticky lg:top-32">
             <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6 text-center lg:text-left">
-              The Growth Audit
+              The Systems Audit
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light font-display uppercase text-cream-200 tracking-brand-header leading-tight mb-6 sm:mb-8 text-center lg:text-left">
               Your Revenue Infrastructure

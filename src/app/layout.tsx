@@ -26,7 +26,7 @@ const latoBold = Lato({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'),
   title: {
-    default: 'ZERA | Digital Growth Systems',
+    default: 'ZERA | Revenue Systems',
     template: '%s | ZERA',
   },
   description:
@@ -57,15 +57,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com',
     siteName: 'ZERA',
-    title: 'ZERA | Digital Growth Systems',
+    title: 'ZERA | Revenue Systems',
     description:
-      'We engineer digital growth systems for high-performance brands. Stop building websites. Start building assets.',
+      'We engineer revenue systems for high-performance brands. Stop building websites. Start building assets.',
     images: [
       {
         url: '/images/og-zera-sovereign.png',
         width: 3000,
         height: 1575,
-        alt: 'ZERA Digital Growth Systems',
+        alt: 'ZERA Revenue Systems',
       },
     ],
   },
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@zerahq',
     creator: '@zerahq',
-    title: 'ZERA | Digital Growth Systems',
+    title: 'ZERA | Revenue Systems',
     description: 'We engineer revenue systems for global brands.',
     images: ['/images/og-zera-sovereign.png'],
   },
