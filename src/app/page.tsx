@@ -27,11 +27,11 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'MarketingAgency',
+            '@type': 'ProfessionalService',
             name: 'ZERA Digital Growth Systems',
             alternateName: 'Zera HQ',
             description:
-              'Premier digital growth agency specializing in commercial web design, SEO, lead generation systems, and revenue automation.',
+              'ZERA engineers automated operational systems and revenue infrastructure for high-performance brands. Commercial web architecture, automated lead pipelines, CRM operations, and cross-system revenue routing.',
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'Accra',

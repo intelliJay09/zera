@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import SolutionsContent from './SolutionsContent';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Solutions - Strategic Services | ZERA',
+  title: 'Operational Systems & Revenue Infrastructure | ZERA',
   description:
-    'Comprehensive digital marketing solutions that drive measurable results. From SEO and social media to web development and branding - strategic partnerships built for growth.',
+    'ZERA architects automated operational systems that replace manual bottlenecks with precision infrastructure. Commercial web architecture, search entity authority, CRM automation, and revenue routing - built for high-performance brands.',
 };
 
 export default function SolutionsPage() {

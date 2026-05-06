@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   keywords: [
     'customer retention systems',
     'lifetime value optimization',
-    'email marketing automation',
-    'win-back campaigns',
+    'lifecycle automation',
+    'win-back protocols',
     'LTV optimization',
     'recurring revenue systems',
   ],

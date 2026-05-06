@@ -52,9 +52,9 @@ export default function SolutionsContent() {
                 measurable outcomes.
               </p>
               <p className="text-base font-normal text-near-black/60 leading-relaxed tracking-normal">
-                From Fortune 500 enterprises to ambitious startups, we&apos;ve partnered with businesses
-                across industries to architect digital strategies that drive sustainable competitive
-                advantage.
+                From established enterprises to ambitious founders, we partner with businesses
+                across industries to architect automated operational systems that deliver sustainable
+                competitive advantage.
               </p>
             </div>
 
@@ -119,9 +119,9 @@ export default function SolutionsContent() {
                 link: '/products/digital-hq',
               },
               {
-                title: 'Social Media Management',
+                title: 'Social Authority Systems',
                 description:
-                  'Strategic social presence management that builds brand authority, drives qualified inbound, and converts your audience into an owned commercial asset across all major platforms.',
+                  'Systematic social presence infrastructure that builds brand authority, drives qualified inbound, and converts platform audiences into owned commercial assets. Structured for consistency, not manual effort.',
                 link: '/solutions/social-media-management',
               },
               {
@@ -168,8 +168,7 @@ export default function SolutionsContent() {
             LET&apos;S BUILD YOUR GROWTH STORY
           </h2>
           <p className="text-lg font-normal text-cream-100/80 leading-relaxed tracking-normal mb-10 max-w-2xl mx-auto">
-            Schedule a complimentary strategy consultation to explore how our solutions can transform
-            your digital presence and drive measurable business growth.
+            Schedule a complimentary strategy consultation to identify where your operational infrastructure has gaps and design the system that closes them.
           </p>
           <Link
             href="/contact"
@@ -236,13 +235,13 @@ function ProcessScrollytelling() {
             icon: Palette
           },
           {
-            title: 'Channel Selection',
-            description: 'Strategic platform mix based on audience behavior and ROI potential',
+            title: 'System Architecture',
+            description: 'Operational infrastructure design mapped to revenue objectives and business constraints',
             icon: Megaphone
           },
           {
-            title: 'Content Framework',
-            description: 'Editorial calendar and content pillar structure for sustained engagement',
+            title: 'Pipeline Blueprint',
+            description: 'Lead routing logic, automation sequences, and lifecycle touchpoint design',
             icon: FileText
           },
           {
@@ -262,18 +261,18 @@ function ProcessScrollytelling() {
       visual: {
         items: [
           {
-            title: 'Platform Setup',
-            description: 'Technical infrastructure and integration across all marketing channels',
+            title: 'System Deployment',
+            description: 'Technical infrastructure build and integration across all operational touchpoints',
             icon: Settings
           },
           {
-            title: 'Content Creation',
-            description: 'Premium asset production aligned with brand guidelines and strategy',
+            title: 'Asset Production',
+            description: 'Commercial asset development aligned with brand authority and conversion objectives',
             icon: FileText
           },
           {
-            title: 'Campaign Launch',
-            description: 'Coordinated rollout with real-time monitoring and optimization',
+            title: 'System Activation',
+            description: 'Coordinated go-live with real-time monitoring and immediate performance validation',
             icon: Zap
           },
           {

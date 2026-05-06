@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'SEO Strategy',
     'Web Architecture',
     'Revenue Systems',
-    'Digital Marketing Insights',
+    'Revenue Operations Intelligence',
     'Business Growth',
   ],
   openGraph: {

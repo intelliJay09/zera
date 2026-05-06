@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Portfolio',
     'Case Studies',
     'Web Design Portfolio',
-    'Digital Agency Work',
+    'Operational Systems Work',
     'Client Results',
   ],
   openGraph: {

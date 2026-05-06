@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   keywords: [
     'lead generation systems',
     'CRM automation',
-    'marketing automation',
+    'pipeline automation',
     'customer acquisition',
     'revenue operations',
     'sales pipeline automation',
-    'conversion rate optimization',
+    'conversion infrastructure',
   ],
   openGraph: {
     title: 'The Growth System | Automate Revenue',

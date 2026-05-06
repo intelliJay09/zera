@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
   {
     headline: "They turned our chaotic sales process into a predictable machine.",
     metric: "240% Increase in Qualified Leads",
-    narrative: "We had traffic, but we weren't capturing it. The Zera team installed their 'Lead Capture Engine' and completely automated our follow-up. We went from chasing leads manually to waking up to booked appointments. It's not just marketing; it's an engineered revenue system.",
+    narrative: "We had traffic, but we weren't capturing it. The Zera team installed their 'Lead Capture Engine' and completely automated our follow-up. We went from chasing leads manually to waking up to booked appointments. It's not just automation; it's an engineered revenue system.",
     author: "Sarah T.",
     role: "Founder",
     company: "Lumina Lifestyle"
@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
   {
     headline: "Zera is the partner that secured our category leadership.",
     metric: "35% Increase in Customer LTV",
-    narrative: "Scale usually brings chaos. Zera brought structure. Their 'Lifecycle Ecosystem' allowed us to retain customers automatically while expanding into two new markets. They act less like an agency and more like a strategic Directorate. A critical asset to our board.",
+    narrative: "Scale usually brings chaos. Zera brought structure. Their 'Lifecycle Ecosystem' allowed us to retain customers automatically while expanding into two new markets. They operate less like a vendor and more like a strategic Directorate embedded in our operations. A critical asset to our board.",
     author: "E. Mensah",
     role: "CEO",
     company: "West African Logistics Group"
