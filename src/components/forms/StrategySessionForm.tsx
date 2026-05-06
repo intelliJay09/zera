@@ -15,21 +15,23 @@ const strategySessionSchema = z.object({
   companyName: z.string().min(1, 'Company name is required'),
   websiteUrl: z.string().optional(),
   phoneNumber: z.string().min(1, 'Phone number is required'),
-  revenueRange: z.enum(['pre-revenue', '50k-250k', '250k-1m', '1m+', 'custom']),
+  revenueRange: z.enum(['under-25k', '25k-100k', '100k-500k', '500k-2m', '2m+', 'custom']),
   customRevenue: z.string().optional(),
   growthObstacle: z.enum(['manual-chaos', 'lead-leakage', 'fragmented-tech', 'client-retention']),
   hoursWasted: z.string().min(1, 'Please estimate hours wasted per week'),
   magicWandOutcome: z.string().min(10, 'Please describe your target metric (at least 10 characters)'),
   investmentQualifier: z.enum(['yes', 'evaluating', 'no-budget']),
+  budgetRange: z.string().optional(),
 });
 
 type StrategySessionData = z.infer<typeof strategySessionSchema>;
 
 const revenueOptions = [
-  { value: 'pre-revenue', label: 'Pre-Revenue / Launch Phase' },
-  { value: '50k-250k', label: '$50k - $250k (GHS 750k - 3.5M)' },
-  { value: '250k-1m', label: '$250k - $1M (GHS 3.5M - 15M)' },
-  { value: '1m+', label: '$1M+ (Market Leader)' },
+  { value: 'under-25k', label: 'Under $25k (Under GHS 400k)' },
+  { value: '25k-100k', label: '$25k - $100k (GHS 400k - 1.5M)' },
+  { value: '100k-500k', label: '$100k - $500k (GHS 1.5M - 7.5M)' },
+  { value: '500k-2m', label: '$500k - $2M (GHS 7.5M - 30M)' },
+  { value: '2m+', label: '$2M+ (Enterprise)' },
   { value: 'custom', label: 'Custom Range (specify below)' },
 ];
 
@@ -41,9 +43,9 @@ const obstacleOptions = [
 ];
 
 const investmentOptions = [
-  { value: 'yes', label: 'Yes - Budget is allocated. We are ready to move.' },
-  { value: 'evaluating', label: 'Evaluating - This is a priority and we are aligning budget now.' },
-  { value: 'no-budget', label: 'No - This is outside our current budget range.' },
+  { value: 'yes', label: 'Yes - budget is allocated, we are ready to move.' },
+  { value: 'evaluating', label: 'Evaluating - it is a priority and we are aligning budget now.' },
+  { value: 'no-budget', label: 'No - we do not have budget allocated at this time.' },
 ];
 
 const selectStyle = {
@@ -75,6 +77,7 @@ export default function StrategySessionForm() {
   });
 
   const revenueRange = watch('revenueRange');
+  const investmentQualifier = watch('investmentQualifier');
 
   const onSubmit = async (data: StrategySessionData) => {
     setIsSubmitting(true);
@@ -437,7 +440,7 @@ export default function StrategySessionForm() {
               {/* Q4: Investment Qualifier */}
               <div>
                 <label htmlFor="investmentQualifier" className="block text-sm font-medium text-white mb-2 tracking-normal">
-                  Is your organization prepared to invest $2,500 - $15,000+ to install production-grade operational systems? *
+                  Does your organization have budget allocated for operational systems this year? *
                 </label>
                 <select
                   id="investmentQualifier"
@@ -457,6 +460,28 @@ export default function StrategySessionForm() {
                   <p className="text-sm text-copper-400 font-normal mt-1">{errors.investmentQualifier.message}</p>
                 )}
               </div>
+
+              {/* Conditional budget range input */}
+              {(investmentQualifier === 'yes' || investmentQualifier === 'evaluating') && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <label htmlFor="budgetRange" className="block text-sm font-medium text-white mb-2 tracking-normal">
+                    What is your approximate budget range for this engagement?
+                  </label>
+                  <input
+                    type="text"
+                    id="budgetRange"
+                    placeholder="e.g. $5,000 - $10,000"
+                    {...register('budgetRange')}
+                    className="w-full px-4 py-3 bg-white/10 border border-copper-500/40 rounded-sm text-white placeholder-white/40 focus:outline-none focus:border-copper-500 transition-colors duration-300"
+                  />
+                  <p className="text-xs text-white/50 mt-1">Optional - helps us prepare the right scope for your session.</p>
+                </motion.div>
+              )}
             </div>
           )}
 

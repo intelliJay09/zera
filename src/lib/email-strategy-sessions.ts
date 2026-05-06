@@ -170,6 +170,10 @@ export async function sendStrategySessionTeamNotification(
           <td style="padding: 8px 0; color: #666;"><strong>Hours Wasted:</strong></td>
           <td style="padding: 8px 0; color: ${NEAR_BLACK};">${data.hoursWasted}</td>
         </tr>` : ''}
+        ${data.budgetRange ? `<tr>
+          <td style="padding: 8px 0; color: #666;"><strong>Budget Range:</strong></td>
+          <td style="padding: 8px 0; color: ${NEAR_BLACK};">${data.budgetRange}</td>
+        </tr>` : ''}
       </table>
       <div style="margin-top: 15px;">
         <p style="margin: 0 0 8px; font-size: 13px; color: #666; font-weight: 700;">TARGET COMMERCIAL METRIC:</p>

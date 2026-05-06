@@ -7,7 +7,7 @@
 // FORM DATA TYPES
 // ============================================================
 
-export type RevenueRange = 'pre-revenue' | '50k-250k' | '250k-1m' | '1m+' | 'custom';
+export type RevenueRange = 'under-25k' | '25k-100k' | '100k-500k' | '500k-2m' | '2m+' | 'custom';
 export type GrowthObstacle = 'manual-chaos' | 'lead-leakage' | 'fragmented-tech' | 'client-retention';
 export type PaymentStatus = 'pending' | 'completed' | 'failed' | 'abandoned';
 export type CalendlyStatus = 'not_booked' | 'booked' | 'canceled' | 'rescheduled';
@@ -33,6 +33,7 @@ export interface StrategySessionFormData {
   hoursWasted?: string;
   magicWandOutcome: string;
   investmentQualifier?: string;
+  budgetRange?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -60,12 +61,13 @@ export interface StrategySession {
   whatsapp_number: string;
 
   // Business Context
-  revenue_range: RevenueRange;
+  revenue_range: string;
   custom_revenue: string | null;
   growth_obstacle: string;
   magic_wand_outcome: string;
   hours_wasted: string | null;
   investment_qualifier: string | null;
+  budget_range: string | null;
 
   // Payment Tracking
   payment_status: PaymentStatus;
@@ -316,7 +318,7 @@ export interface CRMWebhookPayload {
     company_name: string;
     website_url: string;
     whatsapp_number: string;
-    revenue_range: RevenueRange;
+    revenue_range: string;
     custom_revenue?: string;
     growth_obstacle: string;
     magic_wand_outcome: string;
@@ -373,6 +375,7 @@ export interface TeamNotificationEmailData {
   growthObstacle: string;
   hoursWasted?: string;
   magicWandOutcome: string;
+  budgetRange?: string;
   paymentReference: string;
   paymentAmount: number;
   utmSource?: string;

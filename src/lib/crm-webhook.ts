@@ -60,7 +60,7 @@ export async function sendToCRM(session: Partial<StrategySession>): Promise<void
         company_name: session.company_name || '',
         website_url: session.website_url || '',
         whatsapp_number: session.whatsapp_number || '',
-        revenue_range: session.revenue_range || 'pre-revenue',
+        revenue_range: session.revenue_range || 'under-25k',
         custom_revenue: session.custom_revenue || undefined,
         growth_obstacle: session.growth_obstacle || 'manual-chaos',
         magic_wand_outcome: session.magic_wand_outcome || '',

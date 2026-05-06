@@ -76,7 +76,7 @@ const strategySessionSchema = z.object({
       },
       { message: 'Please enter a valid phone number' }
     ),
-  revenueRange: z.enum(['pre-revenue', '50k-250k', '250k-1m', '1m+', 'custom'], {
+  revenueRange: z.enum(['under-25k', '25k-100k', '100k-500k', '500k-2m', '2m+', 'custom'], {
     message: 'Please select a revenue range',
   }),
   customRevenue: z.string().max(255, 'Custom revenue is too long').optional(),
@@ -89,6 +89,7 @@ const strategySessionSchema = z.object({
     .min(10, 'Please describe your target metric (at least 10 characters)')
     .max(2000, 'Response is too long'),
   investmentQualifier: z.enum(['yes', 'evaluating', 'no-budget']).optional(),
+  budgetRange: z.string().max(500, 'Budget range is too long').optional(),
 
   // Optional UTM parameters
   utmSource: z.string().max(100).optional(),
@@ -227,6 +228,9 @@ export async function POST(request: NextRequest) {
         : null,
       magicWandOutcome: sanitizeForEmail(validData.magicWandOutcome),
       investmentQualifier: validData.investmentQualifier || null,
+      budgetRange: validData.budgetRange
+        ? sanitizeForEmail(validData.budgetRange)
+        : null,
       utmSource: validData.utmSource
         ? sanitizeForEmail(validData.utmSource)
         : null,
@@ -281,6 +285,7 @@ export async function POST(request: NextRequest) {
         hours_wasted,
         magic_wand_outcome,
         investment_qualifier,
+        budget_range,
         payment_status,
         payment_reference,
         payment_amount,
@@ -294,7 +299,7 @@ export async function POST(request: NextRequest) {
         ip_address,
         user_agent,
         booking_stage
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, 100.00, 'USD', ?, ?, ?, ?, ?, ?, ?, ?, 'form_submitted')
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, 100.00, 'USD', ?, ?, ?, ?, ?, ?, ?, ?, 'form_submitted')
     `;
 
     await insert(insertSql, [
@@ -310,6 +315,7 @@ export async function POST(request: NextRequest) {
       sanitizedData.hoursWasted,
       sanitizedData.magicWandOutcome,
       sanitizedData.investmentQualifier,
+      sanitizedData.budgetRange,
       paymentReference,
       sanitizedData.utmSource,
       sanitizedData.utmMedium,
