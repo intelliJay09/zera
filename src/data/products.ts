@@ -74,9 +74,9 @@ export const PRODUCT_TIERS: ProductTier[] = [
           'CRM integration that instantly captures, tags, and sequences every lead — regardless of source.',
       },
       {
-        title: 'The Traffic Converter (CRO)',
+        title: 'The Automation Architecture',
         description:
-          'Heatmaps and behavioral data used to turn more of your existing visitors into paying customers.',
+          'We engineer and deploy a proprietary workflow automation infrastructure across your entire business. Every lead entry triggers instant tagging, pipeline routing, team notifications, and onboarding sequences — zero manual intervention.',
       },
       {
         title: 'The Lead Magnet System',
@@ -84,9 +84,9 @@ export const PRODUCT_TIERS: ProductTier[] = [
           'A downloadable asset that converts cold visitors into owned subscribers — no social platform required.',
       },
       {
-        title: 'Paid Traffic Infrastructure',
+        title: 'The Operations Bridge',
         description:
-          'Meta Pixel and Google Ads tracking — the prerequisite layer for profitable retargeting campaigns.',
+          'We eliminate your team\'s manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, and real-time operational alerts — your business executes without the bottlenecks.',
       },
     ],
     slug: 'growth-system',
@@ -103,27 +103,27 @@ export const PRODUCT_TIERS: ProductTier[] = [
       {
         title: 'The Lifecycle Ecosystem',
         description:
-          'We build automated email & SMS flows that resell to your customers automatically.',
+          'We engineer cross-system data routing that automatically moves leads between CRMs with customized executive follow-up sequences — your entire customer base managed on autopilot.',
       },
       {
         title: 'The Win-Back Protocol',
         description:
-          'A dedicated system to reactivate dead leads and turn them into revenue.',
+          'A dedicated reactivation system that identifies dormant leads, scores their re-entry likelihood, and deploys precision sequences to convert them back into revenue.',
       },
       {
         title: 'The LTV Strategy',
         description:
-          'A year-long campaign calendar designed to maximize the Lifetime Value (LTV) of every client.',
+          'A year-long operational calendar engineered to maximize Lifetime Value — structured around your revenue cycles, not arbitrary send schedules.',
       },
       {
         title: 'The Audience Infrastructure',
         description:
-          'Automated onboarding and engagement systems that turn new contacts into loyal, long-term clients.',
+          'Automated onboarding and segmentation systems that route new contacts into the correct pipeline based on their source, behavior, and intent — zero manual sorting.',
       },
       {
         title: 'Scalable Revenue Architecture',
         description:
-          'Additional revenue streams beyond one-to-one delivery — digital assets, events, and automated monetization.',
+          'We build the data infrastructure that allows your business to generate revenue from multiple channels simultaneously — digital assets, events, and automated monetization running in parallel.',
       },
     ],
     slug: 'market-monopoly',

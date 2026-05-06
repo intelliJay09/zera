@@ -19,11 +19,11 @@ import {
 function getPhaseLabel(tier: 'I' | 'II' | 'III'): string {
   switch (tier) {
     case 'I':
-      return 'Phase I: Foundation (Web & SEO)';
+      return 'Phase I: Foundation (The Booking/Sales Engine)';
     case 'II':
-      return 'Phase II: Velocity (Funnels & Ads)';
+      return 'Phase II: The Pipeline (Automated Operations)';
     case 'III':
-      return 'Phase III: Sovereignty (Retention & Scale)';
+      return 'Phase III: Sovereignty (The Revenue Multiplier)';
   }
 }
 

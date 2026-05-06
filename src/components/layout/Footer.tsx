@@ -11,11 +11,10 @@ const quickLinks = [
 ];
 
 const services = [
-  { name: 'Web Design & Development', href: '/products/digital-hq' },
-  { name: 'Search Engine Optimization (SEO)', href: '/products/digital-hq' },
-  { name: 'Lead Generation Funnels', href: '/products/growth-system' },
-  { name: 'Conversion Rate Optimization (CRO)', href: '/products/growth-system' },
-  { name: 'Email Marketing Automation', href: '/products/market-monopoly' },
+  { name: 'Commercial Web Architecture', href: '/products/digital-hq' },
+  { name: 'Search Entity Infrastructure', href: '/products/digital-hq' },
+  { name: 'Automated Lead Pipelines', href: '/products/growth-system' },
+  { name: 'Lifecycle CRM Systems', href: '/products/market-monopoly' },
 ];
 
 const legalLinks = [

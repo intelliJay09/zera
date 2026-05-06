@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Target, Database, TrendingUp, Gift, Crosshair } from 'lucide-react';
+import { Target, Database, Zap, Gift, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { elegantEase } from '@/lib/animation-variants';
@@ -17,7 +17,7 @@ export default function GrowthSystemContent() {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: 'Revenue Operations & Marketing Automation',
+    serviceType: 'Revenue Operations & Automated Pipeline Architecture',
     name: 'The Growth System',
     description: 'Install the machinery that brings customers to you 24/7. We replace manual chasing with automated attracting using high-velocity pipelines.',
     provider: {
@@ -226,24 +226,24 @@ export default function GrowthSystemContent() {
             >
               <div className="md:col-span-2 flex items-start">
                 <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
-                  <TrendingUp className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                  <Zap className="h-7 w-7 text-copper-500" strokeWidth={2} />
                 </div>
               </div>
               <div className="md:col-span-10 space-y-4">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE C</span>
                   <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
-                    Traffic Converter (CRO)
+                    The Automation Architecture
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">Heatmaps & A/B Testing</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Proprietary Workflow Automation Infrastructure</div>
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We install Digital CCTV (Heatmaps) to watch how users behave. We tweak headlines, button colors, and layouts based on data, not guesses, to squeeze more revenue from existing traffic</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We engineer and deploy a custom automation infrastructure across your business. Every lead entry triggers instant tagging, CRM pipeline routing, team notifications, and onboarding sequences — zero manual intervention required</div>
                   </div>
                 </div>
               </div>
@@ -292,24 +292,24 @@ export default function GrowthSystemContent() {
             >
               <div className="md:col-span-2 flex items-start">
                 <div className="w-14 h-14 flex items-center justify-center bg-copper-500/10 border border-copper-500/30">
-                  <Crosshair className="h-7 w-7 text-copper-500" strokeWidth={2} />
+                  <Settings className="h-7 w-7 text-copper-500" strokeWidth={2} />
                 </div>
               </div>
               <div className="md:col-span-10 space-y-4">
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE E</span>
                   <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
-                    Paid Traffic Infrastructure
+                    The Operations Bridge
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">Meta Pixel & Google Ads Conversion Tracking</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Manual Process Elimination & Dynamic Scheduling</div>
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">Server-side Meta Pixel and Google Ads conversion tags — installed, configured, and verified. This is the data layer that makes every future paid campaign profitable from day one, eliminating wasted ad spend before it starts</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We permanently eliminate your team's manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, real-time operational alerts — your business executes without the bottlenecks</div>
                   </div>
                 </div>
               </div>
@@ -347,7 +347,7 @@ export default function GrowthSystemContent() {
               </thead>
               <tbody className="font-mono text-sm">
                 <tr className="border-b border-near-black/10">
-                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Funnel Technology</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Pipeline Technology</td>
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Next.js / React Commercial Architecture</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
@@ -359,28 +359,28 @@ export default function GrowthSystemContent() {
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Server-Side API Webhooks (Low-Latency)</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
-                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Tracking Infrastructure</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Entity-Level Event Tracking & Attribution</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Workflow Automation</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Automated Tagging, Pipeline Routing & Onboarding Sequences</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
-                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Optimization Tools</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Behavioral Intelligence & Heatmap Surveillance</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Operations Protocol</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Dynamic Scheduling + Automated Retainers + Real-Time Alerts</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Lead Magnet System</td>
                   <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Opt-In Asset + Dedicated Landing Page + CRM Integration</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
-                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Paid Traffic Infrastructure</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Meta Pixel + Google Ads Conversion API (Server-Side)</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Tracking Infrastructure</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Entity-Level Event Tracking & Attribution</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Deployment Timeline</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">180-Day Velocity Cycle (Discovery → Build → Scale)</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">180-Day Pipeline Cycle (Discovery → Build → Automate)</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
-                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Conversion Protocol</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Continuous A/B Testing & Statistical Validation</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black/80">Integration Protocol</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Automated Segmentation & CRM Pipeline Routing</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Support Protocol</td>
@@ -408,8 +408,9 @@ export default function GrowthSystemContent() {
             READY TO AUTOMATE THE MOMENTUM?
           </h2>
           <p className="text-xl text-cream-50/70 mb-10 max-w-2xl mx-auto font-light">
-            Start with a 60-minute strategy session. We&apos;ll audit your current funnel and design
-            the pipeline that converts traffic into revenue.
+            Start with a 60-minute strategy session. We&apos;ll audit your current operational
+            infrastructure and deploy the automation architecture that eliminates bottlenecks
+            and routes revenue on autopilot.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

@@ -51,11 +51,11 @@ export default function HomePage() {
               name: 'Global',
             },
             serviceType: [
-              'Web Design & Development',
-              'Search Engine Optimization',
-              'Lead Generation Systems',
-              'Revenue Operations',
-              'Digital Marketing',
+              'Commercial Web Architecture',
+              'Technical SEO & Search Entity Infrastructure',
+              'Automated Lead Pipelines',
+              'CRM Integration & Operations Automation',
+              'Revenue Routing Systems',
             ],
           }),
         }}
@@ -85,7 +85,7 @@ export default function HomePage() {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
             >
-              Web architecture, SEO authority, and marketing automation — built for market leaders.
+              Automated pipelines, revenue infrastructure, and operational systems — built for high-volume brands.
             </motion.h2>
 
             <motion.div
@@ -131,10 +131,9 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center max-w-4xl mx-auto text-lg sm:text-xl text-near-black/70 font-normal leading-relaxed"
           >
-            Stop relying on chaotic marketing tactics. ZERA replaces random ads and scattered
-            social posts with a permanent Revenue Infrastructure. We combine commercial Web
-            Design, SEO, and Automated Sales Pipelines into a single system that scales your
-            business autonomously.
+            Stop operating on manual processes and scattered tactics. ZERA architects automated
+            operational systems that eliminate bottlenecks, route leads with precision, and build
+            the revenue infrastructure that scales your business without adding overhead.
           </motion.p>
         </div>
       </section>

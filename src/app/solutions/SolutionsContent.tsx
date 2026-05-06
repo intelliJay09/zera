@@ -23,10 +23,10 @@ export default function SolutionsContent() {
               Our Solutions
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display uppercase text-cream-50 tracking-tight sm:tracking-brand-header leading-tight mb-6 sm:mb-8">
-              STRATEGIC DIGITAL MARKETING SOLUTIONS
+              AUTOMATED OPERATIONAL SYSTEMS & REVENUE INFRASTRUCTURE
             </h1>
             <p className="text-lg sm:text-xl font-normal text-cream-100/80 leading-relaxed tracking-normal max-w-3xl">
-              Transform your digital presence with strategic marketing solutions designed to accelerate growth and market dominance. Our comprehensive suite of services—from custom web development and data-driven SEO to premium brand design and social media management—delivers measurable results for ambitious businesses ready to lead their industries.
+              We architect automated operational systems that replace manual bottlenecks with precision infrastructure. From commercial web architecture and search entity authority to CRM automation pipelines and cross-system revenue routing — built for high-volume brands ready to dominate their markets.
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function SolutionsContent() {
               Our Services
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header max-w-3xl mx-auto leading-tight">
-              COMPREHENSIVE DIGITAL MARKETING SOLUTIONS
+              OPERATIONAL SYSTEMS BUILT FOR MARKET DOMINANCE
             </h2>
           </div>
 
@@ -113,21 +113,21 @@ export default function SolutionsContent() {
                 link: '/solutions/branding-design',
               },
               {
-                title: 'SEO & Digital Marketing',
+                title: 'Search Entity Infrastructure',
                 description:
-                  'Data-driven search engine optimization that increases organic visibility, drives qualified traffic, and establishes your brand as an industry authority.',
+                  'Technical SEO architecture that establishes search entity authority, engineers Core Web Vitals compliance, and builds the structured data foundation that positions your brand as the definitive source in your category.',
                 link: '/products/digital-hq',
               },
               {
                 title: 'Social Media Management',
                 description:
-                  'Strategic social media marketing that builds engaged communities, amplifies brand awareness, and converts followers into customers across all major platforms.',
+                  'Strategic social presence management that builds brand authority, drives qualified inbound, and converts your audience into an owned commercial asset across all major platforms.',
                 link: '/solutions/social-media-management',
               },
               {
-                title: 'Content Creation',
+                title: 'CRM Automation Systems',
                 description:
-                  'AI-powered content creation with human creativity. Blog posts, social media campaigns, email marketing, and video scripts that engage audiences and deliver measurable results.',
+                  'End-to-end workflow automation that deploys intelligent tagging protocols, lead routing sequences, and operational dashboards to eliminate manual bottlenecks across your entire business pipeline.',
                 link: '/products/growth-system',
               },
             ].map((service, index) => (
