@@ -85,6 +85,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/growth-audit',
+        destination: '/systems-audit',
+        permanent: true,
+      },
+      {
+        source: '/growth-audit/:path*',
+        destination: '/systems-audit/:path*',
+        permanent: true,
+      },
+      {
         source: '/waas-plans',
         destination: '/solutions',
         permanent: true, // 301 redirect

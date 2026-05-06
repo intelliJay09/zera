@@ -116,7 +116,7 @@ export async function GET(request: NextRequest) {
         );
 
         // Build booking URL with token (not payment URL)
-        const bookingUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/growth-audit/success?sessionId=${session.id}&token=${session.booking_token}`;
+        const bookingUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/systems-audit/success?sessionId=${session.id}&token=${session.booking_token}`;
 
         // Calculate expiry (24 hours from paid_at)
         const expiresInHours = Math.max(0, 24 - hoursSincePaid);

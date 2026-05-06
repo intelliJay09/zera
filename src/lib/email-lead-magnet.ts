@@ -95,7 +95,7 @@ export async function sendGhanaAuditDelivery(data: GhanaAuditLeadData): Promise<
     <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 28px 0;">After reading, the logical next step is a private <strong>Infrastructure Diagnostic</strong> - a 60-minute session where we audit your specific numbers and calculate your exact capital recovery potential.</p>
 
     <div style="text-align: center; margin: 32px 0;">
-      <a href="${siteUrl}/growth-audit" style="display: inline-block; background-color: ${COPPER}; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 16px 36px;">REQUEST YOUR INFRASTRUCTURE DIAGNOSTIC</a>
+      <a href="${siteUrl}/systems-audit" style="display: inline-block; background-color: ${COPPER}; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 16px 36px;">REQUEST YOUR INFRASTRUCTURE DIAGNOSTIC</a>
     </div>
 
     <p style="font-size: 12px; color: #999999; text-align: center; margin: 0;">Limited to businesses generating over GHS 50,000 per month running active paid acquisition.</p>

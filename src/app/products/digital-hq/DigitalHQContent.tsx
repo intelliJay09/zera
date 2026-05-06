@@ -108,7 +108,7 @@ export default function DigitalHQContent() {
               size="default"
               className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 font-semibold shadow-xl"
             >
-              <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_hero">Book Your Systems Audit</Link>
+              <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_hero">Book Your Systems Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -416,7 +416,7 @@ export default function DigitalHQContent() {
               size="default"
               className="w-full sm:w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-xl font-semibold"
             >
-              <Link href="/growth-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_cta">Book Your Systems Audit</Link>
+              <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_digital_hq_cta">Book Your Systems Audit</Link>
             </Button>
             <Button
               asChild

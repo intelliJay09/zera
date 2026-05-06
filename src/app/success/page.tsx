@@ -76,7 +76,7 @@ export default function SuccessPage() {
         </p>
 
         <Link
-          href="/growth-audit"
+          href="/systems-audit"
           className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 text-white font-bold text-xs tracking-[0.15em] uppercase px-8 py-4 transition-all duration-300 w-fit"
         >
           Request Your Infrastructure Diagnostic

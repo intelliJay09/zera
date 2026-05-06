@@ -339,7 +339,7 @@ export default function GhanaAuditContent() {
               </p>
             </div>
             <Link
-              href="/growth-audit"
+              href="/systems-audit"
               className="group inline-flex items-center gap-3 bg-transparent border border-copper-500/40 hover:border-copper-500 text-copper-500 hover:text-white hover:bg-copper-500 text-xs font-bold tracking-[0.15em] uppercase px-7 py-4 transition-all duration-300 flex-shrink-0 w-fit"
             >
               Request Infrastructure Diagnostic

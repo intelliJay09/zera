@@ -26,7 +26,7 @@ export const BLOG_POSTS: BlogPost[] = [
     keywords: ["Commercial Web Design", "Digital HQ", "High-Performance Website", "Web Architecture"],
     cta: {
       text: "Deploy a Digital HQ",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 Most businesses treat their website like a **Digital Brochure**-something pretty to show investors or clients during a pitch. It sits there. It costs money to host. It generates zero return.
@@ -119,7 +119,7 @@ Stop building brochures. Deploy infrastructure that generates return.
     keywords: ["Search Entity Optimization", "Google Knowledge Panel", "Semantic SEO", "Brand Authority"],
     cta: {
       text: "Claim Your Entity",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 Old SEO was simple. Stuff the word Best Pizza 50 times on a page. Watch the traffic roll in.
@@ -505,7 +505,7 @@ Wake it up.
     keywords: ["Digital Marketing Agency vs Consultant", "Revenue Operations", "Growth System", "Zera Dynamics"],
     cta: {
       text: "Book Your Systems Audit",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 This is the Us vs. Them post.
@@ -757,7 +757,7 @@ Secure your territory. Build an asset you actually control.
     keywords: ["Revenue Operations vs Marketing", "RevOps Strategy", "Data Driven Marketing", "Business Silos"],
     cta: {
       text: "Book Your Systems Audit",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 Marketing is about pretty pictures. Sales is about closing. **RevOps** is the engineering that connects them.
@@ -910,7 +910,7 @@ Stop doing "marketing." Start engineering revenue.
     keywords: ["International Brand Positioning", "Trust Signals", "Corporate Identity Design", "Global Market Entry"],
     cta: {
       text: "Audit Your Brand",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 International clients do not care **where** you are located. They care about **Risk**.
@@ -1204,7 +1204,7 @@ Automate the boring. Elevate the human.
     keywords: ["Customer Acquisition Cost", "Lifetime Value Calculation", "Unit Economics", "Business Scaling Strategy"],
     cta: {
       text: "Book Your Systems Audit",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 Most Founders obsess over **Revenue**. We did $100K last month! We hit $1M ARR!
@@ -1890,7 +1890,7 @@ Your happiest clients are your best salespeople. Give them the tools.
     keywords: ["Business Analytics Infrastructure", "Marketing Attribution", "CEO Dashboard", "GA4 Setup", "Revenue Tracking"],
     cta: {
       text: "Book Your Systems Audit",
-      link: "/growth-audit"
+      link: "/systems-audit"
     },
     content: `
 If I ask you right now-which marketing channel generated the most revenue last month-can you answer in 30 seconds?
@@ -1950,7 +1950,7 @@ ZERA installs a four-layer analytics foundation on every Digital HQ deployment.
 Every link from every campaign is tagged with UTM parameters:
 
 \`\`\`
-https://yoursite.com/growth-audit?utm_source=linkedin&utm_medium=paid&utm_campaign=q2-2025
+https://yoursite.com/systems-audit?utm_source=linkedin&utm_medium=paid&utm_campaign=q2-2025
 \`\`\`
 
 This tells GA4 exactly which campaign, which platform, and which creative drove the visit.

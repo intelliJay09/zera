@@ -16,7 +16,7 @@ export default function HeaderWrapper() {
   const darkBackgroundPages = [
     '/',
     '/contact',
-    '/growth-audit',
+    '/systems-audit',
     '/ghana-executive-audit',
     '/success',
     '/products/digital-hq',
