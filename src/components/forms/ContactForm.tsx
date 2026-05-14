@@ -77,7 +77,7 @@ export default function ContactForm() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to send message');
+        throw new Error(errorData.error || errorData.message || 'Failed to send message');
       }
 
       setSubmitStatus('success');
