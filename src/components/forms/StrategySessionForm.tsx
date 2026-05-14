@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Cal, { getCalApi } from '@calcom/embed-react';
 import { executeRecaptcha } from '@/lib/recaptcha-client';
 
 const strategySessionSchema = z
@@ -165,6 +166,15 @@ export default function StrategySessionForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [bookingPrefill, setBookingPrefill] = useState<{ name: string; email: string } | null>(null);
+
+  useEffect(() => {
+    if (!bookingPrefill) return;
+    (async () => {
+      const cal = await getCalApi({ namespace: 'systems-audit' });
+      cal('ui', { hideEventTypeDetails: false, layout: 'month_view', theme: 'dark' });
+    })();
+  }, [bookingPrefill]);
 
   const {
     register,
@@ -237,10 +247,8 @@ export default function StrategySessionForm() {
         // Paystack redirect preserved for future activation:
         // if (result.authorizationUrl) window.location.href = result.authorizationUrl;
 
-        const calUrl = new URL('https://cal.com/zera-dynamics/systems-audit');
-        calUrl.searchParams.set('name', data.fullName);
-        calUrl.searchParams.set('email', data.businessEmail);
-        window.location.href = calUrl.toString();
+        setBookingPrefill({ name: data.fullName, email: data.businessEmail });
+        setIsSubmitting(false);
       } else {
         throw new Error('Invalid response from server');
       }
@@ -289,6 +297,34 @@ export default function StrategySessionForm() {
   const prevStep = () => {
     setCurrentStep(currentStep - 1);
   };
+
+  if (bookingPrefill) {
+    return (
+      <div className="-m-6 sm:-m-8 lg:-m-10 overflow-hidden rounded-sm">
+        <div className="border-b border-copper-500/20 px-6 py-4 bg-[#2a2a2a]">
+          <h2 className="text-lg font-bold font-display uppercase text-white tracking-brand-header text-center">
+            SELECT YOUR SESSION DATE
+          </h2>
+          <p className="text-xs text-cream-200/60 text-center mt-1">
+            Booking for {bookingPrefill.name}
+          </p>
+        </div>
+        <Cal
+          namespace="systems-audit"
+          calLink="zera-dynamics/systems-audit"
+          style={{ width: '100%', minHeight: '580px' }}
+          config={{
+            layout: 'month_view',
+            theme: 'dark',
+            prefill: {
+              name: bookingPrefill.name,
+              email: bookingPrefill.email,
+            },
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-8">
