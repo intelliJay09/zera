@@ -167,12 +167,17 @@ export default function StrategySessionForm() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [bookingPrefill, setBookingPrefill] = useState<{ name: string; email: string } | null>(null);
+  const [bookingComplete, setBookingComplete] = useState(false);
 
   useEffect(() => {
     if (!bookingPrefill) return;
     (async () => {
       const cal = await getCalApi({ namespace: 'systems-audit' });
       cal('ui', { hideEventTypeDetails: false, layout: 'month_view', theme: 'dark' });
+      cal('on', {
+        action: 'bookingSuccessful',
+        callback: () => setBookingComplete(true),
+      });
     })();
   }, [bookingPrefill]);
 
@@ -297,6 +302,45 @@ export default function StrategySessionForm() {
   const prevStep = () => {
     setCurrentStep(currentStep - 1);
   };
+
+  if (bookingComplete && bookingPrefill) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center py-10 space-y-6"
+      >
+        <div className="flex justify-center">
+          <div className="w-16 h-16 rounded-full bg-copper-500/20 flex items-center justify-center">
+            <CheckCircle2 className="w-8 h-8 text-copper-400" strokeWidth={1.5} />
+          </div>
+        </div>
+        <div className="space-y-3">
+          <h3 className="text-2xl font-bold font-display text-white uppercase tracking-brand-header">
+            Session Confirmed
+          </h3>
+          <p className="text-white/70 text-sm leading-relaxed max-w-sm mx-auto">
+            Your Systems Audit is booked, {bookingPrefill.name.split(' ')[0]}. Check your inbox for the calendar invite and Google Meet link.
+          </p>
+        </div>
+        <div className="pt-2">
+          <a
+            href="/solutions"
+            className="inline-flex items-center gap-2 bg-copper-500 hover:bg-copper-600 text-white font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 group"
+          >
+            <span>Explore ZERA Solutions</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+          </a>
+        </div>
+        <div className="border-t border-copper-500/20 pt-4">
+          <a href="/" className="text-xs text-white/40 hover:text-white/60 transition-colors">
+            Return to homepage
+          </a>
+        </div>
+      </motion.div>
+    );
+  }
 
   if (bookingPrefill) {
     return (
