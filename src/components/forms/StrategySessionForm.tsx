@@ -355,15 +355,13 @@ export default function StrategySessionForm() {
         </div>
         <Cal
           namespace="systems-audit"
-          calLink="zera-dynamics/systems-audit"
+          calLink="zera-dynamics/zera-revenue-systems-audit"
           style={{ width: '100%', minHeight: '580px' }}
           config={{
             layout: 'month_view',
             theme: 'dark',
-            prefill: {
-              name: bookingPrefill.name,
-              email: bookingPrefill.email,
-            },
+            name: bookingPrefill.name,
+            email: bookingPrefill.email,
           }}
         />
       </div>
