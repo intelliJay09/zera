@@ -90,7 +90,7 @@ export default function DigitalHQContent() {
           </h1>
 
           <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-cream-50/80 mb-4 tracking-tight">
-            Secure Your Territory.
+            Your Revenue Command Center.
           </p>
 
           <p className="text-lg text-cream-50/60 max-w-3xl mx-auto font-mono mb-12">

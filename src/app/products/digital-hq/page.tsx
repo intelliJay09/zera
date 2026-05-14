@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import DigitalHQContent from './DigitalHQContent';
 
 export const metadata: Metadata = {
-  title: 'The Digital HQ | Commercial Web Architecture & Entity SEO',
+  title: 'The Digital HQ - Your Revenue Command Center | Commercial Web Architecture',
   description:
-    'A commercial-grade web architecture designed to secure search authority and brand legitimacy. Stop looking like a freelancer. Deploy a Digital HQ.',
+    'A commercial-grade web architecture engineered to establish revenue authority and search entity dominance. Stop looking like a freelancer. Deploy a Digital HQ.',
   keywords: [
     'commercial web architecture',
     'entity SEO',

@@ -22,7 +22,7 @@ export const PRODUCT_TIERS: ProductTier[] = [
     tierNumber: 1,
     duration: '180 Days',
     assetName: 'THE DIGITAL HQ',
-    promise: 'Secure the territory.',
+    promise: 'Your Revenue Command Center.',
     tagline: 'We build your permanent base of operations.',
     deliverables: [
       {
