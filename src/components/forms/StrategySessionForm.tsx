@@ -5,7 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, AlertCircle, Loader2, Lock, ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { executeRecaptcha } from '@/lib/recaptcha-client';
 
@@ -226,7 +226,7 @@ export default function StrategySessionForm() {
 
       const result = await response.json();
 
-      if (result.success && result.authorizationUrl) {
+      if (result.success) {
         (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer?.push({
           event: 'strategy_session_submitted',
           company_name: data.companyName,
@@ -234,7 +234,11 @@ export default function StrategySessionForm() {
           growth_obstacle: data.growthObstacle,
         });
 
-        window.location.href = result.authorizationUrl;
+        // Paystack redirect preserved for future activation:
+        // if (result.authorizationUrl) window.location.href = result.authorizationUrl;
+
+        setSubmitStatus('success');
+        setIsSubmitting(false);
       } else {
         throw new Error('Invalid response from server');
       }
@@ -295,6 +299,36 @@ export default function StrategySessionForm() {
           Confidential Data Collection for Pre-Session Analysis.
         </p>
       </div>
+
+      {/* Thank You State */}
+      {submitStatus === 'success' ? (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center py-10 space-y-6"
+        >
+          <div className="flex justify-center">
+            <div className="w-16 h-16 rounded-full bg-copper-500/20 flex items-center justify-center">
+              <CheckCircle2 className="w-8 h-8 text-copper-400" strokeWidth={1.5} />
+            </div>
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-2xl font-bold font-display text-white uppercase tracking-brand-header">
+              Request Received
+            </h3>
+            <p className="text-white/70 text-sm leading-relaxed max-w-sm mx-auto">
+              Your Systems Audit intake has been submitted. Our team will review your submission and reach out within 24 hours to confirm your session.
+            </p>
+          </div>
+          <div className="border-t border-copper-500/20 pt-6">
+            <p className="text-xs text-white/50 tracking-normal">
+              Watch your inbox for a confirmation from the ZERA team.
+            </p>
+          </div>
+        </motion.div>
+      ) : (
+        <>
 
       {/* Step Indicator */}
       <div className="flex items-center justify-center gap-2">
@@ -545,8 +579,11 @@ export default function StrategySessionForm() {
 
               {/* Q4: Investment Qualifier */}
               <div>
+                <p className="text-sm text-white/70 mb-3 leading-relaxed">
+                  Zera&apos;s architectures are custom-built based on the complexity of your operational bottlenecks. Our foundational builds (Digital HQ + Basic Routing) start at a minimum CapEx of GHS 10,500, while full automated ecosystems scale upward.
+                </p>
                 <label htmlFor="investmentQualifier" className="block text-sm font-medium text-white mb-2 tracking-normal">
-                  Does your organization have budget allocated for operational systems this year? *
+                  Which investment tier aligns with your allocated budget for solving this problem? *
                 </label>
                 <Controller
                   name="investmentQualifier"
@@ -594,15 +631,15 @@ export default function StrategySessionForm() {
             </div>
           )}
 
-          {/* STEP 3: THE GATE */}
+          {/* STEP 3: CONFIRM & SUBMIT */}
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="border-l-2 border-copper-500 pl-6">
                 <h3 className="text-lg font-bold text-copper-500 mb-1 uppercase tracking-wide">
-                  STEP 3: SECURE YOUR SESSION
+                  STEP 3: CONFIRM YOUR REQUEST
                 </h3>
                 <p className="text-sm text-white/80 leading-relaxed">
-                  The Strategy Session fee is <span className="text-copper-400 font-semibold">$100 USD / GHS 1,000</span>. This secures your 60-minute deep-dive and includes your customized Roadmap Report.
+                  You are almost there. Submit your Systems Audit request and our team will review your submission and reach out within 24 hours to schedule your session.
                 </p>
               </div>
 
@@ -629,14 +666,14 @@ export default function StrategySessionForm() {
                   </>
                 ) : (
                   <>
-                    <Lock className="w-5 h-5" />
-                    <span>SECURE SYSTEMS AUDIT</span>
+                    <ArrowRight className="w-5 h-5" />
+                    <span>SUBMIT YOUR REQUEST</span>
                   </>
                 )}
               </button>
 
               <p className="text-xs font-normal text-white/70 text-center tracking-normal">
-                Redirects to Secure Payment and Calendar Booking.
+                Our team reviews every submission before reaching out.
               </p>
             </div>
           )}
@@ -669,6 +706,9 @@ export default function StrategySessionForm() {
           </button>
         )}
       </div>
+
+        </>
+      )}
     </form>
   );
 }
