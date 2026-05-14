@@ -237,8 +237,10 @@ export default function StrategySessionForm() {
         // Paystack redirect preserved for future activation:
         // if (result.authorizationUrl) window.location.href = result.authorizationUrl;
 
-        setSubmitStatus('success');
-        setIsSubmitting(false);
+        const calUrl = new URL('https://cal.com/zera-dynamics/systems-audit');
+        calUrl.searchParams.set('name', data.fullName);
+        calUrl.searchParams.set('email', data.businessEmail);
+        window.location.href = calUrl.toString();
       } else {
         throw new Error('Invalid response from server');
       }
@@ -299,36 +301,6 @@ export default function StrategySessionForm() {
           Confidential Data Collection for Pre-Session Analysis.
         </p>
       </div>
-
-      {/* Thank You State */}
-      {submitStatus === 'success' ? (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center py-10 space-y-6"
-        >
-          <div className="flex justify-center">
-            <div className="w-16 h-16 rounded-full bg-copper-500/20 flex items-center justify-center">
-              <CheckCircle2 className="w-8 h-8 text-copper-400" strokeWidth={1.5} />
-            </div>
-          </div>
-          <div className="space-y-3">
-            <h3 className="text-2xl font-bold font-display text-white uppercase tracking-brand-header">
-              Request Received
-            </h3>
-            <p className="text-white/70 text-sm leading-relaxed max-w-sm mx-auto">
-              Your Systems Audit intake has been submitted. Our team will review your submission and reach out within 24 hours to confirm your session.
-            </p>
-          </div>
-          <div className="border-t border-copper-500/20 pt-6">
-            <p className="text-xs text-white/50 tracking-normal">
-              Watch your inbox for a confirmation from the ZERA team.
-            </p>
-          </div>
-        </motion.div>
-      ) : (
-        <>
 
       {/* Step Indicator */}
       <div className="flex items-center justify-center gap-2">
@@ -706,9 +678,6 @@ export default function StrategySessionForm() {
           </button>
         )}
       </div>
-
-        </>
-      )}
     </form>
   );
 }
