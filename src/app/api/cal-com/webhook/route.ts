@@ -210,6 +210,51 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
     }
   }
 
+  // Replaces the sunset Make.com CRM webhook (2026-08-30) — real lead
+  // data now flows straight into Orella, Zera's own system of record,
+  // instead of a third-party automation tool. HMAC-signed the same way
+  // this route itself verifies inbound Cal.com signatures, so Orella's
+  // own webhook can verify this call is genuinely from Zera. Non-blocking
+  // and never thrown past this function — a delivery failure here must
+  // never make Cal.com retry-storm this webhook or block the customer/
+  // team emails above, which have already sent by this point.
+  try {
+    const orellaUrl = process.env.ORELLA_BOOKING_WEBHOOK_URL;
+    const orellaSecret = process.env.ZERA_BOOKING_WEBHOOK_SECRET;
+    if (!orellaUrl || !orellaSecret) {
+      console.warn('[Cal.com Webhook] ORELLA_BOOKING_WEBHOOK_URL/ZERA_BOOKING_WEBHOOK_SECRET not configured, skipping Orella sync');
+    } else {
+      const orellaPayload = JSON.stringify({
+        email: session.business_email,
+        fullName: session.full_name,
+        companyName: session.company_name,
+        websiteUrl: session.website_url,
+        whatsappNumber: session.whatsapp_number,
+        revenueRange: session.revenue_range,
+        growthObstacle: session.growth_obstacle,
+        magicWandOutcome: session.magic_wand_outcome,
+        budgetRange: session.budget_range,
+        scheduledAt: scheduledAt.toISOString(),
+        utmSource: session.utm_source,
+        utmCampaign: session.utm_campaign,
+      });
+      const signature = crypto.createHmac('sha256', orellaSecret).update(orellaPayload).digest('hex');
+
+      const response = await fetch(orellaUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-zera-booking-signature': signature },
+        body: orellaPayload,
+      });
+
+      if (!response.ok) {
+        console.error(`[Cal.com Webhook] Orella sync failed with status ${response.status}: ${await response.text()}`);
+      } else {
+        console.log(`[Cal.com Webhook] Orella sync succeeded for session: ${session.id}`);
+      }
+    }
+  } catch (orellaError) {
+    console.error('[Cal.com Webhook] Failed to sync booking to Orella:', orellaError);
+  }
 }
 
 /**
