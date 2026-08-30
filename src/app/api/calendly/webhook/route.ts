@@ -212,22 +212,6 @@ async function updateSessionWithCalendly(
   } catch (emailError) {
     console.error('[Calendly] Failed to send calendar confirmation email:', emailError);
   }
-
-  // Update CRM with booking time
-  try {
-    const [rows] = await query(
-      `SELECT * FROM growth_audit WHERE id = ?`,
-      [sessionId]
-    );
-
-    if (rows && rows.length > 0) {
-      const { sendToCRM } = await import('@/lib/crm-webhook');
-      const session = rows[0];
-      await sendToCRM(session);
-    }
-  } catch (crmError) {
-    console.error('[Calendly] Failed to update CRM:', crmError);
-  }
 }
 
 /**

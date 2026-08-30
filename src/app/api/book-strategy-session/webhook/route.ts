@@ -93,20 +93,6 @@ async function handleChargeSuccess(event: PaystackWebhookEvent): Promise<void> {
     // BOTH customer confirmation AND team notification are sent AFTER Calendly booking completes
     // This is triggered by client-side event listener that calls mark-token-used endpoint
     console.log(`[Webhook] Payment confirmed for session: ${sessionId} - Customer redirected to Calendly booking page`)
-
-    // ========================================
-    // SEND CRM WEBHOOK (Non-blocking with retry)
-    // ========================================
-    try {
-      const { sendToCRM } = await import('@/lib/crm-webhook');
-
-      await sendToCRM(session);
-
-      console.log(`[Webhook] CRM webhook sent for session: ${sessionId}`);
-    } catch (crmError) {
-      console.error('[Webhook] Failed to send CRM webhook (will retry):', crmError);
-      // CRM webhook has its own retry logic, don't throw
-    }
   } catch (error) {
     console.error('[Webhook] Error handling charge.success:', error);
     throw error; // Re-throw to trigger 500 response

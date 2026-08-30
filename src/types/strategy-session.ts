@@ -337,48 +337,6 @@ export interface CalComWebhookEvent {
 }
 
 // ============================================================
-// CRM WEBHOOK TYPES
-// ============================================================
-
-/**
- * Data sent to CRM webhook
- */
-export interface CRMWebhookPayload {
-  event: 'strategy_session_booked' | 'strategy_session_canceled' | 'strategy_session_completed';
-  timestamp: string;
-  session: {
-    id: string;
-    full_name: string;
-    business_email: string;
-    company_name: string;
-    website_url: string;
-    whatsapp_number: string;
-    revenue_range: string;
-    custom_revenue?: string;
-    growth_obstacle: string;
-    magic_wand_outcome: string;
-    payment_status: PaymentStatus;
-    payment_reference: string;
-    payment_amount: number;
-    payment_currency: string;
-    paid_at?: string;
-    calendly_scheduled_at?: string;
-    booking_stage: BookingStage;
-    utm_source?: string;
-    utm_medium?: string;
-    utm_campaign?: string;
-  };
-}
-
-/**
- * CRM webhook retry configuration
- */
-export interface CRMRetryConfig {
-  maxRetries: number;
-  retryDelays: number[]; // In milliseconds [1h, 4h, 24h]
-}
-
-// ============================================================
 // EMAIL TEMPLATE TYPES
 // ============================================================
 

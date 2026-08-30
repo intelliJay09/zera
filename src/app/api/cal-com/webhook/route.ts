@@ -210,15 +210,6 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
     }
   }
 
-  try {
-    const [refreshedRows] = await query<StrategySession>(`SELECT * FROM growth_audit WHERE id = ?`, [session.id]);
-    if (refreshedRows && refreshedRows.length > 0) {
-      const { sendToCRM } = await import('@/lib/crm-webhook');
-      await sendToCRM(refreshedRows[0]);
-    }
-  } catch (crmError) {
-    console.error('[Cal.com Webhook] Failed to update CRM:', crmError);
-  }
 }
 
 /**
