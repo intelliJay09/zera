@@ -93,83 +93,96 @@ export async function POST(request: NextRequest) {
         // ========================================
         // SEND EMAIL: CUSTOMER CONFIRMATION
         // ========================================
-        console.log(`[Mark Token] Attempting to send customer confirmation email...`);
-        try {
-          await sendCalendarBookingConfirmation({
-            fullName: session.full_name,
-            businessEmail: session.business_email,
-            companyName: session.company_name,
-            scheduledDate,
-            scheduledTime,
-            timezone: scheduledAt ? inviteeTimezone : undefined,
-            meetingLink: calEvent.meetingLink || undefined,
-          });
+        // Idempotency guard added alongside the new server-side Cal.com
+        // webhook (app/api/cal-com/webhook/route.ts) — that webhook can
+        // now beat this client-triggered call to the punch (or vice
+        // versa), so whichever fires first must be the only one that
+        // actually sends, never both.
+        if (session.calendar_confirmation_email_sent) {
+          console.log(`[Mark Token] Customer confirmation already sent for session: ${sessionId} — skipping`);
+        } else {
+          console.log(`[Mark Token] Attempting to send customer confirmation email...`);
+          try {
+            await sendCalendarBookingConfirmation({
+              fullName: session.full_name,
+              businessEmail: session.business_email,
+              companyName: session.company_name,
+              scheduledDate,
+              scheduledTime,
+              timezone: scheduledAt ? inviteeTimezone : undefined,
+              meetingLink: calEvent.meetingLink || undefined,
+            });
 
-          await query(
-            `UPDATE growth_audit
-             SET calendar_confirmation_email_sent = TRUE,
-                 calendar_confirmation_email_sent_at = NOW()
-             WHERE id = ?`,
-            [sessionId]
-          );
+            await query(
+              `UPDATE growth_audit
+               SET calendar_confirmation_email_sent = TRUE,
+                   calendar_confirmation_email_sent_at = NOW()
+               WHERE id = ?`,
+              [sessionId]
+            );
 
-          console.log(`[Mark Token] Customer confirmation email sent to: ${session.business_email}`);
-        } catch (emailError) {
-          console.error('[Mark Token] FAILED to send customer confirmation email:', emailError);
-          console.error('[Mark Token] Error details:', {
-            name: (emailError as Error).name,
-            message: (emailError as Error).message,
-            stack: (emailError as Error).stack
-          });
+            console.log(`[Mark Token] Customer confirmation email sent to: ${session.business_email}`);
+          } catch (emailError) {
+            console.error('[Mark Token] FAILED to send customer confirmation email:', emailError);
+            console.error('[Mark Token] Error details:', {
+              name: (emailError as Error).name,
+              message: (emailError as Error).message,
+              stack: (emailError as Error).stack
+            });
+          }
         }
 
         // ========================================
         // SEND TEAM NOTIFICATION
         // ========================================
-        console.log(`[Mark Token] Attempting to send team notification email...`);
-        try {
-          const { sendStrategySessionTeamNotification } = await import(
-            '@/lib/email-strategy-sessions'
-          );
+        if (session.team_notification_sent) {
+          console.log(`[Mark Token] Team notification already sent for session: ${sessionId} — skipping`);
+        } else {
+          console.log(`[Mark Token] Attempting to send team notification email...`);
+          try {
+            const { sendStrategySessionTeamNotification } = await import(
+              '@/lib/email-strategy-sessions'
+            );
 
-          await sendStrategySessionTeamNotification(
-            {
-              sessionId: session.id,
-              fullName: session.full_name,
-              businessEmail: session.business_email,
-              companyName: session.company_name,
-              websiteUrl: session.website_url,
-              phoneNumber: session.whatsapp_number,
-              revenueRange: session.revenue_range,
-              customRevenue: session.custom_revenue,
-              growthObstacle: session.growth_obstacle,
-              hoursWasted: session.hours_wasted,
-              magicWandOutcome: session.magic_wand_outcome,
-              budgetRange: session.budget_range,
-              paymentReference: session.payment_reference,
-              paymentAmount: session.payment_amount,
-              utmSource: session.utm_source,
-              utmCampaign: session.utm_campaign,
-            },
-            sessionId
-          );
+            await sendStrategySessionTeamNotification(
+              {
+                sessionId: session.id,
+                fullName: session.full_name,
+                businessEmail: session.business_email,
+                companyName: session.company_name,
+                websiteUrl: session.website_url,
+                phoneNumber: session.whatsapp_number,
+                revenueRange: session.revenue_range,
+                customRevenue: session.custom_revenue,
+                growthObstacle: session.growth_obstacle,
+                hoursWasted: session.hours_wasted,
+                magicWandOutcome: session.magic_wand_outcome,
+                budgetRange: session.budget_range,
+                paymentReference: session.payment_reference,
+                paymentAmount: session.payment_amount,
+                utmSource: session.utm_source,
+                utmCampaign: session.utm_campaign,
+              },
+              sessionId
+            );
 
-          await query(
-            `UPDATE growth_audit
-             SET team_notification_sent = TRUE,
-                 team_notification_sent_at = NOW()
-             WHERE id = ?`,
-            [sessionId]
-          );
+            await query(
+              `UPDATE growth_audit
+               SET team_notification_sent = TRUE,
+                   team_notification_sent_at = NOW()
+               WHERE id = ?`,
+              [sessionId]
+            );
 
-          console.log(`[Mark Token] Team notification sent for session: ${sessionId}`);
-        } catch (teamEmailError) {
-          console.error('[Mark Token] FAILED to send team notification:', teamEmailError);
-          console.error('[Mark Token] Team email error details:', {
-            name: (teamEmailError as Error).name,
-            message: (teamEmailError as Error).message,
-            stack: (teamEmailError as Error).stack
-          });
+            console.log(`[Mark Token] Team notification sent for session: ${sessionId}`);
+          } catch (teamEmailError) {
+            console.error('[Mark Token] FAILED to send team notification:', teamEmailError);
+            console.error('[Mark Token] Team email error details:', {
+              name: (teamEmailError as Error).name,
+              message: (teamEmailError as Error).message,
+              stack: (teamEmailError as Error).stack
+            });
+          }
         }
 
         // ========================================

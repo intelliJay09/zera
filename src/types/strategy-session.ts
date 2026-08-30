@@ -302,6 +302,41 @@ export interface CalendlyWebhookEvent {
 }
 
 // ============================================================
+// CAL.COM TYPES
+// ============================================================
+
+/**
+ * Cal.com webhook event payload (BOOKING_CREATED / BOOKING_CANCELLED).
+ * The live booking widget on /systems-audit/success is Cal.com, not
+ * Calendly — this is the real server-to-server webhook backing it, since
+ * the existing client-side postMessage->fetch('/mark-token-used') callback
+ * only fires if the client's own browser completes that round trip
+ * (confirmed as the actual cause of a real missed booking).
+ */
+export interface CalComWebhookEvent {
+  triggerEvent: 'BOOKING_CREATED' | 'BOOKING_CANCELLED' | string;
+  createdAt: string;
+  payload: {
+    uid: string;
+    title: string;
+    startTime: string;
+    endTime: string;
+    location?: string;
+    organizer: {
+      email: string;
+      timeZone: string;
+    };
+    attendees: Array<{
+      name: string;
+      email: string;
+      timeZone: string;
+    }>;
+    cancellationReason?: string;
+    metadata?: Record<string, unknown>;
+  };
+}
+
+// ============================================================
 // CRM WEBHOOK TYPES
 // ============================================================
 
