@@ -47,7 +47,12 @@ function verifyCalComSignature(payload: string, signature: string): boolean {
   }
 
   try {
-    const expected = `sha256=${crypto.createHmac('sha256', secret).update(payload).digest('hex')}`;
+    // Cal.com's own createWebhookSignature (packages/features/webhooks/lib/sendPayload.ts)
+    // sends the raw hex digest with no "sha256=" prefix -- confirmed against Cal.com's
+    // source, not the GitHub-style prefixed format this previously assumed. That mismatch
+    // meant every real webhook, and every Ping test from Cal.com's own dashboard, failed
+    // signature verification regardless of whether the secret itself matched.
+    const expected = crypto.createHmac('sha256', secret).update(payload).digest('hex');
 
     if (expected.length !== signature.length) {
       return false;
