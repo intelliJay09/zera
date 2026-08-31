@@ -69,7 +69,16 @@ function verifyCalComSignature(payload: string, signature: string): boolean {
  * matching heuristic (no reliable internal identifier comes through
  * Cal.com's public booking widget today, same real constraint the
  * existing Calendly integration already works around): match the most
- * recent paid, not-yet-booked session for this attendee email.
+ * recent not-yet-booked session for this attendee email.
+ *
+ * Does NOT require payment_status = 'completed': the live intake flow
+ * (StrategySessionForm.tsx) currently books straight after form submit
+ * with the Paystack redirect disabled, so payment_status stays 'pending'
+ * indefinitely. Matching on payment_status here silently dropped every
+ * notification for every booking made since payment was turned off —
+ * confirmed by reproducing a real booking end-to-end and finding this
+ * exact row never touched. calendly_status also defaults to NULL in the
+ * schema, never the literal 'not_booked' this used to require.
  */
 async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
   const { payload } = event;
@@ -86,9 +95,8 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
   const [rows] = await query<StrategySession>(
     `SELECT * FROM growth_audit
      WHERE business_email = ?
-       AND payment_status = 'completed'
-       AND calendly_status = 'not_booked'
-     ORDER BY paid_at DESC
+       AND (calendly_status IS NULL OR calendly_status = 'not_booked')
+     ORDER BY created_at DESC
      LIMIT 1`,
     [attendee.email]
   );
