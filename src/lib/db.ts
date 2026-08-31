@@ -1,50 +1,19 @@
 /**
- * MariaDB Database Connection
+ * Postgres (Neon) Database Connection
  * Handles all database interactions for the Discovery Form system
  */
 
-import mysql from 'mysql2/promise';
+import { Pool, type PoolClient } from 'pg';
 
-// Connection pool configuration
-// Separates socket-only config (for system users with no password) from TCP config (for other users)
-// System users like 'root' or 'jacqueline' on macOS can use unix socket authentication without password
-const isSystemUserWithoutPassword = !process.env.DB_PASSWORD &&
-  (process.env.DB_USER === 'root' || process.env.DB_USER === 'jacqueline');
+let pool: Pool | null = null;
 
-const poolConfig: mysql.PoolOptions = isSystemUserWithoutPassword
-  ? {
-      // Socket-only config for system users (macOS unix socket auth)
-      // Completely omits host, port, and password to prevent TCP fallback
-      socketPath: '/tmp/mysql.sock',
-      user: process.env.DB_USER,
-      database: process.env.DB_NAME,
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
-      enableKeepAlive: true,
-      keepAliveInitialDelay: 0,
-    }
-  : {
-      // TCP config for other users (production setup)
-      host: process.env.DB_HOST || 'localhost',
-      port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 3306,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      ssl: process.env.DB_HOST?.includes('aivencloud.com') ? { rejectUnauthorized: false } : undefined,
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0,
-      enableKeepAlive: true,
-      keepAliveInitialDelay: 0,
-    };
-
-// Create connection pool
-let pool: mysql.Pool | null = null;
-
-export function getPool(): mysql.Pool {
+export function getPool(): Pool {
   if (!pool) {
-    pool = mysql.createPool(poolConfig);
+    pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+      max: 10,
+    });
   }
   return pool;
 }
@@ -55,14 +24,9 @@ export function getPool(): mysql.Pool {
 export async function query<T = any>(
   sql: string,
   params?: any[]
-): Promise<[T[], mysql.FieldPacket[]]> {
-  const connection = await getPool().getConnection();
-  try {
-    const result = await connection.query(sql, params);
-    return result as [T[], mysql.FieldPacket[]];
-  } finally {
-    connection.release();
-  }
+): Promise<[T[], string[]]> {
+  const result = await getPool().query(sql, params);
+  return [result.rows as T[], result.fields.map((f) => f.name)];
 }
 
 /**
@@ -77,19 +41,14 @@ export async function queryOne<T = any>(
 }
 
 /**
- * Execute an INSERT and return the inserted ID
+ * Execute an INSERT
  */
 export async function insert(
   sql: string,
   params?: any[]
-): Promise<string> {
-  const connection = await getPool().getConnection();
-  try {
-    const [result] = await connection.query(sql, params);
-    return (result as any).insertId || (result as any).affectedRows;
-  } finally {
-    connection.release();
-  }
+): Promise<number> {
+  const result = await getPool().query(sql, params);
+  return result.rowCount || 0;
 }
 
 /**
@@ -99,13 +58,8 @@ export async function update(
   sql: string,
   params?: any[]
 ): Promise<number> {
-  const connection = await getPool().getConnection();
-  try {
-    const [result] = await connection.query(sql, params);
-    return (result as any).affectedRows || 0;
-  } finally {
-    connection.release();
-  }
+  const result = await getPool().query(sql, params);
+  return result.rowCount || 0;
 }
 
 /**
@@ -115,32 +69,27 @@ export async function deleteRows(
   sql: string,
   params?: any[]
 ): Promise<number> {
-  const connection = await getPool().getConnection();
-  try {
-    const [result] = await connection.query(sql, params);
-    return (result as any).affectedRows || 0;
-  } finally {
-    connection.release();
-  }
+  const result = await getPool().query(sql, params);
+  return result.rowCount || 0;
 }
 
 /**
  * Transaction helper
  */
 export async function transaction<T>(
-  callback: (connection: mysql.PoolConnection) => Promise<T>
+  callback: (client: PoolClient) => Promise<T>
 ): Promise<T> {
-  const connection = await getPool().getConnection();
+  const client = await getPool().connect();
   try {
-    await connection.beginTransaction();
-    const result = await callback(connection);
-    await connection.commit();
+    await client.query('BEGIN');
+    const result = await callback(client);
+    await client.query('COMMIT');
     return result;
   } catch (error) {
-    await connection.rollback();
+    await client.query('ROLLBACK');
     throw error;
   } finally {
-    connection.release();
+    client.release();
   }
 }
 

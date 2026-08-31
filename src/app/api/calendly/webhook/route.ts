@@ -70,7 +70,7 @@ async function handleInviteeCreated(event: CalendlyWebhookEvent): Promise<void> 
     const sessionResult = await query(
       `SELECT id, full_name, company_name, payment_reference
        FROM growth_audit
-       WHERE business_email = ?
+       WHERE business_email = $1
          AND payment_status = 'completed'
          AND calendly_status = 'not_booked'
        ORDER BY paid_at DESC
@@ -92,7 +92,7 @@ async function handleInviteeCreated(event: CalendlyWebhookEvent): Promise<void> 
         const [refRows] = await query<{ id: string; full_name: string; company_name: string }>(
           `SELECT id, full_name, company_name
            FROM growth_audit
-           WHERE payment_reference = ?
+           WHERE payment_reference = $1
              AND payment_status = 'completed'
            LIMIT 1`,
           [paymentRef]
@@ -146,13 +146,13 @@ async function updateSessionWithCalendly(
   // Update database with Calendly details
   await query(
     `UPDATE growth_audit
-     SET calendly_event_uri = ?,
-         calendly_invitee_uri = ?,
-         calendly_scheduled_at = ?,
+     SET calendly_event_uri = $1,
+         calendly_invitee_uri = $2,
+         calendly_scheduled_at = $3,
          calendly_status = 'booked',
          booking_stage = 'calendar_booked',
          updated_at = NOW()
-     WHERE id = ?`,
+     WHERE id = $4`,
     [eventUri, inviteeUri, scheduledAt, sessionId]
   );
 
@@ -180,7 +180,7 @@ async function updateSessionWithCalendly(
 
     // Get businessEmail from session
     const [rows] = await query<{ business_email: string }>(
-      `SELECT business_email FROM growth_audit WHERE id = ?`,
+      `SELECT business_email FROM growth_audit WHERE id = $1`,
       [sessionId]
     );
     const businessEmail = rows && rows.length > 0
@@ -204,7 +204,7 @@ async function updateSessionWithCalendly(
       `UPDATE growth_audit
        SET calendar_confirmation_email_sent = TRUE,
            calendar_confirmation_email_sent_at = NOW()
-       WHERE id = ?`,
+       WHERE id = $1`,
       [sessionId]
     );
 
@@ -230,8 +230,8 @@ async function handleInviteeCanceled(event: CalendlyWebhookEvent): Promise<void>
     const [rows] = await query<{ id: string }>(
       `SELECT id
        FROM growth_audit
-       WHERE calendly_invitee_uri = ?
-          OR (business_email = ? AND calendly_status = 'booked')
+       WHERE calendly_invitee_uri = $1
+          OR (business_email = $2 AND calendly_status = 'booked')
        LIMIT 1`,
       [inviteeUri, inviteeEmail]
     );
@@ -248,9 +248,9 @@ async function handleInviteeCanceled(event: CalendlyWebhookEvent): Promise<void>
     await query(
       `UPDATE growth_audit
        SET calendly_status = 'canceled',
-           calendly_cancellation_reason = ?,
+           calendly_cancellation_reason = $1,
            updated_at = NOW()
-       WHERE id = ?`,
+       WHERE id = $2`,
       [cancellationReason, sessionId]
     );
 

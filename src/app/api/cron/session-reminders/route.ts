@@ -74,8 +74,8 @@ export async function GET(request: NextRequest) {
        FROM growth_audit
        WHERE booking_stage = 'calendar_booked'
          AND reminder_email_sent = FALSE
-         AND calendly_scheduled_at BETWEEN DATE_ADD(NOW(), INTERVAL 23 HOUR)
-                                       AND DATE_ADD(NOW(), INTERVAL 25 HOUR)
+         AND calendly_scheduled_at BETWEEN NOW() + INTERVAL '23 hours'
+                                       AND NOW() + INTERVAL '25 hours'
        ORDER BY calendly_scheduled_at ASC
        LIMIT 50`,
       []
@@ -150,7 +150,7 @@ export async function GET(request: NextRequest) {
           `UPDATE growth_audit
            SET reminder_email_sent = TRUE,
                reminder_email_sent_at = NOW()
-           WHERE id = ?`,
+           WHERE id = $1`,
           [session.id]
         );
 
@@ -176,21 +176,19 @@ export async function GET(request: NextRequest) {
     // ========================================
     // Find sessions that should have received reminder but didn't
     try {
-      const overdueResult = await query(
-        `SELECT COUNT(*) as overdue_count
+      const [overdueRows] = await query(
+        `SELECT COUNT(*)::int as overdue_count
          FROM growth_audit
          WHERE booking_stage = 'calendar_booked'
            AND reminder_email_sent = FALSE
-           AND calendly_scheduled_at < DATE_ADD(NOW(), INTERVAL 23 HOUR)
+           AND calendly_scheduled_at < NOW() + INTERVAL '23 hours'
            AND calendly_scheduled_at > NOW()`,
         []
       );
 
       const overdueCount =
-        overdueResult &&
-        overdueResult[0] &&
-        (overdueResult[0] as any).length > 0
-          ? (overdueResult[0] as any)[0].overdue_count
+        overdueRows && overdueRows.length > 0
+          ? (overdueRows[0] as any).overdue_count
           : 0;
 
       if (overdueCount > 0) {

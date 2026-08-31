@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
         paid_at,
         booking_stage
        FROM growth_audit
-       WHERE id = ?
+       WHERE id = $1
        LIMIT 1`,
       [sessionId]
     );

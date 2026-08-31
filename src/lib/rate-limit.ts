@@ -55,16 +55,16 @@ export async function checkRateLimit(
 
   try {
     // Count recent attempts from this IP for this endpoint
-    const result = await query(
-      `SELECT COUNT(*) as attempt_count
+    const [rows] = await query(
+      `SELECT COUNT(*)::int as attempt_count
        FROM rate_limit_attempts
-       WHERE ip_address = ?
-         AND endpoint = ?
-         AND attempted_at >= ?`,
+       WHERE ip_address = $1
+         AND endpoint = $2
+         AND attempted_at >= $3`,
       [ip, endpoint, windowStart]
     );
 
-    const attemptCount = (result[0] as any).attempt_count || 0;
+    const attemptCount = (rows[0] as any).attempt_count || 0;
 
     // Calculate reset time (end of current window)
     const resetAt = new Date(now.getTime() + windowMinutes * 60 * 1000);
@@ -82,7 +82,7 @@ export async function checkRateLimit(
     // Record this attempt
     await insert(
       `INSERT INTO rate_limit_attempts (ip_address, endpoint, attempted_at)
-       VALUES (?, ?, NOW())`,
+       VALUES ($1, $2, NOW())`,
       [ip, endpoint]
     );
 
@@ -120,7 +120,7 @@ async function cleanupOldAttempts(): Promise<void> {
 
   try {
     await query(
-      `DELETE FROM rate_limit_attempts WHERE attempted_at < ?`,
+      `DELETE FROM rate_limit_attempts WHERE attempted_at < $1`,
       [cutoffTime]
     );
   } catch (error) {

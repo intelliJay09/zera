@@ -13,7 +13,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { query } from '@/lib/db';
+import { query, deleteRows } from '@/lib/db';
 import { sendAbandonedBookingEmail } from '@/lib/email-strategy-sessions';
 import { generatePaymentReference } from '@/lib/paystack';
 
@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
        FROM growth_audit
        WHERE payment_status = 'pending'
          AND abandoned_email_sent = FALSE
-         AND created_at < DATE_SUB(NOW(), INTERVAL 24 HOUR)
+         AND created_at < NOW() - INTERVAL '24 hours'
        ORDER BY created_at DESC
        LIMIT 50`,
       []
@@ -135,7 +135,7 @@ export async function GET(request: NextRequest) {
            SET abandoned_email_sent = TRUE,
                abandoned_email_sent_at = NOW(),
                payment_status = 'abandoned'
-           WHERE id = ?`,
+           WHERE id = $1`,
           [session.id]
         );
 
@@ -161,14 +161,12 @@ export async function GET(request: NextRequest) {
     // ========================================
     // Delete sessions abandoned > 7 days ago (optional cleanup)
     try {
-      const deleteResult = await query(
+      const deletedCount = await deleteRows(
         `DELETE FROM growth_audit
          WHERE payment_status = 'abandoned'
-           AND created_at < DATE_SUB(NOW(), INTERVAL 7 DAY)`,
+           AND created_at < NOW() - INTERVAL '7 days'`,
         []
       );
-
-      const deletedCount = (deleteResult as any).affectedRows || 0;
       if (deletedCount > 0) {
         console.log(
           `[Cron] Cleaned up ${deletedCount} old abandoned sessions`

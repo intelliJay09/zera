@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
        WHERE payment_status = 'completed'
          AND calendly_status = 'not_booked'
          AND incomplete_booking_email_sent = FALSE
-         AND paid_at < DATE_SUB(NOW(), INTERVAL 3 HOUR)
+         AND paid_at < NOW() - INTERVAL '3 hours'
        ORDER BY paid_at ASC
        LIMIT 50`,
       []
@@ -137,7 +137,7 @@ export async function GET(request: NextRequest) {
           `UPDATE growth_audit
            SET incomplete_booking_email_sent = TRUE,
                incomplete_booking_email_sent_at = NOW()
-           WHERE id = ?`,
+           WHERE id = $1`,
           [session.id]
         );
 

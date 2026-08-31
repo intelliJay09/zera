@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     if (calEvent) {
       try {
         const sessionResult = await query(
-          `SELECT * FROM growth_audit WHERE id = ?`,
+          `SELECT * FROM growth_audit WHERE id = $1`,
           [sessionId]
         );
 
@@ -79,11 +79,11 @@ export async function POST(request: NextRequest) {
         // Update database with Cal.com booking details
         await query(
           `UPDATE growth_audit
-           SET calendly_scheduled_at = ?,
+           SET calendly_scheduled_at = $1,
                calendly_status = 'booked',
                booking_stage = 'calendar_booked',
                updated_at = NOW()
-           WHERE id = ?`,
+           WHERE id = $2`,
           [scheduledAt, sessionId]
         );
 
@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
               `UPDATE growth_audit
                SET calendar_confirmation_email_sent = TRUE,
                    calendar_confirmation_email_sent_at = NOW()
-               WHERE id = ?`,
+               WHERE id = $1`,
               [sessionId]
             );
 
@@ -169,7 +169,7 @@ export async function POST(request: NextRequest) {
               `UPDATE growth_audit
                SET team_notification_sent = TRUE,
                    team_notification_sent_at = NOW()
-               WHERE id = ?`,
+               WHERE id = $1`,
               [sessionId]
             );
 

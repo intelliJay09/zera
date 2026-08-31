@@ -33,9 +33,9 @@ export async function createBookingToken(sessionId: string): Promise<string> {
 
   await query(
     `UPDATE growth_audit
-     SET booking_token = ?,
-         booking_token_expires_at = ?
-     WHERE id = ?`,
+     SET booking_token = $1,
+         booking_token_expires_at = $2
+     WHERE id = $3`,
     [token, expiresAt, sessionId]
   );
 
@@ -60,7 +60,7 @@ export async function verifyBookingToken(
             full_name, business_email, company_name, payment_reference,
             payment_amount, payment_currency, paid_at
      FROM growth_audit
-     WHERE id = ? AND booking_token = ?
+     WHERE id = $1 AND booking_token = $2
      LIMIT 1`,
     [sessionId, token]
   );
@@ -108,7 +108,7 @@ export async function markTokenAsUsed(
      SET booking_token_used = TRUE,
          calendly_event_booked = TRUE,
          calendly_event_booked_at = NOW()
-     WHERE id = ? AND booking_token = ?`,
+     WHERE id = $1 AND booking_token = $2`,
     [sessionId, token]
   );
 }

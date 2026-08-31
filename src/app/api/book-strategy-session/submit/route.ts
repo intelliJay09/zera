@@ -299,7 +299,7 @@ export async function POST(request: NextRequest) {
         ip_address,
         user_agent,
         booking_stage
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, 100.00, 'USD', ?, ?, ?, ?, ?, ?, ?, ?, 'form_submitted')
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, 'pending', $14, 100.00, 'USD', $15, $16, $17, $18, $19, $20, $21, $22, 'form_submitted')
     `;
 
     await insert(insertSql, [
@@ -365,8 +365,8 @@ export async function POST(request: NextRequest) {
       await query(
         `UPDATE growth_audit
          SET payment_status = 'failed',
-             payment_error_message = ?
-         WHERE id = ?`,
+             payment_error_message = $1
+         WHERE id = $2`,
         [
           paymentError instanceof Error
             ? paymentError.message

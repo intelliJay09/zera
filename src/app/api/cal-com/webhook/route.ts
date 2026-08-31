@@ -99,7 +99,7 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
 
   const [rows] = await query<StrategySession>(
     `SELECT * FROM growth_audit
-     WHERE business_email = ?
+     WHERE business_email = $1
        AND (calendly_status IS NULL OR calendly_status = 'not_booked')
      ORDER BY created_at DESC
      LIMIT 1`,
@@ -115,12 +115,12 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
 
   await query(
     `UPDATE growth_audit
-     SET calendly_event_uri = ?,
-         calendly_scheduled_at = ?,
+     SET calendly_event_uri = $1,
+         calendly_scheduled_at = $2,
          calendly_status = 'booked',
          booking_stage = 'calendar_booked',
          updated_at = NOW()
-     WHERE id = ?`,
+     WHERE id = $3`,
     [payload.uid, scheduledAt, session.id]
   );
 
@@ -132,7 +132,7 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
   // the pre-update `session` object, since either path could have written
   // in between.
   const [freshRows] = await query<Pick<StrategySession, 'calendar_confirmation_email_sent' | 'team_notification_sent'>>(
-    `SELECT calendar_confirmation_email_sent, team_notification_sent FROM growth_audit WHERE id = ?`,
+    `SELECT calendar_confirmation_email_sent, team_notification_sent FROM growth_audit WHERE id = $1`,
     [session.id]
   );
   const flags = freshRows[0];
@@ -168,7 +168,7 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
         `UPDATE growth_audit
          SET calendar_confirmation_email_sent = TRUE,
              calendar_confirmation_email_sent_at = NOW()
-         WHERE id = ?`,
+         WHERE id = $1`,
         [session.id]
       );
 
@@ -213,7 +213,7 @@ async function handleBookingCreated(event: CalComWebhookEvent): Promise<void> {
         `UPDATE growth_audit
          SET team_notification_sent = TRUE,
              team_notification_sent_at = NOW()
-         WHERE id = ?`,
+         WHERE id = $1`,
         [session.id]
       );
 
@@ -281,8 +281,8 @@ async function handleBookingCancelled(event: CalComWebhookEvent): Promise<void> 
 
   const [rows] = await query<Pick<StrategySession, 'id'>>(
     `SELECT id FROM growth_audit
-     WHERE calendly_event_uri = ?
-        OR (business_email = ? AND calendly_status = 'booked')
+     WHERE calendly_event_uri = $1
+        OR (business_email = $2 AND calendly_status = 'booked')
      LIMIT 1`,
     [payload.uid, attendee?.email ?? '']
   );
@@ -295,9 +295,9 @@ async function handleBookingCancelled(event: CalComWebhookEvent): Promise<void> 
   await query(
     `UPDATE growth_audit
      SET calendly_status = 'canceled',
-         calendly_cancellation_reason = ?,
+         calendly_cancellation_reason = $1,
          updated_at = NOW()
-     WHERE id = ?`,
+     WHERE id = $2`,
     [payload.cancellationReason || 'No reason provided', rows[0].id]
   );
 

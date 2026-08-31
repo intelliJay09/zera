@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
     const sessionResult = await query(
       `SELECT id, payment_status, booking_stage, business_email, full_name
        FROM growth_audit
-       WHERE payment_reference = ?
+       WHERE payment_reference = $1
        LIMIT 1`,
       [paymentReference]
     );
@@ -111,10 +111,10 @@ export async function GET(request: NextRequest) {
            SET payment_status = 'completed',
                booking_stage = 'payment_completed',
                paid_at = NOW(),
-               paystack_customer_code = ?,
-               payment_currency = ?,
-               payment_amount = ?
-           WHERE id = ?`,
+               paystack_customer_code = $1,
+               payment_currency = $2,
+               payment_amount = $3
+           WHERE id = $4`,
           [
             paystackData.customer?.customer_code || null,
             paystackData.currency || 'GHS',
@@ -176,7 +176,7 @@ export async function GET(request: NextRequest) {
       await query(
         `UPDATE growth_audit
          SET payment_status = 'abandoned'
-         WHERE id = ?`,
+         WHERE id = $1`,
         [sessionId]
       );
 

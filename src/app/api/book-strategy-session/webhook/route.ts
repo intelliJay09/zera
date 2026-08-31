@@ -46,13 +46,13 @@ async function handleChargeSuccess(event: PaystackWebhookEvent): Promise<void> {
       `UPDATE growth_audit
        SET payment_status = 'completed',
            paid_at = NOW(),
-           payment_amount = ?,
-           payment_currency = ?,
-           paystack_customer_code = ?,
+           payment_amount = $1,
+           payment_currency = $2,
+           paystack_customer_code = $3,
            booking_stage = 'payment_completed',
            updated_at = NOW()
-       WHERE id = ?
-         AND payment_reference = ?`,
+       WHERE id = $4
+         AND payment_reference = $5`,
       [amount, data.currency, data.customer.customer_code, sessionId, reference]
     );
 
@@ -60,7 +60,7 @@ async function handleChargeSuccess(event: PaystackWebhookEvent): Promise<void> {
 
     // Fetch session data for email and CRM
     const sessionResult = await query(
-      `SELECT * FROM growth_audit WHERE id = ?`,
+      `SELECT * FROM growth_audit WHERE id = $1`,
       [sessionId]
     );
 
@@ -119,10 +119,10 @@ async function handleChargeFailed(event: PaystackWebhookEvent): Promise<void> {
     await query(
       `UPDATE growth_audit
        SET payment_status = 'failed',
-           payment_error_message = ?,
+           payment_error_message = $1,
            updated_at = NOW()
-       WHERE id = ?
-         AND payment_reference = ?`,
+       WHERE id = $2
+         AND payment_reference = $3`,
       [data.gateway_response || data.message || 'Payment failed', sessionId, reference]
     );
 
