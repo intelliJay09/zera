@@ -58,7 +58,7 @@ export const PRODUCT_TIERS: ProductTier[] = [
     tier: 'II',
     tierNumber: 2,
     duration: '180 Days',
-    assetName: 'THE GROWTH SYSTEM',
+    assetName: 'THE VELOCITY SYSTEM',
     promise: 'Automate the momentum.',
     tagline: 'The Promise: Automate the momentum.',
     deliverables: [
@@ -96,7 +96,7 @@ export const PRODUCT_TIERS: ProductTier[] = [
     tier: 'III',
     tierNumber: 3,
     duration: '365 Days',
-    assetName: 'THE MARKET MONOPOLY',
+    assetName: 'THE RETENTION ENGINE',
     promise: 'Maximize the yield.',
     tagline: 'We turn customers into an asset class that pays you forever.',
     deliverables: [

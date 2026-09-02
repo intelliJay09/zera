@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import ContactPageContent from './ContactPageContent';
 
 export const metadata: Metadata = {
-  title: 'Contact The Directorate',
+  title: 'Contact',
   description:
     'Initiate a secure inquiry with Zera Dynamics. Locate our HQ coordinates or request urgent systems support. Operating globally from Accra.',
 };

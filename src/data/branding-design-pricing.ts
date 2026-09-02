@@ -41,7 +41,7 @@ export const brandingDesignPricingConfig: ServicePricingConfig = {
       featured: true,
     },
     {
-      name: 'Dominate',
+      name: 'Master',
       price: 799,
       period: '4-6 weeks',
       bestFor: 'Established brands requiring complete brand ecosystem',

@@ -43,7 +43,7 @@ export const socialMediaPricingConfig: ServicePricingConfig = {
       featured: true,
     },
     {
-      name: 'Dominate',
+      name: 'Master',
       price: 1997,
       period: 'per month',
       bestFor: 'Established brands requiring comprehensive social management',

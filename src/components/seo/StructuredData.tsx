@@ -9,10 +9,10 @@ export function OrganizationSchema() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'ZERA Dynamics',
-    alternateName: 'ZERA',
+    name: 'Zera Dynamics Ltd.',
+    alternateName: 'Zera',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com',
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/zera-logo-primary.png`,
+    logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/favicon-maskable-512.png`,
     sameAs: [
       'https://www.linkedin.com/company/zerahq',
       'https://www.instagram.com/zera.systems',
@@ -43,7 +43,7 @@ export function ServiceAreaBusinessSchema() {
   const serviceAreaSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'ZERA | Revenue Systems',
+    name: 'Zera',
     image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/images/office-render.jpg`,
     priceRange: '$$$',
     address: {
@@ -88,11 +88,10 @@ export function ServiceAreaBusinessSchema() {
       },
     ],
     serviceType: [
-      'Commercial Web Development',
+      'Commercial Web Architecture',
       'Search Engine Optimization',
-      'Lead Generation Systems',
-      'Revenue Operations',
-      'Marketing Automation',
+      'Automated Lead Generation',
+      'Customer Retention Systems',
       'CRM Integration',
     ],
   };

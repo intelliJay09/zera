@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
 
 export const metadata: Metadata = {
-  title: 'Blog | Digital Growth Intelligence',
+  title: 'Blog',
   description:
-    'Strategic insights on web architecture, SEO, revenue systems, and digital infrastructure. Intelligence from the ZERA Directorate for high-performance brands.',
+    'Strategic insights on web architecture, SEO, revenue systems, and digital infrastructure from the Zera team.',
   keywords: [
     'Digital Growth Blog',
     'SEO Strategy',
@@ -15,24 +15,24 @@ export const metadata: Metadata = {
     'Business Growth',
   ],
   openGraph: {
-    title: 'Blog | ZERA Digital Growth Intelligence',
+    title: 'Blog | Zera',
     description:
       'Strategic insights on web architecture, SEO, revenue systems, and digital infrastructure.',
     url: `${baseUrl}/blog`,
-    siteName: 'ZERA',
+    siteName: 'Zera',
     type: 'website',
     images: [
       {
         url: '/images/og-zera-sovereign.png',
         width: 3000,
         height: 1575,
-        alt: 'ZERA Blog - Digital Growth Intelligence',
+        alt: 'Zera Blog',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog | ZERA Digital Growth Intelligence',
+    title: 'Blog | Zera',
     description:
       'Strategic insights on web architecture, SEO, revenue systems, and digital infrastructure.',
     site: '@zerahq',

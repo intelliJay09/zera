@@ -6,7 +6,7 @@ import BookSessionContent from './BookSessionContent';
 export const metadata: Metadata = {
   title: 'Revenue Systems Audit',
   description:
-    'Book a 60-minute executive diagnostic. We audit your revenue operations and engineer a custom roadmap for market sovereignty.',
+    'Book a 60-minute executive diagnostic. We audit your revenue operations and hand you a clear roadmap to fix what\'s leaking.',
 };
 
 export default function BookSessionPage() {

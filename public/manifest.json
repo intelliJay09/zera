@@ -1,7 +1,7 @@
 {
-  "name": "The Astra Flow",
-  "short_name": "Astra Flow",
-  "description": "Premium digital marketing and web development services for growing SMEs",
+  "name": "Zera",
+  "short_name": "Zera",
+  "description": "Zera turns leads into closed deals and stops customers from quietly walking away, then proves it every month.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#F3E9DC",
@@ -9,16 +9,28 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

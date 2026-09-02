@@ -46,7 +46,7 @@ export default function TermsPage() {
             All content on this site-including the &ldquo;Zera&rdquo; brand, the &ldquo;Digital HQ&rdquo; methodology, copy, code, and visual architecture-is the exclusive intellectual property of Zera Dynamics Ltd.
           </p>
           <ul className="list-disc pl-6 space-y-2 text-base text-near-black/80 mb-6">
-            <li><strong>Prohibition:</strong> You may not copy, replicate, or reverse-engineer our proprietary frameworks for commercial use without written authorization from the Directorate.</li>
+            <li><strong>Prohibition:</strong> You may not copy, replicate, or reverse-engineer our proprietary frameworks for commercial use without written authorization from Zera.</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-near-black mt-8 mb-4">3. SERVICE DISCLAIMER</h3>

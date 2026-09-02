@@ -31,15 +31,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: post.title,
     description: post.excerpt,
     keywords: post.keywords,
-    authors: [{ name: 'Zera Directorate' }],
+    authors: [{ name: 'Zera' }],
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: postUrl,
-      siteName: 'ZERA',
+      siteName: 'Zera',
       type: 'article',
       publishedTime: post.publishedDate,
-      authors: ['Zera Directorate'],
+      authors: ['Zera'],
       tags: post.keywords,
     },
     twitter: {
@@ -84,14 +84,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     description: post.excerpt,
     author: {
       '@type': 'Organization',
-      name: 'Zera Directorate',
+      name: 'Zera',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'ZERA Dynamics',
+      name: 'Zera Dynamics Ltd.',
       logo: {
         '@type': 'ImageObject',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/zera-logo-primary.png`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/favicon-maskable-512.png`,
       },
     },
     datePublished: post.publishedDate,

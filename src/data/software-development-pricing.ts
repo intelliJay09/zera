@@ -49,7 +49,7 @@ export const softwareDevelopmentPricingConfig: ServicePricingConfig = {
       featured: true,
     },
     {
-      name: 'Dominate',
+      name: 'Master',
       price: 'Custom',
       period: 'tailored pricing',
       bestFor: 'Enterprises building mission-critical systems with enterprise-grade security',

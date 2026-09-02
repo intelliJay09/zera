@@ -120,7 +120,7 @@ export default function ContactForm() {
           Transmission Received
         </h3>
         <p className="text-base font-normal text-white/70 leading-relaxed tracking-normal mb-8">
-          Your inquiry has been securely transmitted. The Directorate will respond within 24 hours.
+          Your inquiry has been securely transmitted. We&apos;ll respond within 24 hours.
         </p>
         <Button
           onClick={() => setSubmitStatus('idle')}

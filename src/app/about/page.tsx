@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import AboutContent from './AboutContent';
 
 export const metadata: Metadata = {
-  title: 'About The Directorate',
+  title: 'About',
   description:
-    'We are not creatives. We are Revenue Architects. Learn about the Zera doctrine, our cloud-native operations in Ghana, and our engineering philosophy.',
+    'Zera builds and runs the systems that turn leads into revenue and keep customers from quietly leaving, proving results every month. Cloud-native operations from Accra, Ghana, working globally.',
 };
 
 export default function AboutPage() {

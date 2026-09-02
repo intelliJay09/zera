@@ -117,7 +117,7 @@ export default function AboutContent() {
               >
                 <h3 className="text-lg font-bold text-copper-500 mb-3">Border Agnostic</h3>
                 <p className="text-base text-white/70 leading-relaxed">
-                  We are headquartered in <strong>Accra, Ghana</strong>, but our territory is the Internet.
+                  We&apos;re headquartered in <strong>Accra, Ghana</strong>. We work globally.
                 </p>
               </motion.div>
             </div>
@@ -176,9 +176,9 @@ export default function AboutContent() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 whileHover={{ x: 10 }}
               >
-                <h3 className="text-xl font-bold text-near-black mb-3">03. Sovereignty Over Dependency</h3>
+                <h3 className="text-xl font-bold text-near-black mb-3">03. Ownership Over Dependency</h3>
                 <p className="text-base text-near-black/70 leading-relaxed">
-                  Our goal is not to keep you on a retainer forever. Our goal is to install the system, train your team, and hand over the keys to your new empire.
+                  Our job is to make ourselves unnecessary. We install the system, train your team, and hand over the keys. It&apos;s yours.
                 </p>
               </motion.div>
             </div>

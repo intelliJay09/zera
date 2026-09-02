@@ -57,8 +57,8 @@ export default function BookSessionContent() {
                 <span className="font-semibold text-copper-500">Stop Guessing. Get the Blueprint.</span>
                 <br />
                 <br />
-                Secure a high-level executive review of your digital infrastructure. We diagnose your
-                revenue leaks and engineer a custom roadmap for market sovereignty.
+                Get a high-level executive review of your digital infrastructure. We diagnose where
+                revenue is leaking and hand you a clear roadmap to fix it.
               </motion.p>
 
               {/* Trust Signal */}
@@ -170,33 +170,15 @@ export default function BookSessionContent() {
                 <span className="text-2xl font-bold text-copper-500">3</span>
               </div>
               <h3 className="text-xl font-bold font-display uppercase text-near-black mb-4 tracking-brand-header">
-                THE SOVEREIGN ROADMAP
+                THE CLEAR ROADMAP
               </h3>
               <p className="text-base text-near-black/70 leading-relaxed">
-                You leave the session with a clear growth roadmap. Whether you hire us or not, you
-                will know exactly what systems you need to build to dominate your category.
+                You leave the session with a clear growth roadmap. Whether you hire us or not, you&apos;ll
+                know exactly what systems you need and what they&apos;re actually worth.
               </p>
             </motion.div>
           </div>
 
-          {/* Price Anchor */}
-          <motion.div
-            className="max-w-3xl mx-auto text-center bg-gradient-to-br from-copper-500/10 via-copper-500/5 to-transparent border border-copper-500/20 p-8 lg:p-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <p className="text-lg sm:text-xl font-normal text-near-black/70 mb-4">
-              <span className="font-semibold text-near-black">Investment:</span>
-            </p>
-            <p className="text-3xl sm:text-4xl font-bold text-copper-500 mb-4">
-              $100 USD / GHS 1,000
-            </p>
-            <p className="text-base text-near-black/60 leading-relaxed">
-              Includes Pre-Session Audit + 60-Min Call + Roadmap
-            </p>
-          </motion.div>
         </div>
       </section>
 
@@ -214,48 +196,6 @@ export default function BookSessionContent() {
           </motion.h2>
 
           <div className="max-w-4xl mx-auto space-y-4">
-            {/* FAQ 1 */}
-            <motion.div
-              className="bg-white border border-gray-200"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <button
-                onClick={() => toggleFaq(1)}
-                className="w-full flex items-center justify-between p-8 text-left hover:bg-gray-50 transition-colors"
-              >
-                <h3 className="text-xl font-medium text-near-black capitalize">Why Is This Session Paid?</h3>
-                <ChevronDown
-                  className={`w-6 h-6 text-copper-500 transition-transform duration-300 flex-shrink-0 ${
-                    openFaq === 1 ? 'rotate-180' : ''
-                  }`}
-                  strokeWidth={2}
-                />
-              </button>
-              <AnimatePresence>
-                {openFaq === 1 && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-8 pb-8">
-                      <p className="text-base text-near-black/70 leading-relaxed">
-                        Most agencies offer &ldquo;Free Consultations&rdquo; which are thinly veiled sales pitches. The Growth
-                        Infrastructure Audit is a <span className="font-semibold">consulting product</span>, not a
-                        sales call. You get actionable data, a technical audit, and a strategy roadmap that
-                        provides value regardless of whether we work together long-term.
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
             {/* FAQ 2 */}
             <motion.div
               className="bg-white border border-gray-200"

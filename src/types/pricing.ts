@@ -1,5 +1,5 @@
 export interface ServicePricingPlan {
-  name: 'Launch' | 'Scale' | 'Dominate';
+  name: 'Launch' | 'Scale' | 'Master';
   price: number | 'Custom'; // USD amount
   period: string;
   bestFor: string; // Service-specific description

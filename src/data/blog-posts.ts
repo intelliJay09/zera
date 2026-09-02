@@ -144,7 +144,7 @@ Here is the difference:
 **New SEO (Entity-Based):**
 - Organization Schema (JSON-LD)
 - Knowledge Panel verification
-- Semantic relationships (e.g., ZERA is a digital growth agency based in Accra, Ghana)
+- Semantic relationships (e.g., ZERA is a revenue systems engineering firm based in Accra, Ghana)
 
 When a user asks ChatGPT, Who is the best marketing agency in Ghana? the AI does not scan for keyword matches. It searches its **entity database** for verified organizations with:
 
@@ -210,7 +210,7 @@ The result? When someone searches your brand name, they see:
 - Your contact info
 - Your social proof
 
-This is **digital sovereignty**. You control how Google represents your brand.
+This is real control. You control how Google represents your brand.
 
 ### Step 3: Semantic Linking
 
@@ -248,7 +248,7 @@ Is your brand invisible to AI? Let us fix that.
     readTime: "6 min read",
     keywords: ["Lead Response Time", "Sales Automation", "CRM Integration", "Automated Follow-up"],
     cta: {
-      text: "Deploy Growth System",
+      text: "Deploy The Velocity System",
       link: "/products/growth-system"
     },
     content: `
@@ -358,7 +358,7 @@ The lead stays warm. The system does the work.
 
 Most businesses lose deals not because they are bad at sales, but because they are **slow at response**.
 
-The ZERA Growth System eliminates the human bottleneck. Forms do not go to email. They go to **infrastructure** that acts instantly.
+The ZERA Velocity System eliminates the human bottleneck. Forms do not go to email. They go to **infrastructure** that acts instantly.
 
 **Stop losing leads to busy schedules. Automate the momentum.**
     `
@@ -373,7 +373,7 @@ The ZERA Growth System eliminates the human bottleneck. Forms do not go to email
     readTime: "7 min read",
     keywords: ["Customer Retention Strategy", "Win-Back Email Campaign", "LTV Optimization", "Email Marketing Automation"],
     cta: {
-      text: "Deploy Market Monopoly",
+      text: "Deploy The Retention Engine",
       link: "/products/market-monopoly"
     },
     content: `
@@ -498,11 +498,11 @@ Wake it up.
     id: 5,
     title: "Agency vs. System: Why We Don't Sell Marketing",
     slug: "agency-vs-growth-system",
-    excerpt: "Agencies want to be paid for Activity. ZERA wants to be paid for Assets. Systems that run themselves. Sovereignty.",
+    excerpt: "Agencies want to be paid for Activity. ZERA wants to be paid for Assets: systems that run themselves and that you own.",
     category: "Brand Positioning",
     publishedDate: "2025-01-05",
     readTime: "6 min read",
-    keywords: ["Digital Marketing Agency vs Consultant", "Revenue Operations", "Growth System", "Zera Dynamics"],
+    keywords: ["Revenue System vs Agency Retainer", "Revenue Operations", "The Velocity System", "Zera Dynamics"],
     cta: {
       text: "Book Your Systems Audit",
       link: "/systems-audit"
@@ -514,7 +514,7 @@ Traditional agencies want to be paid for **Activity**-posting, blogging, designi
 
 ZERA wants to be paid for **Assets**-systems that run themselves. Infrastructure you **own**, not rent.
 
-This is the difference between being a **tenant** and being **sovereign**.
+This is the difference between being a **tenant** and owning the building outright.
 
 ## The Retainer Scam: Why Paying for Hours is a Bad Deal for Clients
 
@@ -563,9 +563,9 @@ Here is the difference:
 
 After ZERA leaves, your system keeps running. You are **independent**.
 
-## The Zera Promise: We Build It. We Transfer It. You Own It. Sovereignty.
+## The Zera Promise: We Build It. We Transfer It. You Own It.
 
-Our mission is not to keep you on a retainer forever. Our mission is to **install the system**, train your team, and **hand over the keys** to your new empire.
+Our mission is not to keep you on a retainer forever. Our mission is to **install the system**, train your team, and **hand over the keys** to what's now yours.
 
 ### Phase 1: Build
 
@@ -579,7 +579,7 @@ We train your team to operate the system. We document every workflow. We create 
 
 We hand you the **admin keys**. You own the domain. You own the CRM. You own the email sequences.
 
-We do not hold your data hostage. We do not lock you into proprietary platforms. You are **sovereign**.
+We do not hold your data hostage. We do not lock you into proprietary platforms. You are in control.
 
 ### Phase 4: Support (Optional)
 
@@ -599,22 +599,22 @@ So they design systems that **require them**:
 
 When you try to leave, they take everything with them.
 
-ZERA does the opposite. We **weaponize** you with infrastructure so powerful that you do not need us anymore.
+ZERA does the opposite. We equip you with infrastructure so capable that you do not need us anymore.
 
-That is confidence. That is sovereignty.
+That is confidence. That is what real ownership looks like.
 
 ## The Verdict
 
 You can keep renting "marketing services" from agencies that need you dependent.
 
-Or you can graduate to **infrastructure**-systems you own, assets you control, sovereignty you deserve.
+Or you can graduate to **infrastructure**-systems you own, assets you control, results you can measure.
 
 Ready to stop being a tenant?
     `
   },
   {
     id: 6,
-    title: "Rent vs. Own: The Danger of Building Your Empire on Social Media",
+    title: "Rent vs. Own: The Danger of Building Your Business on Social Media",
     slug: "owned-media-vs-rented-land",
     excerpt: "If your entire business lives on Instagram, you don't own a business. You are a digital tenant. One algorithm change and you're bankrupt.",
     category: "Digital Asset Strategy",
@@ -630,7 +630,7 @@ If your entire business lives on **Instagram**, you do not own a business. You a
 
 One algorithm change. One platform ban. One policy update. And you are **bankrupt**.
 
-This is not theory. This is documented reality for thousands of businesses that built their empires on **rented land**.
+This is not theory. This is documented reality for thousands of businesses that built their entire presence on **rented land**.
 
 We argue that a **Digital HQ** (Website + Email List) is Real Estate, while Social Media is just a Billboard.
 
@@ -715,7 +715,7 @@ At the end of this funnel, you own:
 
 If Instagram bans you tomorrow, you still have **10,000 emails** you can contact directly.
 
-That is **sovereignty**.
+That is control no platform can take away.
 
 ## Real-World Casualties: What Happens When You Build on Rented Land
 
@@ -741,9 +741,9 @@ Social media is a **traffic tool**, not a business foundation.
 
 Use it. Do not depend on it.
 
-Build your empire on land you **own**: your Digital HQ, your email list, your customer database.
+Build your future on land you **own**: your Digital HQ, your email list, your customer database.
 
-Secure your territory. Build an asset you actually control.
+Own the land. Build an asset you actually control.
     `
   },
   {
@@ -762,7 +762,7 @@ Secure your territory. Build an asset you actually control.
     content: `
 Marketing is about pretty pictures. Sales is about closing. **RevOps** is the engineering that connects them.
 
-ZERA is not a marketing agency. We are a **Revenue Operations partner**. We align your tech stack so data flows smoothly from **Click to Cash.**
+ZERA is a **Revenue Operations partner**. We align your tech stack so data flows smoothly from **Click to Cash.**
 
 Most businesses have disconnected teams, fragmented tools, and zero visibility into what actually drives revenue.
 
@@ -1014,7 +1014,7 @@ This comes in three forms:
 
 Without proof, you are unproven. With proof, you are **vetted**.
 
-## The Global Aesthetic: What Separates a Local Vendor from a Sovereign Partner
+## The Global Aesthetic: What Separates a Local Vendor from a Strategic Partner
 
 A **local vendor** uses:
 - Comic Sans or outdated fonts
@@ -1022,7 +1022,7 @@ A **local vendor** uses:
 - Generic stock photos from 2010
 - Slow-loading, mobile-broken sites
 
-A **sovereign partner** uses:
+A **strategic partner** uses:
 - Custom typography (premium font pairings)
 - Monochromatic or minimal color palettes
 - High-quality, branded imagery
@@ -1317,7 +1317,7 @@ If your ratio is broken, there are only two levers:
 
 ZERA does both.
 
-### Lowering CAC (Growth System - Tier II)
+### Lowering CAC (The Velocity System - Tier II)
 
 We reduce acquisition costs by:
 
@@ -1332,7 +1332,7 @@ We reduce acquisition costs by:
 - After ZERA: CAC = $250
 - **50% cost reduction**
 
-### Raising LTV (Market Monopoly - Tier III)
+### Raising LTV (The Retention Engine - Tier III)
 
 We increase customer value by:
 
@@ -1382,7 +1382,7 @@ Do you know your ratio? Let us calculate it for you.
     readTime: "7 min read",
     keywords: ["Acquisition Pipeline Architecture", "Conversion Tracking Infrastructure", "Landing Page Optimization", "Lead Capture Infrastructure", "Revenue Operations"],
     cta: {
-      text: "Deploy Growth System",
+      text: "Deploy The Velocity System",
       link: "/products/growth-system"
     },
     content: `
@@ -1501,7 +1501,7 @@ Fix the infrastructure. Then scale the ads.
     readTime: "7 min read",
     keywords: ["Client Onboarding System", "Customer Retention Strategy", "Churn Reduction", "Automated Onboarding", "LTV Optimization"],
     cta: {
-      text: "Deploy Market Monopoly",
+      text: "Deploy The Retention Engine",
       link: "/products/market-monopoly"
     },
     content: `
@@ -1765,7 +1765,7 @@ The lever you are ignoring is worth more than your next ad campaign.
     readTime: "6 min read",
     keywords: ["Referral Revenue System", "Word of Mouth Strategy", "Client Referral Program", "Customer LTV", "Growth Without Ads"],
     cta: {
-      text: "Deploy Market Monopoly",
+      text: "Deploy The Retention Engine",
       link: "/products/market-monopoly"
     },
     content: `
@@ -1994,7 +1994,7 @@ Analytics infrastructure compounds in value over time.
 - **Month 1:** 30 days of data. Patterns are emerging.
 - **Month 3:** 90 days. Seasonality is visible. Channel performance is clear.
 - **Month 6:** Enough data to forecast revenue before launching campaigns.
-- **Month 12:** Your data is a **competitive weapon**. You know your market better than your competitors because you have been measuring it for a year.
+- **Month 12:** Your data is a **competitive edge**. You know your market better than your competitors because you have been measuring it for a year.
 
 Businesses without analytics start from zero every year. Businesses with it compound their intelligence.
 

@@ -3,39 +3,39 @@ import type { Metadata } from 'next';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
 
 export const metadata: Metadata = {
-  title: 'Products | Revenue Systems',
+  title: 'Products',
   description:
-    'Three-tier revenue systems engineered for market sovereignty. From Digital HQ to Market Monopoly - choose the system that matches your ambition.',
+    'Three tiers, one job: catch the revenue your business is already losing. From Digital HQ to The Retention Engine, pick the system that matches where you actually lose money.',
   keywords: [
     'Revenue Systems',
     'Web Development Packages',
     'SEO Packages',
     'Revenue Automation',
     'Digital HQ',
-    'Growth System',
-    'Market Monopoly',
+    'The Velocity System',
+    'The Retention Engine',
   ],
   openGraph: {
-    title: 'Products | ZERA Revenue Systems',
+    title: 'Products | Zera',
     description:
-      'Three-tier revenue systems engineered for market sovereignty. From Digital HQ to Market Monopoly.',
+      'Three tiers, one job: catch the revenue your business is already losing. From Digital HQ to The Retention Engine.',
     url: `${baseUrl}/products`,
-    siteName: 'ZERA',
+    siteName: 'Zera',
     type: 'website',
     images: [
       {
         url: '/images/og-zera-sovereign.png',
         width: 3000,
         height: 1575,
-        alt: 'ZERA Revenue Systems - Products',
+        alt: 'Zera Products',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Products | ZERA Revenue Systems',
+    title: 'Products | Zera',
     description:
-      'Three-tier revenue systems engineered for market sovereignty.',
+      'Three tiers, one job: catch the revenue your business is already losing.',
     site: '@zerahq',
     creator: '@zerahq',
     images: ['/images/og-zera-sovereign.png'],

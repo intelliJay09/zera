@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import MarketMonopolyContent from './MarketMonopolyContent';
 
 export const metadata: Metadata = {
-  title: 'The Market Monopoly | Customer Retention & LTV Strategy',
+  title: 'The Retention Engine | Customer Retention & LTV Strategy',
   description:
     'Maximize yield from your existing database. We engineer the Win-Back Protocols and lifecycle ecosystems that turn customers into a recurring asset class.',
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'recurring revenue systems',
   ],
   openGraph: {
-    title: 'The Market Monopoly | Dominate Your Category',
+    title: 'The Retention Engine | Keep the Customers You Already Have',
     description:
       'Scale requires retention. We engineer the systems that keep your customers paying forever.',
     url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/market-monopoly`,
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
         url: '/images/og-zera-sovereign.png',
         width: 3000,
         height: 1575,
-        alt: 'The Market Monopoly - Customer Retention & LTV Strategy',
+        alt: 'The Retention Engine - Customer Retention & LTV Strategy',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Market Monopoly | Dominate Your Category',
+    title: 'The Retention Engine | Keep the Customers You Already Have',
     description:
       'Scale requires retention. We engineer the systems that keep your customers paying forever.',
     images: ['/images/og-zera-sovereign.png'],

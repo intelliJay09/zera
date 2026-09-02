@@ -18,11 +18,11 @@ export default function GrowthSystemContent() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Revenue Operations & Automated Pipeline Architecture',
-    name: 'The Growth System',
+    name: 'The Velocity System',
     description: 'Install the machinery that brings customers to you 24/7. We replace manual chasing with automated attracting using high-velocity pipelines.',
     provider: {
       '@type': 'Organization',
-      name: 'ZERA',
+      name: 'Zera',
     },
     areaServed: {
       '@type': 'Country',
@@ -30,7 +30,7 @@ export default function GrowthSystemContent() {
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Growth System',
+      name: 'The Velocity System',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -84,7 +84,7 @@ export default function GrowthSystemContent() {
           </div>
 
           <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-bold uppercase text-cream-50 mb-8 tracking-tight leading-[0.9]">
-            THE GROWTH
+            THE VELOCITY
             <br />
             <span className="text-copper-500">SYSTEM</span>
           </h1>
@@ -309,7 +309,7 @@ export default function GrowthSystemContent() {
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">We permanently eliminate your team's manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, real-time operational alerts - your business executes without the bottlenecks</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">We permanently eliminate your team&apos;s manual follow-up cycles and communication overhead. Automated retainer protocols, dynamic scheduling systems, real-time operational alerts - your business executes without the bottlenecks</div>
                   </div>
                 </div>
               </div>

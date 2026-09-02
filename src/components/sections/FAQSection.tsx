@@ -16,19 +16,19 @@ import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
  */
 const faqs = [
   {
-    question: 'What is the difference between a Digital Agency and a Growth System?',
+    question: 'What makes Zera different from a typical agency?',
     answer:
-      'A traditional digital marketing agency often focuses on vanity metrics like likes and views. ZERA (A Growth System) focuses on Revenue Operations. We build assets-like SEO structures and Automated Funnels-that belong to you and generate returns long after the campaign ends.',
+      "Most agencies hand you a report and a monthly invoice. Zera builds the actual system, the lead follow-up, the win-back sequence, the CRM logic, and runs it for you. Every month you see real numbers on what it caught that would otherwise have gone unanswered.",
   },
   {
-    question: 'Does ZERA handle Web Design and SEO?',
+    question: 'Does Zera handle web design and SEO?',
     answer:
-      'Yes. The Digital HQ package is our proprietary approach to Web Design. We do not just make sites look good; we engineer them for Search Engine Optimization (SEO) and lead conversion from day one.',
+      'Yes. Digital HQ is our approach to it. We don\'t just make sites look good, we engineer them for search visibility and lead conversion from day one.',
   },
   {
-    question: 'Who is ZERA designed for?',
+    question: 'Who is Zera designed for?',
     answer:
-      'We work with ambitious companies in Ghana and globally who are ready to move beyond freelancer support and install a professional Lead Generation System.',
+      "Businesses that are already making real money and have hit a ceiling because growth runs through one person's memory and a phone full of WhatsApp threads. If a lead sitting unanswered until Monday costs you money, that's who this is for.",
   },
 ];
 

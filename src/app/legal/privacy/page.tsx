@@ -39,7 +39,7 @@ export default function PrivacyPage() {
         <article className="prose prose-lg max-w-none" style={{ fontFamily: 'Lato, sans-serif' }}>
           <h3 className="text-xl font-semibold text-near-black mt-8 mb-4">1. THE PREAMBLE</h3>
           <p className="text-base text-near-black/80 leading-relaxed mb-6">
-            Zera Dynamics respects the sovereignty of your data. This policy outlines how we collect, process, and fortify the information you transmit to our Digital HQ. By accessing <code className="text-copper-600 bg-copper-50 px-1">zerahq.com</code>, you consent to the protocols defined herein.
+            Zera Dynamics respects your ownership of your data. This policy outlines how we collect, process, and fortify the information you transmit to our Digital HQ. By accessing <code className="text-copper-600 bg-copper-50 px-1">zerahq.com</code>, you consent to the protocols defined herein.
           </p>
 
           <h3 className="text-xl font-semibold text-near-black mt-8 mb-4">2. DATA COLLECTION ARCHITECTURE</h3>
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
             <li><strong>Optimization:</strong> To analyze traffic patterns and improve the performance of our digital assets.</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-near-black mt-8 mb-4">4. DATA SOVEREIGNTY & SHARING</h3>
+          <h3 className="text-xl font-semibold text-near-black mt-8 mb-4">4. DATA OWNERSHIP & SHARING</h3>
           <p className="text-base text-near-black/80 leading-relaxed mb-4">
             We do not sell your data to third-party brokers. Data is only shared with trusted infrastructure partners required to deliver our service:
           </p>

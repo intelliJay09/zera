@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useScrollHeader } from '@/hooks/useScrollHeader';
+import Wordmark from '@/components/ui/wordmark';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
 
@@ -35,15 +35,9 @@ export default function Header({ variant = 'default' }: HeaderProps) {
           href="/"
           className="flex items-center transition-transform duration-300 hover:scale-105 active:scale-95 -m-2 p-2 min-h-[44px]"
         >
-          <Image
-            src={useWhiteElements ? "/zera-logo-white.png" : "/zera-logo-primary.png"}
-            alt="ZERA Revenue Systems"
-            width={135}
-            height={49}
-            priority
-            unoptimized
-            className="h-7 lg:h-11 w-auto"
-            style={{ objectFit: 'contain' }}
+          <Wordmark
+            variant={useWhiteElements ? 'light' : 'dark'}
+            className="text-2xl lg:text-4xl"
           />
         </Link>
 

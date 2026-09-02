@@ -28,7 +28,7 @@ export default function FinalCTA() {
               <span className="block text-copper-500">Is Leaking.</span>
             </h2>
             <p className="text-base sm:text-lg font-normal text-light-gray leading-relaxed mb-12 text-center lg:text-left">
-              60 minutes to map the leaks in your growth infrastructure and hand you a clear roadmap to fix them.
+              60 minutes to find exactly where revenue is slipping through the cracks in your business, and a clear roadmap to fix it.
             </p>
 
             {/* What You Get */}

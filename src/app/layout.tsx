@@ -26,11 +26,11 @@ const latoBold = Lato({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'),
   title: {
-    default: 'ZERA | Revenue Systems',
-    template: '%s | ZERA',
+    default: 'Zera | Revenue, Realized.',
+    template: '%s | Zera',
   },
   description:
-    'ZERA engineers revenue infrastructure for high-performance brands. We replace manual operations with automated pipelines, lead capture systems, and operational architecture. HQ: Accra / Global.',
+    'Zera turns leads into closed deals and stops customers from quietly walking away, then proves it every month.',
   keywords: [
     'Revenue Infrastructure',
     'Revenue Operations',
@@ -44,28 +44,28 @@ export const metadata: Metadata = {
     'Business Process Automation',
     'Zera Dynamics',
   ],
-  authors: [{ name: 'Zera Directorate' }],
+  authors: [{ name: 'Zera' }],
   creator: 'Zera Dynamics Ltd.',
   publisher: 'Zera Dynamics Ltd.',
   icons: {
     icon: '/favicon.png',
-    apple: '/favicon.png',
+    apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com',
-    siteName: 'ZERA',
-    title: 'ZERA | Revenue Systems',
+    siteName: 'Zera',
+    title: 'Zera | Revenue, Realized.',
     description:
-      'We engineer revenue systems for high-performance brands. Stop building websites. Start building assets.',
+      'Zera catches the revenue your business is already losing, the lead that goes unanswered, the customer who quietly stops buying, and proves it, every month, in real numbers.',
     images: [
       {
         url: '/images/og-zera-sovereign.png',
         width: 3000,
         height: 1575,
-        alt: 'ZERA Revenue Systems',
+        alt: 'Zera | Revenue, Realized.',
       },
     ],
   },
@@ -73,8 +73,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@zerahq',
     creator: '@zerahq',
-    title: 'ZERA | Revenue Systems',
-    description: 'We engineer revenue systems for global brands.',
+    title: 'Zera | Revenue, Realized.',
+    description:
+      'Zera turns leads into closed deals and stops customers from quietly walking away, then proves it every month.',
     images: ['/images/og-zera-sovereign.png'],
   },
   robots: {

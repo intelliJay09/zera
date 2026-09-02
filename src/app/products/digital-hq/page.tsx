@@ -4,7 +4,7 @@ import DigitalHQContent from './DigitalHQContent';
 export const metadata: Metadata = {
   title: 'The Digital HQ - Your Revenue Command Center | Commercial Web Architecture',
   description:
-    'A commercial-grade web architecture engineered to establish revenue authority and search entity dominance. Stop looking like a freelancer. Deploy a Digital HQ.',
+    'A commercial-grade web architecture engineered for revenue and search authority, built to convert from day one.',
   keywords: [
     'commercial web architecture',
     'entity SEO',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Digital HQ | Build Your Digital Asset',
     description:
-      'Most websites are liabilities. We build assets. Commercial architecture for market leaders.',
+      'A website built to convert from day one, engineered for search authority and lead capture, not just designed to look good.',
     url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/digital-hq`,
     type: 'website',
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'The Digital HQ | Build Your Digital Asset',
     description:
-      'Most websites are liabilities. We build assets. Commercial architecture for market leaders.',
+      'A website built to convert from day one, engineered for search authority and lead capture, not just designed to look good.',
     images: ['/images/og-zera-sovereign.png'],
   },
   alternates: {

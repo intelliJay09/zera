@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
   {
     headline: "Zera is the partner that secured our category leadership.",
     metric: "35% Increase in Customer LTV",
-    narrative: "Scale usually brings chaos. Zera brought structure. Their 'Lifecycle Ecosystem' allowed us to retain customers automatically while expanding into two new markets. They operate less like a vendor and more like a strategic Directorate embedded in our operations. A critical asset to our board.",
+    narrative: "Scale usually brings chaos. Zera brought structure. Their 'Lifecycle Ecosystem' allowed us to retain customers automatically while expanding into two new markets. They operate less like a vendor and more like a strategic partner embedded in our operations. A critical asset to our board.",
     author: "E. Mensah",
     role: "CEO",
     company: "West African Logistics Group"

@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { X, ChevronDown, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Wordmark from '@/components/ui/wordmark';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
 import { useFocusTrap } from '@/hooks/useFocusTrap';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
@@ -89,13 +89,7 @@ export default function MobileMenu({ isOpen, onClose, variant: _variant = 'defau
                     onClick={onClose}
                     className="transition-transform active:scale-95 -m-2 p-2 focus:outline-none focus-visible:outline-none"
                   >
-                    <Image
-                      src="/zera-logo-primary.png"
-                      alt="ZERA Revenue Systems"
-                      width={81}
-                      height={29}
-                      className="h-7 w-auto"
-                    />
+                    <Wordmark className="text-xl" />
                   </Link>
                   <button
                     type="button"

@@ -334,7 +334,7 @@ export default function BrandDevelopmentPage() {
     {
       question: 'How long does a brand development project take?',
       answer:
-        'Most brand development projects take 4-8 weeks from kickoff to final delivery. Launch packages (essential identity) take 2-3 weeks, Scale packages (complete brand system) take 3-4 weeks, and Dominate packages (comprehensive brand ecosystem) take 4-6 weeks. Timeline depends on revision rounds, stakeholder availability, and project complexity. We move efficiently while ensuring strategic depth.',
+        'Most brand development projects take 4-8 weeks from kickoff to final delivery. Launch packages (essential identity) take 2-3 weeks, Scale packages (complete brand system) take 3-4 weeks, and Master packages (comprehensive brand ecosystem) take 4-6 weeks. Timeline depends on revision rounds, stakeholder availability, and project complexity. We move efficiently while ensuring strategic depth.',
     },
     {
       question: 'Will I own all the brand assets you create?',
@@ -349,12 +349,12 @@ export default function BrandDevelopmentPage() {
     {
       question: 'What if we don\'t like the initial brand concepts?',
       answer:
-        'We build revision rounds into every package to ensure you love the final result. Launch includes 2 revision rounds, Scale includes 3, and Dominate includes 6. We present multiple initial concepts based on strategic discovery, then refine your preferred direction through collaborative feedback. Our process is iterative by design-your satisfaction is the metric that matters. We don\'t stop until your brand feels right.',
+        'We build revision rounds into every package to ensure you love the final result. Launch includes 2 revision rounds, Scale includes 3, and Master includes 6. We present multiple initial concepts based on strategic discovery, then refine your preferred direction through collaborative feedback. Our process is iterative by design-your satisfaction is the metric that matters. We don\'t stop until your brand feels right.',
     },
     {
       question: 'Do you provide brand strategy or just design?',
       answer:
-        'We provide both strategic and creative services. Brand development starts with strategy-understanding your market position, target audience, value proposition, and competitive differentiation. Design comes after strategy, ensuring every visual choice supports business objectives. Scale and Dominate packages include comprehensive brand strategy. Launch packages focus on visual identity but are informed by strategic discovery conversations.',
+        'We provide both strategic and creative services. Brand development starts with strategy-understanding your market position, target audience, value proposition, and competitive differentiation. Design comes after strategy, ensuring every visual choice supports business objectives. Scale and Master packages include comprehensive brand strategy. Launch packages focus on visual identity but are informed by strategic discovery conversations.',
     },
   ];
 

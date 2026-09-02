@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Wordmark from '@/components/ui/wordmark';
 
 const quickLinks = [
   { name: 'Home', href: '/' },
@@ -57,16 +57,10 @@ export default function Footer() {
               href="/"
               className="inline-block transition-transform duration-300 hover:scale-105 active:scale-95"
             >
-              <Image
-                src="/zera-logo-primary.png"
-                alt="ZERA Revenue Systems"
-                width={135}
-                height={49}
-                className="h-11 w-auto"
-              />
+              <Wordmark className="text-3xl" />
             </Link>
             <p className="text-sm text-gray-600 font-medium">
-              WE ENGINEER MARKET SOVEREIGNTY.
+              REVENUE, REALIZED.
             </p>
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social) => (

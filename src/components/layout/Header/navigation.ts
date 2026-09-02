@@ -20,6 +20,6 @@ export const NAV_LINKS: NavigationLink[] = [
 
 export const PRODUCT_ITEMS: ProductItem[] = [
   { name: 'The Digital HQ', href: '/products/digital-hq', subtitle: 'Your Revenue Command Center.' },
-  { name: 'The Growth System', href: '/products/growth-system', subtitle: 'Automate the momentum.' },
-  { name: 'The Market Monopoly', href: '/products/market-monopoly', subtitle: 'Maximize the yield.' },
+  { name: 'The Velocity System', href: '/products/growth-system', subtitle: 'Automate the momentum.' },
+  { name: 'The Retention Engine', href: '/products/market-monopoly', subtitle: 'Maximize the yield.' },
 ];

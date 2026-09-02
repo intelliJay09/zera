@@ -135,7 +135,7 @@ export default function ProductsPage() {
             variants={heroItem}
             className="text-xl sm:text-2xl text-near-black/70 font-normal max-w-3xl mx-auto mb-12"
           >
-            Three tiers. One trajectory. Market sovereignty.
+            Three tiers. One job: catch the revenue you&apos;re already losing.
           </motion.p>
 
           <motion.div variants={heroItem}>
@@ -163,7 +163,7 @@ export default function ProductsPage() {
               THE PRODUCT LADDER
             </h2>
             <p className="text-lg text-near-black/70 max-w-2xl mx-auto">
-              Systematic infrastructure-building in three distinct phases
+              Three phases, each one built to catch revenue the last one couldn&apos;t
             </p>
           </motion.div>
 
@@ -330,17 +330,17 @@ export default function ProductsPage() {
                 {
                   question: 'Why tiers instead of packages?',
                   answer:
-                    'Traditional agencies sell you isolated services. We build systems. Each tier is a complete phase in your digital infrastructure-foundation, growth mechanisms, then market dominance. You can\'t skip leg day and expect to run marathons.',
+                    "Because a website alone doesn't catch a missed lead, and a lead-capture system alone doesn't stop a customer from quietly leaving. Each tier closes a different gap: Digital HQ is the base, The Velocity System catches new leads, The Retention Engine keeps the customers you already have. We audit first to show you exactly which gap is costing you the most.",
                 },
                 {
                   question: 'Can I skip to Tier III?',
                   answer:
-                    'No. Tier III tools are worthless without Tier I infrastructure and Tier II conversion systems. You need the base before the penthouse. We audit first to determine your current position.',
+                    "Usually not right away. The Retention Engine keeps the customers you already have coming back, but it needs Digital HQ and The Velocity System underneath it actually bringing leads in first. We audit your current setup before recommending where to start, some businesses genuinely are ready to start higher up.",
                 },
                 {
                   question: 'What if I only need the website?',
                   answer:
-                    'Then book an audit. We\'ll assess whether Tier I alone solves your problem or if you\'re leaving money on the table. Some businesses need the full stack immediately.',
+                    "Then book an audit and we'll tell you honestly. Sometimes Digital HQ alone solves it. Sometimes the real cost is happening a tier up, in the leads or customers slipping through afterward, and we'll show you the number before recommending anything more.",
                 },
               ].map((faq, index) => (
                 <motion.div

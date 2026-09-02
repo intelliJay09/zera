@@ -18,11 +18,11 @@ export default function MarketMonopolyContent() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     serviceType: 'Customer Retention & Lifetime Value Optimization',
-    name: 'The Market Monopoly',
-    description: 'Turn your customers into an asset class that pays you forever. We engineer the retention ecosystems that secure your position as the undisputed category leader.',
+    name: 'The Retention Engine',
+    description: 'Turn your customers into an asset class that pays you forever. We engineer the retention systems that keep them coming back, proven every month in real numbers.',
     provider: {
       '@type': 'Organization',
-      name: 'ZERA',
+      name: 'Zera',
     },
     areaServed: {
       '@type': 'Country',
@@ -30,7 +30,7 @@ export default function MarketMonopolyContent() {
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Market Monopoly',
+      name: 'The Retention Engine',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -79,14 +79,14 @@ export default function MarketMonopolyContent() {
         >
           <div className="inline-block px-4 py-1 bg-copper-500/10 border border-copper-500/30 mb-6">
             <span className="text-xs font-mono uppercase tracking-wider text-copper-500">
-              TIER III • SOVEREIGNTY LAYER
+              TIER III • RETENTION LAYER
             </span>
           </div>
 
           <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-bold uppercase text-cream-50 mb-8 tracking-tight leading-[0.9]">
-            THE MARKET
+            THE RETENTION
             <br />
-            <span className="text-copper-500">MONOPOLY</span>
+            <span className="text-copper-500">ENGINE</span>
           </h1>
 
           <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-cream-50/80 mb-4 tracking-tight">
@@ -95,7 +95,7 @@ export default function MarketMonopolyContent() {
 
           <p className="text-lg text-cream-50/60 max-w-3xl mx-auto font-mono mb-12">
             Turn your customers into an asset class that pays you forever. We engineer the retention
-            ecosystems that secure your position as the undisputed category leader.
+            systems that keep them coming back, proven every month in real numbers.
           </p>
 
           <motion.div
@@ -233,17 +233,17 @@ export default function MarketMonopolyContent() {
                 <div>
                   <span className="text-xs font-mono uppercase tracking-wider text-copper-500">FEATURE C</span>
                   <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-cream-50 mt-1 tracking-tight">
-                    Growth Directorate
+                    The Growth Review
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Deliverable</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">Quarterly Strategy Board</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Quarterly LTV & CAC Review</div>
                   </div>
                   <div>
                     <div className="text-sm font-mono uppercase tracking-wider text-cream-50/60 mb-1">Engineering</div>
-                    <div className="text-sm sm:text-base text-cream-50/90">You stop acting like a startup and start acting like a Conglomerate. We provide quarterly deep-dive reports on your LTV (Lifetime Value) and CAC (Cost of Acquisition) to guide your next boardroom move</div>
+                    <div className="text-sm sm:text-base text-cream-50/90">Every quarter you get a plain-numbers report on your LTV (Lifetime Value) and CAC (Cost of Acquisition), not a slide deck, a clear read on what&apos;s actually working before you decide what&apos;s next</div>
                   </div>
                 </div>
               </div>
@@ -376,11 +376,11 @@ export default function MarketMonopolyContent() {
                 </tr>
                 <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Deployment Timeline</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">365-Day Sovereignty Cycle (Annual Retainer)</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">365-Day Retention Cycle (Annual Retainer)</td>
                 </tr>
                 <tr className="border-b border-near-black/10">
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Strategy Protocol</td>
-                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Quarterly Executive Board Reviews (C-Suite Level)</td>
+                  <td className="py-4 px-4 sm:px-8 text-near-black font-medium">Quarterly LTV & CAC Review, Plain Numbers</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 sm:px-8 text-near-black/80">Support Protocol</td>

@@ -23,13 +23,13 @@ function getPhaseLabel(tier: 'I' | 'II' | 'III'): string {
     case 'II':
       return 'Phase II: The Pipeline (Automated Operations)';
     case 'III':
-      return 'Phase III: Sovereignty (The Revenue Multiplier)';
+      return 'Phase III: Retention (The Revenue Multiplier)';
   }
 }
 
 /**
  * ServiceTierGrid Component
- * Displays the three product tiers (Digital HQ, Growth System, Market Monopoly)
+ * Displays the three product tiers (Digital HQ, The Velocity System, The Retention Engine)
  * with deliverables and CTAs
  */
 export default function ServiceTierGrid() {

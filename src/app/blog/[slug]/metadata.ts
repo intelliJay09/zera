@@ -25,15 +25,15 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
     title: post.title,
     description: post.excerpt,
     keywords: post.keywords,
-    authors: [{ name: 'Zera Directorate' }],
+    authors: [{ name: 'Zera' }],
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: postUrl,
-      siteName: 'ZERA',
+      siteName: 'Zera',
       type: 'article',
       publishedTime: post.publishedDate,
-      authors: ['Zera Directorate'],
+      authors: ['Zera'],
       tags: post.keywords,
     },
     twitter: {

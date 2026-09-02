@@ -28,10 +28,10 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ProfessionalService',
-            name: 'ZERA Revenue Systems',
+            name: 'Zera',
             alternateName: 'Zera HQ',
             description:
-              'ZERA engineers automated operational systems and revenue infrastructure for high-performance brands. Commercial web architecture, automated lead pipelines, CRM operations, and cross-system revenue routing.',
+              'Zera builds and runs the systems that turn leads into revenue and keep customers from quietly leaving, proving results every month.',
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'Accra',
@@ -52,10 +52,10 @@ export default function HomePage() {
             },
             serviceType: [
               'Commercial Web Architecture',
-              'Technical SEO & Search Entity Infrastructure',
-              'Automated Lead Pipelines',
-              'CRM Integration & Operations Automation',
-              'Revenue Routing Systems',
+              'Search Engine Optimization',
+              'Automated Lead Generation',
+              'Customer Retention Systems',
+              'CRM Integration',
             ],
           }),
         }}
@@ -67,25 +67,34 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 pt-44 pb-32 sm:px-6 sm:py-40 md:py-48 lg:px-8 w-full">
           <div className="text-center">
             <motion.h1
-              className="text-[3.5rem] sm:text-7xl xl:text-8xl font-display font-bold text-copper-500 uppercase tracking-brand-header leading-[1.1] mb-8"
+              className="text-[3.5rem] sm:text-7xl xl:text-8xl font-display font-bold text-copper-500 tracking-normal leading-[1.1] mb-8"
               initial="hidden"
               animate="visible"
               variants={heroHeadline}
             >
-              REVENUE SYSTEMS. ENGINEERED.
+              Revenue, Realized.
             </motion.h1>
 
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
+              className="h-[2px] w-10 bg-copper-500 mx-auto mb-8 origin-center"
+            />
+
             <motion.h2
-              className="text-lg sm:text-xl lg:text-3xl font-normal text-cream-50/70 tracking-normal mb-10"
+              className="text-lg sm:text-xl lg:text-3xl font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.8,
-                delay: 1.0,
+                delay: 1.2,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
             >
-              Revenue doesn't scale itself. We engineer the systems that do.
+              Zera catches the revenue your business is already losing: the lead that goes
+              unanswered, the customer who quietly stops buying. And proves it, every month,
+              in real numbers.
             </motion.h2>
 
             <motion.div
@@ -98,9 +107,9 @@ export default function HomePage() {
               }}
               className="flex flex-col items-center gap-4"
             >
-              <Button asChild variant="primary" size="lg" className="group">
+              <Button asChild variant="primary" size="lg" className="group normal-case">
                 <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
-                  BOOK YOUR SYSTEMS AUDIT
+                  Book your systems audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                 </Link>
               </Button>
