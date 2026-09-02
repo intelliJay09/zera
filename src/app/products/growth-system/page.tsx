@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-zera-sovereign.png',
+        url: '/images/og-zera-primary.png',
         width: 3000,
         height: 1575,
         alt: 'The Velocity System - Automated Lead Acquisition & CRM Pipelines',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'The Velocity System | Automate Revenue',
     description:
       'Traffic without capture is waste. Install the machinery that brings customers to you.',
-    images: ['/images/og-zera-sovereign.png'],
+    images: ['/images/og-zera-primary.png'],
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/growth-system`,

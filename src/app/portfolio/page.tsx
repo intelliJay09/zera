@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-zera-sovereign.png',
+        url: '/images/og-zera-primary.png',
         width: 3000,
         height: 1575,
         alt: 'ZERA Portfolio',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       'Digital growth systems built for high-performance brands worldwide.',
     site: '@zerahq',
     creator: '@zerahq',
-    images: ['/images/og-zera-sovereign.png'],
+    images: ['/images/og-zera-primary.png'],
   },
   alternates: {
     canonical: `${baseUrl}/portfolio`,

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-zera-sovereign.png',
+        url: '/images/og-zera-primary.png',
         width: 3000,
         height: 1575,
         alt: 'ZERA Social Media Management',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       'Strategic social media management that builds brand authority and drives engagement.',
     site: '@zerahq',
     creator: '@zerahq',
-    images: ['/images/og-zera-sovereign.png'],
+    images: ['/images/og-zera-primary.png'],
   },
   alternates: {
     canonical: `${baseUrl}/solutions/social-media-management`,

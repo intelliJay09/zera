@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-zera-sovereign.png',
+        url: '/images/og-zera-primary.png',
         width: 3000,
         height: 1575,
         alt: 'The Digital HQ - Commercial Web Architecture & Entity SEO',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'The Digital HQ | Build Your Digital Asset',
     description:
       'A website built to convert from day one, engineered for search authority and lead capture, not just designed to look good.',
-    images: ['/images/og-zera-sovereign.png'],
+    images: ['/images/og-zera-primary.png'],
   },
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/digital-hq`,

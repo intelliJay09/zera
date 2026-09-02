@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       'Zera catches the revenue your business is already losing, the lead that goes unanswered, the customer who quietly stops buying, and proves it, every month, in real numbers.',
     images: [
       {
-        url: '/images/og-zera-sovereign.png',
+        url: '/images/og-zera-primary.png',
         width: 3000,
         height: 1575,
         alt: 'Zera | Revenue, Realized.',
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     title: 'Zera | Revenue, Realized.',
     description:
       'Zera turns leads into closed deals and stops customers from quietly walking away, then proves it every month.',
-    images: ['/images/og-zera-sovereign.png'],
+    images: ['/images/og-zera-primary.png'],
   },
   robots: {
     index: true,

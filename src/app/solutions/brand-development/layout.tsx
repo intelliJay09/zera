@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-zera-sovereign.png',
+        url: '/images/og-zera-primary.png',
         width: 3000,
         height: 1575,
         alt: 'ZERA Brand Development',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       'Complete brand strategy and visual identity for high-performance brands.',
     site: '@zerahq',
     creator: '@zerahq',
-    images: ['/images/og-zera-sovereign.png'],
+    images: ['/images/og-zera-primary.png'],
   },
   alternates: {
     canonical: `${baseUrl}/solutions/brand-development`,
