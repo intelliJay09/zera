@@ -33,7 +33,7 @@ import {
 
 // ─── Validation Schema ───────────────────────────────────────────────
 const accessionSchema = z.object({
-  // Section I: Brand Sovereignty
+  // Section I: Brand Assets
   clientTier: z.enum(['tier-1', 'tier-2', 'tier-3'], {
     message: 'Please select your service tier',
   }),
@@ -54,7 +54,6 @@ const accessionSchema = z.object({
 
   // Section III: Acquisition & Intel (conditionally required for Tier II & III)
   metaBusinessSuiteDetails: z.string().optional(),
-  googleAdsDetails: z.string().optional(),
   crmDetails: z.string().optional(),
   targetAudienceProfile: z.string().optional(),
 }).superRefine((data, ctx) => {
@@ -73,7 +72,7 @@ type AccessionFormData = z.infer<typeof accessionSchema>;
 
 // ─── Step configuration ─────────────────────────────────────────────
 const STEPS = [
-  { numeral: 'I', label: 'Brand Sovereignty', subtitle: 'Identity Assets' },
+  { numeral: 'I', label: 'Brand Assets', subtitle: 'Identity Assets' },
   { numeral: 'II', label: 'Digital Infrastructure', subtitle: 'Credentials' },
   { numeral: 'III', label: 'Acquisition & Intel', subtitle: 'Tier II & III Only' },
   { numeral: 'IV', label: 'Terms of Accession', subtitle: 'Security Protocol' },
@@ -396,7 +395,6 @@ export default function AssetAccessionContent() {
 
   // Checkbox state for Section III
   const [metaAccess, setMetaAccess] = useState(false);
-  const [googleAdsAccess, setGoogleAdsAccess] = useState(false);
   const [crmAccess, setCrmAccess] = useState(false);
 
   const {
@@ -410,7 +408,6 @@ export default function AssetAccessionContent() {
     resolver: zodResolver(accessionSchema),
     defaultValues: {
       metaBusinessSuiteDetails: '',
-      googleAdsDetails: '',
       crmDetails: '',
     },
   });
@@ -540,7 +537,6 @@ export default function AssetAccessionContent() {
         additionalTeamSeats: data.additionalTeamSeats,
         currentEmailService: data.currentEmailService,
         metaBusinessSuiteDetails: isNotTier1 && metaAccess ? data.metaBusinessSuiteDetails : undefined,
-        googleAdsDetails: isNotTier1 && googleAdsAccess ? data.googleAdsDetails : undefined,
         crmDetails: isNotTier1 && crmAccess ? data.crmDetails : undefined,
         targetAudienceProfile: isNotTier1 ? data.targetAudienceProfile : undefined,
       };
@@ -679,10 +675,10 @@ export default function AssetAccessionContent() {
               exit="exit"
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {/* ═══ Step 1: Brand Sovereignty ═══ */}
+              {/* ═══ Step 1: Brand Assets ═══ */}
               {currentStep === 1 && (
                 <div className="relative bg-cream-50 border-2 border-copper-500/20 p-5 sm:p-8 lg:p-10 rounded-sm">
-                  <SectionHeader numeral="I" title="Brand Sovereignty" subtitle="Identity Assets" />
+                  <SectionHeader numeral="I" title="Brand Assets" subtitle="Identity Assets" />
 
                   <motion.div
                     className="space-y-6"
@@ -1013,43 +1009,6 @@ export default function AssetAccessionContent() {
                                 type="text"
                                 placeholder="Admin email or login details"
                                 {...register('metaBusinessSuiteDetails')}
-                                className={`${inputClasses} mt-3`}
-                              />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </motion.div>
-
-                    <motion.div variants={accessionFieldItem}>
-                      <div className="p-4 bg-white/40 border border-copper-500/15 rounded-sm">
-                        <label className="flex items-start gap-3 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={googleAdsAccess}
-                            onChange={(e) => setGoogleAdsAccess(e.target.checked)}
-                            className="mt-1 w-5 h-5 rounded-sm border-copper-500/40 bg-white/60 text-copper-500 focus:ring-copper-500/30 cursor-pointer accent-copper-500"
-                          />
-                          <div className="flex-1">
-                            <span className="text-sm font-medium text-near-black">
-                              Google Ads / Search Console Access
-                            </span>
-                            <p className="text-xs text-near-black/40 mt-1">If existing</p>
-                          </div>
-                        </label>
-                        <AnimatePresence>
-                          {googleAdsAccess && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="overflow-hidden"
-                            >
-                              <input
-                                type="text"
-                                placeholder="Google Ads account email or access details"
-                                {...register('googleAdsDetails')}
                                 className={`${inputClasses} mt-3`}
                               />
                             </motion.div>

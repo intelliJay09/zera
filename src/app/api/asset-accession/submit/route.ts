@@ -42,7 +42,6 @@ const textFieldSchema = z.object({
   additionalTeamSeats: z.string().optional(),
   currentEmailService: z.string().optional(),
   metaBusinessSuiteDetails: z.string().optional(),
-  googleAdsDetails: z.string().optional(),
   crmDetails: z.string().optional(),
   targetAudienceProfile: z.string().optional(),
 }).superRefine((data, ctx) => {
@@ -98,7 +97,6 @@ export async function POST(request: NextRequest) {
       'additionalTeamSeats',
       'currentEmailService',
       'metaBusinessSuiteDetails',
-      'googleAdsDetails',
       'crmDetails',
       'targetAudienceProfile',
     ];
@@ -256,9 +254,6 @@ DOMAIN REGISTRAR
 
       if (data.metaBusinessSuiteDetails) {
         summary += `\n\nMeta Business Suite:\n${data.metaBusinessSuiteDetails}`;
-      }
-      if (data.googleAdsDetails) {
-        summary += `\n\nGoogle Ads:\n${data.googleAdsDetails}`;
       }
       if (data.crmDetails) {
         summary += `\n\nCRM:\n${data.crmDetails}`;
