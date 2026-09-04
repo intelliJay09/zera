@@ -1,23 +1,158 @@
-# The Astra Flow - Comprehensive Style Guide
+# ZERA - Comprehensive Style Guide
 
-> Complete design system documentation for The Astra Flow website. This guide serves as the single source of truth for all design decisions, patterns, and implementations.
+> Complete design system documentation for the ZERA website and brand. This guide is the single source of truth for all design decisions, patterns, and implementations.
 
-**Last Updated:** October 6, 2025
-**Version:** 1.0.0
+**Last Updated:** September 2, 2026
+**Version:** 1.2.0
 
 ---
 
 ## Table of Contents
 
-1. [Color System](#color-system)
-2. [Typography](#typography)
-3. [Spacing & Layout](#spacing--layout)
-4. [Component Styling](#component-styling)
-5. [Animations & Transitions](#animations--transitions)
-6. [Backgrounds & Effects](#backgrounds--effects)
-7. [Border Radius](#border-radius)
-8. [Shadows](#shadows)
-9. [Design Patterns](#design-patterns)
+1. [Brand Identity](#brand-identity)
+2. [Color System](#color-system)
+3. [Typography](#typography)
+4. [Spacing & Layout](#spacing--layout)
+5. [Component Styling](#component-styling)
+6. [Animations & Transitions](#animations--transitions)
+7. [Backgrounds & Effects](#backgrounds--effects)
+8. [Border Radius](#border-radius)
+9. [Shadows](#shadows)
+10. [Design Patterns](#design-patterns)
+
+---
+
+## Brand Identity
+
+### The name
+
+**Zera** is Hebrew (זֶרַע) for *seed*. The About page states the rationale: a seed carries the
+blueprint of the forest before it breaks the soil. Systems that compound, not campaigns that
+decay. Positioning line: **"We are not creatives. We are architects."**
+
+**Tagline:** `Revenue, Realized.`
+Set in UPPERCASE as `REVENUE, REALIZED` on garments and physical artwork, **with a comma and
+no full stop**. The website retains the full stop in the H1 and footer.
+
+### The mark: The Solid Seal
+
+A copper disc with the Z cut out of it. A seal is what gets pressed onto something once it is
+settled, which is what "Revenue, Realized" claims.
+
+The mark is defined **once**, in a 512-unit space, and every output is derived from it. The
+favicon and the printed disc are the same object and cannot drift apart.
+
+```
+Canvas       512 x 512
+Disc         circle, centre (256, 256), r = 252   fill #B87333
+Z (knockout) M134,154 L378,154 L208,306 L378,306
+             L378,358 L134,358 L304,206 L134,206 Z   fill #F3E9DC
+
+Letterform box  L=134  R=378  T=154  B=358
+Bar thickness   t = 52      Diagonal width  d = 74
+```
+
+**Do not redraw, re-trace or "clean up" the mark.** Regenerate it from the geometry above.
+
+#### Why this mark, and what it replaced
+
+Two earlier marks were rejected for the same underlying reason. A hub with four satellites
+collides with a known pictogram whichever way it is drawn: connected by bars it reads as a
+**close/cancel X**, and as bare dots it reads as a **paw print**. That is a geometry problem,
+not a spacing problem. A letterform inside a disc cannot be misread that way, which is why the
+mark is now a monogram.
+
+Any future mark must be stress-tested at 16px against the common-icon set (X, paw, document
+dog-ear, arrow, play, battery, more-options dots, flower) **by rendering it**, not by
+reasoning about it.
+
+#### Clear space and minimum size
+
+| Context | Size |
+|---|---|
+| Minimum digital | 16 px |
+| Minimum print, standard mark | 25 mm |
+| Minimum print, merch variant | 19 mm (0.75 in) |
+| Merch variant range | below 40 mm only |
+
+The copper field is never thinner than ~4.5 mm even on a 25 mm disc, so the mark carries its
+own clear space. It needs no drawn keyline.
+
+### The wordmark
+
+Pure type, no artwork. `src/components/ui/wordmark.tsx`.
+
+```
+Typeface     Lato Regular (400)
+Case         UPPERCASE
+Tracking     0.15em
+Colour       near-black #050505, or white/cream on dark
+```
+
+Legacy raster logos exist at `public/zera-logo-primary.png` and `zera-logo-white.png`. They are
+**orphaned** and referenced by no component. Use the `Wordmark` component instead.
+
+### The lockup
+
+Wordmark above, tagline directly beneath, **no rule between them**.
+
+```
+Wordmark tracking   0.15em
+Tagline tracking    0.15em
+Tagline width       92% of the wordmark width
+Gap                 42% of the wordmark cap height (baseline to tagline cap top)
+Cap ratio           ~4.45 : 1  (wordmark : tagline)
+Tagline colour      copper #B87333
+```
+
+These values reproduce the proportions of the brand's own lockup in
+`public/images/og-zera-primary.png`, measured at wordmark cap 160 px, tagline cap 37.8 px,
+tagline width 645 px against a 700 px wordmark.
+
+**Do not set the tagline at the footer's 0.20em tracking.** At that tracking it cannot reach
+the brand's cap ratio without running wider than the wordmark, and it prints undersized.
+
+### Icon files
+
+Five files in `public/`, all cut from the geometry above. `manifest.json` and
+`src/app/layout.tsx` reference them.
+
+| File | Size | Treatment |
+|---|---|---|
+| `favicon.png` | 512 | Transparent, disc fills canvas |
+| `favicon-192.png` | 192 | Transparent, disc fills canvas |
+| `favicon-maskable-512.png` | 512 | Cream #F3E9DC field, disc at 80% (Android safe zone) |
+| `favicon-maskable-192.png` | 192 | Cream field, disc at 80% |
+| `apple-touch-icon.png` | 180 | Cream field, disc at 80%, opaque (iOS ignores alpha) |
+
+### Print and merchandise
+
+Print-ready artwork and the full shop specification live in **`brand-print/`**. See
+`brand-print/README.md` before sending anything to a printer.
+
+| Application | Size |
+|---|---|
+| Seal, centre chest | 180 mm disc |
+| Seal, left chest | 80 mm disc |
+| Lockup, across chest | 280 x 116.6 mm |
+| Lockup, left chest | 95 x 39.6 mm |
+| Merch variant | 25 mm nominal, vector |
+
+Copper is a **spot colour**. Match to `#B87333` against a physical draw-down. Never accept a
+numeric hex-to-Pantone conversion.
+
+**The seal was retired at 216 mm on a garment.** At that size a copper disc stops reading as a
+mark and becomes a plate. Do not scale the chest seal above 180 mm.
+
+### Standing rules
+
+- **One mark, everywhere.** The brand never runs two marks at once.
+- The mark is generated from geometry, never hand-redrawn.
+- Zero border radius. The design system sets `--radius: 0` and every button and card is
+  `rounded-none`. The disc is the only circular form in the system, alongside the ambient
+  copper glows.
+- No paid-ads language anywhere in sold deliverables.
+- Never use an em dash in Zera copy. Use a hyphen, comma, or restructure.
 
 ---
 
@@ -162,21 +297,29 @@ focus:border-copper-500/50             /* Input focus */
 
 ### Font Families
 
-#### Primary: Montserrat (Sans-Serif)
-```css
-font-family: var(--font-montserrat), system-ui, sans-serif;
-```
-- **Usage:** Body text, UI elements, buttons, labels, navigation
-- **Loading:** Google Fonts with `display: swap`
-- **Utility:** `font-sans` or `font-montserrat`
+**Lato is the only typeface.** Two weights are loaded, and there is no serif in the system.
+Montserrat and Playfair Display were removed in the typography migration, see
+`TYPOGRAPHY_MIGRATION_COMPLETE.md`.
 
-#### Secondary: Playfair Display (Serif)
+#### Primary: Lato Regular (400)
 ```css
-font-family: var(--font-playfair), Georgia, serif;
+font-family: var(--font-lato-regular), system-ui, sans-serif;
 ```
-- **Usage:** Headings (H1-H3), hero text, section titles, luxury emphasis
-- **Loading:** Google Fonts with `display: swap`
-- **Utility:** `font-serif` or `font-playfair`
+- **Usage:** Body text, UI elements, labels, navigation, and the ZERA wordmark
+- **Loading:** `next/font/google` in `src/app/layout.tsx`, `display: swap`
+- **Utility:** `font-sans`
+
+#### Display: Lato Bold (700)
+```css
+font-family: var(--font-lato-bold), Impact, sans-serif;
+```
+- **Usage:** Headings, hero text, section titles
+- **Loading:** `next/font/google`, `display: swap`
+- **Utility:** `font-display`
+
+> No true Light (300) is loaded. Do not specify one. Print artwork is set from
+> `fonts/Lato-Regular.ttf` at the repo root and converted to outlines, so print files carry no
+> font dependency.
 
 ### Font Sizes & Line Heights
 
@@ -224,10 +367,14 @@ font-bold:        700  /* Rarely used */
 ```
 
 **Common Patterns:**
-- **Headings (Playfair):** `font-light` (300) - Creates elegant, airy feel
-- **Body Text (Montserrat):** `font-light` (300) - Refined, readable
-- **Buttons/CTAs:** `font-medium` (500) - Clear hierarchy
-- **Labels/Small Text:** `font-medium` or `font-semibold` - Improves legibility
+- **Headings (`font-display`, Lato Bold 700):** uppercase, with brand tracking
+- **Body Text (`font-sans`, Lato Regular 400):** the default for all running text
+- **Buttons/CTAs:** Lato Bold, uppercase
+- **Labels/Small Text:** Lato Regular with wider tracking, never a lighter weight
+
+> Only 400 and 700 are loaded. Any `font-light` / `font-medium` / `font-semibold` class in the
+> codebase resolves to one of those two and is a leftover from the Montserrat era. Do not add
+> new ones.
 
 ### Letter Spacing (Tracking)
 
@@ -1316,8 +1463,13 @@ box-shadow:
 
 ### When to Use Each Font
 
-- **Playfair Display (Serif):** Use for all major headings (H1-H3), hero text, section titles, and any text that needs elegance and sophistication.
-- **Montserrat (Sans):** Use for body text, UI elements, buttons, labels, navigation, and any text that needs clarity and functionality.
+There is one typeface, Lato, in two weights. Hierarchy comes from **weight, case and
+tracking**, not from switching families.
+
+- **Lato Bold (`font-display`, 700):** all major headings (H1-H3), hero text, section titles.
+  Usually uppercase with brand tracking.
+- **Lato Regular (`font-sans`, 400):** body text, UI elements, buttons, labels, navigation,
+  and the ZERA wordmark at 0.15em tracking.
 
 ### Color Combination Principles
 
@@ -1370,6 +1522,15 @@ box-shadow:
 ---
 
 ## Version History
+
+**Version 1.2.0** - September 2, 2026
+- Added the Brand Identity section: the Solid Seal, its geometry, the wordmark, the lockup,
+  icon files, print sizes and standing rules
+- Corrected the typography section, which still documented Montserrat and Playfair Display.
+  The site has used Lato only since the typography migration
+- Corrected the document title, which still read "The Astra Flow" after the rebrand
+- Recorded why the previous hub-and-satellite marks were retired, so the collision is not
+  reintroduced
 
 **Version 1.0.0** - October 6, 2025
 - Initial comprehensive style guide created
