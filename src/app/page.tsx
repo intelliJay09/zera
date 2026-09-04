@@ -9,7 +9,7 @@ import {
   heroHeadline,
 } from '@/lib/animation-variants';
 
-const LiquidEther = dynamic(() => import('@/components/backgrounds/LiquidEther'), { ssr: false });
+const LiquidEther = dynamic(() => import('@/components/backgrounds/LiquidEther'));
 const TrustedByLogos = dynamic(() => import('@/components/sections/TrustedByLogos'));
 const ServiceTierGrid = dynamic(() => import('@/components/sections/ServiceTierGrid'));
 const ResultsMetrics = dynamic(() => import('@/components/sections/ResultsMetrics'));
@@ -83,7 +83,7 @@ export default function HomePage() {
             />
 
             <motion.h2
-              className="text-lg sm:text-xl lg:text-3xl font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto"
+              className="text-sm sm:text-base lg:text-sm font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -107,7 +107,7 @@ export default function HomePage() {
               }}
               className="flex flex-col items-center gap-4"
             >
-              <Button asChild variant="primary" size="lg" className="group normal-case">
+              <Button asChild variant="primary" size="lg" className="group">
                 <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
                   Book your systems audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
