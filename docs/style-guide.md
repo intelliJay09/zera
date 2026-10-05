@@ -115,7 +115,8 @@ the brand's cap ratio without running wider than the wordmark, and it prints und
 ### Icon files
 
 Five files in `public/`, all cut from the geometry above. `manifest.json` and
-`src/app/layout.tsx` reference them.
+`src/app/layout.tsx` reference them. `logo/icons/` links to these same files, so they can be
+browsed with the rest of the logo set without a second copy.
 
 | File | Size | Treatment |
 |---|---|---|
@@ -127,8 +128,8 @@ Five files in `public/`, all cut from the geometry above. `manifest.json` and
 
 ### Print and merchandise
 
-Print-ready artwork and the full shop specification live in **`brand-print/`**. See
-`brand-print/README.md` before sending anything to a printer.
+Print-ready artwork and the full shop specification live in **`logo/`**. See
+`logo/README.md` before sending anything to a printer.
 
 | Application | Size |
 |---|---|
