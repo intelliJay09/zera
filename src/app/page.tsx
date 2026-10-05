@@ -83,7 +83,7 @@ export default function HomePage() {
             />
 
             <motion.h2
-              className="text-sm sm:text-base lg:text-sm font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl lg:text-2xl leading-relaxed font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
