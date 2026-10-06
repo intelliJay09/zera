@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import type { CaseStudy } from '@/data/case-studies';
+import { logoSize, type CaseStudy } from '@/data/case-studies';
 
 interface CaseStudyCardProps {
   study: CaseStudy;
@@ -44,14 +44,14 @@ export default function CaseStudyCard({ study, index, headingLevel = 'h3' }: Cas
         </div>
 
         <div className="flex flex-1 flex-col p-8 lg:p-10">
-          <div className="mb-6 flex min-h-10 items-center justify-between gap-4">
+          <div className="mb-6 flex min-h-10 flex-wrap items-center justify-between gap-4">
             <Image
               src={study.logo.src}
               alt={study.client}
               width={study.logo.width}
               height={study.logo.height}
-              style={{ height: study.logo.displayHeight * 0.85 }}
-              className="w-auto max-w-[60%] object-contain object-left"
+              style={logoSize(study.logo, study.logo.displayHeight * 0.85)}
+              className="shrink-0"
             />
             <span className="shrink-0 bg-copper-50 px-3 py-1.5 text-xs font-medium uppercase tracking-brand-label text-copper-700">
               {study.industry}

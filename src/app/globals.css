@@ -1,4 +1,10 @@
-@import "tailwindcss";
+/*
+ * Scan only src/ for class names. Without an explicit source, Tailwind crawls the
+ * whole repository (docs, backups, scripts, trash folders) and registers it all as
+ * dependencies of this file, which stops Next's persistent webpack cache from ever
+ * invalidating the compiled CSS on Vercel - new styles then never reach production.
+ */
+@import "tailwindcss" source("..");
 
 /* CSS Variables - Must be OUTSIDE @layer for Tailwind v4 */
 :root {
@@ -96,6 +102,37 @@
   /* Additional Colors */
   --color-light-gray: #D3D3D3;
   --color-near-black: #050505;
+
+  /* Typography - Lato, loaded by next/font in layout.tsx */
+  --font-sans: var(--font-lato-regular), system-ui, sans-serif;
+  --font-display: var(--font-lato-bold), Impact, sans-serif;
+
+  /* Brand letter-spacing */
+  --tracking-brand-header: 0.05em;
+  --tracking-brand-header-wide: 0.075em;
+  --tracking-brand-label: 0.05em;
+
+  /* Radix accordion open/close */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
 /* Base styles - NOW border-border utility exists! */

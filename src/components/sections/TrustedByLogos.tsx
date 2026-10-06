@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getCaseStudy } from '@/data/case-studies';
+import { getCaseStudy, logoSize } from '@/data/case-studies';
 
 interface Brand {
   name: string;
@@ -52,7 +52,7 @@ function LogoSet({ hidden = false }: { hidden?: boolean }) {
             width={brand.width}
             height={brand.height}
             unoptimized={brand.src.endsWith('.svg')}
-            style={{ height: brand.displayHeight, width: 'auto' }}
+            style={logoSize(brand, brand.displayHeight)}
             className="client-logo"
           />
         </li>

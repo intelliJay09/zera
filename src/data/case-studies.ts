@@ -292,6 +292,17 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
+/**
+ * Explicit pixel size for a logo at a given height, derived from its intrinsic
+ * aspect ratio, so logos never depend on CSS to keep their proportions.
+ */
+export function logoSize(logo: { width: number; height: number }, displayHeight: number) {
+  return {
+    width: Math.round((displayHeight * logo.width) / logo.height),
+    height: Math.round(displayHeight),
+  };
+}
+
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((study) => study.slug === slug);
 }

@@ -1500,8 +1500,7 @@ tracking**, not from switching families.
 ## File References
 
 ### Core Configuration
-- `/tailwind.config.ts` - Tailwind configuration with color palette, spacing, typography
-- `/src/app/globals.css` - Global styles, CSS variables, header animations
+- `/src/app/globals.css` - Tailwind v4 design tokens (`@theme`: colors, fonts, letter-spacing, animations), global styles, CSS variables, header animations
 - `/src/app/layout.tsx` - Font loading and global layout structure
 
 ### Component Libraries

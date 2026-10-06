@@ -49,7 +49,7 @@ src/
 ### Configuration Files
 - `tsconfig.json` - TypeScript config (strict mode)
 - `.eslintrc.json` - ESLint for code quality
-- `tailwind.config.ts` - Design system
+- `src/app/globals.css` - Design system (Tailwind v4 `@theme` tokens)
 - `next.config.ts` - Security headers, VPS deployment config
 - `.env.local` - Environment variables
 

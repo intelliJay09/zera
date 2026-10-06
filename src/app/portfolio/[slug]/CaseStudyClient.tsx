@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import type { CaseStudy } from '@/data/case-studies';
+import { logoSize, type CaseStudy } from '@/data/case-studies';
 import CaseStudyCard from '@/components/sections/CaseStudyCard';
 
 interface CaseStudyClientProps {
@@ -56,8 +56,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
               width={study.logo.width}
               height={study.logo.height}
               priority
-              style={{ height: study.logo.displayHeight * 1.25 }}
-              className="w-auto"
+              style={logoSize(study.logo, study.logo.displayHeight * 1.25)}
             />
           </motion.div>
 
