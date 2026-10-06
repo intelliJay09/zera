@@ -27,10 +27,10 @@ const brands: Brand[] = [
   { name: 'Lumina Lifestyle', src: '/images/clients/lumina-lifestyle.svg', width: 165, height: 56, displayHeight: 40 },
   { name: 'West African Logistics Group', src: '/images/clients/west-african-logistics-group.svg', width: 246, height: 56, displayHeight: 38 },
   allureBloom,
-  { name: 'TechFlow Solutions', src: '/images/clients/techflow-solutions.svg', width: 177, height: 56, displayHeight: 40 },
+  finestDietitian,
   { name: 'Luxe Wellness', src: '/images/clients/luxe-wellness.svg', width: 152, height: 56, displayHeight: 40 },
   { name: 'Meridian Financial', src: '/images/clients/meridian-financial.svg', width: 192, height: 56, displayHeight: 40 },
-  finestDietitian,
+  { name: 'TechFlow Solutions', src: '/images/clients/techflow-solutions.svg', width: 177, height: 56, displayHeight: 40 },
   { name: 'Keystone Manufacturing', src: '/images/clients/keystone-manufacturing.svg', width: 215, height: 56, displayHeight: 38 },
   { name: 'Verde Organics', src: '/images/clients/verde-organics.svg', width: 150, height: 56, displayHeight: 40 },
   { name: 'Modern Threads', src: '/images/clients/modern-threads.svg', width: 194, height: 56, displayHeight: 40 },
@@ -69,14 +69,17 @@ export default function TrustedByLogos() {
           TRUSTED BY MARKET LEADERS
         </p>
 
-        <div className="relative">
+        {/* --marquee-fade is the edge fade width; the track starts just past it so the first logo is never faded */}
+        <div className="relative [--marquee-fade:4rem] sm:[--marquee-fade:8rem]">
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-cream-100 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-cream-100 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-(--marquee-fade) bg-gradient-to-r from-cream-100 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-(--marquee-fade) bg-gradient-to-l from-cream-100 to-transparent z-10 pointer-events-none" />
 
-          {/* Infinite marquee: two identical sets, the track moves by one set width */}
+          {/* Infinite marquee: three identical sets, the track moves by one set width.
+              The leading copy fills the fade on the left, so the loop never shows a gap. */}
           <div className="flex overflow-hidden py-2">
-            <div className="logo-marquee-track flex w-max">
+            <div className="logo-marquee-track flex w-max shrink-0">
+              <LogoSet hidden />
               <LogoSet />
               <LogoSet hidden />
             </div>

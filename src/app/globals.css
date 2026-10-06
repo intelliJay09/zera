@@ -276,9 +276,11 @@
   visibility: hidden !important;
 }
 
-/* Client logo marquee - pauses on hover, static for reduced motion */
+/* Client logo marquee - pauses on hover, static for reduced motion.
+   The track holds three identical sets and moves by one set (a third of its width),
+   offset by the edge fade so the first logo starts fully visible. */
 .logo-marquee-track {
-  animation: logoMarquee 60s linear infinite;
+  animation: logoMarquee 130s linear infinite;
 }
 
 .logo-marquee-track:hover {
@@ -287,10 +289,10 @@
 
 @keyframes logoMarquee {
   from {
-    transform: translateX(0);
+    transform: translateX(calc(-100% / 3 + var(--marquee-fade)));
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-200% / 3 + var(--marquee-fade)));
   }
 }
 
