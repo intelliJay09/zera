@@ -215,51 +215,55 @@ export const CASE_STUDIES: CaseStudy[] = [
     status: 'Live',
     service: { name: 'Branding & Design', href: '/solutions/branding-design' },
     liveUrl: { href: 'https://ab.zerahq.com', label: 'ab.zerahq.com' },
-    seoTitle: 'Allure Bloom: Luxury Beauty Brand and Grand Opening',
+    seoTitle: 'Allure Bloom: A Luxury Beauty Rebrand',
     seoDescription:
-      'Brand identity, a grand-opening RSVP system with door check-in, and a full print suite for Allure Bloom, a luxury beauty studio in Bawaleshie, Accra.',
+      'The Allure Bloom rebrand: a new logo and brand identity, carried through the invitation box, cards, vouchers and RSVP pages for its Bawaleshie studio.',
     published: '2026-10-06',
     updated: '2026-10-06',
-    headline: 'A luxury beauty studio, and a grand opening that knows exactly who is coming.',
+    headline: 'A rebrand for a luxury beauty studio, carried through every piece of its grand opening.',
     summary:
-      'ZERA created Allure Bloom’s brand identity, a grand-opening RSVP system with check-in at the door, and the full print suite for the luxury beauty studio’s move to a larger space in Bawaleshie, Accra.',
+      'ZERA rebranded Allure Bloom, a luxury beauty studio in Accra, for its move to a larger space in Bawaleshie. The new logo and brand identity run through everything made for the launch: the invitation box, the invitation cards, the gift vouchers, a newspaper and the grand-opening RSVP pages.',
     keyFigure: { value: '9', label: 'Services under one brand' },
     challenge: [
       'Allure Bloom is an established luxury beauty studio in Accra, with lashes, nails, brows, spa, salon and makeup under one roof.',
-      'Moving to a larger studio in Bawaleshie with new services, it needed a brand that holds up from a voucher to a storefront, and an opening that feels as considered as its treatments. It also needed to know who was coming, without a phone full of replies to count by hand.',
+      'Moving to a larger studio in Bawaleshie with new services, it needed a brand identity that holds up from a voucher to a storefront, and an opening that feels as considered as its treatments. It also needed to know who was coming, without a phone full of replies to count by hand.',
     ],
     build: [
       {
-        title: 'Brand identity',
-        body: 'Wordmark, bloom mark and combination marks, an espresso and cream palette, and usage guidelines that keep every supplier on brand.',
-      },
-      {
-        title: 'RSVP system',
-        body: 'A grand-opening site where every guest replies once and is confirmed straight away, and the studio hears about each reply as it comes in.',
-      },
-      {
-        title: 'Guest book and door list',
-        body: 'A private guest list showing who is coming and who sent regrets, a printable door list, and check-in on the day.',
+        title: 'The brand identity',
+        body: 'A new logo in a Premium and an Everyday version, a bloom mark and combination marks for every format, an espresso and cream palette, and guidelines that keep every supplier on brand. Everything below is built from it.',
       },
       {
         title: 'Invitation box',
-        body: 'A rigid, book-style box with a beige matte foil seal struck into a debossed well, designed to be kept.',
+        body: 'The identity’s first piece in the hand: a rigid, book-style box with a beige matte foil seal struck into a debossed well, designed to be kept.',
       },
       {
-        title: 'Invitation suite',
-        body: 'An A5 invitation with a foiled logo and a QR code to the RSVP site, plus a personalised envelope, founder’s letter and details card.',
+        title: 'Invitation cards',
+        body: 'An A5 invitation with the logo in foil on espresso and a QR code to the RSVP pages, plus a personalised envelope, a letter from the founder and a details card for the closest guests.',
       },
       {
-        title: 'Print and merchandise',
-        body: 'Gift vouchers in four values, a keepsake newspaper, a hiring flyer and a merchandise spec for suppliers.',
+        title: 'Gift vouchers',
+        body: 'A folded card in four values, from GHS 500 to 2,000, with a foiled cover, so a gift from the studio looks like the studio.',
+      },
+      {
+        title: 'The Bloom Times',
+        body: 'A printed newspaper announcing a new era of beauty and the grand opening, made for the rebrand’s launch photography.',
+      },
+      {
+        title: 'RSVP pages',
+        body: 'The identity online: every guest replies once and is confirmed straight away, and the studio keeps a private guest list, a printable door list and check-in on the day.',
+      },
+      {
+        title: 'Hiring flyer and merchandise',
+        body: 'A hiring flyer for the new studio, and a merchandise spec so everything a supplier makes comes out in the right colour and at a size that prints cleanly.',
       },
     ],
     figuresTitle: 'The engagement in numbers',
     figures: [
+      { value: '1', label: 'Brand identity behind every piece' },
+      { value: '2', label: 'Logo versions, Premium and Everyday' },
       { value: '9', label: 'Services under one brand' },
-      { value: '6', label: 'Print pieces designed for the launch' },
       { value: '4', label: 'Gift voucher values, GHS 500 to 2,000' },
-      { value: '1', label: 'Reply per guest, so the list stays clean' },
     ],
     figuresNote: 'The grand opening is on 17 October 2026. Results will be published after the event.',
     hero: {
@@ -270,6 +274,20 @@ export const CASE_STUDIES: CaseStudy[] = [
       caption: 'The general invitation, with the logo in beige matte foil on espresso.',
     },
     gallery: [
+      {
+        src: '/images/case-studies/allure-bloom/newspaper.webp',
+        alt: 'Four women on a cream sofa reading The Bloom Times, Allure Bloom’s grand opening newspaper',
+        width: 960,
+        height: 1280,
+        caption: 'The Bloom Times, made for the rebrand’s launch.',
+      },
+      {
+        src: '/images/case-studies/allure-bloom/voucher.webp',
+        alt: 'Allure Bloom gift voucher, open and closed',
+        width: 1600,
+        height: 884,
+        caption: 'The folded gift voucher.',
+      },
       {
         src: '/images/case-studies/allure-bloom/box.webp',
         alt: 'Allure Bloom invitation box, open, with a foil seal inside the lid',
@@ -282,21 +300,19 @@ export const CASE_STUDIES: CaseStudy[] = [
         alt: 'Allure Bloom grand opening RSVP website',
         width: 1600,
         height: 1420,
-        caption: 'The RSVP site at ab.zerahq.com.',
-      },
-      {
-        src: '/images/case-studies/allure-bloom/voucher.webp',
-        alt: 'Allure Bloom gift voucher, open and closed',
-        width: 1600,
-        height: 884,
-        caption: 'The folded gift voucher.',
+        caption: 'The RSVP pages at ab.zerahq.com.',
       },
     ],
     faqs: [
       {
         question: 'What did ZERA do for Allure Bloom?',
         answer:
-          'ZERA created the studio’s brand identity, a grand-opening RSVP system with check-in at the door, and the full print suite: an invitation box, the invitation suite, gift vouchers, a keepsake newspaper, a hiring flyer and a merchandise spec.',
+          'ZERA rebranded the studio. It created the new logo and brand identity, then carried it through every piece of the grand opening: the invitation box, the invitation cards, gift vouchers, The Bloom Times newspaper, the RSVP pages, a hiring flyer and a merchandise spec.',
+      },
+      {
+        question: 'Was the Allure Bloom work one project or several?',
+        answer:
+          'One. It is a single rebrand. The logo, palette and guidelines came first, and every piece after them, in print and online, is built from that same identity.',
       },
       {
         question: 'How do guests RSVP for the grand opening?',
@@ -310,10 +326,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         question: 'Which ZERA service was this?',
-        answer: 'Branding & Design.',
+        answer: 'Branding & Design: a full rebrand, from the logo to every piece of the launch.',
       },
     ],
     keywords: [
+      'Luxury Beauty Rebrand',
       'Luxury Beauty Branding',
       'Beauty Studio Brand Identity',
       'Grand Opening RSVP System',
