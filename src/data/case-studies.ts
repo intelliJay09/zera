@@ -275,11 +275,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     gallery: [
       {
-        src: '/images/case-studies/allure-bloom/newspaper.webp',
-        alt: 'Four women on a cream sofa reading The Bloom Times, Allure Bloom’s grand opening newspaper',
-        width: 960,
-        height: 1280,
-        caption: 'The Bloom Times, made for the rebrand’s launch.',
+        src: '/images/case-studies/allure-bloom/box.webp',
+        alt: 'Allure Bloom invitation box, open, with a foil seal inside the lid',
+        width: 1600,
+        height: 1768,
+        caption: 'The invitation box, seal direction.',
       },
       {
         src: '/images/case-studies/allure-bloom/voucher.webp',
@@ -289,11 +289,11 @@ export const CASE_STUDIES: CaseStudy[] = [
         caption: 'The folded gift voucher.',
       },
       {
-        src: '/images/case-studies/allure-bloom/box.webp',
-        alt: 'Allure Bloom invitation box, open, with a foil seal inside the lid',
-        width: 1600,
-        height: 1768,
-        caption: 'The invitation box, seal direction.',
+        src: '/images/case-studies/allure-bloom/newspaper.webp',
+        alt: 'Four women on a cream sofa reading The Bloom Times, Allure Bloom’s grand opening newspaper',
+        width: 960,
+        height: 1280,
+        caption: 'The Bloom Times, made for the rebrand’s launch.',
       },
       {
         src: '/images/case-studies/allure-bloom/rsvp.webp',

@@ -1,10 +1,11 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { logoSize, type CaseStudy } from '@/data/case-studies';
+import { logoSize, type CaseStudy, type CaseStudyImage } from '@/data/case-studies';
 import CaseStudyCard from '@/components/sections/CaseStudyCard';
 
 interface CaseStudyClientProps {
@@ -17,6 +18,13 @@ const reveal = {
   whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
   viewport: { once: true, margin: '-80px' },
 };
+
+/** Pairs the gallery into rows of two, in order; an odd last image gets a row of its own. */
+function galleryRows(images: CaseStudyImage[]): CaseStudyImage[][] {
+  const rows: CaseStudyImage[][] = [];
+  for (let i = 0; i < images.length; i += 2) rows.push(images.slice(i, i + 2));
+  return rows;
+}
 
 export default function CaseStudyClient({ study, otherStudies }: CaseStudyClientProps) {
   const details = [study.industry, study.location, study.year];
@@ -251,32 +259,63 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery: justified rows of two. Each image's share of the row is its aspect ratio,
+          so both sit at exactly the same height and nothing is cropped. */}
       {study.gallery.length > 0 && (
         <section className="bg-cream py-16 sm:py-20 lg:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
-            <div className={study.gallery.length > 1 ? 'columns-1 md:columns-2 gap-6 lg:gap-8' : 'max-w-[1100px] mx-auto'}>
-              {study.gallery.map((image, index) => (
-                <motion.figure
-                  key={image.src}
-                  {...reveal}
-                  transition={{ duration: 0.7, delay: index * 0.1, ease: [0.19, 0.91, 0.38, 0.98] }}
-                  className="mb-6 lg:mb-8 break-inside-avoid"
-                >
-                  <div className="overflow-hidden bg-cream-200 shadow-xl shadow-near-black/5">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={image.width}
-                      height={image.height}
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="h-auto w-full transition-transform duration-700 ease-out hover:scale-[1.02]"
-                    />
-                  </div>
-                  {image.caption && (
-                    <figcaption className="mt-4 text-sm text-near-black/60">{image.caption}</figcaption>
-                  )}
-                </motion.figure>
+            <motion.div
+              {...reveal}
+              transition={{ duration: 0.6 }}
+              className="mb-10 sm:mb-14 flex items-center gap-6"
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header">
+                The work
+              </h2>
+              <span className="h-px flex-1 bg-copper-500/25" />
+              <span className="text-sm font-medium tracking-brand-label uppercase text-copper-600 tabular-nums">
+                {String(study.gallery.length).padStart(2, '0')} {study.gallery.length === 1 ? 'piece' : 'pieces'}
+              </span>
+            </motion.div>
+
+            <div className="space-y-12 sm:space-y-16">
+              {galleryRows(study.gallery).map((row, rowIndex) => (
+                <div key={row[0].src} className="flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-8">
+                  {row.map((image, index) => {
+                    const ratio = image.width / image.height;
+                    const number = rowIndex * 2 + index + 1;
+                    return (
+                      <motion.figure
+                        key={image.src}
+                        {...reveal}
+                        transition={{ duration: 0.8, delay: index * 0.12, ease: [0.19, 0.91, 0.38, 0.98] }}
+                        style={{ '--ratio': ratio } as CSSProperties}
+                        className={`group min-w-0 md:flex-[var(--ratio)_1_0%] ${row.length === 1 ? 'md:mx-auto md:max-w-[calc(var(--ratio)*44rem)]' : ''}`}
+                      >
+                        <div className="overflow-hidden bg-cream-200">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={image.width}
+                            height={image.height}
+                            sizes={row.length === 1 ? '(min-width: 1400px) 1336px, 100vw' : '(min-width: 768px) 60vw, 100vw'}
+                            className="h-auto w-full transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                          />
+                        </div>
+                        <figcaption className="mt-5 grid grid-cols-[2.5rem_1fr] border-t border-copper-500/25 pt-4">
+                          <span className="text-base font-light font-display tabular-nums leading-snug text-copper-500">
+                            {String(number).padStart(2, '0')}
+                          </span>
+                          {image.caption && (
+                            <span className="text-sm sm:text-base leading-snug text-near-black/70 transition-colors duration-300 group-hover:text-near-black">
+                              {image.caption}
+                            </span>
+                          )}
+                        </figcaption>
+                      </motion.figure>
+                    );
+                  })}
+                </div>
               ))}
             </div>
           </div>
