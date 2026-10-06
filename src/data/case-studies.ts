@@ -275,6 +275,20 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     gallery: [
       {
+        src: '/images/case-studies/allure-bloom/logo-premium.webp',
+        alt: 'Allure Bloom stacked logo in cream on espresso',
+        width: 1600,
+        height: 1600,
+        caption: 'The logo, Premium: the stacked lockup on espresso.',
+      },
+      {
+        src: '/images/case-studies/allure-bloom/logo-everyday.webp',
+        alt: 'Allure Bloom stacked logo in brown on cream',
+        width: 1600,
+        height: 1600,
+        caption: 'The logo, Everyday: the stacked lockup on cream.',
+      },
+      {
         src: '/images/case-studies/allure-bloom/box.webp',
         alt: 'Allure Bloom invitation box, open, with a foil seal inside the lid',
         width: 1600,
@@ -294,6 +308,13 @@ export const CASE_STUDIES: CaseStudy[] = [
         width: 960,
         height: 1280,
         caption: 'The Bloom Times, made for the rebrand’s launch.',
+      },
+      {
+        src: '/images/case-studies/allure-bloom/personal-invitation.webp',
+        alt: 'Allure Bloom personal invitation: a sealed envelope, a blank card with a debossed bloom, and the details card',
+        width: 1600,
+        height: 897,
+        caption: 'The personal invitation: a wax-sealed envelope, a card for the handwritten letter, and the details card.',
       },
       {
         src: '/images/case-studies/allure-bloom/rsvp.webp',
