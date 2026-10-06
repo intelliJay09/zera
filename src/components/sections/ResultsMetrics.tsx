@@ -2,20 +2,19 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import MetricCard from './MetricCard';
+import { COMPANY_STATS } from '@/data/company-stats';
+import Metric from './Metric';
 
-interface Stat {
-  number: string;
-  suffix: string;
-  label: string;
+// Copper rules between figures: one row of four on desktop, a 2x2 grid below lg
+function dividerClasses(index: number) {
+  return [
+    index % 2 === 1 && 'border-l',
+    index >= 2 && 'border-t lg:border-t-0',
+    index === 2 && 'lg:border-l',
+  ]
+    .filter(Boolean)
+    .join(' ');
 }
-
-const stats: Stat[] = [
-  { number: '150', suffix: '+', label: 'Businesses Transformed' },
-  { number: '4.2', suffix: 'x', label: 'Average ROI' },
-  { number: '92', suffix: '%', label: 'Client Retention' },
-  { number: '5', suffix: '★', label: 'Client Rating' },
-];
 
 export default function ResultsMetrics() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -49,7 +48,7 @@ export default function ResultsMetrics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-10 sm:mb-14 lg:mb-20"
         >
           <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-4">
             The Operating Record
@@ -62,12 +61,13 @@ export default function ResultsMetrics() {
           </p>
         </motion.div>
 
-        {/* Scrollytelling Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
+        {/* Figures in one open row, separated by copper rules */}
+        <ul className="grid grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          {COMPANY_STATS.map((stat, index) => (
+            <motion.li
+              key={stat.label}
+              className={`border-copper-500/25 px-2 py-10 sm:px-6 sm:py-12 lg:py-4 ${dividerClasses(index)}`}
+              initial={{ opacity: 0, y: 40, filter: 'blur(12px)' }}
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
@@ -76,10 +76,10 @@ export default function ResultsMetrics() {
                 ease: [0.19, 0.91, 0.38, 0.98]
               }}
             >
-              <MetricCard stat={stat} index={index} />
-            </motion.div>
+              <Metric stat={stat} index={index} />
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </div>
     </motion.section>
   );

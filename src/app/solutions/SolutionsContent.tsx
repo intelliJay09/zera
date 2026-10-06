@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
+import { COMPANY_STATS } from '@/data/company-stats';
 import { ArrowRight, Target, Lightbulb, Rocket, TrendingUp, Search, Users, Map, Palette, Megaphone, FileText, BarChart3, Settings, Zap, Database, LineChart } from 'lucide-react';
 
 export default function SolutionsContent() {
@@ -60,15 +61,11 @@ export default function SolutionsContent() {
 
             {/* Right: Stats */}
             <div className="grid grid-cols-2 gap-8">
-              {[
-                { number: '150+', label: 'Projects Delivered' },
-                { number: '4.8x', label: 'Average ROI' },
-                { number: '98%', label: 'Client Retention Rate' },
-                { number: '$50M+', label: 'Revenue Generated for Clients' },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl lg:text-5xl font-bold font-display uppercase text-copper-500 mb-2 tracking-brand-header">
+              {COMPANY_STATS.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-4xl lg:text-5xl font-bold font-display text-copper-500 mb-2 tracking-brand-header">
                     {stat.number}
+                    {stat.suffix}
                   </div>
                   <div className="text-sm font-normal text-near-black/60 tracking-normal">
                     {stat.label}
