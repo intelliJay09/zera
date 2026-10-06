@@ -1,3 +1,6 @@
+// Case study copy rule: describe what the client gets and what happened, never how it is
+// built. No vendor or tool names, no sequence counts or mechanics a competitor could copy.
+
 export interface CaseStudyImage {
   src: string;
   alt: string;
@@ -24,6 +27,18 @@ export interface CaseStudyStep {
   body: string;
 }
 
+export interface CaseStudyFaq {
+  question: string;
+  answer: string;
+}
+
+export interface CaseStudyEvent {
+  name: string;
+  /** ISO date of the most recent edition the figures describe. */
+  startDate: string;
+  location: string;
+}
+
 export interface CaseStudy {
   slug: string;
   client: string;
@@ -40,7 +55,17 @@ export interface CaseStudy {
     href: string;
     label: string;
   };
+  /** The client's own website, when it has one, for structured data. */
+  clientUrl?: string;
+  /** Page title, before the site-wide " | Zera" suffix. */
+  seoTitle: string;
+  /** Meta description, kept under 160 characters. */
+  seoDescription: string;
+  /** ISO dates for structured data and the sitemap. */
+  published: string;
+  updated: string;
   headline: string;
+  /** Opens the page and answers who, what and the result in plain sentences. */
   summary: string;
   keyFigure: CaseStudyFigure;
   challenge: string[];
@@ -50,6 +75,8 @@ export interface CaseStudy {
   figuresNote: string;
   hero: CaseStudyImage;
   gallery: CaseStudyImage[];
+  faqs: CaseStudyFaq[];
+  event?: CaseStudyEvent;
   keywords: string[];
 }
 
@@ -67,57 +94,67 @@ export const CASE_STUDIES: CaseStudy[] = [
       href: 'https://app.gwenaddo.com/masterclass-replay',
       label: 'app.gwenaddo.com',
     },
-    headline: 'GHS 67,400 collected from one masterclass, with the follow-up running itself.',
+    clientUrl: 'https://gwenaddo.com',
+    seoTitle: 'Gwen Addo: The Vision Masterclass System',
+    seoDescription:
+      'The system behind Gwen Addo’s Vision Masterclass in Accra: payments, QR check-in, follow-up and a paid replay. Cohort III collected more than GHS 60,000.',
+    published: '2026-10-06',
+    updated: '2026-10-06',
+    headline: 'More than GHS 60,000 from one masterclass, with the follow-up running itself.',
     summary:
-      'We built the system behind The Vision Masterclass: sign-up, payment, reminders, QR check-in, post-event follow-up and alumni win-back, all running without anyone chasing.',
-    keyFigure: { value: 'GHS 67,400', label: 'Net collected, Cohort 3' },
+      'ZERA built and runs the system behind The Vision Masterclass, Gwen Addo’s one-day strategy programme for founders in Accra. It has run all three cohorts, from registration and payment to the door, the follow-up, alumni win-back and a paid replay of the sessions. Cohort III collected more than GHS 60,000.',
+    keyFigure: { value: 'GHS 60,000+', label: 'Net collected, Cohort III' },
     challenge: [
-      'Gwen Addo is a business strategist and the founder of five companies. Her Vision Masterclass brings founders into one room for a day of strategy, and each cohort is a serious revenue event for her business.',
-      'Payments arrived by card, mobile money and cash. Registrations sat in Airtable and past attendees in a spreadsheet. Nothing connected a sign-up to a payment, a seat at the door, or the next thing that person might buy, and there was no system to bring past attendees, the people most likely to buy again, back into the room.',
+      'Gwen Addo is a business strategist, leadership coach and author, and the CEO of five businesses. Her Vision Masterclass brings founders into one room for a day of strategy, and every cohort is a serious revenue event for her business.',
+      'Payments came in by card, mobile money and cash, and registrations, payments and past attendees each lived in a different place. Nothing connected a sign-up to a payment, a seat at the door, or the next thing that person might buy, and nothing brought past attendees, the people most likely to buy again, back into the room.',
     ],
     build: [
       {
-        title: 'Sign-up to seat',
-        body: 'Paystack checkout with individual and group packages, plus a payment entry desk for mobile money and cash, so every cedi lands in one record. Each paid seat gets a ticket with its own QR code.',
+        title: 'One record for every payment',
+        body: 'Card, mobile money or cash, every payment lands in the same record, and every paid seat gets its own ticket.',
       },
       {
-        title: 'Nurture and reminders',
-        body: 'A daily nurture sequence, a three-part speaker reveal, and countdown, day-before and event-morning emails that tell every attendee exactly where to be.',
+        title: 'Attendees hear from Gwen at the right moments',
+        body: 'From sign-up to the morning of the event, every attendee knows what is coming and where to be, without anyone on the team sending a message by hand.',
       },
       {
-        title: 'The door',
-        body: 'A PIN-secured QR check-in desk, so the team knows who arrived and who did not, while the event is still running.',
+        title: 'QR check-in at the door',
+        body: 'Every ticket carries a QR code, so the team knows who has arrived while the event is still running.',
       },
       {
-        title: 'After the event',
-        body: 'Materials, recaps, no-show follow-up and a strategy session application pipeline, sent automatically to the right people at the right time.',
+        title: 'Follow-up after the event',
+        body: 'Attendees and no-shows hear different things after the day, and the people ready for more are moved toward working with Gwen one to one.',
       },
       {
-        title: 'Alumni win-back',
-        body: 'A five-email campaign that brought past cohorts back into the room, built on a clean record of who had attended before.',
+        title: 'Past attendees brought back',
+        body: 'Alumni of earlier cohorts are invited back for the next one. They already know the room, which makes them the people most likely to buy again.',
       },
       {
-        title: 'Paid replay and reporting',
-        body: 'A protected replay with watermarked video and magic-link access, and a weekly digest that shows Gwen what the system collected.',
+        title: 'The masterclass replay',
+        body: 'The recorded sessions became a paid replay that only buyers can watch, offered to the people most likely to want it, so a one-day event keeps earning after the day.',
+      },
+      {
+        title: 'Reporting',
+        body: 'Gwen sees what the system brought in, cohort by cohort, without asking anyone for a report.',
       },
     ],
-    figuresTitle: 'Cohort 3 in numbers',
+    figuresTitle: 'Cohort III in numbers',
     figures: [
-      { value: 'GHS 67,400', label: 'Net collected' },
+      { value: 'GHS 60,000+', label: 'Net collected' },
       { value: '45', label: 'Paying attendees' },
-      { value: 'GHS 14,050', label: 'From 9 alumni won back' },
-      { value: '1,695', label: 'Automated emails to 194 people' },
+      { value: 'GHS 14,000+', label: 'From 9 alumni who came back' },
+      { value: 'Nearly 1,700', label: 'Emails sent automatically' },
       { value: '42 of 54', label: 'Seats checked in by QR' },
       { value: '70%', label: 'Of payments made after hours or on weekends' },
     ],
     figuresNote:
-      'Production data for Cohort 3, The Character Advantage, held on 22 August 2026.',
+      'Figures for Cohort III, The Character Advantage, held on 22 August 2026. The system has run all three cohorts of The Vision Masterclass.',
     hero: {
       src: '/images/case-studies/gwen-addo/replay.webp',
       alt: 'The Character Advantage masterclass replay page on app.gwenaddo.com',
       width: 1600,
       height: 1000,
-      caption: 'The paid masterclass replay, with protected video and magic-link access.',
+      caption: 'The paid masterclass replay.',
     },
     gallery: [
       {
@@ -125,10 +162,48 @@ export const CASE_STUDIES: CaseStudy[] = [
         alt: 'The new Gwen Addo website homepage',
         width: 1600,
         height: 1000,
-        caption: 'The new gwenaddo.com, rebuilt from WordPress.',
+        caption: 'The new gwenaddo.com.',
       },
     ],
-    keywords: ['Masterclass Funnel', 'Event Automation', 'Customer Win-Back', 'Lifecycle Email'],
+    faqs: [
+      {
+        question: 'What did ZERA build for Gwen Addo?',
+        answer:
+          'The system behind The Vision Masterclass: registration and payment by card, mobile money or cash, attendee communication from sign-up to the day, QR check-in at the door, follow-up after the event, alumni win-back, a paid replay of the sessions, and reporting for Gwen.',
+      },
+      {
+        question: 'How much did The Vision Masterclass collect?',
+        answer:
+          'Cohort III, The Character Advantage, held in Accra on 22 August 2026, collected more than GHS 60,000 net from 45 paying attendees. More than GHS 14,000 of it came from 9 alumni of earlier cohorts who came back.',
+      },
+      {
+        question: 'How long has the system been running?',
+        answer: 'It has run all three cohorts of The Vision Masterclass.',
+      },
+      {
+        question: 'Why does automation matter for an event like this?',
+        answer:
+          '70% of Cohort III payments came in outside working hours, before 8am, after 9pm or at the weekend, and not one of them was missed.',
+      },
+      {
+        question: 'Which ZERA service was this?',
+        answer:
+          'The Retention Engine, the tier of ZERA’s system built around bringing customers back after their first purchase.',
+      },
+    ],
+    event: {
+      name: 'The Vision Masterclass: The Character Advantage',
+      startDate: '2026-08-22',
+      location: 'Accra, Ghana',
+    },
+    keywords: [
+      'Masterclass Registration System',
+      'Event Payments Ghana',
+      'QR Event Check-In',
+      'Paid Event Replay',
+      'Alumni Win-Back',
+      'Event Follow-Up Automation',
+    ],
   },
   {
     slug: 'allure-bloom',
@@ -140,9 +215,14 @@ export const CASE_STUDIES: CaseStudy[] = [
     status: 'Live',
     service: { name: 'Branding & Design', href: '/solutions/branding-design' },
     liveUrl: { href: 'https://ab.zerahq.com', label: 'ab.zerahq.com' },
+    seoTitle: 'Allure Bloom: Luxury Beauty Brand and Grand Opening',
+    seoDescription:
+      'Brand identity, a grand-opening RSVP system with door check-in, and a full print suite for Allure Bloom, a luxury beauty studio in Bawaleshie, Accra.',
+    published: '2026-10-06',
+    updated: '2026-10-06',
     headline: 'A luxury beauty studio, and a grand opening that knows exactly who is coming.',
     summary:
-      'Brand identity, a grand-opening RSVP system with door check-in, and a full print suite for Allure Bloom’s move to a larger studio in Bawaleshie.',
+      'ZERA created Allure Bloom’s brand identity, a grand-opening RSVP system with check-in at the door, and the full print suite for the luxury beauty studio’s move to a larger space in Bawaleshie, Accra.',
     keyFigure: { value: '9', label: 'Services under one brand' },
     challenge: [
       'Allure Bloom is an established luxury beauty studio in Accra, with lashes, nails, brows, spa, salon and makeup under one roof.',
@@ -155,11 +235,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         title: 'RSVP system',
-        body: 'A grand-opening site that takes one reply per phone number, confirms guests by email with a calendar file, and alerts the studio to every reply.',
+        body: 'A grand-opening site where every guest replies once and is confirmed straight away, and the studio hears about each reply as it comes in.',
       },
       {
         title: 'Guest book and door list',
-        body: 'A private dashboard with attending, regrets, a printable door list and check-in on the day.',
+        body: 'A private guest list showing who is coming and who sent regrets, a printable door list, and check-in on the day.',
       },
       {
         title: 'Invitation box',
@@ -174,7 +254,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         body: 'Gift vouchers in four values, a keepsake newspaper, a hiring flyer and a merchandise spec for suppliers.',
       },
     ],
-    figuresTitle: 'The engagement',
+    figuresTitle: 'The engagement in numbers',
     figures: [
       { value: '9', label: 'Services under one brand' },
       { value: '6', label: 'Print pieces designed for the launch' },
@@ -212,7 +292,34 @@ export const CASE_STUDIES: CaseStudy[] = [
         caption: 'The folded gift voucher.',
       },
     ],
-    keywords: ['Brand Identity', 'Event RSVP System', 'Luxury Print Design', 'Beauty Studio Branding'],
+    faqs: [
+      {
+        question: 'What did ZERA do for Allure Bloom?',
+        answer:
+          'ZERA created the studio’s brand identity, a grand-opening RSVP system with check-in at the door, and the full print suite: an invitation box, the invitation suite, gift vouchers, a keepsake newspaper, a hiring flyer and a merchandise spec.',
+      },
+      {
+        question: 'How do guests RSVP for the grand opening?',
+        answer:
+          'Every invitation carries a QR code to the grand-opening site. Each guest replies once and is confirmed straight away, and the studio sees its guest list fill up as replies come in.',
+      },
+      {
+        question: 'Where is Allure Bloom?',
+        answer:
+          'Allure Bloom is a luxury beauty studio in Bawaleshie, Accra, offering lashes, nails, brows, spa, salon and makeup.',
+      },
+      {
+        question: 'Which ZERA service was this?',
+        answer: 'Branding & Design.',
+      },
+    ],
+    keywords: [
+      'Luxury Beauty Branding',
+      'Beauty Studio Brand Identity',
+      'Grand Opening RSVP System',
+      'Luxury Print Design',
+      'Brand Identity Accra',
+    ],
   },
   {
     slug: 'finest-dietitian',
@@ -224,13 +331,19 @@ export const CASE_STUDIES: CaseStudy[] = [
     status: 'Live',
     service: { name: 'The Digital HQ', href: '/products/digital-hq' },
     liveUrl: { href: 'https://finestdietitian.com', label: 'finestdietitian.com' },
+    clientUrl: 'https://finestdietitian.com',
+    seoTitle: 'Finest Dietitian: Website and Online Booking',
+    seoDescription:
+      'A website and on-site booking system for Finest Dietitian, the Accra practice of registered dietitian Fredericka Doku, with 14 services bookable online.',
+    published: '2026-10-06',
+    updated: '2026-10-06',
     headline: 'A dietitian’s practice, moved off third-party pages and onto a site she owns.',
     summary:
-      'A new website and on-site booking system for Fredericka Doku, a registered dietitian in Accra working with PCOS, gut, metabolic and children’s nutrition.',
+      'ZERA built the website and on-site booking system for Finest Dietitian, the practice of Fredericka Doku, a registered dietitian in Accra who works with PCOS, gut, metabolic and children’s nutrition. Patients can now book any of 14 services on her own site.',
     keyFigure: { value: '14', label: 'Services bookable on-site' },
     challenge: [
       'Fredericka Doku practises as Finest Dietitian and sees private patients at MediGrace Medical Centre in Accra. Her work covers PCOS, endometriosis, fibroids, menopause, gut and metabolic health, and children’s nutrition.',
-      'Her practice lived on a Linktree and a third-party booking page. Patients had no single place to understand her work or her credentials, and search engines and AI assistants had nothing authoritative to point to.',
+      'Her practice lived on a link page and a third-party booking page. Patients had no single place to understand her work or her credentials, and search engines and AI assistants had nothing authoritative to point to.',
     ],
     build: [
       {
@@ -239,26 +352,26 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         title: 'On-site booking',
-        body: 'Every service with its price and length, an availability engine, database-level protection against double booking, and a private link for patients to manage their appointment.',
+        body: 'Every service with its price and length, live availability, no double bookings, and a private link for patients to manage their own appointment.',
       },
       {
         title: 'Booking emails',
         body: 'Confirmation, cancellation and practice notices sent automatically, so the front desk stops typing the same message every day.',
       },
       {
-        title: 'Search and answer engines',
-        body: 'Structured data describing the clinic, the practitioner and her credentials, so Google and AI assistants can name her when someone asks.',
+        title: 'Found by search and AI assistants',
+        body: 'Her practice, her credentials and the conditions she treats are described in a way Google and AI assistants can read, so they can name her when someone asks.',
       },
       {
         title: 'Lead capture',
-        body: 'A double opt-in signup for a PCOS guide, with consent stored, for patients who are not ready to book yet.',
+        body: 'A free PCOS guide for patients who are not ready to book yet, sent only to people who confirm they want it.',
       },
       {
         title: 'BMI calculator',
         body: 'A dial-style calculator that answers a common first question and leads straight to booking.',
       },
     ],
-    figuresTitle: 'The engagement',
+    figuresTitle: 'The engagement in numbers',
     figures: [
       { value: '14', label: 'Services bookable on her own site' },
       { value: '0', label: 'Third-party pages between a patient and a booking' },
@@ -288,7 +401,34 @@ export const CASE_STUDIES: CaseStudy[] = [
         caption: 'The BMI calculator.',
       },
     ],
-    keywords: ['Healthcare Website', 'Online Booking System', 'Dietitian Website', 'Medical Structured Data'],
+    faqs: [
+      {
+        question: 'What did ZERA build for Finest Dietitian?',
+        answer:
+          'A website built around Fredericka Doku and the conditions she treats, on-site booking for all 14 of her services, automatic booking emails, a free PCOS guide for patients not ready to book, and a BMI calculator.',
+      },
+      {
+        question: 'Can patients book Finest Dietitian online?',
+        answer:
+          'Yes. Patients choose a service on finestdietitian.com, see its price and length, pick an available time, and get a private link to manage the appointment themselves.',
+      },
+      {
+        question: 'Who is Finest Dietitian?',
+        answer:
+          'Finest Dietitian is the practice of Fredericka Doku, a registered dietitian who sees private patients at MediGrace Medical Centre in Accra. She works with PCOS, endometriosis, fibroids, menopause, gut and metabolic health, and children’s nutrition.',
+      },
+      {
+        question: 'Which ZERA service was this?',
+        answer: 'The Digital HQ, the foundation tier of ZERA’s system: a website and booking engine the business owns.',
+      },
+    ],
+    keywords: [
+      'Dietitian Website',
+      'Healthcare Website Ghana',
+      'Online Booking System',
+      'Dietitian Accra',
+      'Medical Practice Website',
+    ],
   },
 ];
 

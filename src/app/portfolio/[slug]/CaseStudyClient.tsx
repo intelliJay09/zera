@@ -197,7 +197,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
               transition={{ duration: 0.6 }}
               className="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header"
             >
-              THE CHALLENGE
+              What {study.client} needed
             </motion.h2>
             <div className="space-y-6">
               {study.challenge.map((paragraph, index) => (
@@ -223,7 +223,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
             transition={{ duration: 0.6 }}
             className="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header mb-10 sm:mb-14"
           >
-            WHAT WE BUILT
+            What ZERA built
           </motion.h2>
 
           <ol className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -277,6 +277,34 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
           </div>
         </section>
       )}
+
+      {/* Questions, always open so search and answer engines read every answer */}
+      <section className="bg-cream-100 py-16 sm:py-20 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1100px]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-16">
+            <motion.h2
+              {...reveal}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header"
+            >
+              Questions about this project
+            </motion.h2>
+            <dl className="border-t border-copper-500/25">
+              {study.faqs.map((faq, index) => (
+                <motion.div
+                  key={faq.question}
+                  {...reveal}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                  className="border-b border-copper-500/25 py-6 sm:py-8"
+                >
+                  <dt className="text-lg sm:text-xl font-semibold text-near-black mb-3">{faq.question}</dt>
+                  <dd className="text-base sm:text-lg text-near-black/70 leading-relaxed">{faq.answer}</dd>
+                </motion.div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
 
       {/* More Case Studies */}
       {otherStudies.length > 0 && (

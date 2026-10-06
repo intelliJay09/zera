@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { CASE_STUDIES } from '@/data/case-studies';
 import CaseStudyCard from '@/components/sections/CaseStudyCard';
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Our Work & Case Studies',
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Portfolio | ZERA',
     description:
       'Case studies from Zera: the revenue systems, websites and brand work we have built for our clients.',
-    url: `${baseUrl}/portfolio`,
+    url: `${SITE_URL}/portfolio`,
     siteName: 'ZERA',
     type: 'website',
     images: [
@@ -43,7 +42,7 @@ export const metadata: Metadata = {
     images: ['/images/og-zera-primary.png'],
   },
   alternates: {
-    canonical: `${baseUrl}/portfolio`,
+    canonical: `${SITE_URL}/portfolio`,
   },
 };
 
@@ -52,11 +51,15 @@ export default function PortfolioPage() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Zera Case Studies',
-    url: `${baseUrl}/portfolio`,
+    url: `${SITE_URL}/portfolio`,
     hasPart: CASE_STUDIES.map((study) => ({
       '@type': 'Article',
       headline: study.headline,
-      url: `${baseUrl}/portfolio/${study.slug}`,
+      description: study.seoDescription,
+      url: `${SITE_URL}/portfolio/${study.slug}`,
+      datePublished: study.published,
+      dateModified: study.updated,
+      author: { '@id': `${SITE_URL}/#organization` },
       about: { '@type': 'Organization', name: study.client },
     })),
   };
