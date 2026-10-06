@@ -13,6 +13,7 @@ export interface ProductItem {
 export const NAV_LINKS: NavigationLink[] = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products', hasDropdown: true },
+  { name: 'Portfolio', href: '/portfolio' },
   { name: 'About', href: '/about' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },

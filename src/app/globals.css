@@ -239,6 +239,55 @@
   visibility: hidden !important;
 }
 
+/* Client logo marquee - pauses on hover, static for reduced motion */
+.logo-marquee-track {
+  animation: logoMarquee 60s linear infinite;
+}
+
+.logo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes logoMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Logos sit in one near-black tone and reveal their own colour on hover */
+.client-logo {
+  filter: grayscale(1) brightness(0);
+  opacity: 0.55;
+  transition: filter 400ms ease, opacity 400ms ease, transform 400ms ease;
+}
+
+.client-logo:hover {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+    width: 100%;
+  }
+
+  .logo-marquee-set {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+    padding-right: 0;
+  }
+
+  .logo-marquee-duplicate {
+    display: none;
+  }
+}
+
 /* Arc Cascade Reveal Animation - Opacity only, transforms handled inline */
 @keyframes arcCascadeReveal {
   from {

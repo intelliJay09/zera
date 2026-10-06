@@ -13,7 +13,7 @@ const LiquidEther = dynamic(() => import('@/components/backgrounds/LiquidEther')
 const TrustedByLogos = dynamic(() => import('@/components/sections/TrustedByLogos'));
 const ServiceTierGrid = dynamic(() => import('@/components/sections/ServiceTierGrid'));
 const ResultsMetrics = dynamic(() => import('@/components/sections/ResultsMetrics'));
-const ClientTestimonials = dynamic(() => import('@/components/sections/ClientTestimonials'));
+const CaseStudies = dynamic(() => import('@/components/sections/CaseStudies'));
 const EngagementProtocol = dynamic(() => import('@/components/sections/EngagementProtocol'));
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
 const FinalCTA = dynamic(() => import('@/components/sections/FinalCTA'));
@@ -153,8 +153,8 @@ export default function HomePage() {
       {/* Results Metrics Section */}
       <ResultsMetrics />
 
-      {/* Client Testimonials Section */}
-      <ClientTestimonials />
+      {/* Case Studies Section */}
+      <CaseStudies />
 
       {/* Engagement Protocol Section */}
       <EngagementProtocol />

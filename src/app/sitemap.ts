@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
 import { BLOG_POSTS } from '@/data/blog-posts';
+import { CASE_STUDIES } from '@/data/case-studies';
 
 /**
  * Dynamic sitemap generation for ZERA
  * Uses NEXT_PUBLIC_SITE_URL environment variable for flexibility across environments
- * Automatically includes all blog posts from blog-posts.ts
+ * Automatically includes all blog posts from blog-posts.ts and case studies from case-studies.ts
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
@@ -129,5 +130,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...blogPages];
+  // Dynamic case studies
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((study) => ({
+    url: `${baseUrl}/portfolio/${study.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPages, ...caseStudyPages];
 }

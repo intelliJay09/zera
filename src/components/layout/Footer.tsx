@@ -5,6 +5,7 @@ import Wordmark from '@/components/ui/wordmark';
 
 const quickLinks = [
   { name: 'Home', href: '/' },
+  { name: 'Portfolio', href: '/portfolio' },
   { name: 'About', href: '/about' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
