@@ -298,11 +298,11 @@ export const CASE_STUDIES: CaseStudy[] = [
         caption: 'The logo, in its Premium and Everyday colourways.',
       },
       {
-        src: '/images/case-studies/allure-bloom/personal-invitation.webp',
-        alt: 'Allure Bloom personal invitation: a sealed envelope, a blank card with a debossed bloom, and the details card',
+        src: '/images/case-studies/allure-bloom/invitation-card.webp',
+        alt: 'Allure Bloom grand opening invitation card in espresso and cream, with the date, dress code and an RSVP QR code',
         width: 1600,
-        height: 897,
-        caption: 'The personal invitation: a wax-sealed envelope, a card for the handwritten letter, and the details card.',
+        height: 1000,
+        caption: 'The invitation card, with the date, the dress code and a QR code to reply.',
       },
       {
         src: '/images/case-studies/allure-bloom/box.webp',
