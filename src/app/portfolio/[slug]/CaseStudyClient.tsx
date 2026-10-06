@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
-import { logoSize, type CaseStudy, type CaseStudyImage } from '@/data/case-studies';
+import { logoSize, type CaseStudy, type CaseStudyImage, type CaseStudyStack } from '@/data/case-studies';
 import CaseStudyCard from '@/components/sections/CaseStudyCard';
 
 interface CaseStudyClientProps {
@@ -19,10 +19,18 @@ const reveal = {
   viewport: { once: true, margin: '-80px' },
 };
 
-/** Pairs the gallery into rows of two, in order; an odd last image gets a row of its own. */
-function galleryRows(images: CaseStudyImage[]): CaseStudyImage[][] {
-  const rows: CaseStudyImage[][] = [];
-  for (let i = 0; i < images.length; i += 2) rows.push(images.slice(i, i + 2));
+type GalleryPiece = CaseStudyImage | CaseStudyStack;
+
+const pieceImages = (piece: GalleryPiece) => ('stack' in piece ? piece.stack : [piece]);
+
+/** Width over height of the whole piece; a stack is as tall as its images combined. */
+const pieceRatio = (piece: GalleryPiece) =>
+  1 / pieceImages(piece).reduce((sum, image) => sum + image.height / image.width, 0);
+
+/** Pairs the gallery into rows of two, in order; an odd last piece gets a row of its own. */
+function galleryRows(pieces: GalleryPiece[]): GalleryPiece[][] {
+  const rows: GalleryPiece[][] = [];
+  for (let i = 0; i < pieces.length; i += 2) rows.push(pieces.slice(i, i + 2));
   return rows;
 }
 
@@ -280,35 +288,38 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
 
             <div className="space-y-12 sm:space-y-16">
               {galleryRows(study.gallery).map((row, rowIndex) => (
-                <div key={row[0].src} className="flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-8">
-                  {row.map((image, index) => {
-                    const ratio = image.width / image.height;
+                <div key={pieceImages(row[0])[0].src} className="flex flex-col md:flex-row gap-12 md:gap-6 lg:gap-8">
+                  {row.map((piece, index) => {
+                    const ratio = pieceRatio(piece);
                     const number = rowIndex * 2 + index + 1;
                     return (
                       <motion.figure
-                        key={image.src}
+                        key={pieceImages(piece)[0].src}
                         {...reveal}
                         transition={{ duration: 0.8, delay: index * 0.12, ease: [0.19, 0.91, 0.38, 0.98] }}
                         style={{ '--ratio': ratio } as CSSProperties}
                         className={`group min-w-0 md:flex-[var(--ratio)_1_0%] ${row.length === 1 ? 'md:mx-auto md:max-w-[calc(var(--ratio)*44rem)]' : ''}`}
                       >
                         <div className="overflow-hidden bg-cream-200">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            width={image.width}
-                            height={image.height}
-                            sizes={row.length === 1 ? '(min-width: 1400px) 1336px, 100vw' : '(min-width: 768px) 60vw, 100vw'}
-                            className="h-auto w-full transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
-                          />
+                          {pieceImages(piece).map((image) => (
+                            <Image
+                              key={image.src}
+                              src={image.src}
+                              alt={image.alt}
+                              width={image.width}
+                              height={image.height}
+                              sizes={row.length === 1 ? '(min-width: 1400px) 1336px, 100vw' : '(min-width: 768px) 60vw, 100vw'}
+                              className="block h-auto w-full transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                            />
+                          ))}
                         </div>
                         <figcaption className="mt-5 grid grid-cols-[2.5rem_1fr] border-t border-copper-500/25 pt-4">
                           <span className="text-base font-light font-display tabular-nums leading-snug text-copper-500">
                             {String(number).padStart(2, '0')}
                           </span>
-                          {image.caption && (
+                          {piece.caption && (
                             <span className="text-sm sm:text-base leading-snug text-near-black/70 transition-colors duration-300 group-hover:text-near-black">
-                              {image.caption}
+                              {piece.caption}
                             </span>
                           )}
                         </figcaption>

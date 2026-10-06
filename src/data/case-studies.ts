@@ -9,6 +9,12 @@ export interface CaseStudyImage {
   caption?: string;
 }
 
+/** Images that are one piece, such as one logo in two colourways, stacked in one column under one caption. */
+export interface CaseStudyStack {
+  stack: CaseStudyImage[];
+  caption: string;
+}
+
 export interface CaseStudyLogo {
   src: string;
   width: number;
@@ -74,7 +80,7 @@ export interface CaseStudy {
   figures: CaseStudyFigure[];
   figuresNote: string;
   hero: CaseStudyImage;
-  gallery: CaseStudyImage[];
+  gallery: (CaseStudyImage | CaseStudyStack)[];
   faqs: CaseStudyFaq[];
   event?: CaseStudyEvent;
   keywords: string[];
@@ -275,18 +281,28 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     gallery: [
       {
-        src: '/images/case-studies/allure-bloom/logo-premium.webp',
-        alt: 'Allure Bloom stacked logo in cream on espresso',
-        width: 1600,
-        height: 1600,
-        caption: 'The logo, Premium: the stacked lockup on espresso.',
+        stack: [
+          {
+            src: '/images/case-studies/allure-bloom/logo-premium.webp',
+            alt: 'Allure Bloom stacked logo in cream on espresso',
+            width: 1600,
+            height: 1600,
+          },
+          {
+            src: '/images/case-studies/allure-bloom/logo-everyday.webp',
+            alt: 'Allure Bloom stacked logo in brown on cream',
+            width: 1600,
+            height: 1600,
+          },
+        ],
+        caption: 'The logo, in its Premium and Everyday colourways.',
       },
       {
-        src: '/images/case-studies/allure-bloom/logo-everyday.webp',
-        alt: 'Allure Bloom stacked logo in brown on cream',
+        src: '/images/case-studies/allure-bloom/personal-invitation.webp',
+        alt: 'Allure Bloom personal invitation: a sealed envelope, a blank card with a debossed bloom, and the details card',
         width: 1600,
-        height: 1600,
-        caption: 'The logo, Everyday: the stacked lockup on cream.',
+        height: 897,
+        caption: 'The personal invitation: a wax-sealed envelope, a card for the handwritten letter, and the details card.',
       },
       {
         src: '/images/case-studies/allure-bloom/box.webp',
@@ -308,13 +324,6 @@ export const CASE_STUDIES: CaseStudy[] = [
         width: 960,
         height: 1280,
         caption: 'The Bloom Times, made for the rebrand’s launch.',
-      },
-      {
-        src: '/images/case-studies/allure-bloom/personal-invitation.webp',
-        alt: 'Allure Bloom personal invitation: a sealed envelope, a blank card with a debossed bloom, and the details card',
-        width: 1600,
-        height: 897,
-        caption: 'The personal invitation: a wax-sealed envelope, a card for the handwritten letter, and the details card.',
       },
       {
         src: '/images/case-studies/allure-bloom/rsvp.webp',
