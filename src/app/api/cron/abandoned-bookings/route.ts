@@ -16,6 +16,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { query, deleteRows } from '@/lib/db';
 import { sendAbandonedBookingEmail } from '@/lib/email-strategy-sessions';
 import { generatePaymentReference } from '@/lib/paystack';
+import { SITE_URL } from '@/lib/site';
 
 // ============================================================
 // CRON AUTHORIZATION
@@ -118,7 +119,7 @@ export async function GET(request: NextRequest) {
         const paymentReference =
           session.payment_reference || generatePaymentReference();
 
-        const resumePaymentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/book-strategy-session/resume?reference=${paymentReference}`;
+        const resumePaymentUrl = `${SITE_URL}/api/book-strategy-session/resume?reference=${paymentReference}`;
 
         // Send recovery email
         await sendAbandonedBookingEmail({

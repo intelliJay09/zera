@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Not the Right Fit - For Now | ZERA',
+  title: 'Not the Right Fit - For Now',
   robots: { index: false, follow: false },
 };
 

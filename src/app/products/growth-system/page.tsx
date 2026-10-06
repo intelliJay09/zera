@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import GrowthSystemContent from './GrowthSystemContent';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'The Velocity System | Automated Lead Acquisition & CRM Pipelines',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: 'The Velocity System | Automate Revenue',
     description:
       'Traffic without capture is waste. Install the machinery that brings customers to you.',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/growth-system`,
+    url: `${SITE_URL}/products/growth-system`,
     type: 'website',
     images: [
       {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     images: ['/images/og-zera-primary.png'],
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/growth-system`,
+    canonical: `${SITE_URL}/products/growth-system`,
   },
 };
 

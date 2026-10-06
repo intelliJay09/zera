@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Scale | SEO, Social Media & Content Creation',
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Scale Your Growth | ZERA',
     description:
       'Data-driven SEO, strategic social media management, and AI-powered content creation for ambitious brands.',
-    url: `${baseUrl}/solutions/scale`,
+    url: `${SITE_URL}/solutions/scale`,
     siteName: 'ZERA',
     type: 'website',
     images: [
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
     images: ['/images/og-zera-primary.png'],
   },
   alternates: {
-    canonical: `${baseUrl}/solutions/scale`,
+    canonical: `${SITE_URL}/solutions/scale`,
   },
 };
 

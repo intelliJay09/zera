@@ -34,6 +34,7 @@ import {
 import type {
   SubmitStrategySessionResponse,
 } from '@/types/strategy-session';
+import { SITE_URL } from '@/lib/site';
 
 // ============================================================
 // ZOD VALIDATION SCHEMA
@@ -408,7 +409,7 @@ export async function OPTIONS() {
     {
       status: 200,
       headers: {
-        'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_SITE_URL || '*',
+        'Access-Control-Allow-Origin': SITE_URL,
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, x-csrf-token',
       },

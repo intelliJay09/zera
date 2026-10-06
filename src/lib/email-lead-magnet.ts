@@ -7,6 +7,7 @@
  */
 
 import nodemailer from 'nodemailer';
+import { SITE_URL } from '@/lib/site';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -67,9 +68,7 @@ export interface GhanaAuditLeadData {
 
 export async function sendGhanaAuditDelivery(data: GhanaAuditLeadData): Promise<void> {
   const firstName = data.fullName.split(' ')[0];
-
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
-  const pdfUrl = `${siteUrl}/2026-Ghana-Executive-Audit.pdf`;
+  const pdfUrl = `${SITE_URL}/2026-Ghana-Executive-Audit.pdf`;
 
   const content = `
     <h1 style="font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: ${NEAR_BLACK}; margin: 0 0 8px 0;">Your Executive Briefing Is Ready.</h1>
@@ -95,7 +94,7 @@ export async function sendGhanaAuditDelivery(data: GhanaAuditLeadData): Promise<
     <p style="font-size: 15px; color: ${NEAR_BLACK}; margin: 0 0 28px 0;">After reading, the logical next step is a private <strong>Infrastructure Diagnostic</strong> - a 60-minute session where we audit your specific numbers and calculate your exact capital recovery potential.</p>
 
     <div style="text-align: center; margin: 32px 0;">
-      <a href="${siteUrl}/systems-audit" style="display: inline-block; background-color: ${COPPER}; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 16px 36px;">REQUEST YOUR INFRASTRUCTURE DIAGNOSTIC</a>
+      <a href="${SITE_URL}/systems-audit" style="display: inline-block; background-color: ${COPPER}; color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 16px 36px;">REQUEST YOUR INFRASTRUCTURE DIAGNOSTIC</a>
     </div>
 
     <p style="font-size: 12px; color: #999999; text-align: center; margin: 0;">Limited to businesses generating over GHS 50,000 per month running active paid acquisition.</p>

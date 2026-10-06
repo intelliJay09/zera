@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { Download, Mail, Phone, Globe, MapPin } from 'lucide-react';
+import { SITE_URL } from '@/lib/site';
 
 export default function ConnectContent() {
   const generateVCard = async () => {
@@ -25,7 +26,7 @@ export default function ConnectContent() {
       'TITLE:Digital Growth Strategist',
       'TEL;type=CELL;type=VOICE;type=pref:+233246492873',
       'EMAIL;type=WORK:jacqueline@zerahq.com',
-      'URL;type=WORK:https://zerahq.com',
+      `URL;type=WORK:${SITE_URL}`,
       'ADR;type=WORK:;;Accra;;;;Ghana',
       `PHOTO;ENCODING=b;TYPE=PNG:${base64}`,
       'NOTE:Engineering Revenue Systems for Global Brands.',
@@ -87,7 +88,7 @@ export default function ConnectContent() {
           </a>
 
           <a
-            href="https://zerahq.com"
+            href={SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 transition-colors border border-white/10 hover:border-copper-500/30"

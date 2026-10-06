@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import MarketMonopolyContent from './MarketMonopolyContent';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'The Retention Engine | Customer Retention & LTV Strategy',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     title: 'The Retention Engine | Keep the Customers You Already Have',
     description:
       'Scale requires retention. We engineer the systems that keep your customers paying forever.',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/market-monopoly`,
+    url: `${SITE_URL}/products/market-monopoly`,
     type: 'website',
     images: [
       {
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     images: ['/images/og-zera-primary.png'],
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/market-monopoly`,
+    canonical: `${SITE_URL}/products/market-monopoly`,
   },
 };
 

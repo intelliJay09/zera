@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { BLOG_POSTS } from '@/data/blog-posts';
 import BlogPostClient from './BlogPostClient';
+import { SITE_URL } from '@/lib/site';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -23,9 +24,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: 'The blog post you are looking for does not exist.',
     };
   }
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
-  const postUrl = `${baseUrl}/blog/${post.slug}`;
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
 
   return {
     title: post.title,
@@ -91,14 +90,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: 'Zera Dynamics Ltd.',
       logo: {
         '@type': 'ImageObject',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/favicon-maskable-512.png`,
+        url: `${SITE_URL}/favicon-maskable-512.png`,
       },
     },
     datePublished: post.publishedDate,
     dateModified: post.publishedDate,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/blog/${post.slug}`,
+      '@id': `${SITE_URL}/blog/${post.slug}`,
     },
     keywords: post.keywords.join(', '),
     articleSection: post.category,

@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import { SITE_URL } from '@/lib/site';
 
 /**
  * JSON-LD Structured Data for ZERA
@@ -9,10 +10,12 @@ export function OrganizationSchema() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    // Stable id so other pages' structured data can point at this one entity
+    '@id': `${SITE_URL}/#organization`,
     name: 'Zera Dynamics Ltd.',
     alternateName: 'Zera',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com',
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/favicon-maskable-512.png`,
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon-maskable-512.png`,
     sameAs: [
       'https://www.linkedin.com/company/zerahq',
       'https://www.instagram.com/zera.systems',
@@ -44,7 +47,7 @@ export function ServiceAreaBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Zera',
-    image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/images/office-render.jpg`,
+    image: `${SITE_URL}/images/office-render.jpg`,
     priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',
@@ -68,7 +71,7 @@ export function ServiceAreaBusinessSchema() {
     },
     telephone: '+233246492873',
     email: 'hello@zerahq.com',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com',
+    url: SITE_URL,
     areaServed: [
       {
         '@type': 'Country',

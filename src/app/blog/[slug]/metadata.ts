@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { BLOG_POSTS } from '@/data/blog-posts';
+import { SITE_URL } from '@/lib/site';
 
 interface GenerateMetadataProps {
   params: Promise<{
@@ -17,9 +18,7 @@ export async function generateMetadata({ params }: GenerateMetadataProps): Promi
       description: 'The blog post you are looking for does not exist.',
     };
   }
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com';
-  const postUrl = `${baseUrl}/blog/${post.slug}`;
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
 
   return {
     title: post.title,

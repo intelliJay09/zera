@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Check Your Inbox | ZERA',
+  title: 'Check Your Inbox',
   robots: 'noindex, nofollow',
 };
 

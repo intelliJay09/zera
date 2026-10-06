@@ -8,6 +8,7 @@ import CookieConsent from '@/components/CookieConsent';
 import HeaderWrapper from '@/components/layout/HeaderWrapper';
 import StructuredData from '@/components/seo/StructuredData';
 import './globals.css';
+import { SITE_URL } from '@/lib/site';
 
 const latoRegular = Lato({
   weight: '400',
@@ -24,7 +25,7 @@ const latoBold = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Zera | Revenue, Realized.',
     template: '%s | Zera',
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com',
+    url: SITE_URL,
     siteName: 'Zera',
     title: 'Zera | Revenue, Realized.',
     description:

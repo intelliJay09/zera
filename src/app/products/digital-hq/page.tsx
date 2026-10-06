@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import DigitalHQContent from './DigitalHQContent';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'The Digital HQ - Your Revenue Command Center | Commercial Web Architecture',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: 'The Digital HQ | Build Your Digital Asset',
     description:
       'A website built to convert from day one, engineered for search authority and lead capture, not just designed to look good.',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/digital-hq`,
+    url: `${SITE_URL}/products/digital-hq`,
     type: 'website',
     images: [
       {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     images: ['/images/og-zera-primary.png'],
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://zerahq.com'}/products/digital-hq`,
+    canonical: `${SITE_URL}/products/digital-hq`,
   },
 };
 
