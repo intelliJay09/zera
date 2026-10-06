@@ -189,7 +189,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
       </section>
 
       {/* The Challenge */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-cream py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1100px]">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-16">
             <motion.h2
@@ -218,31 +218,36 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
       {/* What We Built */}
       <section className="bg-cream-100 py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1100px]">
-          <motion.h2
-            {...reveal}
-            transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header mb-10 sm:mb-14"
-          >
-            What ZERA built
-          </motion.h2>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-16">
+            <motion.h2
+              {...reveal}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header lg:sticky lg:top-32 lg:self-start"
+            >
+              What ZERA built
+            </motion.h2>
 
-          <ol className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {study.build.map((step, index) => (
-              <motion.li
-                key={step.title}
-                {...reveal}
-                transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-                className="group relative bg-white p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="absolute top-0 left-0 h-px w-12 bg-copper-500 transition-all duration-700 group-hover:w-full" />
-                <span className="block text-sm font-medium tracking-brand-label text-copper-500 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-base text-near-black/70 leading-relaxed">{step.body}</p>
-              </motion.li>
-            ))}
-          </ol>
+            <ol className="border-t border-copper-500/25">
+              {study.build.map((step, index) => (
+                <motion.li
+                  key={step.title}
+                  {...reveal}
+                  transition={{ duration: 0.6, delay: 0.05 }}
+                  className="group grid grid-cols-[3rem_1fr] sm:grid-cols-[4.5rem_1fr] border-b border-copper-500/25 py-6 sm:py-8"
+                >
+                  <span className="text-2xl sm:text-3xl font-light font-display tabular-nums leading-none text-copper-500">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-near-black mb-3 transition-colors duration-300 group-hover:text-copper-700">
+                      {step.title}
+                    </h3>
+                    <p className="text-base sm:text-lg text-near-black/70 leading-relaxed">{step.body}</p>
+                  </div>
+                </motion.li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
