@@ -97,13 +97,13 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientUrl: 'https://gwenaddo.com',
     seoTitle: 'Gwen Addo: The Vision Masterclass System',
     seoDescription:
-      'The system behind Gwen Addo’s Vision Masterclass in Accra: payments, QR check-in, follow-up and a paid replay. Cohort III collected more than GHS 60,000.',
+      'The system behind Gwen Addo’s Vision Masterclass in Accra: payments, QR check-in, follow-up and a paid replay. More than GHS 100,000 across three cohorts.',
     published: '2026-10-06',
     updated: '2026-10-06',
-    headline: 'More than GHS 60,000 from one masterclass, with the follow-up running itself.',
+    headline: 'More than GHS 100,000 from one masterclass, with the follow-up running itself.',
     summary:
-      'ZERA built and runs the system behind The Vision Masterclass, Gwen Addo’s one-day strategy programme for founders in Accra. It has run all three cohorts, from registration and payment to the door, the follow-up, alumni win-back and a paid replay of the sessions. Cohort III collected more than GHS 60,000.',
-    keyFigure: { value: 'GHS 60,000+', label: 'Net collected, Cohort III' },
+      'ZERA built and runs the system behind The Vision Masterclass, Gwen Addo’s one-day strategy programme for founders in Accra. It has run all three cohorts, from registration and payment to the door, the follow-up, alumni win-back and a paid replay of the sessions. Across the three cohorts it has collected more than GHS 100,000, more than GHS 60,000 of it from Cohort III.',
+    keyFigure: { value: 'GHS 100,000+', label: 'Collected across three cohorts' },
     challenge: [
       'Gwen Addo is a business strategist, leadership coach and author, and the CEO of five businesses. Her Vision Masterclass brings founders into one room for a day of strategy, and every cohort is a serious revenue event for her business.',
       'Payments came in by card, mobile money and cash, and registrations, payments and past attendees each lived in a different place. Nothing connected a sign-up to a payment, a seat at the door, or the next thing that person might buy, and nothing brought past attendees, the people most likely to buy again, back into the room.',
@@ -174,7 +174,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: 'How much did The Vision Masterclass collect?',
         answer:
-          'Cohort III, The Character Advantage, held in Accra on 22 August 2026, collected more than GHS 60,000 net from 45 paying attendees. More than GHS 14,000 of it came from 9 alumni of earlier cohorts who came back.',
+          'More than GHS 100,000 across its three cohorts. Cohort III, The Character Advantage, held in Accra on 22 August 2026, collected more than GHS 60,000 net from 45 paying attendees. More than GHS 14,000 of it came from 9 alumni of earlier cohorts who came back.',
       },
       {
         question: 'How long has the system been running?',
@@ -329,21 +329,21 @@ export const CASE_STUDIES: CaseStudy[] = [
     location: 'Accra, Ghana',
     year: '2026',
     status: 'Live',
-    service: { name: 'The Digital HQ', href: '/products/digital-hq' },
+    service: { name: 'The Velocity System', href: '/products/growth-system' },
     liveUrl: { href: 'https://finestdietitian.com', label: 'finestdietitian.com' },
     clientUrl: 'https://finestdietitian.com',
-    seoTitle: 'Finest Dietitian: Website and Online Booking',
+    seoTitle: 'Finest Dietitian: Growing a Dietitian’s Practice',
     seoDescription:
-      'A website and on-site booking system for Finest Dietitian, the Accra practice of registered dietitian Fredericka Doku, with 14 services bookable online.',
+      'How ZERA is growing Finest Dietitian, Fredericka Doku’s Accra practice: a website, on-site booking for 14 services, and a patient list of her own.',
     published: '2026-10-06',
     updated: '2026-10-06',
-    headline: 'A dietitian’s practice, moved off third-party pages and onto a site she owns.',
+    headline: 'A dietitian’s following, turned into a patient list of her own.',
     summary:
-      'ZERA built the website and on-site booking system for Finest Dietitian, the practice of Fredericka Doku, a registered dietitian in Accra who works with PCOS, gut, metabolic and children’s nutrition. Patients can now book any of 14 services on her own site.',
+      'Finest Dietitian is the practice of Fredericka Doku, a registered dietitian in Accra who works with PCOS, gut, metabolic and children’s nutrition. She is on The Velocity System, a six-month ZERA engagement to grow the practice. The website and on-site booking for her 14 services were the first part. The rest turns the audience she has built on social media into patients she can reach directly.',
     keyFigure: { value: '14', label: 'Services bookable on-site' },
     challenge: [
       'Fredericka Doku practises as Finest Dietitian and sees private patients at MediGrace Medical Centre in Accra. Her work covers PCOS, endometriosis, fibroids, menopause, gut and metabolic health, and children’s nutrition.',
-      'Her practice lived on a link page and a third-party booking page. Patients had no single place to understand her work or her credentials, and search engines and AI assistants had nothing authoritative to point to.',
+      'She had a real following on Instagram and TikTok, but no list of her own. Patients reached her through messages, a link page and a third-party booking page, so every new patient started from scratch and nothing brought past patients back. Search engines and AI assistants had nothing authoritative to point to either.',
     ],
     build: [
       {
@@ -355,6 +355,18 @@ export const CASE_STUDIES: CaseStudy[] = [
         body: 'Every service with its price and length, live availability, no double bookings, and a private link for patients to manage their own appointment.',
       },
       {
+        title: 'A patient list of her own',
+        body: 'Booking on her site is the one action every page leads to, so each patient who books becomes someone she can reach again, instead of a conversation lost in her messages.',
+      },
+      {
+        title: 'A free PCOS guide',
+        body: 'For visitors who are not ready to book yet, sent only to people who confirm they want it, so someone who is not ready today is still on her list tomorrow.',
+      },
+      {
+        title: 'BMI calculator',
+        body: 'A dial-style calculator that answers a common first question and leads straight to booking.',
+      },
+      {
         title: 'Booking emails',
         body: 'Confirmation, cancellation and practice notices sent automatically, so the front desk stops typing the same message every day.',
       },
@@ -363,21 +375,19 @@ export const CASE_STUDIES: CaseStudy[] = [
         body: 'Her practice, her credentials and the conditions she treats are described in a way Google and AI assistants can read, so they can name her when someone asks.',
       },
       {
-        title: 'Lead capture',
-        body: 'A free PCOS guide for patients who are not ready to book yet, sent only to people who confirm they want it.',
-      },
-      {
-        title: 'BMI calculator',
-        body: 'A dial-style calculator that answers a common first question and leads straight to booking.',
+        title: 'Growing the practice',
+        body: 'With the site in place, the work turns to growth: moving her social following onto her own list, bringing past patients back, and turning happy patients into referrals, with a report on what it brings in.',
       },
     ],
     figuresTitle: 'The engagement in numbers',
     figures: [
       { value: '14', label: 'Services bookable on her own site' },
+      { value: '1', label: 'Place every patient books, so every booking grows her list' },
       { value: '0', label: 'Third-party pages between a patient and a booking' },
-      { value: '1', label: 'Home for her credentials, services and client stories' },
+      { value: '6', label: 'Months of growth work, starting with the site' },
     ],
-    figuresNote: 'Results will be published as patients book through the site.',
+    figuresNote:
+      'The website is the first part of a six-month engagement. Results will be published as patients book through the site.',
     hero: {
       src: '/images/case-studies/finest-dietitian/home.webp',
       alt: 'Finest Dietitian homepage featuring Fredericka Doku',
@@ -405,7 +415,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: 'What did ZERA build for Finest Dietitian?',
         answer:
-          'A website built around Fredericka Doku and the conditions she treats, on-site booking for all 14 of her services, automatic booking emails, a free PCOS guide for patients not ready to book, and a BMI calculator.',
+          'A six-month growth engagement on The Velocity System. The first part is a website built around Fredericka Doku and the conditions she treats, on-site booking for all 14 of her services, automatic booking emails, a free PCOS guide and a BMI calculator. The rest grows her practice from there.',
+      },
+      {
+        question: 'Is the Finest Dietitian project just a website?',
+        answer:
+          'No. The website is the first part. The engagement is built to turn the following Fredericka has on social media into a patient list of her own, then bring past patients back and turn happy patients into referrals.',
       },
       {
         question: 'Can patients book Finest Dietitian online?',
@@ -419,11 +434,14 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         question: 'Which ZERA service was this?',
-        answer: 'The Digital HQ, the foundation tier of ZERA’s system: a website and booking engine the business owns.',
+        answer:
+          'The Velocity System, the tier of ZERA’s system built around turning attention into bookings automatically, run over six months.',
       },
     ],
     keywords: [
       'Dietitian Website',
+      'Patient Acquisition',
+      'Healthcare Lead Generation Ghana',
       'Healthcare Website Ghana',
       'Online Booking System',
       'Dietitian Accra',
