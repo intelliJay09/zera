@@ -58,7 +58,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: 'gwen-addo',
     client: 'Gwen Addo',
     logo: { src: '/images/clients/gwen-addo.webp', width: 1060, height: 160, displayHeight: 26 },
-    industry: 'Business Strategy and Coaching',
+    industry: 'Business Strategy',
     location: 'Accra, Ghana',
     year: '2026',
     status: 'Live',
