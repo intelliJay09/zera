@@ -22,6 +22,9 @@ export default function HeaderWrapper() {
     '/products/digital-hq',
     '/products/growth-system',
     '/products/market-monopoly',
+    '/lab',
+    '/lab/blueprint',
+    '/lab/statement',
   ];
 
   const isLightHeader = darkBackgroundPages.includes(pathname || '');
