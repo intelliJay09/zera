@@ -24,3 +24,7 @@ Killing the ngrok process will:
 - Running `pkill ngrok`
 - Stopping any ngrok process
 - Restarting the ngrok tunnel
+
+## Design Standard
+
+**Awwwards mode: contest** (chosen 2026-10-16). Build to contest Site of the Year: the awwwards-sotd skill's contest-mode rules apply (immersive WebGL allowed when it is the idea, real-progress loader, R&D prototypes of the signature mechanic before design), while keeping Usability >= 7.6 and Developer >= 7.5 in every category.
