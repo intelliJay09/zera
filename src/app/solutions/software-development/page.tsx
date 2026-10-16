@@ -11,15 +11,12 @@ import {
   Database,
   Zap,
   Shield,
-  Users,
   Code,
   Server,
   TrendingUp,
   Target,
   CheckCircle2,
   ChevronDown,
-  Calendar,
-  Trophy,
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
@@ -36,13 +33,11 @@ export default function SoftwareDevelopmentPage() {
   const servicesRef = useRef(null);
   const whySoftwareRef = useRef(null);
   const approachRef = useRef(null);
-  const resultsRef = useRef(null);
   const faqRef = useRef(null);
 
   const isServicesInView = useInView(servicesRef, { once: true, amount: 0.15 });
   const isWhySoftwareInView = useInView(whySoftwareRef, { once: true, amount: 0.2 });
   const isApproachInView = useInView(approachRef, { once: true, amount: 0.15 });
-  const isResultsInView = useInView(resultsRef, { once: true, amount: 0.2 });
   const isFaqInView = useInView(faqRef, { once: true, amount: 0.2 });
 
   // Animation variants
@@ -284,48 +279,6 @@ export default function SoftwareDevelopmentPage() {
     },
   ];
 
-  const results = [
-    {
-      icon: Trophy,
-      industry: 'B2B SaaS Platform',
-      result: 'Custom Platform Generated $8M ARR',
-      timeline: '12 months',
-      description:
-        'Multi-tenant SaaS platform with subscription billing, user provisioning, and advanced analytics transformed business model from services to scalable software.',
-      metrics: [
-        { label: 'Annual Revenue', value: '$8M' },
-        { label: 'Active Users', value: '12K+' },
-        { label: 'Churn Rate', value: '<3%' },
-      ],
-    },
-    {
-      icon: Target,
-      industry: 'Manufacturing Enterprise',
-      result: 'Inventory System Cut Costs 47%',
-      timeline: '9 months',
-      description:
-        'Custom inventory management system with real-time tracking, automated reordering, and predictive analytics eliminated waste and optimized operations.',
-      metrics: [
-        { label: 'Cost Reduction', value: '47%' },
-        { label: 'Time Saved', value: '320h/mo' },
-        { label: 'Accuracy', value: '99.8%' },
-      ],
-    },
-    {
-      icon: Users,
-      industry: 'Healthcare Provider',
-      result: 'Patient Portal Improved Satisfaction 89%',
-      timeline: '7 months',
-      description:
-        'Custom patient portal with appointment scheduling, secure messaging, and medical records access transformed patient experience and reduced admin workload.',
-      metrics: [
-        { label: 'Patient Satisfaction', value: '+89%' },
-        { label: 'Admin Time Saved', value: '60%' },
-        { label: 'Portal Adoption', value: '94%' },
-      ],
-    },
-  ];
-
   const faqs = [
     {
       question: 'How is software development different from web development?',
@@ -436,87 +389,6 @@ export default function SoftwareDevelopmentPage() {
                 </Link>
               </Button>
             </motion.div>
-          </motion.div>
-
-          {/* Right: Floating Tech Elements */}
-          <motion.div
-            className="hidden lg:block relative"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <div className="relative h-[400px]">
-              {/* Floating badge 1 */}
-              <motion.div
-                className="absolute top-0 right-12 bg-white/10 backdrop-blur-md border border-copper-500/30 rounded-lg px-6 py-4 shadow-lg shadow-copper-500/20"
-                animate={{
-                  y: [0, -15, 0],
-                  rotateZ: [0, 2, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Cloud className="w-8 h-8 text-copper-400 mb-2" />
-                <p className="text-copper-400 text-xs font-medium mb-1">Cloud-Native</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">99.9%</p>
-              </motion.div>
-
-              {/* Floating badge 2 */}
-              <motion.div
-                className="absolute top-32 left-8 bg-white/10 backdrop-blur-md border border-blue-500/30 rounded-lg px-6 py-4 shadow-lg shadow-blue-500/20"
-                animate={{
-                  y: [0, 20, 0],
-                  rotateZ: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  delay: 0.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <TrendingUp className="w-8 h-8 text-blue-400 mb-2" />
-                <p className="text-blue-400 text-xs font-medium mb-1">Efficiency Gain</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">+47%</p>
-              </motion.div>
-
-              {/* Floating badge 3 */}
-              <motion.div
-                className="absolute bottom-12 right-4 bg-white/10 backdrop-blur-md border border-violet-500/30 rounded-lg px-6 py-4 shadow-lg shadow-violet-500/20"
-                animate={{
-                  y: [0, -20, 0],
-                  rotateZ: [0, 1.5, 0],
-                }}
-                transition={{
-                  duration: 4.5,
-                  delay: 1,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Target className="w-8 h-8 text-violet-400 mb-2" />
-                <p className="text-violet-400 text-xs font-medium mb-1">Average ROI</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">3.2x</p>
-              </motion.div>
-
-              {/* Central icon */}
-              <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Code className="w-32 h-32 text-copper-500/30" strokeWidth={1} />
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -702,68 +574,6 @@ export default function SoftwareDevelopmentPage() {
 
       {/* Pricing Section */}
       <PricingSection config={softwareDevelopmentPricingConfig} onSelectPlan={() => router.push('/contact')} className="bg-cream-50" />
-
-      {/* Results Section */}
-      <section ref={resultsRef} className="relative bg-gradient-to-br from-near-black via-[#1a1a1a] to-near-black px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-36">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16 sm:mb-20"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 40, filter: 'blur(15px)' }}
-            animate={isResultsInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-cream-50 tracking-brand-header leading-tight mb-4">
-              REAL SOFTWARE. REAL RESULTS.
-            </h2>
-            <p className="text-base sm:text-lg text-cream-200 font-montserrat max-w-3xl mx-auto">
-              See how custom software development transformed operations and drove measurable business outcomes
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8"
-            initial={prefersReducedMotion ? false : 'hidden'}
-            animate={isResultsInView ? 'visible' : 'hidden'}
-            variants={staggerContainer}
-          >
-            {results.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={cardVariant}
-                  className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 hover:bg-white/10 hover:border-copper-500/50 transition-all duration-500"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-copper-500/20 text-copper-400 rounded-lg group-hover:bg-copper-500 group-hover:text-white transition-all duration-500">
-                      <Icon className="w-5 h-5" strokeWidth={2} />
-                    </div>
-                    <span className="text-copper-400 font-montserrat font-medium text-sm tracking-normal uppercase">{item.industry}</span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-display uppercase font-semibold text-cream-50 mb-3 tracking-brand-header">{item.result}</h3>
-
-                  <div className="flex items-center gap-2 mb-4">
-                    <Calendar className="w-4 h-4 text-cream-300" />
-                    <span className="text-cream-300 font-montserrat text-sm">Achieved in {item.timeline}</span>
-                  </div>
-
-                  <p className="text-cream-200/80 font-montserrat text-sm leading-relaxed mb-6">{item.description}</p>
-
-                  <div className="grid grid-cols-3 gap-3 pt-6 border-t border-white/10">
-                    {item.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center">
-                        <p className="text-copper-400 font-display font-bold text-lg mb-1">{metric.value}</p>
-                        <p className="text-cream-300 font-montserrat text-xs">{metric.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section ref={faqRef} className="relative bg-cream-100 px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">

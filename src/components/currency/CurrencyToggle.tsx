@@ -40,7 +40,7 @@ export default function CurrencyToggle() {
               onClick={() => setCurrency(curr)}
               className="relative z-10 min-h-14 px-6 sm:px-10 py-3 rounded-full font-medium text-sm tracking-wide uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
               style={{
-                color: isActive ? '#FFFBF5' : '#1A1614',
+                color: isActive ? '#FFFFFF' : '#1A1614',
               }}
               aria-pressed={isActive}
               aria-label={`Switch to ${config.name}`}
@@ -49,7 +49,7 @@ export default function CurrencyToggle() {
               {isActive && (
                 <motion.div
                   layoutId="currency-indicator"
-                  className="absolute inset-0 rounded-full bg-copper-500 shadow-sm"
+                  className="absolute inset-0 rounded-full bg-copper-600 shadow-sm"
                   transition={springConfig}
                 />
               )}

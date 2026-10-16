@@ -104,7 +104,7 @@ export default function ServiceTierGrid() {
                 {/* Content */}
                 <div className="relative z-10 h-full flex flex-col">
                   {/* Tier Badge */}
-                  <div className="text-xs font-medium tracking-brand-label uppercase text-copper-500 mb-3">
+                  <div className="text-xs font-medium tracking-brand-label uppercase text-copper-400 mb-3">
                     TIER {tier.tier}
                   </div>
 

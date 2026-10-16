@@ -95,7 +95,7 @@ function BlogContent() {
               </p>
               <button
                 onClick={handleClearFilters}
-                className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-600 hover:text-copper-500 border border-copper-500/30 hover:border-copper-500/60 px-6 py-3 min-h-[44px] transition-all duration-300"
+                className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 hover:text-copper-800 border border-copper-500/30 hover:border-copper-500/60 px-6 py-3 min-h-[44px] transition-all duration-300"
               >
                 Clear All Filters
               </button>
@@ -123,7 +123,7 @@ function BlogContent() {
                 <Link href={`/blog/${post.slug}`} className="block p-8 lg:p-10">
                   {/* Category Badge */}
                   <div className="mb-6">
-                    <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-600 border border-copper-500/30 px-3 py-1.5">
+                    <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-700 border border-copper-500/30 px-3 py-1.5">
                       {post.category}
                     </span>
                   </div>
@@ -139,7 +139,7 @@ function BlogContent() {
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-4 text-sm text-near-black/50 mb-6">
+                  <div className="flex items-center gap-4 text-sm text-near-black/60 mb-6">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
@@ -151,7 +151,7 @@ function BlogContent() {
                   </div>
 
                   {/* Read More Link */}
-                  <div className="flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-600 group-hover:text-copper-500 group-hover:gap-3 transition-all duration-300">
+                  <div className="flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 group-hover:text-copper-800 group-hover:gap-3 transition-all duration-300">
                     <span>Read Intelligence Briefing</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>
@@ -186,7 +186,7 @@ function BlogContent() {
               href="/systems-audit"
               data-gtm-event="cta_book_strategy"
               data-gtm-location="blog"
-              className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
+              className="group inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-700 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
             >
               Book Your Systems Audit
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />

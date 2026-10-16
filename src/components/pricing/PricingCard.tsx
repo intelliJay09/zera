@@ -24,7 +24,7 @@ export default function PricingCard({ plan, className = '', onSelectPlan }: Pric
       {/* Most Popular Badge */}
       {featured && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
-          <span className="inline-block px-6 py-2 bg-copper-500 text-cream-50 text-xs font-medium tracking-brand-label uppercase shadow-sm">
+          <span className="inline-block px-6 py-2 bg-copper-600 text-cream-50 text-xs font-medium tracking-brand-label uppercase shadow-sm">
             Most Popular
           </span>
         </div>
@@ -69,7 +69,7 @@ export default function PricingCard({ plan, className = '', onSelectPlan }: Pric
         onClick={onSelectPlan}
         className={`w-fit px-8 py-4 text-sm font-medium tracking-brand-label uppercase transition-all duration-300 ${
           featured
-            ? 'bg-copper-500 text-cream-50 hover:bg-copper-600 shadow-sm hover:shadow-md'
+            ? 'bg-copper-600 text-cream-50 hover:bg-copper-700 shadow-sm hover:shadow-md'
             : 'bg-cream-100 text-near-black hover:bg-cream-200'
         }`}
       >

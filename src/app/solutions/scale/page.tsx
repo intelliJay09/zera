@@ -88,7 +88,7 @@ export default function ScalePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
           <div className="text-center max-w-4xl mx-auto">
             <motion.p
-              className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6"
+              className="text-sm font-medium tracking-brand-label uppercase text-copper-400 mb-6"
               initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
@@ -174,7 +174,7 @@ export default function ScalePage() {
                       {/* CTA */}
                       <Link
                         href={service.link}
-                        className="inline-flex items-center gap-3 px-8 py-3.5 bg-copper-500 text-cream-50 hover:bg-copper-600 font-medium text-base tracking-normal transition-all duration-300 group/btn"
+                        className="inline-flex items-center gap-3 px-8 py-3.5 bg-copper-600 text-cream-50 hover:bg-copper-700 font-medium text-base tracking-normal transition-all duration-300 group/btn"
                       >
                         <span>Learn More</span>
                         <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />

@@ -177,7 +177,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="group inline-flex items-center justify-center whitespace-nowrap gap-3 px-6 sm:px-8 py-4 bg-copper-500 hover:bg-copper-600 text-white font-medium text-sm tracking-brand-label uppercase transition-all duration-300 w-full sm:w-auto min-h-[48px] hover:shadow-lg hover:shadow-copper-500/30"
+            className="group inline-flex items-center justify-center whitespace-nowrap gap-3 px-6 sm:px-8 py-4 bg-copper-600 hover:bg-copper-700 text-white font-medium text-sm tracking-brand-label uppercase transition-all duration-300 w-full sm:w-auto min-h-[48px] hover:shadow-lg hover:shadow-copper-500/30"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
             Return to Home

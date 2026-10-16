@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ArrowLeft, ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Cal, { getCalApi } from '@calcom/embed-react';
 import { executeRecaptcha } from '@/lib/recaptcha-client';
@@ -327,16 +328,16 @@ export default function StrategySessionForm() {
         <div className="pt-2">
           <a
             href="/solutions"
-            className="inline-flex items-center gap-2 bg-copper-500 hover:bg-copper-600 text-white font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 group"
+            className="inline-flex items-center gap-2 bg-copper-600 hover:bg-copper-700 text-white font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 group"
           >
             <span>Explore ZERA Solutions</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </a>
         </div>
         <div className="border-t border-copper-500/20 pt-4">
-          <a href="/" className="text-xs text-white/40 hover:text-white/60 transition-colors">
+          <Link href="/" className="text-xs text-white/60 hover:text-white/80 transition-colors">
             Return to homepage
-          </a>
+          </Link>
         </div>
       </motion.div>
     );
@@ -387,10 +388,10 @@ export default function StrategySessionForm() {
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
                 step === currentStep
-                  ? 'bg-copper-500 text-white'
+                  ? 'bg-copper-600 text-white'
                   : step < currentStep
                   ? 'bg-copper-500/30 text-copper-400'
-                  : 'bg-white/10 text-white/50'
+                  : 'bg-white/10 text-white/70'
               }`}
             >
               {step < currentStep ? <CheckCircle2 className="w-5 h-5" /> : step}
@@ -419,7 +420,7 @@ export default function StrategySessionForm() {
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="border-l-2 border-copper-500 pl-6">
-                <h3 className="text-lg font-bold text-copper-500 mb-1 uppercase tracking-wide">
+                <h3 className="text-lg font-bold text-copper-400 mb-1 uppercase tracking-wide">
                   STEP 1: THE ENTITY
                 </h3>
                 <p className="text-sm text-white/60">
@@ -516,7 +517,7 @@ export default function StrategySessionForm() {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="border-l-2 border-copper-500 pl-6">
-                <h3 className="text-lg font-bold text-copper-500 mb-1 uppercase tracking-wide">
+                <h3 className="text-lg font-bold text-copper-400 mb-1 uppercase tracking-wide">
                   STEP 2: THE DIAGNOSTIC
                 </h3>
                 <p className="text-sm text-white/60">
@@ -685,7 +686,7 @@ export default function StrategySessionForm() {
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="border-l-2 border-copper-500 pl-6">
-                <h3 className="text-lg font-bold text-copper-500 mb-1 uppercase tracking-wide">
+                <h3 className="text-lg font-bold text-copper-400 mb-1 uppercase tracking-wide">
                   STEP 3: CONFIRM YOUR REQUEST
                 </h3>
                 <p className="text-sm text-white/80 leading-relaxed">
@@ -707,7 +708,7 @@ export default function StrategySessionForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group w-full bg-copper-500 hover:bg-copper-600 text-white font-medium text-sm sm:text-base tracking-brand-label uppercase px-6 sm:px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group w-full bg-copper-600 hover:bg-copper-700 text-white font-medium text-sm sm:text-base tracking-brand-label uppercase px-6 sm:px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
@@ -749,7 +750,7 @@ export default function StrategySessionForm() {
           <button
             type="button"
             onClick={nextStep}
-            className="flex items-center gap-2 bg-copper-500 hover:bg-copper-600 text-white px-6 py-3 rounded-sm transition-colors font-medium uppercase tracking-wide"
+            className="flex items-center gap-2 bg-copper-600 hover:bg-copper-700 text-white px-6 py-3 rounded-sm transition-colors font-medium uppercase tracking-wide"
           >
             <span>Next</span>
             <ArrowRight className="w-4 h-4" />

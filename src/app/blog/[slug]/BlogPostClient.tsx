@@ -8,9 +8,11 @@ import { BlogPost } from '@/data/blog-posts';
 interface BlogPostClientProps {
   post: BlogPost;
   relatedPosts: BlogPost[];
+  /** The post body, rendered from Markdown on the server. */
+  body: React.ReactNode;
 }
 
-export default function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
+export default function BlogPostClient({ post, relatedPosts, body }: BlogPostClientProps) {
   return (
     <main className="min-h-screen bg-cream">
       {/* Hero Section */}
@@ -32,7 +34,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
           >
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-600 hover:text-copper-500 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 hover:text-copper-800 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Intelligence Briefings
@@ -46,7 +48,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-6"
           >
-            <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-600 border border-copper-500/30 px-3 py-1.5">
+            <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-700 border border-copper-500/30 px-3 py-1.5">
               {post.category}
             </span>
           </motion.div>
@@ -63,7 +65,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
 
           {/* Meta */}
           <motion.div
-            className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-near-black/50"
+            className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-near-black/60"
             initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -94,33 +96,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div
-              className="text-near-black/80 leading-relaxed space-y-6"
-              dangerouslySetInnerHTML={{
-                __html: post.content
-                  .split('\n')
-                  .map(line => {
-                    // Convert ## headers to H2
-                    if (line.trim().startsWith('## ')) {
-                      return `<h2 class="text-2xl sm:text-3xl font-bold font-display uppercase text-near-black tracking-brand-header mt-12 mb-6">${line.replace('## ', '')}</h2>`;
-                    }
-                    // Convert ### headers to H3
-                    if (line.trim().startsWith('### ')) {
-                      return `<h3 class="text-xl sm:text-2xl font-bold font-display uppercase text-copper-600 tracking-brand-header mt-8 mb-4">${line.replace('### ', '')}</h3>`;
-                    }
-                    // Convert **bold** text
-                    if (line.includes('**')) {
-                      line = line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-near-black font-bold">$1</strong>');
-                    }
-                    // Convert paragraphs
-                    if (line.trim() && !line.startsWith('<')) {
-                      return `<p class="text-base sm:text-lg text-near-black/80 leading-relaxed mb-6">${line}</p>`;
-                    }
-                    return line;
-                  })
-                  .join('\n')
-              }}
-            />
+            <div className="text-near-black/80 leading-relaxed">{body}</div>
           </motion.article>
 
           {/* CTA Box */}
@@ -139,7 +115,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             </p>
             <Link
               href={post.cta.link}
-              className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
+              className="group inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-700 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
             >
               {post.cta.text}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
@@ -174,7 +150,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
               >
                 <Link href={`/blog/${relatedPost.slug}`} className="block p-8 lg:p-10">
                   <div className="mb-4">
-                    <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-600 border border-copper-500/30 px-3 py-1.5">
+                    <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-700 border border-copper-500/30 px-3 py-1.5">
                       {relatedPost.category}
                     </span>
                   </div>
@@ -187,7 +163,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                     {relatedPost.excerpt}
                   </p>
 
-                  <div className="flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-600 group-hover:text-copper-500 group-hover:gap-3 transition-all duration-300">
+                  <div className="flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 group-hover:text-copper-800 group-hover:gap-3 transition-all duration-300">
                     <span>Read Briefing</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>

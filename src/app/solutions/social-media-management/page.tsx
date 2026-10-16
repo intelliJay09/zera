@@ -16,8 +16,6 @@ import {
   Sparkles,
   CheckCircle2,
   ChevronDown,
-  Calendar,
-  Trophy,
   Share2,
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -36,14 +34,12 @@ export default function SocialMediaManagementPage() {
   const platformsRef = useRef(null);
   const whySocialRef = useRef(null);
   const approachRef = useRef(null);
-  const resultsRef = useRef(null);
   const faqRef = useRef(null);
 
   const isServicesInView = useInView(servicesRef, { once: true, amount: 0.15 });
   const isPlatformsInView = useInView(platformsRef, { once: true, amount: 0.15 });
   const isWhySocialInView = useInView(whySocialRef, { once: true, amount: 0.2 });
   const isApproachInView = useInView(approachRef, { once: true, amount: 0.15 });
-  const isResultsInView = useInView(resultsRef, { once: true, amount: 0.2 });
   const isFaqInView = useInView(faqRef, { once: true, amount: 0.2 });
 
   // Animation variants
@@ -322,48 +318,6 @@ export default function SocialMediaManagementPage() {
     },
   ];
 
-  const results = [
-    {
-      icon: Trophy,
-      industry: 'E-commerce Fashion',
-      result: 'Instagram Drove $2.4M in Revenue',
-      timeline: '6 months',
-      description:
-        'Strategic Instagram content strategy with shoppable posts, influencer partnerships, and targeted Stories campaigns transformed followers into customers.',
-      metrics: [
-        { label: 'Revenue Generated', value: '$2.4M' },
-        { label: 'Engagement Rate', value: '8.7%' },
-        { label: 'Follower Growth', value: '+340%' },
-      ],
-    },
-    {
-      icon: Target,
-      industry: 'B2B SaaS Platform',
-      result: 'LinkedIn Generated 450+ Qualified Leads',
-      timeline: '8 months',
-      description:
-        'Thought leadership content strategy, strategic networking, and targeted InMail campaigns established authority and drove enterprise leads.',
-      metrics: [
-        { label: 'Qualified Leads', value: '450+' },
-        { label: 'Content Reach', value: '2.1M' },
-        { label: 'Engagement Rate', value: '12.3%' },
-      ],
-    },
-    {
-      icon: Users,
-      industry: 'Local Restaurant Chain',
-      result: 'TikTok Increased Foot Traffic 280%',
-      timeline: '4 months',
-      description:
-        'Viral-ready short-form video content showcasing menu items, behind-the-scenes, and user-generated content drove massive local awareness.',
-      metrics: [
-        { label: 'Foot Traffic', value: '+280%' },
-        { label: 'Video Views', value: '4.8M' },
-        { label: 'New Followers', value: '18K+' },
-      ],
-    },
-  ];
-
   const faqs = [
     {
       question: 'Which social platforms should we focus on for our industry?',
@@ -474,85 +428,6 @@ export default function SocialMediaManagementPage() {
                 </Link>
               </Button>
             </motion.div>
-          </motion.div>
-
-          {/* Right: Platform Icons Constellation - Hidden on Mobile */}
-          <motion.div
-            className="hidden lg:block relative"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <div className="relative h-[400px]">
-              {/* Floating platform badges */}
-              <motion.div
-                className="absolute top-0 right-12 bg-white/10 backdrop-blur-md border border-copper-500/30 rounded-lg px-6 py-4 shadow-lg shadow-copper-500/20"
-                animate={{
-                  y: [0, -15, 0],
-                  rotateZ: [0, 2, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Instagram className="w-8 h-8 text-pink-400 mb-2" />
-                <p className="text-copper-400 text-xs font-medium mb-1">Engagement</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">8.7%</p>
-              </motion.div>
-
-              <motion.div
-                className="absolute top-32 left-8 bg-white/10 backdrop-blur-md border border-blue-500/30 rounded-lg px-6 py-4 shadow-lg shadow-blue-500/20"
-                animate={{
-                  y: [0, 20, 0],
-                  rotateZ: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  delay: 0.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Linkedin className="w-8 h-8 text-blue-400 mb-2" />
-                <p className="text-blue-400 text-xs font-medium mb-1">Leads Generated</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">450+</p>
-              </motion.div>
-
-              <motion.div
-                className="absolute bottom-12 right-4 bg-white/10 backdrop-blur-md border border-cyan-500/30 rounded-lg px-6 py-4 shadow-lg shadow-cyan-500/20"
-                animate={{
-                  y: [0, -20, 0],
-                  rotateZ: [0, 1.5, 0],
-                }}
-                transition={{
-                  duration: 4.5,
-                  delay: 1,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <MessageCircle className="w-8 h-8 text-cyan-400 mb-2" />
-                <p className="text-cyan-400 text-xs font-medium mb-1">Video Views</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">4.8M</p>
-              </motion.div>
-
-              {/* Central icon */}
-              <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Sparkles className="w-32 h-32 text-copper-500/30" strokeWidth={1} />
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -785,68 +660,6 @@ export default function SocialMediaManagementPage() {
         className="bg-cream-50"
         onSelectPlan={() => router.push('/contact')}
       />
-
-      {/* Results Section */}
-      <section ref={resultsRef} className="relative bg-gradient-to-br from-near-black via-[#1a1a1a] to-near-black px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-36">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16 sm:mb-20"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 40, filter: 'blur(15px)' }}
-            animate={isResultsInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-cream-50 tracking-brand-header leading-tight mb-4">
-              REAL RESULTS. REAL BUSINESSES.
-            </h2>
-            <p className="text-base sm:text-lg text-cream-200 font-montserrat max-w-3xl mx-auto">
-              See how strategic social media transformed followers into revenue-driving customers
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8"
-            initial={prefersReducedMotion ? false : 'hidden'}
-            animate={isResultsInView ? 'visible' : 'hidden'}
-            variants={staggerContainer}
-          >
-            {results.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={cardVariant}
-                  className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 hover:bg-white/10 hover:border-copper-500/50 transition-all duration-500"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-copper-500/20 text-copper-400 rounded-lg group-hover:bg-copper-500 group-hover:text-white transition-all duration-500">
-                      <Icon className="w-5 h-5" strokeWidth={2} />
-                    </div>
-                    <span className="text-copper-400 font-montserrat font-medium text-sm tracking-normal uppercase">{item.industry}</span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-display uppercase font-semibold text-cream-50 mb-3 tracking-brand-header">{item.result}</h3>
-
-                  <div className="flex items-center gap-2 mb-4">
-                    <Calendar className="w-4 h-4 text-cream-300" />
-                    <span className="text-cream-300 font-montserrat text-sm">Achieved in {item.timeline}</span>
-                  </div>
-
-                  <p className="text-cream-200/80 font-montserrat text-sm leading-relaxed mb-6">{item.description}</p>
-
-                  <div className="grid grid-cols-3 gap-3 pt-6 border-t border-white/10">
-                    {item.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center">
-                        <p className="text-copper-400 font-display font-bold text-lg mb-1">{metric.value}</p>
-                        <p className="text-cream-300 font-montserrat text-xs">{metric.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section ref={faqRef} className="relative bg-cream-50 px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">

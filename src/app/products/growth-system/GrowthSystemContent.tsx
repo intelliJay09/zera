@@ -106,7 +106,7 @@ export default function GrowthSystemContent() {
             <Button
               asChild
               size="default"
-              className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 font-semibold shadow-xl"
+              className="w-fit bg-copper-600 hover:bg-copper-700 text-cream-50 font-semibold shadow-xl"
             >
               <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_growth_system_hero">Book Your Systems Audit</Link>
             </Button>
@@ -416,7 +416,7 @@ export default function GrowthSystemContent() {
             <Button
               asChild
               size="default"
-              className="w-full sm:w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-xl font-semibold"
+              className="w-full sm:w-fit bg-copper-600 hover:bg-copper-700 text-cream-50 shadow-xl font-semibold"
             >
               <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="product_growth_system_cta">Book Your Systems Audit</Link>
             </Button>

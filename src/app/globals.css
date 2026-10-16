@@ -170,66 +170,29 @@
   }
 }
 
-/* Header Styles - Optimized for Performance */
-.header-base {
-  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: background, backdrop-filter;
-}
-
-.header-scrolled {
-  background: rgba(243, 233, 220, 0.85);
-  backdrop-filter: blur(16px) saturate(200%);
-  -webkit-backdrop-filter: blur(16px) saturate(200%);
-  border-bottom: 1px solid rgba(139, 115, 85, 0.12);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.6) inset,
-    0 4px 24px rgba(139, 115, 85, 0.06);
-}
-
-/* Light Header Variant - For Dark Backgrounds */
+/* Header: transparent over the hero, solid cream once scrolled so page content never shows through */
+.header-base,
 .header-light-base {
-  background: transparent;
-  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: background, backdrop-filter;
+  transition-property: background-color, box-shadow, padding-top;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.header-light-base {
+  background-color: transparent;
+}
+
+.header-scrolled,
 .header-light-scrolled {
-  background: rgba(243, 233, 220, 0.85);
-  backdrop-filter: blur(16px) saturate(200%);
-  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  background-color: var(--color-cream-200);
   border-bottom: 1px solid rgba(139, 115, 85, 0.12);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.6) inset,
-    0 4px 24px rgba(139, 115, 85, 0.06);
+  box-shadow: 0 4px 24px rgba(139, 115, 85, 0.06);
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .header-base {
-    transition: none;
-  }
-  .header-scrolled {
-    backdrop-filter: none;
-    background: rgba(243, 233, 220, 1);
-  }
+  .header-base,
   .header-light-base {
     transition: none;
-  }
-  .header-light-scrolled {
-    backdrop-filter: none;
-    background: rgba(243, 233, 220, 1);
-  }
-}
-
-/* Backdrop blur fallback for unsupported browsers */
-@supports not (backdrop-filter: blur(16px)) {
-  .header-scrolled {
-    background: rgba(243, 233, 220, 0.98);
-    backdrop-filter: none;
-  }
-  .header-light-scrolled {
-    background: rgba(243, 233, 220, 0.98);
-    backdrop-filter: none;
   }
 }
 
@@ -324,6 +287,28 @@
 
   .logo-marquee-duplicate {
     display: none;
+  }
+}
+
+/* Hero entrance that runs from first paint, without waiting for React to hydrate.
+   Movement only, no fade: text that first paints at opacity 0 is never counted as the
+   Largest Contentful Paint, so the hero stays visible from frame one. Stagger with --rise-delay. */
+.rise-in {
+  animation: riseIn 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--rise-delay, 0ms) both;
+}
+
+@keyframes riseIn {
+  from {
+    transform: translateY(24px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
   }
 }
 

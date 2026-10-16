@@ -19,7 +19,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full bg-copper-500 hover:bg-copper-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-xs tracking-[0.15em] uppercase py-4 mt-2 transition-all duration-300 flex items-center justify-center gap-3 group"
+      className="w-full bg-copper-600 hover:bg-copper-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-xs tracking-[0.15em] uppercase py-4 mt-2 transition-all duration-300 flex items-center justify-center gap-3 group"
     >
       {pending ? (
         <>

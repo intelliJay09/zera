@@ -53,7 +53,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
           >
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-600 hover:text-copper-500 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 hover:text-copper-800 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               All case studies
@@ -130,7 +130,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
             </a>
             <Link
               href={study.service.href}
-              className="group inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-600 hover:text-copper-500 transition-colors"
+              className="group inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 hover:text-copper-800 transition-colors"
             >
               {study.service.name}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -281,7 +281,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
                 The work
               </h2>
               <span className="h-px flex-1 bg-copper-500/25" />
-              <span className="text-sm font-medium tracking-brand-label uppercase text-copper-600 tabular-nums">
+              <span className="text-sm font-medium tracking-brand-label uppercase text-copper-700 tabular-nums">
                 {String(study.gallery.length).padStart(2, '0')} {study.gallery.length === 1 ? 'piece' : 'pieces'}
               </span>
             </motion.div>
@@ -314,7 +314,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
                           ))}
                         </div>
                         <figcaption className="mt-5 grid grid-cols-[2.5rem_1fr] border-t border-copper-500/25 pt-4">
-                          <span className="text-base font-light font-display tabular-nums leading-snug text-copper-500">
+                          <span className="text-base font-light font-display tabular-nums leading-snug text-copper-700">
                             {String(number).padStart(2, '0')}
                           </span>
                           {piece.caption && (
@@ -401,7 +401,7 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
               href="/systems-audit"
               data-gtm-event="cta_book_strategy"
               data-gtm-location={`case_study_${study.slug}`}
-              className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
+              className="group inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-700 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
             >
               Book Your Systems Audit
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />

@@ -88,7 +88,7 @@ export default function BuildPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
           <div className="text-center max-w-4xl mx-auto">
             <motion.p
-              className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6"
+              className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-6"
               initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
@@ -206,7 +206,7 @@ export default function BuildPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-10 py-4 bg-copper-500 hover:bg-copper-600 text-cream-50 font-medium text-base tracking-brand-label uppercase transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-copper-600 hover:bg-copper-700 text-cream-50 font-medium text-base tracking-brand-label uppercase transition-all duration-300 group"
           >
             <span>Get Started</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />

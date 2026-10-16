@@ -67,7 +67,7 @@ export default function ContactPageContent() {
                 href="/systems-audit"
                 data-gtm-event="cta_book_strategy"
                 data-gtm-location="contact"
-                className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-500 hover:text-copper-400 transition-colors group-hover:gap-3 duration-300"
+                className="inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-400 hover:text-copper-300 transition-colors group-hover:gap-3 duration-300"
               >
                 BOOK YOUR SYSTEMS AUDIT
                 <ArrowRight className="w-4 h-4" />
@@ -88,7 +88,7 @@ export default function ContactPageContent() {
               </h3>
               <a
                 href="mailto:support@zerahq.com"
-                className="inline-flex items-center gap-2 text-sm font-medium text-copper-500 hover:text-copper-400 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-copper-400 hover:text-copper-300 transition-colors"
               >
                 support@zerahq.com
               </a>
@@ -109,7 +109,7 @@ export default function ContactPageContent() {
               <p className="text-sm text-white/70 mb-4">
                 Operating from Accra, Ghana. Deploying systems globally.
               </p>
-              <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-500 border border-copper-500/30 px-3 py-1.5">
+              <span className="inline-block text-xs font-medium tracking-brand-label uppercase text-copper-400 border border-copper-500/30 px-3 py-1.5">
                 100% REMOTE
               </span>
             </motion.div>

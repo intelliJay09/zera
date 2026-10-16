@@ -116,7 +116,7 @@ export default function ProductsPage() {
         >
           <motion.div variants={heroItem} className="mb-6">
             <div className="inline-block px-6 py-2 bg-copper-500/10 backdrop-blur-sm rounded-full border border-copper-500/20 mb-8">
-              <span className="text-sm font-medium tracking-wide uppercase text-copper-500">
+              <span className="text-sm font-medium tracking-wide uppercase text-copper-800">
                 Engineered Growth
               </span>
             </div>
@@ -142,7 +142,7 @@ export default function ProductsPage() {
             <Button
               asChild
               size="default"
-              className="w-fit bg-copper-500 hover:bg-copper-600 text-cream-50 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-fit bg-copper-600 hover:bg-copper-700 text-cream-50 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href="/contact">Book Your Systems Audit</Link>
             </Button>
@@ -183,7 +183,7 @@ export default function ProductsPage() {
                 >
                   {/* Tier Badge */}
                   <div className="absolute -top-4 left-8">
-                    <div className="bg-copper-500 text-cream-50 px-4 py-1 rounded-full text-sm font-medium group-hover:bg-copper-600 group-hover:shadow-lg transition-all duration-500">
+                    <div className="bg-copper-600 text-cream-50 px-4 py-1 rounded-full text-sm font-medium group-hover:bg-copper-700 group-hover:shadow-lg transition-all duration-500">
                       TIER {product.tier}
                     </div>
                   </div>
@@ -196,7 +196,7 @@ export default function ProductsPage() {
                   </div>
 
                   {/* Duration */}
-                  <div className="text-sm text-copper-500 font-medium uppercase tracking-wide mb-3">
+                  <div className="text-sm text-copper-700 font-medium uppercase tracking-wide mb-3">
                     {product.duration}
                   </div>
 
@@ -230,7 +230,7 @@ export default function ProductsPage() {
                   {/* CTA */}
                   <Link
                     href={`/products/${product.slug}`}
-                    className="flex items-center justify-center w-full px-6 py-3 rounded-md border-2 border-copper-500 bg-transparent text-copper-500 font-semibold group-hover:bg-copper-500 group-hover:text-cream-50 group-hover:border-copper-500 transition-all duration-500 ease-out"
+                    className="flex items-center justify-center w-full px-6 py-3 rounded-md border-2 border-copper-500 bg-transparent text-copper-700 font-semibold group-hover:bg-copper-600 group-hover:text-cream-50 group-hover:border-copper-600 transition-all duration-500 ease-out"
                   >
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-500" />
@@ -296,7 +296,7 @@ export default function ProductsPage() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm text-copper-500 font-medium uppercase tracking-wide mb-2">
+                    <div className="text-sm text-copper-700 font-medium uppercase tracking-wide mb-2">
                       STEP {step.number}
                     </div>
                     <h3 className="font-display text-2xl font-bold uppercase text-near-black mb-3 tracking-brand-header">
@@ -364,7 +364,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 sm:py-24 px-6 bg-gradient-to-br from-copper-500 to-copper-600">
+      <section className="py-20 sm:py-24 px-6 bg-gradient-to-br from-copper-600 to-copper-700">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -375,13 +375,13 @@ export default function ProductsPage() {
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-cream-50 mb-6 tracking-brand-header">
               BOOK YOUR SYSTEMS AUDIT
             </h2>
-            <p className="text-xl text-cream-50/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-cream-50 mb-10 max-w-2xl mx-auto">
               60-minute strategy session. No pitch. Just infrastructure analysis and a clear roadmap.
             </p>
             <Button
               asChild
               size="default"
-              className="w-fit bg-cream-50 text-copper-500 hover:bg-cream-100 shadow-xl"
+              className="w-fit bg-cream-50 text-copper-700 hover:bg-cream-100 shadow-xl"
             >
               <Link href="/contact">Book Your Systems Audit</Link>
             </Button>

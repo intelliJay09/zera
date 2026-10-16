@@ -611,7 +611,7 @@ export default function AssetAccessionContent() {
 
             <Link
               href="/"
-              className="inline-flex items-center gap-2 bg-copper-500 hover:bg-copper-600 text-cream-50 font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 w-fit min-h-[48px]"
+              className="inline-flex items-center gap-2 bg-copper-600 hover:bg-copper-700 text-cream-50 font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 w-fit min-h-[48px]"
             >
               Return to HQ
             </Link>
@@ -1146,7 +1146,7 @@ export default function AssetAccessionContent() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="inline-flex items-center justify-center gap-2 bg-copper-500 hover:bg-copper-600 text-cream-50 font-medium text-sm tracking-brand-label uppercase px-12 sm:px-20 py-4 rounded-sm transition-all duration-300 min-h-[48px]"
+                className="inline-flex items-center justify-center gap-2 bg-copper-600 hover:bg-copper-700 text-cream-50 font-medium text-sm tracking-brand-label uppercase px-12 sm:px-20 py-4 rounded-sm transition-all duration-300 min-h-[48px]"
               >
                 <span>Next</span>
                 <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
@@ -1167,7 +1167,7 @@ export default function AssetAccessionContent() {
                 <button
                   type="submit"
                   disabled={submitStatus === 'submitting'}
-                  className="inline-flex items-center gap-3 bg-copper-500 hover:bg-copper-600 text-cream-50 font-medium text-sm tracking-brand-label uppercase px-8 sm:px-10 py-4 rounded-sm transition-all duration-300 w-fit disabled:opacity-50 disabled:cursor-not-allowed min-h-[48px]"
+                  className="inline-flex items-center gap-3 bg-copper-600 hover:bg-copper-700 text-cream-50 font-medium text-sm tracking-brand-label uppercase px-8 sm:px-10 py-4 rounded-sm transition-all duration-300 w-fit disabled:opacity-50 disabled:cursor-not-allowed min-h-[48px]"
                 >
                   {submitStatus === 'submitting' ? (
                     <>

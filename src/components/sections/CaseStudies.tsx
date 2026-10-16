@@ -94,7 +94,7 @@ function FeaturedStudy({ study }: { study: CaseStudy }) {
               }`}
             >
               <dt className="text-xs leading-snug text-near-black/60 sm:text-sm">{figure.label}</dt>
-              <dd className="whitespace-nowrap text-lg font-light font-display tracking-tight text-copper-500 sm:text-2xl 2xl:text-3xl">
+              <dd className="whitespace-nowrap text-lg font-light font-display tracking-tight text-copper-700 sm:text-2xl 2xl:text-3xl">
                 {figure.value}
               </dd>
             </motion.div>

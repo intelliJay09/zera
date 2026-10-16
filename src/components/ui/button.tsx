@@ -11,7 +11,7 @@ const buttonVariants = cva(
         primary:
           'bg-copper-600 text-white shadow-lg shadow-copper-500/10 hover:bg-copper-700 hover:scale-[1.02] hover:shadow-2xl hover:shadow-copper-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-4',
         secondary:
-          'border-2 border-copper-500 text-copper-600 hover:bg-copper-50 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-4',
+          'border-2 border-copper-500 text-copper-700 hover:bg-copper-50 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-4',
         ghost:
           'relative text-copper-600 hover:text-copper-700 after:absolute after:bottom-0 after:left-[25%] after:right-[25%] after:h-[1px] after:bg-copper-500 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2',
       },

@@ -4,19 +4,11 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Shield, ChevronDown } from 'lucide-react';
-import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 const StrategySessionForm = dynamic(() => import('@/components/forms/StrategySessionForm'));
 const EngagementProtocol = dynamic(() => import('@/components/sections/EngagementProtocol'));
-import {
-  contactHeroHeadline,
-  contactHeroDescription,
-  contactFormContainer,
-  contactInfoContainer,
-} from '@/lib/animation-variants';
 
 export default function BookSessionContent() {
-  const prefersReducedMotion = usePrefersReducedMotion();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
@@ -36,38 +28,22 @@ export default function BookSessionContent() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-start">
-            {/* Left: Text/Value */}
-            <motion.div
-              initial={prefersReducedMotion ? false : 'hidden'}
-              animate="visible"
-              variants={contactInfoContainer}
-              className="lg:pt-8"
-            >
-              <motion.h1
-                className="text-4xl leading-[1.3em] sm:text-5xl sm:leading-[1.1] lg:text-5xl xl:text-6xl font-bold font-display uppercase text-white tracking-brand-header mb-6 sm:mb-8 w-full text-center lg:text-left"
-                variants={contactHeroHeadline}
-              >
+            {/* Left: Text/Value. CSS entrance so the text paints before hydration (it is the LCP element). */}
+            <div className="lg:pt-8">
+              <h1 className="rise-in [--rise-delay:100ms] text-4xl leading-[1.3em] sm:text-5xl sm:leading-[1.1] lg:text-5xl xl:text-6xl font-bold font-display uppercase text-white tracking-brand-header mb-6 sm:mb-8 w-full text-center lg:text-left">
                 THE REVENUE SYSTEMS AUDIT
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                className="text-lg sm:text-xl font-normal text-white leading-relaxed tracking-normal mb-8 text-center lg:text-left"
-                variants={contactHeroDescription}
-              >
+              <p className="rise-in [--rise-delay:250ms] text-lg sm:text-xl font-normal text-white leading-relaxed tracking-normal mb-8 text-center lg:text-left">
                 <span className="font-semibold text-copper-500">Stop Guessing. Get the Blueprint.</span>
                 <br />
                 <br />
                 Get a high-level executive review of your digital infrastructure. We diagnose where
                 revenue is leaking and hand you a clear roadmap to fix it.
-              </motion.p>
+              </p>
 
               {/* Trust Signal */}
-              <motion.div
-                className="flex items-center gap-4 flex-wrap justify-center lg:justify-start"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
+              <div className="rise-in [--rise-delay:400ms] flex items-center gap-4 flex-wrap justify-center lg:justify-start">
                 <div className="flex items-center gap-2 text-sm text-white/70">
                   <Shield className="w-4 h-4 text-copper-400" strokeWidth={1.5} />
                   <span className="font-medium">Limited Availability</span>
@@ -76,23 +52,18 @@ export default function BookSessionContent() {
                   <CheckCircle2 className="w-4 h-4 text-copper-400" strokeWidth={1.5} />
                   <span className="font-medium">100% Satisfaction Guarantee</span>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Right: Form (Sticky) */}
-            <motion.div
-              className="relative lg:sticky lg:top-32"
-              initial={prefersReducedMotion ? false : 'hidden'}
-              animate="visible"
-              variants={contactFormContainer}
-            >
+            <div className="rise-in [--rise-delay:200ms] relative lg:sticky lg:top-32">
               {/* Refined copper glow */}
               <div className="absolute -inset-1 bg-gradient-to-br from-copper-500/10 via-copper-500/5 to-transparent rounded-sm blur-3xl" />
 
               <div className="relative bg-[#2a2a2a] border border-copper-500/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] rounded-sm p-6 sm:p-8 lg:p-10">
                 <StrategySessionForm />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

@@ -53,7 +53,7 @@ export default function NotQualifiedPage() {
           </Link>
           <Link
             href="/"
-            className="px-8 py-3 bg-copper-500 hover:bg-copper-600 text-white text-sm font-medium uppercase tracking-wide rounded-sm transition-colors duration-300 w-fit"
+            className="px-8 py-3 bg-copper-600 hover:bg-copper-700 text-white text-sm font-medium uppercase tracking-wide rounded-sm transition-colors duration-300 w-fit"
           >
             Return Home
           </Link>

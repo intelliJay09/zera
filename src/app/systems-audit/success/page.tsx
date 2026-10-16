@@ -109,7 +109,12 @@ export default function BookingSuccessPage() {
           const api = (...a: any[]) => { p(api, a); };
           (api as any).q = [];
           const ns = args[1];
-          typeof ns === 'string' ? ((cal.ns[ns] = api), p(api, args)) : p(cal, args);
+          if (typeof ns === 'string') {
+            cal.ns[ns] = api;
+            p(api, args);
+          } else {
+            p(cal, args);
+          }
           return;
         }
         p(cal, args);

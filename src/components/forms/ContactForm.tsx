@@ -232,7 +232,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="group w-full bg-copper-500 hover:bg-copper-600 text-cream-200 font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group w-full bg-copper-600 hover:bg-copper-700 text-white font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 hover:gap-5 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>
@@ -248,7 +248,7 @@ export default function ContactForm() {
           </button>
         </motion.div>
 
-        <p className="text-xs font-normal text-white/40 text-center tracking-normal">
+        <p className="text-xs font-normal text-white/60 text-center tracking-normal">
           By submitting, you agree to our privacy policy. We respect your data and never
           share it with third parties.
         </p>

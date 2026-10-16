@@ -118,7 +118,7 @@ export default function PortfolioPage() {
               href="/systems-audit"
               data-gtm-event="cta_book_strategy"
               data-gtm-location="portfolio"
-              className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
+              className="group inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-700 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
             >
               Book Your Systems Audit
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />

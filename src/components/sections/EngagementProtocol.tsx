@@ -187,7 +187,7 @@ export default function EngagementProtocol({
                     {/* Content */}
                     <div className="relative h-full p-8 flex flex-col">
                       {/* Phase Number - Engraved Style */}
-                      <div className="text-8xl font-bold font-display text-copper-500/20 leading-none mb-4">
+                      <div aria-hidden="true" className="text-8xl font-bold font-display text-copper-500/20 leading-none mb-4">
                         {phase.number}
                       </div>
 
@@ -203,7 +203,7 @@ export default function EngagementProtocol({
                       <h3 className="text-lg font-bold font-display uppercase text-near-black mb-2 tracking-brand-header">
                         {phase.title}
                         {phase.subtitle && (
-                          <span className="block text-base font-normal text-copper-600 mt-1">
+                          <span className="block text-base font-normal text-copper-700 mt-1">
                             {phase.subtitle}
                           </span>
                         )}
@@ -258,7 +258,7 @@ export default function EngagementProtocol({
                 <h3 className="text-lg font-bold font-display uppercase text-near-black mb-2 tracking-brand-header">
                   {phase.title}
                   {phase.subtitle && (
-                    <span className="block text-base font-normal text-copper-500 mt-1">
+                    <span className="block text-base font-normal text-copper-700 mt-1">
                       {phase.subtitle}
                     </span>
                   )}
@@ -297,7 +297,7 @@ export default function EngagementProtocol({
                 }}
               >
                 {/* Phase Number */}
-                <div className="text-5xl font-bold font-display text-copper-500/20 leading-none mb-3">
+                <div aria-hidden="true" className="text-5xl font-bold font-display text-copper-500/20 leading-none mb-3">
                   {phase.number}
                 </div>
 
@@ -310,7 +310,7 @@ export default function EngagementProtocol({
                 <h3 className="text-lg font-bold font-display uppercase text-near-black mb-2 tracking-brand-header">
                   {phase.title}
                   {phase.subtitle && (
-                    <span className="block text-base font-normal text-copper-500 mt-1">
+                    <span className="block text-base font-normal text-copper-700 mt-1">
                       {phase.subtitle}
                     </span>
                   )}

@@ -106,7 +106,7 @@ export default function ConnectContent() {
         {/* Save Contact Button */}
         <button
           onClick={generateVCard}
-          className="w-full bg-copper-500 hover:bg-copper-600 text-white font-bold py-4 px-6 shadow-xl transition-all duration-200 flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98]"
+          className="w-full bg-copper-600 hover:bg-copper-700 text-white font-bold py-4 px-6 shadow-xl transition-all duration-200 flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98]"
         >
           <Download className="h-6 w-6" strokeWidth={2.5} />
           <span className="text-lg tracking-wide">SAVE TO CONTACTS</span>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cookie, Shield, BarChart3, Target, Check } from 'lucide-react';
+import { Shield, BarChart3, Target, Check } from 'lucide-react';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { cookieBanner, cookieContent, cookieCategoryItem, cookieToggleSwitch } from '@/lib/animation-variants';
 
@@ -106,85 +106,67 @@ export default function CookieConsent() {
           animate={prefersReducedMotion ? {} : 'visible'}
           exit={prefersReducedMotion ? {} : 'hidden'}
           variants={cookieBanner}
-          className="fixed bottom-0 left-0 right-0 z-[999] bg-cream-50/98 backdrop-blur-xl shadow-[0_-4px_24px_rgba(139,115,85,0.12)]"
+          role="region"
+          aria-label="Cookie consent"
+          className="fixed inset-x-0 bottom-0 z-[999] bg-cream-50 shadow-[0_-4px_24px_rgba(139,115,85,0.12)] sm:inset-x-auto sm:left-6 sm:bottom-6 sm:w-[400px] sm:shadow-[0_12px_40px_rgba(5,5,5,0.14)]"
         >
-          {/* Top border accent */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-copper-500/40 to-transparent" />
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="px-4 py-3 sm:p-5">
             {!showCustomize ? (
               // Main Banner View
               <motion.div
                 initial={prefersReducedMotion ? {} : 'hidden'}
                 animate={prefersReducedMotion ? {} : 'visible'}
                 variants={cookieContent}
-                className="py-4 sm:py-5"
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-                  {/* Icon + Text */}
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className="flex-shrink-0 hidden sm:block">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-copper-500/10 rounded-full blur-lg" />
-                        <div className="relative bg-gradient-to-br from-copper-400 to-copper-600 p-2.5 rounded-full">
-                          <Cookie className="w-4 h-4 text-cream-50" />
-                        </div>
-                      </div>
-                    </div>
+                <p className="text-sm text-near-black/90 leading-relaxed">
+                  We use cookies to improve your experience and analyze site performance.{' '}
+                  <a
+                    href="/legal/privacy"
+                    className="text-copper-700 font-bold hover:text-copper-800 transition-colors duration-200 underline underline-offset-2"
+                  >
+                    Privacy Policy
+                  </a>
+                </p>
 
-                    <div className="flex-1">
-                      <p className="text-sm sm:text-base text-near-black/90 font-medium leading-relaxed">
-                        We use cookies to improve your experience and analyze site performance.{' '}
-                        <a
-                          href="/legal/privacy-policy"
-                          className="text-copper-600 font-bold hover:text-copper-700 transition-colors duration-200 underline underline-offset-2"
-                        >
-                          Privacy Policy
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                    {!showSuccess ? (
-                      <>
-                        <button
-                          onClick={acceptAll}
-                          className="whitespace-nowrap px-6 py-3 min-h-[44px] bg-gradient-to-r from-copper-500 to-copper-600 text-cream-50 font-bold text-sm rounded-lg hover:from-copper-600 hover:to-copper-700 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
-                        >
-                          Accept All
-                        </button>
-
-                        <button
-                          onClick={acceptEssentialOnly}
-                          className="whitespace-nowrap px-6 py-3 min-h-[44px] bg-cream-200/60 backdrop-blur-sm text-near-black font-bold text-sm rounded-lg hover:bg-cream-300/70 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
-                        >
-                          Essential Only
-                        </button>
-
-                        <button
-                          onClick={() => setShowCustomize(true)}
-                          className="whitespace-nowrap px-5 py-3 min-h-[44px] text-copper-600 font-bold text-sm hover:text-copper-700 transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2 rounded-lg"
-                        >
-                          Customize
-                        </button>
-                      </>
-                    ) : (
-                      // Success Feedback
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        className="flex items-center gap-2 px-6 py-3 bg-copper-500/10 rounded-lg"
+                {/* Buttons */}
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  {!showSuccess ? (
+                    <>
+                      <button
+                        onClick={acceptAll}
+                        className="whitespace-nowrap px-4 py-2.5 min-h-[44px] bg-copper-600 text-white font-bold text-sm hover:bg-copper-700 transition-colors duration-300 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
                       >
-                        <div className="bg-copper-500 rounded-full p-1">
-                          <Check className="w-3 h-3 text-cream-50" />
-                        </div>
-                        <span className="text-sm font-bold text-copper-700">Preferences saved!</span>
-                      </motion.div>
-                    )}
-                  </div>
+                        Accept All
+                      </button>
+
+                      <button
+                        onClick={acceptEssentialOnly}
+                        className="whitespace-nowrap px-4 py-2.5 min-h-[44px] bg-cream-200 text-near-black font-bold text-sm hover:bg-cream-300 transition-colors duration-300 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
+                      >
+                        Essential Only
+                      </button>
+
+                      <button
+                        onClick={() => setShowCustomize(true)}
+                        className="whitespace-nowrap px-3 py-2.5 min-h-[44px] text-copper-700 font-bold text-sm hover:text-copper-800 transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
+                      >
+                        Customize
+                      </button>
+                    </>
+                  ) : (
+                    // Success Feedback
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      className="flex items-center gap-2 px-4 py-2.5 min-h-[44px] bg-copper-500/10"
+                    >
+                      <div className="bg-copper-600 rounded-full p-1">
+                        <Check className="w-3 h-3 text-white" />
+                      </div>
+                      <span className="text-sm font-bold text-copper-800">Preferences saved</span>
+                    </motion.div>
+                  )}
                 </div>
               </motion.div>
             ) : (
@@ -193,17 +175,14 @@ export default function CookieConsent() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="py-5 sm:py-6 space-y-5"
+                className="space-y-4"
               >
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <h3 className="font-display uppercase text-xl sm:text-2xl font-bold text-near-black tracking-brand-header">
-                    Customize Cookie Preferences
-                  </h3>
-                </div>
+                <h3 className="font-display uppercase text-lg font-bold text-near-black tracking-brand-header">
+                  Cookie Preferences
+                </h3>
 
-                {/* Cookie Categories - Compact Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {/* Cookie Categories */}
+                <div className="grid grid-cols-1 gap-2">
                   {/* Essential Cookies */}
                   <CompactCookieCategory
                     icon={<Shield className="w-4 h-4" />}
@@ -233,16 +212,16 @@ export default function CookieConsent() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center justify-end gap-3 pt-2">
+                <div className="flex items-center justify-end gap-2">
                   <button
                     onClick={() => setShowCustomize(false)}
-                    className="px-5 py-3 min-h-[44px] text-copper-600 font-bold text-sm hover:text-copper-700 transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2 rounded-lg"
+                    className="px-3 py-2.5 min-h-[44px] text-copper-700 font-bold text-sm hover:text-copper-800 transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={saveCustomPreferences}
-                    className="px-6 py-3 min-h-[44px] bg-gradient-to-r from-copper-500 to-copper-600 text-cream-50 font-bold text-sm rounded-lg hover:from-copper-600 hover:to-copper-700 transition-all duration-300 hover:scale-105 active:scale-95 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
+                    className="px-4 py-2.5 min-h-[44px] bg-copper-600 text-white font-bold text-sm hover:bg-copper-700 transition-colors duration-300 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-500 focus-visible:ring-offset-2"
                   >
                     Save Preferences
                   </button>
@@ -274,10 +253,10 @@ function CompactCookieCategory({ icon, title, enabled, disabled, onToggle }: Com
       initial={prefersReducedMotion ? false : 'hidden'}
       animate={prefersReducedMotion ? {} : 'visible'}
       variants={cookieCategoryItem}
-      className="flex items-center justify-between gap-3 p-4 bg-cream-100/50 backdrop-blur-sm rounded-lg"
+      className="flex items-center justify-between gap-3 px-4 py-3 bg-cream-100"
     >
       <div className="flex items-center gap-2.5">
-        <div className="text-copper-600 flex-shrink-0">{icon}</div>
+        <div className="text-copper-700 flex-shrink-0">{icon}</div>
         <h4 className="font-bold text-sm text-near-black">{title}</h4>
       </div>
 

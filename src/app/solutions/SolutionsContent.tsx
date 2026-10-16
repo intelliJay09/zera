@@ -20,7 +20,7 @@ export default function SolutionsContent() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative">
           <div className="max-w-4xl">
-            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
+            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-400 mb-6">
               Our Solutions
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display uppercase text-cream-50 tracking-tight sm:tracking-brand-header leading-tight mb-6 sm:mb-8">
@@ -39,7 +39,7 @@ export default function SolutionsContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
+              <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-6">
                 Our Philosophy
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header leading-tight mb-6">
@@ -81,7 +81,7 @@ export default function SolutionsContent() {
       <section className="bg-white py-16 sm:py-24 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
           <div className="text-center mb-16 sm:mb-20">
-            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
+            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-6">
               Our Services
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header max-w-3xl mx-auto leading-tight">
@@ -143,7 +143,7 @@ export default function SolutionsContent() {
                   {service.description}
                 </p>
 
-                <div className="flex items-center gap-2 text-copper-500 group-hover:gap-4 transition-all duration-300">
+                <div className="flex items-center gap-2 text-copper-700 group-hover:gap-4 transition-all duration-300">
                   <span className="text-xs font-medium tracking-brand-label uppercase">Learn More</span>
                   <ArrowRight className="w-5 h-5" />
                 </div>
@@ -169,7 +169,7 @@ export default function SolutionsContent() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-10 py-4 bg-copper-500 text-cream-50 font-medium text-sm tracking-brand-label uppercase hover:bg-copper-600 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-copper-600 text-cream-50 font-medium text-sm tracking-brand-label uppercase hover:bg-copper-700 transition-all duration-300 group"
           >
             <span>Book Strategy Call</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -343,7 +343,7 @@ function ProcessScrollytelling() {
     <section ref={sectionRef} className="bg-cream-200 py-16 sm:py-24 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <div className="text-center mb-16 sm:mb-20">
-          <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-6">
+          <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-6">
             How We Work
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header max-w-3xl mx-auto leading-tight">
@@ -380,6 +380,7 @@ function ProcessScrollytelling() {
                       filter: isActive ? 'blur(0px)' : 'blur(4px)',
                     }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                    aria-hidden="true"
                     className="text-[200px] font-light font-display text-copper-500/5 leading-none mb-8"
                     style={{
                       transformOrigin: 'center',
@@ -577,6 +578,7 @@ function MobileStepItem({ step, Icon }: { step: any; index: number; Icon: any })
         initial={{ opacity: 0, scale: 0.9 }}
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
         transition={{ duration: 1, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+        aria-hidden="true"
         className="text-[100px] font-light font-display text-copper-500/5 leading-none mb-6"
         style={{ transform: 'translateZ(-20px)' }}
       >

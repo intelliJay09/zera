@@ -17,7 +17,7 @@ export default function BrandingDesignPage() {
             BRANDING & DESIGN
           </h1>
           <p className="text-lg text-near-black/70 font-normal tracking-normal">
-            Premium identity design for ambitious brands. Content coming soon...
+            Logo, visual identity, brand guidelines and the printed pieces that carry them, designed as one system.
           </p>
         </div>
       </div>

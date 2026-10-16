@@ -33,13 +33,13 @@ export default function BlogFilterBar({
       {/* Results Count */}
       <div className="flex items-center justify-between flex-wrap gap-4">
         <p className="text-sm text-near-black/60">
-          Showing <span className="text-copper-500 font-semibold">{filteredCount}</span> of {totalPosts} Intelligence Briefings
+          Showing <span className="text-copper-700 font-semibold">{filteredCount}</span> of {totalPosts} Intelligence Briefings
         </p>
 
         {hasActiveFilters && (
           <button
             onClick={onClearFilters}
-            className="group inline-flex items-center gap-2 text-xs font-medium tracking-brand-label uppercase text-near-black/60 hover:text-copper-500 border border-near-black/20 hover:border-copper-500/60 px-4 py-2 transition-all duration-300"
+            className="group inline-flex items-center gap-2 text-xs font-medium tracking-brand-label uppercase text-near-black/60 hover:text-copper-700 border border-near-black/20 hover:border-copper-500/60 px-4 py-2 transition-all duration-300"
           >
             <X className="w-3.5 h-3.5" />
             Clear All Filters
@@ -49,7 +49,7 @@ export default function BlogFilterBar({
 
       {/* Categories Filter */}
       <div className="space-y-4">
-        <h3 className="text-xs font-medium tracking-brand-label uppercase text-copper-500">
+        <h3 className="text-xs font-medium tracking-brand-label uppercase text-copper-700">
           Filter by Category
         </h3>
 
@@ -90,12 +90,12 @@ export default function BlogFilterBar({
           <p className="text-xs text-near-black/40 mb-3">Active Filter:</p>
           <div className="flex flex-wrap gap-2">
             {activeCategory && (
-              <div className="inline-flex items-center gap-2 bg-copper-500/10 border border-copper-500/30 text-copper-600 text-xs font-medium px-3 py-1.5">
+              <div className="inline-flex items-center gap-2 bg-copper-500/10 border border-copper-500/30 text-copper-700 text-xs font-medium px-3 py-1.5">
                 <span className="text-near-black/40">Category:</span>
                 <span>{activeCategory}</span>
                 <button
                   onClick={() => onCategoryChange(null)}
-                  className="ml-1 hover:text-copper-500 transition-colors"
+                  className="ml-1 hover:text-copper-800 transition-colors"
                 >
                   <X className="w-3 h-3" />
                 </button>

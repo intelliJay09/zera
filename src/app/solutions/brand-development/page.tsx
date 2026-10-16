@@ -14,9 +14,6 @@ import {
   TrendingUp,
   CheckCircle2,
   ChevronDown,
-  Calendar,
-  Trophy,
-  Users,
   Eye,
   Layers,
   MessageCircle,
@@ -36,13 +33,11 @@ export default function BrandDevelopmentPage() {
   const servicesRef = useRef(null);
   const whyBrandRef = useRef(null);
   const approachRef = useRef(null);
-  const resultsRef = useRef(null);
   const faqRef = useRef(null);
 
   const isServicesInView = useInView(servicesRef, { once: true, amount: 0.15 });
   const isWhyBrandInView = useInView(whyBrandRef, { once: true, amount: 0.2 });
   const isApproachInView = useInView(approachRef, { once: true, amount: 0.15 });
-  const isResultsInView = useInView(resultsRef, { once: true, amount: 0.2 });
   const isFaqInView = useInView(faqRef, { once: true, amount: 0.2 });
 
   // Animation variants
@@ -283,48 +278,6 @@ export default function BrandDevelopmentPage() {
     },
   ];
 
-  const results = [
-    {
-      icon: Trophy,
-      industry: 'Tech Startup',
-      result: 'Brand Refresh Led to 340% Funding Increase',
-      timeline: '8 weeks',
-      description:
-        'Complete brand identity redesign with strategic positioning helped secure Series A funding by presenting a more professional, trustworthy image to investors.',
-      metrics: [
-        { label: 'Funding Increase', value: '+340%' },
-        { label: 'Media Features', value: '12+' },
-        { label: 'Brand Recognition', value: '+89%' },
-      ],
-    },
-    {
-      icon: Target,
-      industry: 'E-commerce Fashion',
-      result: 'Premium Rebrand Drove 280% Revenue Growth',
-      timeline: '6 weeks',
-      description:
-        'Luxury brand identity with sophisticated visual system positioned business as premium, justified higher prices, and attracted aspirational customers.',
-      metrics: [
-        { label: 'Revenue Growth', value: '+280%' },
-        { label: 'Average Order', value: '+65%' },
-        { label: 'Customer LTV', value: '+120%' },
-      ],
-    },
-    {
-      icon: Users,
-      industry: 'Professional Services',
-      result: 'Brand Identity Increased Client Acquisition 4.2x',
-      timeline: '5 weeks',
-      description:
-        'Professional brand identity with clear messaging helped differentiate from competitors and communicate expertise, resulting in significant client growth.',
-      metrics: [
-        { label: 'New Clients', value: '4.2x' },
-        { label: 'Referrals', value: '+190%' },
-        { label: 'Win Rate', value: '+58%' },
-      ],
-    },
-  ];
-
   const faqs = [
     {
       question: 'What\'s the difference between branding and a logo?',
@@ -435,87 +388,6 @@ export default function BrandDevelopmentPage() {
                 </Link>
               </Button>
             </motion.div>
-          </motion.div>
-
-          {/* Right: Floating Design Elements */}
-          <motion.div
-            className="hidden lg:block relative"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <div className="relative h-[400px]">
-              {/* Floating badge 1 */}
-              <motion.div
-                className="absolute top-0 right-12 bg-white/10 backdrop-blur-md border border-copper-500/30 rounded-lg px-6 py-4 shadow-lg shadow-copper-500/20"
-                animate={{
-                  y: [0, -15, 0],
-                  rotateZ: [0, 2, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Palette className="w-8 h-8 text-copper-400 mb-2" />
-                <p className="text-copper-400 text-xs font-medium mb-1">Brand Recognition</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">+340%</p>
-              </motion.div>
-
-              {/* Floating badge 2 */}
-              <motion.div
-                className="absolute top-32 left-8 bg-white/10 backdrop-blur-md border border-rose-500/30 rounded-lg px-6 py-4 shadow-lg shadow-rose-500/20"
-                animate={{
-                  y: [0, 20, 0],
-                  rotateZ: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  delay: 0.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Heart className="w-8 h-8 text-rose-400 mb-2" />
-                <p className="text-rose-400 text-xs font-medium mb-1">Customer Trust</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">68%</p>
-              </motion.div>
-
-              {/* Floating badge 3 */}
-              <motion.div
-                className="absolute bottom-12 right-4 bg-white/10 backdrop-blur-md border border-violet-500/30 rounded-lg px-6 py-4 shadow-lg shadow-violet-500/20"
-                animate={{
-                  y: [0, -20, 0],
-                  rotateZ: [0, 1.5, 0],
-                }}
-                transition={{
-                  duration: 4.5,
-                  delay: 1,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <TrendingUp className="w-8 h-8 text-violet-400 mb-2" />
-                <p className="text-violet-400 text-xs font-medium mb-1">Revenue Growth</p>
-                <p className="text-cream-50 text-2xl font-display font-bold">+280%</p>
-              </motion.div>
-
-              {/* Central icon */}
-              <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <Sparkles className="w-32 h-32 text-copper-500/30" strokeWidth={1} />
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -705,68 +577,6 @@ export default function BrandDevelopmentPage() {
         className="bg-cream-50"
         onSelectPlan={() => router.push('/contact')}
       />
-
-      {/* Results Section */}
-      <section ref={resultsRef} className="relative bg-gradient-to-br from-near-black via-[#1a1a1a] to-near-black px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-36">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16 sm:mb-20"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 40, filter: 'blur(15px)' }}
-            animate={isResultsInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 1, ease: [0.19, 0.91, 0.38, 0.98] }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display uppercase font-bold text-cream-50 tracking-brand-header leading-tight mb-4">
-              REAL BRANDS. REAL RESULTS.
-            </h2>
-            <p className="text-base sm:text-lg text-cream-200 font-montserrat max-w-3xl mx-auto">
-              See how strategic brand identity transformed businesses into memorable, profitable brands
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8"
-            initial={prefersReducedMotion ? false : 'hidden'}
-            animate={isResultsInView ? 'visible' : 'hidden'}
-            variants={staggerContainer}
-          >
-            {results.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={cardVariant}
-                  className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 hover:bg-white/10 hover:border-copper-500/50 transition-all duration-500"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-copper-500/20 text-copper-400 rounded-lg group-hover:bg-copper-500 group-hover:text-white transition-all duration-500">
-                      <Icon className="w-5 h-5" strokeWidth={2} />
-                    </div>
-                    <span className="text-copper-400 font-montserrat font-medium text-sm tracking-normal uppercase">{item.industry}</span>
-                  </div>
-
-                  <h3 className="text-xl sm:text-2xl font-display uppercase font-semibold text-cream-50 mb-3 tracking-brand-header">{item.result}</h3>
-
-                  <div className="flex items-center gap-2 mb-4">
-                    <Calendar className="w-4 h-4 text-cream-300" />
-                    <span className="text-cream-300 font-montserrat text-sm">Achieved in {item.timeline}</span>
-                  </div>
-
-                  <p className="text-cream-200/80 font-montserrat text-sm leading-relaxed mb-6">{item.description}</p>
-
-                  <div className="grid grid-cols-3 gap-3 pt-6 border-t border-white/10">
-                    {item.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center">
-                        <p className="text-copper-400 font-display font-bold text-lg mb-1">{metric.value}</p>
-                        <p className="text-cream-300 font-montserrat text-xs">{metric.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section ref={faqRef} className="relative bg-cream-100 px-6 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">

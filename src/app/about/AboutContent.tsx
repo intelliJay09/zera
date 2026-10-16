@@ -40,7 +40,7 @@ export default function AboutContent() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-4 text-center">Origin Code</p>
+            <p className="text-sm font-medium tracking-brand-label uppercase text-copper-700 mb-4 text-center">Origin Code</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display uppercase text-near-black tracking-brand-header mb-8 text-center">
               THE ZERA PHILOSOPHY
             </h2>
@@ -227,7 +227,7 @@ export default function AboutContent() {
                   </motion.div>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Jacqueline F. Amoako</h3>
-                <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-2">Principal Architect</p>
+                <p className="text-sm font-medium tracking-brand-label uppercase text-copper-400 mb-2">Principal Architect</p>
                 <p className="text-base text-white/70">Strategy & System Design</p>
               </motion.div>
 
@@ -257,7 +257,7 @@ export default function AboutContent() {
                   </motion.div>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Derrick S.K Siawor</h3>
-                <p className="text-sm font-medium tracking-brand-label uppercase text-copper-500 mb-2">Technical Operations</p>
+                <p className="text-sm font-medium tracking-brand-label uppercase text-copper-400 mb-2">Technical Operations</p>
                 <p className="text-base text-white/70">Deployment & Automation</p>
               </motion.div>
             </div>
@@ -289,7 +289,7 @@ export default function AboutContent() {
               href="/systems-audit"
               data-gtm-event="cta_book_strategy"
               data-gtm-location="about"
-              className="group inline-flex items-center justify-center gap-3 bg-copper-500 hover:bg-copper-600 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
+              className="group inline-flex items-center justify-center gap-3 bg-copper-600 hover:bg-copper-700 hover:scale-[1.02] text-white font-medium text-base tracking-brand-label uppercase px-8 py-3.5 min-h-[44px] transition-all duration-300 w-fit shadow-lg shadow-copper-500/10 hover:shadow-2xl hover:shadow-copper-500/25"
             >
               Book Your Systems Audit
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
