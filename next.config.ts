@@ -139,6 +139,9 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // Inline the (small, Tailwind) stylesheet into the HTML so first paint does not wait
+    // on a separate CSS download competing with fonts, GTM and JS chunks on mobile.
+    inlineCss: true,
   },
 };
 
