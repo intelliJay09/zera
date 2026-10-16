@@ -14,7 +14,7 @@ export default function ContactPageContent() {
   };
 
   return (
-    <>
+    <main>
       {/* Hero Section */}
       <section className="relative bg-near-black pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
         {/* Ambient copper glow */}
@@ -243,6 +243,6 @@ export default function ContactPageContent() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

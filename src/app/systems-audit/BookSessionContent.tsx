@@ -16,7 +16,7 @@ export default function BookSessionContent() {
   };
 
   return (
-    <>
+    <main>
       {/* Hero Section - Split Screen */}
       <section className="relative bg-near-black pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pb-32 overflow-hidden">
         {/* Ambient copper glow */}
@@ -251,6 +251,6 @@ export default function BookSessionContent() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

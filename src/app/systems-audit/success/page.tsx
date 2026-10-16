@@ -164,7 +164,7 @@ export default function BookingSuccessPage() {
 
           // Track Cal.com booking completed in GTM
           (window as Window & { dataLayer?: Record<string, unknown>[] }).dataLayer?.push({
-            event: 'cal_booking_completed',
+            event: 'calendly_booking_completed', // must match the GTM trigger name
             booking_session_id: sessionId,
           });
         } catch (error) {
