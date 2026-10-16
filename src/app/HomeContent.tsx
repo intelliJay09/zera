@@ -5,9 +5,6 @@ import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  heroHeadline,
-} from '@/lib/animation-variants';
 import { SITE_URL } from '@/lib/site';
 
 const LiquidEther = dynamic(() => import('@/components/backgrounds/LiquidEther'));
@@ -67,14 +64,10 @@ export default function HomeContent() {
         <LiquidEther />
         <div className="mx-auto max-w-7xl px-4 pt-44 pb-32 sm:px-6 sm:py-40 md:py-48 lg:px-8 w-full">
           <div className="text-center">
-            <motion.h1
-              className="text-[3.5rem] sm:text-7xl xl:text-8xl font-display font-bold text-copper-500 tracking-normal leading-[1.1] mb-8"
-              initial="hidden"
-              animate="visible"
-              variants={heroHeadline}
-            >
+            {/* Hero text uses the CSS entrance so it paints before hydration (LCP) */}
+            <h1 className="rise-in [--rise-delay:100ms] text-[3.5rem] sm:text-7xl xl:text-8xl font-display font-bold text-copper-500 tracking-normal leading-[1.1] mb-8">
               Revenue, Realized.
-            </motion.h1>
+            </h1>
 
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
@@ -83,38 +76,20 @@ export default function HomeContent() {
               className="h-[2px] w-10 bg-copper-500 mx-auto mb-8 origin-center"
             />
 
-            <motion.h2
-              className="text-lg sm:text-xl lg:text-2xl leading-relaxed font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 1.2,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-            >
+            <h2 className="rise-in [--rise-delay:300ms] text-lg sm:text-xl lg:text-2xl leading-relaxed font-normal text-cream-50/70 tracking-normal mb-10 max-w-3xl mx-auto">
               Zera catches the revenue your business is already losing: the lead that goes
               unanswered, the customer who quietly stops buying. And proves it, every month,
               in real numbers.
-            </motion.h2>
+            </h2>
 
-            <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.92, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              transition={{
-                duration: 1.0,
-                delay: 1.8,
-                ease: [0.25, 0.85, 0.35, 1.0],
-              }}
-              className="flex flex-col items-center gap-4"
-            >
+            <div className="rise-in [--rise-delay:450ms] flex flex-col items-center gap-4">
               <Button asChild variant="primary" size="lg" className="group">
                 <Link href="/systems-audit" data-gtm-event="cta_book_strategy" data-gtm-location="hero">
                   Book your systems audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 group-hover:scale-110 transition-all duration-300" />
                 </Link>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </main>

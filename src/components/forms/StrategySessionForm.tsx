@@ -9,7 +9,7 @@ import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ArrowLeft, ChevronDown 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Cal, { getCalApi } from '@calcom/embed-react';
-import { executeRecaptcha } from '@/lib/recaptcha-client';
+import { executeRecaptcha, loadRecaptcha } from '@/lib/recaptcha-client';
 
 const strategySessionSchema = z
   .object({
@@ -370,7 +370,7 @@ export default function StrategySessionForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-8">
+    <form onSubmit={handleSubmit(onSubmit)} onFocus={() => void loadRecaptcha()} noValidate className="space-y-8">
       {/* Form Header */}
       <div className="text-center border-b border-copper-500/40 pb-6">
         <h2 className="text-2xl sm:text-3xl font-bold font-display uppercase text-white mb-2 tracking-brand-header">

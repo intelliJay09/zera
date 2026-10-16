@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import Script from 'next/script';
+import { GoogleTagManager } from '@next/third-parties/google';
 import FooterWrapper from '@/components/layout/FooterWrapper';
 import SmoothScroll from '@/components/SmoothScroll';
 import CookieConsent from '@/components/CookieConsent';
@@ -106,12 +105,6 @@ export default function RootLayout({
       {/* JSON-LD Structured Data for SEO */}
       <StructuredData />
 
-      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-        <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          strategy="lazyOnload"
-        />
-      )}
       {process.env.NEXT_PUBLIC_GTM_ID && (
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       )}
@@ -121,9 +114,6 @@ export default function RootLayout({
         {children}
         <FooterWrapper />
         <CookieConsent />
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        )}
       </body>
     </html>
   );

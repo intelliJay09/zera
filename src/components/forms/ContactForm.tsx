@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-import { executeRecaptcha } from '@/lib/recaptcha-client';
+import { executeRecaptcha, loadRecaptcha } from '@/lib/recaptcha-client';
 import {
   contactFormFieldStagger,
   contactFormField,
@@ -135,7 +135,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} onFocus={() => void loadRecaptcha()} className="space-y-4 sm:space-y-6">
       <motion.div
         initial={prefersReducedMotion ? false : 'hidden'}
         animate="visible"

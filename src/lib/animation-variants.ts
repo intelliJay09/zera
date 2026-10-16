@@ -10,25 +10,6 @@ export const luxuryEase = [0.25, 0.46, 0.45, 0.94] as const;
 export const powerEase = [0.16, 1, 0.3, 1] as const;
 export const playfulEase = [0.34, 1.56, 0.64, 1] as const;
 
-// Hero section - used by page.tsx
-export const heroHeadline = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    filter: 'blur(12px)',
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 1.0,
-      delay: 0.2,
-      ease: elegantEase,
-    },
-  },
-};
-
 // Service tier grid - used by ServiceTierGrid.tsx
 export const twoPillarsOverline = {
   hidden: {

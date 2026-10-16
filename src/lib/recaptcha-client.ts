@@ -1,16 +1,17 @@
 /**
  * Client-Side reCAPTCHA Token Generation
  *
- * Provides utilities for generating reCAPTCHA tokens in client components.
- * Handles script loading, readiness checking, and error handling.
+ * The reCAPTCHA v3 script is not loaded site-wide. It loads on demand: forms call
+ * loadRecaptcha() when a visitor first focuses a field, and executeRecaptcha() waits
+ * for it if a submit arrives first. Pages without a form never download it.
  */
 
-/**
- * Check if reCAPTCHA script is loaded and ready
- *
- * @returns true if grecaptcha.execute is available
- */
-export function isRecaptchaReady(): boolean {
+const SCRIPT_ID = 'recaptcha-v3';
+const LOAD_TIMEOUT_MS = 10000;
+
+let loadPromise: Promise<boolean> | null = null;
+
+function isRecaptchaReady(): boolean {
   return (
     typeof window !== 'undefined' &&
     typeof window.grecaptcha !== 'undefined' &&
@@ -19,63 +20,87 @@ export function isRecaptchaReady(): boolean {
 }
 
 /**
- * Execute reCAPTCHA and generate token for form submission
+ * Load the reCAPTCHA v3 script once and resolve when grecaptcha is ready.
+ * Safe to call repeatedly; every caller shares the same load.
+ *
+ * Usage: <form onFocus={() => void loadRecaptcha()}>
+ */
+export function loadRecaptcha(): Promise<boolean> {
+  if (typeof window === 'undefined') return Promise.resolve(false);
+  if (isRecaptchaReady()) return Promise.resolve(true);
+  if (loadPromise) return loadPromise;
+
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  if (!siteKey) {
+    console.error('[reCAPTCHA Client] NEXT_PUBLIC_RECAPTCHA_SITE_KEY not configured');
+    return Promise.resolve(false);
+  }
+
+  loadPromise = new Promise<boolean>((resolve) => {
+    const finish = (ok: boolean) => {
+      clearTimeout(timer);
+      if (!ok) loadPromise = null; // allow a retry on the next attempt
+      resolve(ok);
+    };
+    const timer = setTimeout(() => {
+      console.error('[reCAPTCHA Client] Timed out loading reCAPTCHA');
+      finish(false);
+    }, LOAD_TIMEOUT_MS);
+
+    const onScriptLoad = () => window.grecaptcha?.ready(() => finish(true));
+
+    const existing = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
+    if (existing) {
+      existing.addEventListener('load', onScriptLoad, { once: true });
+      if (window.grecaptcha) onScriptLoad();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = SCRIPT_ID;
+    script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
+    script.async = true;
+    script.addEventListener('load', onScriptLoad, { once: true });
+    script.addEventListener(
+      'error',
+      () => {
+        console.error('[reCAPTCHA Client] Failed to load reCAPTCHA script');
+        script.remove();
+        finish(false);
+      },
+      { once: true }
+    );
+    document.head.appendChild(script);
+  });
+
+  return loadPromise;
+}
+
+/**
+ * Execute reCAPTCHA and generate a token for form submission.
  *
  * @param action - Action name (must match server-side verification)
  * @returns reCAPTCHA token or null on failure
- *
- * Usage Example:
- * ```typescript
- * const recaptchaToken = await executeRecaptcha('submit_quote');
- *
- * if (!recaptchaToken) {
- *   throw new Error('Security verification failed. Please try again.');
- * }
- *
- * // Include token in API request
- * const response = await fetch('/api/submit-quote', {
- *   method: 'POST',
- *   body: JSON.stringify({
- *     ...formData,
- *     recaptchaToken,
- *   }),
- * });
- * ```
  */
-export async function executeRecaptcha(
-  action: string
-): Promise<string | null> {
+export async function executeRecaptcha(action: string): Promise<string | null> {
   try {
-    // Check if reCAPTCHA script is loaded
-    if (!isRecaptchaReady()) {
-      console.error(
-        '[reCAPTCHA Client] grecaptcha not loaded. Ensure reCAPTCHA script is included in layout.'
-      );
-      return null;
-    }
-
-    // Get site key from environment
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
     if (!siteKey) {
-      console.error(
-        '[reCAPTCHA Client] NEXT_PUBLIC_RECAPTCHA_SITE_KEY not configured'
-      );
+      console.error('[reCAPTCHA Client] NEXT_PUBLIC_RECAPTCHA_SITE_KEY not configured');
       return null;
     }
 
-    // Execute reCAPTCHA and generate token
-    const token = await safeExecuteRecaptcha(siteKey, action);
+    const ready = await loadRecaptcha();
+    if (!ready || !window.grecaptcha) {
+      console.error('[reCAPTCHA Client] reCAPTCHA unavailable');
+      return null;
+    }
 
+    const token = await window.grecaptcha.execute(siteKey, { action });
     if (!token || token.trim().length === 0) {
       console.error('[reCAPTCHA Client] Empty token returned');
       return null;
     }
-
-    console.log('[reCAPTCHA Client] Token generated successfully:', {
-      action,
-      tokenLength: token.length,
-    });
 
     return token;
   } catch (error) {
@@ -85,54 +110,6 @@ export async function executeRecaptcha(
     });
     return null;
   }
-}
-
-/**
- * Wait for reCAPTCHA script to load
- *
- * @param timeout - Maximum wait time in milliseconds (default: 5000)
- * @returns Promise that resolves when reCAPTCHA is ready
- *
- * Usage Example:
- * ```typescript
- * await waitForRecaptcha();
- * const token = await executeRecaptcha('submit_quote');
- * ```
- */
-export async function waitForRecaptcha(timeout = 5000): Promise<boolean> {
-  const startTime = Date.now();
-
-  return new Promise((resolve) => {
-    const checkReady = () => {
-      if (isRecaptchaReady()) {
-        resolve(true);
-        return;
-      }
-
-      if (Date.now() - startTime >= timeout) {
-        console.error('[reCAPTCHA Client] Timeout waiting for script to load');
-        resolve(false);
-        return;
-      }
-
-      setTimeout(checkReady, 100);
-    };
-
-    checkReady();
-  });
-}
-
-/**
- * Safe execute reCAPTCHA (handles undefined gracefully)
- */
-async function safeExecuteRecaptcha(
-  siteKey: string,
-  action: string
-): Promise<string> {
-  if (!window.grecaptcha) {
-    throw new Error('grecaptcha not available');
-  }
-  return await window.grecaptcha.execute(siteKey, { action });
 }
 
 // Extend Window interface for TypeScript
