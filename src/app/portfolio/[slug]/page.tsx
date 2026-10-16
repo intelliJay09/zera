@@ -102,7 +102,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           {
             '@type': 'Service',
             name: study.service.name,
-            url: `${SITE_URL}${study.service.href}`,
+            ...(study.service.href ? { url: `${SITE_URL}${study.service.href}` } : {}),
             provider: zera,
           },
           ...(study.event

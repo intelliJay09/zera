@@ -128,13 +128,19 @@ export default function CaseStudyClient({ study, otherStudies }: CaseStudyClient
               Visit {study.liveUrl.label}
               <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
             </a>
-            <Link
-              href={study.service.href}
-              className="group inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 hover:text-copper-800 transition-colors"
-            >
-              {study.service.name}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+            {study.service.href ? (
+              <Link
+                href={study.service.href}
+                className="group inline-flex items-center gap-2 text-sm font-medium tracking-brand-label uppercase text-copper-700 hover:text-copper-800 transition-colors"
+              >
+                {study.service.name}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+            ) : (
+              <span className="text-sm font-medium tracking-brand-label uppercase text-copper-700">
+                {study.service.name}
+              </span>
+            )}
           </motion.div>
         </div>
       </section>

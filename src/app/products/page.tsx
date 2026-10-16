@@ -144,7 +144,7 @@ export default function ProductsPage() {
               size="default"
               className="w-fit bg-copper-600 hover:bg-copper-700 text-cream-50 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Link href="/contact">Book Your Systems Audit</Link>
+              <Link href="/systems-audit">Book Your Systems Audit</Link>
             </Button>
           </motion.div>
         </motion.div>
@@ -383,7 +383,7 @@ export default function ProductsPage() {
               size="default"
               className="w-fit bg-cream-50 text-copper-700 hover:bg-cream-100 shadow-xl"
             >
-              <Link href="/contact">Book Your Systems Audit</Link>
+              <Link href="/systems-audit">Book Your Systems Audit</Link>
             </Button>
           </motion.div>
         </div>

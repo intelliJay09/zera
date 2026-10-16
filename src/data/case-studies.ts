@@ -55,7 +55,8 @@ export interface CaseStudy {
   status: string;
   service: {
     name: string;
-    href: string;
+    /** Product page for the service; omitted when the work sits outside the three tiers. */
+    href?: string;
   };
   liveUrl: {
     href: string;
@@ -219,7 +220,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     location: 'Accra, Ghana',
     year: '2026',
     status: 'Live',
-    service: { name: 'Branding & Design', href: '/solutions/branding-design' },
+    service: { name: 'Branding & Design' },
     liveUrl: { href: 'https://ab.zerahq.com', label: 'ab.zerahq.com' },
     seoTitle: 'Allure Bloom: A Luxury Beauty Rebrand',
     seoDescription:

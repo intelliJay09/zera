@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { Suspense } from 'react';
 import ContactPageContent from './ContactPageContent';
 import { SITE_URL } from '@/lib/site';
 
@@ -13,19 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return (
-    <Suspense
-      fallback={
-        <main className="min-h-screen bg-near-black pt-32 pb-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <h1 className="font-display text-4xl font-bold uppercase text-white sm:text-5xl mb-6 tracking-brand-header">
-              LOADING...
-            </h1>
-          </div>
-        </main>
-      }
-    >
-      <ContactPageContent />
-    </Suspense>
-  );
+  // No Suspense boundary: nothing here reads search params, and a boundary made the
+  // static HTML paint a "LOADING..." fallback before the page.
+  return <ContactPageContent />;
 }

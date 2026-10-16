@@ -96,8 +96,19 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/waas-plans',
-        destination: '/solutions',
+        destination: '/products',
         permanent: true, // 301 redirect
+      },
+      // The Solutions section was retired in favour of the three product tiers
+      {
+        source: '/solutions',
+        destination: '/products',
+        permanent: true,
+      },
+      {
+        source: '/solutions/:path*',
+        destination: '/products',
+        permanent: true,
       },
       {
         source: '/checkout',

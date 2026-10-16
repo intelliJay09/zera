@@ -1,4 +1,4 @@
-// Company-wide figures, shown on the homepage and /solutions. Edit them here only.
+// Company-wide figures, shown on the homepage. Edit them here only.
 
 export interface CompanyStat {
   number: string;

@@ -326,13 +326,13 @@ export default function StrategySessionForm() {
           </p>
         </div>
         <div className="pt-2">
-          <a
-            href="/solutions"
+          <Link
+            href="/products"
             className="inline-flex items-center gap-2 bg-copper-600 hover:bg-copper-700 text-white font-medium text-sm tracking-brand-label uppercase px-8 py-4 rounded-sm transition-all duration-300 group"
           >
-            <span>Explore ZERA Solutions</span>
+            <span>Explore the Products</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-          </a>
+          </Link>
         </div>
         <div className="border-t border-copper-500/20 pt-4">
           <Link href="/" className="text-xs text-white/60 hover:text-white/80 transition-colors">

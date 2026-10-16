@@ -22,11 +22,6 @@ export default function HeaderWrapper() {
     '/products/digital-hq',
     '/products/growth-system',
     '/products/market-monopoly',
-    '/solutions',
-    '/solutions/social-media-management',
-    '/solutions/brand-development',
-    '/solutions/software-development',
-    '/solutions/scale',
   ];
 
   const isLightHeader = darkBackgroundPages.includes(pathname || '');
