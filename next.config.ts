@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
       "img-src 'self' data: blob: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com",
-      "connect-src 'self' https://api.paystack.co https://api.frankfurter.dev https://www.googleapis.com https://oauth2.googleapis.com https://www.google.com https://cal.com https://app.cal.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com",
+      "connect-src 'self' https://api.paystack.co https://www.googleapis.com https://oauth2.googleapis.com https://www.google.com https://cal.com https://app.cal.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com",
       "frame-src 'self' https://cal.com https://app.cal.com https://checkout.paystack.com https://www.google.com",
       "form-action 'self'",
       "base-uri 'self'",
