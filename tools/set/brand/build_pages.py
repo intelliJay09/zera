@@ -45,12 +45,12 @@ body{{background:#f6f2ea;font-family:Lato,sans-serif;color:{INK}}}
 .bk{{position:absolute;left:8px;right:8px;background:#e6ece6;border-left:10px solid {GREEN};border-radius:12px;padding:16px 22px;overflow:hidden}}
 .bk b{{display:block;font-size:32px}} .bk span{{font-size:28px;color:#555}}
 .bk.new{{background:#f3e7cf;border-left-color:{BRASS}}} .bk em{{display:block;font-style:normal;font-size:24px;color:#8a6a32;margin-top:6px;font-weight:700;letter-spacing:.04em}}
-.toast{{position:absolute;right:90px;bottom:70px;width:980px;background:{INK};color:#fff;border-radius:28px;padding:34px 42px;box-shadow:0 30px 80px rgba(0,0,0,.35)}}
-.toast small{{font-size:26px;color:{BRASS};letter-spacing:.14em;font-weight:700}} .toast p{{font-size:38px;line-height:1.3;margin:12px 0 0}}
+.toast{{position:absolute;right:80px;bottom:70px;width:1320px;background:{INK};color:#fff;border-radius:36px;padding:46px 56px;box-shadow:0 30px 80px rgba(0,0,0,.35)}}
+.toast small{{font-size:36px;color:{BRASS};letter-spacing:.14em;font-weight:700}} .toast p{{font-size:58px;line-height:1.25;margin:16px 0 0;font-weight:700}}
 ''', f'''<div class="top"><div class="wm">SIKA &amp; SHEA</div><div class="st">Bookings<b>23:14</b></div></div>
 <div class="sub"><h1>Friday 17 October</h1><p>Booked since closing: <b>3</b></p></div>
 <div class="grid"><div class="hours">{hours}</div>{cols}</div>
-<div class="toast"><small>NEW BOOKING · 23:14</small><p>Selasi G. booked a bridal trial with Esi, Friday 11:30. Deposit of GHS 300 paid.</p></div>'''))
+<div class="toast"><small>NEW BOOKING · 23:14</small><p>Selasi G. booked a bridal trial with Esi.<br>Friday at 11:30, deposit of GHS 300 paid.</p></div>'''))
 
 # ---------------------------------------------------------------- the month's report, on the same desktop in the morning
 bars = [2, 1, 1, 0, 0, 1, 2, 3, 2, 3, 4, 3, 2, 3, 4, 5, 6, 9, 11, 12, 10, 8, 6, 4]  # bookings by hour of day, 00..23

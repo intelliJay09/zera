@@ -466,17 +466,115 @@ card = plane('card', 0.089, 0.051, (0.25, 0.163, TOP + 0.045), (math.radians(70)
 prop('ceramic_vase_02', (-0.98, 0.18, TOP), scale=0.8)
 prop('anthurium_botany_01', (-0.98, 0.18, TOP + 0.2), scale=0.3)
 # ================================================================= the street outside
-plane('pavement', 30, 14, (0, Y0 - 7.1, -0.12), mat=M['pavement'])
-facade = plane('facade', 40, 7, (0, Y0 - 14, 2.5), (math.pi / 2, 0, 0))
-fm = bpy.data.materials.new('facade'); fm.use_nodes = True; nt = fm.node_tree
-nt.nodes.remove(nt.nodes['Principled BSDF']); br = nt.nodes.new('ShaderNodeTexBrick'); em = nt.nodes.new('ShaderNodeEmission'); tc = nt.nodes.new('ShaderNodeTexCoord')
-br.inputs['Color1'].default_value = (0.02, 0.02, 0.025, 1); br.inputs['Color2'].default_value = ((1.0, 0.6, 0.32, 1) if NIGHT else (0.35, 0.33, 0.3, 1))
-br.inputs['Mortar'].default_value = ((0.004, 0.004, 0.005, 1) if NIGHT else (0.55, 0.5, 0.45, 1)); br.inputs['Scale'].default_value = 0.35
-br.inputs['Mortar Size'].default_value = 0.35; br.inputs['Bias'].default_value = -0.55; br.offset = 0.0; br.squash = 1.0
-br.inputs['Brick Width'].default_value = 1.0; br.inputs['Row Height'].default_value = 0.8
-nt.links.new(tc.outputs['Object'], br.inputs['Vector']); nt.links.new(br.outputs['Color'], em.inputs['Color'])
-em.inputs['Strength'].default_value = 2.0 if NIGHT else 1.0
-nt.links.new(em.outputs[0], nt.nodes['Material Output'].inputs['Surface']); assign(facade, fm)
+# Pavement, kerb and road, then a two-storey row of shops across the road. Seen through the glass from the counter,
+# the view reaches about 5 m up the far facades, so the ground floors carry the detail.
+PV, RD, FAR = Y0 - 3.4, Y0 - 10.4, Y0 - 13.0  # near kerb line, far kerb line, far building line
+M['asphalt'] = pbr('asphalt', os.path.join(ASSETS, 'textures', 'asphalt_02'), scale=0.25, tint=(0.8, 0.8, 0.8))
+M['kerb'] = solid('kerb', srgb('#8f8a82'), rough=0.85)
+plane('pavement_near', 30, Y0 - 0.15 - PV, (0, (PV + Y0 - 0.15) / 2, -0.12), mat=M['pavement'])
+plane('road', 30, PV - RD, (0, (PV + RD) / 2, -0.27), mat=M['asphalt'])
+plane('pavement_far', 30, RD - FAR, (0, (RD + FAR) / 2, -0.12), mat=M['pavement'])
+for nm, y in (('kerb_near', PV), ('kerb_far', RD)):
+    box(nm, (30, 0.18, 0.17), (0, y, -0.205), M['kerb'], bev=0.01)
+
+def window_mat(name, lit):
+    """Glass with a room behind it: warm and lit, or dark and reflecting the sky."""
+    if lit:
+        return solid(name, (0.02, 0.02, 0.02), rough=0.05, coat=1.0, emit=(1.0, 0.72, 0.45), strength=lit)
+    return solid(name, (0.012, 0.014, 0.018), rough=0.04, coat=1.0)
+
+def building(x0, x1, colour, floors, bays, ground, lit):
+    """A plastered block with recessed windows. ground(i, bx0, bx1) dresses ground-floor bay i."""
+    wall = pbr(f'render_{x0}', os.path.join(ASSETS, 'textures', 'plastered_wall_04'), scale=0.35, color=srgb(colour), normal=0.5)
+    GH, FH, D = 3.8, 3.2, 0.25
+    top = GH + FH * (floors - 1) + 0.6
+    w = (x1 - x0) / bays
+    # upper floors: piers between windows, spandrels above and below, glass set back
+    for f in range(1, floors):
+        z0 = GH + FH * (f - 1)
+        box(f'slab_{x0}_{f}', (x1 - x0 + 0.1, 0.4, 0.22), ((x0 + x1) / 2, FAR + 0.15, z0), wall)  # floor band
+        for i in range(bays):
+            bx0 = x0 + i * w; cx = bx0 + w / 2; ww, wh, sill = min(1.6, w - 0.8), 1.5, z0 + 0.95
+            box(f'pier_{x0}_{f}_{i}', ((w - ww) / 2, D, FH), (bx0 + (w - ww) / 4, FAR - D / 2, z0 + FH / 2), wall)
+            box(f'pier2_{x0}_{f}_{i}', ((w - ww) / 2, D, FH), (bx0 + w - (w - ww) / 4, FAR - D / 2, z0 + FH / 2), wall)
+            box(f'below_{x0}_{f}_{i}', (ww, D, sill - z0), (cx, FAR - D / 2, z0 + (sill - z0) / 2), wall)
+            box(f'above_{x0}_{f}_{i}', (ww, D, z0 + FH - sill - wh), (cx, FAR - D / 2, (sill + wh + z0 + FH) / 2), wall)
+            box(f'sill_{x0}_{f}_{i}', (ww + 0.1, 0.08, 0.05), (cx, FAR + 0.04, sill - 0.025), M['kerb'])
+            plane(f'win_{x0}_{f}_{i}', ww, wh, (cx, FAR - D + 0.06, sill + wh / 2), (math.pi / 2, 0, math.pi),
+                  mat=window_mat(f'winm_{x0}_{f}_{i}', lit(f, i)))
+            for k in (-1, 0, 1):  # window frame bars
+                box(f'mull_{x0}_{f}_{i}_{k}', (0.04, 0.05, wh), (cx + k * ww / 2, FAR - D + 0.07, sill + wh / 2), M['frame'])
+    box(f'parapet_{x0}', (x1 - x0, D, 0.6), ((x0 + x1) / 2, FAR - D / 2, top - 0.3), wall)
+    # the building's body: solid behind the 3 m deep shops, and over them above the ground floor
+    box(f'core_{x0}', (x1 - x0, 6.0, top), ((x0 + x1) / 2, FAR - 6.05, top / 2), wall)
+    box(f'core_up_{x0}', (x1 - x0, 3.05 - D, top - GH + 0.9), ((x0 + x1) / 2, FAR - D - (3.05 - D) / 2, (top + GH - 0.9) / 2), wall)
+    # ground floor: shop bays under a fascia band
+    box(f'fascia_{x0}', (x1 - x0, D + 0.1, 0.9), ((x0 + x1) / 2, FAR - D / 2 + 0.05, GH - 0.45), wall)
+    for i in range(bays):
+        bx0 = x0 + i * w
+        box(f'gpier_{x0}_{i}', (0.35, D, GH - 0.9), (bx0 + 0.175, FAR - D / 2, (GH - 0.9) / 2), wall)
+        ground(i, bx0 + 0.35, bx0 + w - (0.35 if i == bays - 1 else 0), GH - 0.9)
+    box(f'gpier_{x0}_end', (0.35, D, GH - 0.9), (x1 - 0.175, FAR - D / 2, (GH - 0.9) / 2), wall)
+    return GH
+
+def sign(name, body, x, z, w, bg, ink, lit=0.0):
+    panel = box(f'sign_{name}', (w, 0.06, 0.55), (x, FAR + 0.09, z), solid(f'signm_{name}', srgb(bg), rough=0.5,
+                emit=srgb(bg) if lit else None, strength=lit))
+    text(f'signt_{name}', body, 'Lato-Bold.ttf', 0.26, (x, FAR + 0.125, z), (math.pi / 2, 0, math.pi),
+         solid(f'signi_{name}', srgb(ink), rough=0.5, emit=srgb(ink) if lit else None, strength=lit * 1.5), extrude=0.01, spacing=1.15)
+
+def shop_shell(bx0, bx1, h, colour):
+    cx, w = (bx0 + bx1) / 2, bx1 - bx0
+    m = solid(f'shopwall_{bx0:.1f}', srgb(colour), rough=0.8)
+    for side, x in (('l', bx0 - 0.02), ('r', bx1 + 0.02)):
+        box(f'shop_side_{side}_{bx0:.1f}', (0.04, 3.0, h + 0.12), (x, FAR - 1.5, (h - 0.12) / 2), m)
+    box(f'shop_ceiling_{bx0:.1f}', (w + 0.08, 3.0, 0.02), (cx, FAR - 1.5, h - 0.11), solid(f'shopceil_{bx0:.1f}', srgb('#d8d2c8'), rough=0.9))
+
+STOCK = [solid(f'stock_{h}', srgb(h), rough=0.7) for h in ('#9b2f2a', '#2f4f7a', '#d9b44a', '#e8e2d4', '#3f6b4a', '#7a4a8c', '#c46a2b')]
+
+def shutter_bay(open_):
+    def dress(i, bx0, bx1, h):
+        cx, w = (bx0 + bx1) / 2, bx1 - bx0
+        shop_shell(bx0, bx1, h, '#cfc6b8')
+        box(f'shop_back_{bx0:.1f}', (w, 0.05, h), (cx, FAR - 3.0, h / 2), solid(f'shopback_{bx0:.1f}', srgb('#3a342c'), rough=0.8))
+        box(f'shop_floor_{bx0:.1f}', (w, 3.0, 0.02), (cx, FAR - 1.5, -0.11), M['kerb'])
+        if open_:
+            for k in range(3):  # stocked shelving inside
+                box(f'shop_shelf_{bx0:.1f}_{k}', (w - 0.4, 0.4, 0.03), (cx, FAR - 2.75, 0.5 + k * 0.6), M['walnut'])
+                for j in range(int((w - 0.6) / 0.32)):  # stock: boxes and bolts of cloth in a few colours
+                    c = STOCK[(i * 7 + k * 3 + j) % len(STOCK)]; hgt = 0.18 + 0.12 * ((j + k) % 3) / 2
+                    box(f'stock_{bx0:.1f}_{k}_{j}', (0.26, 0.3, hgt), (bx0 + 0.45 + j * 0.32, FAR - 2.75, 0.515 + k * 0.6 + hgt / 2), c)
+            light(f'shop_lamp_{bx0:.1f}', 'AREA', (cx, FAR - 1.5, h - 0.05), 120, color=(1.0, 0.93, 0.85), size=w * 0.6, size_y=0.3, aim=(cx, FAR - 1.5, 0))
+        else:
+            r, objs = prop('rollershutter_door', (cx, FAR - 0.12, -0.12), rot_z=math.pi, keep=lambda n: 'graffiti' not in n)
+            mn, mx = bbox(objs); r.scale = (w / (mx.x - mn.x), 1, h / (mx.z - mn.z))
+            bpy.context.view_layer.update(); mn, mx = bbox(objs); r.location += Vector((cx - (mn.x + mx.x) / 2, 0, -0.12 - mn.z))
+    return dress
+
+def glass_bay(lit):
+    def dress(i, bx0, bx1, h):
+        cx, w = (bx0 + bx1) / 2, bx1 - bx0
+        shop_shell(bx0, bx1, h, '#e9ece6')
+        plane(f'shopglass_{bx0:.1f}', w, h, (cx, FAR - 0.15, h / 2 - 0.12), (math.pi / 2, 0, math.pi), mat=window_mat(f'shopglassm_{bx0:.1f}', 0))
+        box(f'shopframe_{bx0:.1f}', (w, 0.06, 0.06), (cx, FAR - 0.13, h - 0.12), M['frame'])
+        box(f'shop_back_{bx0:.1f}', (w, 0.05, h), (cx, FAR - 3.0, h / 2), solid(f'shopback_{bx0:.1f}', srgb('#e9ece6'), rough=0.7))
+        for k in range(4):
+            box(f'shop_shelf_{bx0:.1f}_{k}', (w - 0.3, 0.35, 0.03), (cx, FAR - 2.8, 0.4 + k * 0.45), solid(f'shelfw_{bx0:.1f}', srgb('#f4f4f2'), rough=0.6))
+        if lit:
+            light(f'shop_lamp_{bx0:.1f}', 'AREA', (cx, FAR - 1.5, h - 0.15), lit, color=(0.92, 0.97, 1.0), size=w * 0.7, size_y=0.6, aim=(cx, FAR - 1.5, 0))
+    return dress
+
+# across the road, left to right as seen from the counter (+X is on the camera's left)
+LIT_A = {(1, 0): 3.5, (1, 2): 2.5} if NIGHT else {}
+LIT_B = {(1, 1): 3.0} if NIGHT else {}
+building(-3.0, 4.2, '#e6e1d8', 2, 2, glass_bay(220 if NIGHT else 0), lambda f, i: LIT_B.get((f, i), 0))   # pale block, a pharmacy
+sign('pharmacy', 'PHARMACY', -1.2, 3.35, 3.0, '#1f6b3a', '#ffffff', lit=6.0 if NIGHT else 0.0)
+building(-10.2, -3.0, '#cfa978', 2, 2, shutter_bay(not NIGHT), lambda f, i: LIT_A.get((f, i), 0))         # ochre block, two shops
+sign('tailor', 'TAILORING', -4.8, 3.35, 2.6, '#f2ede4', '#22352B')
+building(-17.0, -10.2, '#b9b3a8', 2, 2, shutter_bay(not NIGHT), lambda f, i: 0)
+for x in (-1.2, -4.8, -8.4):  # split-unit condensers under the upper windows
+    prop('exterior_aircon_unit', (x, FAR + 0.25, 4.15), rot_z=math.pi, scale=0.5, keep=lambda n: 'rusted' not in n)
+prop('covered_car', (-6.0, RD + 1.1, -0.27), rot_z=math.pi / 2)
 prop('street_lamp_01', (-2.0, Y0 - 2.2, -0.12), rot_z=math.pi / 2)
 
 # ================================================================= light
@@ -485,15 +583,19 @@ if NIGHT:
     light('street_lamp', 'SPOT', (-2.0, Y0 - 2.0, 4.0), farg('--lamp', 2500), color=(1.0, 0.62, 0.32), size=0.15, aim=(-0.4, Y0 + 1.5, 0.6), spot=(95, 0.6))
     glow = light('shop_glow', 'AREA', (0.0, Y0 - 0.6, 2.6), 12, color=(0.55, 0.65, 1.0), size=3.0, size_y=1.0, aim=(0.5, 0.0, 0.8))
     glow.visible_camera = False; glow.visible_glossy = False; glow.visible_transmission = False
+    # the lamp on the far pavement, above the view, washing the shopfronts across the road
+    light('far_lamp', 'SPOT', (-5.0, RD - 0.4, 6.5), farg('--far-lamp', 1800), color=(1.0, 0.62, 0.32), size=0.15, aim=(-5.0, FAR, 1.0), spot=(110, 0.7))
     for i, (px, py) in enumerate(PEND):
         pass  # pendants off: the studio is closed
 else:
     sun = light('sun', 'SUN', (0, 0, 10), farg('--sun', 16.0), color=(1.0, 0.9, 0.76), angle=1.2)
-    sun.rotation_euler = (Vector((farg('--sun-x', 0.55), farg('--sun-y', 1.0), -farg('--sun-z', 0.36))) * -1).to_track_quat('Z', 'Y').to_euler()
+    sun.rotation_euler = (Vector((farg('--sun-x', 0.55), farg('--sun-y', 1.0), -farg('--sun-z', 0.43))) * -1).to_track_quat('Z', 'Y').to_euler()
     for i, (px, py) in enumerate(PEND):
         light(f'downlight_{i}', 'SPOT', (px, py, H - 0.02), farg('--downlight', 60), color=(1.0, 0.8, 0.6), size=0.03, aim=(px, py, 0), spot=(60, 0.5))
-# a ceiling wall-washer on the feature wall (left on a timer at night, as display lights usually are)
-light('wall_wash', 'SPOT', (LOGO[0], Y0 + 0.7, H - 0.05), farg('--wash', 45 if NIGHT else 140), color=(1.0, 0.8, 0.6), size=0.04, aim=(LOGO[0], Y0, 1.3), spot=(70, 0.9))
+# a recessed linear wall-washer along the feature wall (on a timer at night, as display lights usually are).
+# Its length spreads the standoff letters' shadows into a soft shade instead of a second, ghost logo.
+light('wall_wash', 'AREA', ((X1 + GX1) / 2, Y0 + 0.3, H - 0.02), farg('--wash', 40 if NIGHT else 110), color=(1.0, 0.8, 0.6),
+      size=X1 - GX1 - 0.3, size_y=0.06, aim=((X1 + GX1) / 2, Y0 - 0.2, 0.9))
 light('portal', 'AREA', ((GX0 + GX1) / 2, GY + 0.05, (GZ0 + GZ1) / 2), 1, size=GX1 - GX0, size_y=GZ1 - GZ0, aim=((GX0 + GX1) / 2, 0, (GZ0 + GZ1) / 2)).data.cycles.is_portal = True
 
 # ================================================================= camera: behind the receptionist's seat, looking straight down the room
