@@ -3,9 +3,9 @@ Builds the reception of Sika & Shea, a fictional beauty studio in East Legon, an
 
   blender -b -P counter_scene.py -- --time night|morning --mode preview|final [--out path] [--samples n] [--res WxH]
 
-The camera stands where the receptionist stands, so every screen faces it the way it would in life.
-Night: the studio is closed; the booking tablet that lives on the counter takes a booking at 23:14.
-Morning: the lights are on and the owner's laptop is open on the month's report.
+The reception desktop sits square to the counter, facing the receptionist's seat; the camera looks over that seat.
+Night: the studio is closed; the desktop, left on at reception, takes a booking at 23:14.
+Morning: the lights are on and the same desktop shows the month's report beside the owner's coffee.
 Props and surfaces are Poly Haven (CC0). Screens and printed matter come from brand/pages (HTML).
 """
 import bpy, bmesh, math, os, sys, json
@@ -417,66 +417,54 @@ for i, (px, py) in enumerate(PEND):
     lathe(f'downlight_can_{i}', [(0, H - 0.004), (0.045, H - 0.004), (0.045, H)], mat=M['frame'], cap_bottom=False)
     lathe(f'downlight_lens_{i}', [(0, H - 0.006), (0.032, H - 0.006)], mat=emitter(f'downlight_{i}', (1.0, 0.82, 0.62), 0 if NIGHT else 25), cap_bottom=False, cap_top=False)
 
-# ================================================================= the device on the counter, facing the receptionist
-DEV = (farg('--dev-x', -0.55), farg('--dev-y', 0.36), TOP)
-CAM = varg('--cam', '-1.3,1.3,1.52')
-face_yaw = math.atan2(CAM[0] - DEV[0], -(CAM[1] - DEV[1]))  # yaw that turns a -Y-facing screen toward the camera
+# ================================================================= the reception desktop, square to the counter
+# A 24-inch all-in-one (23.5" 16:9 panel), the size most reception desks carry. It faces the receptionist's seat.
+DEV = (farg('--dev-x', -0.35), farg('--dev-y', 0.22), TOP)
 
-def tablet_on_stand():
-    root = link(bpy.data.objects.new('tablet_stand', None))
-    base = slab('stand_base', 0.13, 0.11, 0.008, 0.02, bev=0.002, mat=M['alu']); base.parent = root
-    arm = box('stand_arm', (0.05, 0.012, 0.12), (0, 0.05, 0.064), M['alu'], bev=0.003, rot=(math.radians(-10), 0, 0)); arm.parent = root
-    tilt = link(bpy.data.objects.new('tablet_tilt', None)); tilt.parent = root
-    tilt.location = (0, 0.035, 0.14); tilt.rotation_euler = (math.radians(72), 0, 0)
-    W, D, T = 0.2476, 0.1785, 0.0059
-    body = slab('tablet_body', W, D, T, 0.012, bev=0.0015, mat=M['alu_dark']); body.parent = tilt; body.location = (0, 0, -T)
-    face = plane('tablet_face', W - 0.002, D - 0.002, (0, 0, 0.0002), mat=M['black_glass']); face.parent = tilt
-    scr = plane('tablet_screen', W - 0.016, (W - 0.016) * 1668 / 2388, (0, 0, 0.0004),
-                mat=textured('tablet_screen', os.path.join(PAGES, 'tablet.png'), emit=farg('--screen', 3.0), rough=0.1, coat=1.0), uv='fit')
+def desktop(page):
+    """Built facing -Y like a sheet of paper held up to the viewer, then turned to face the staff side (+Y)."""
+    root = link(bpy.data.objects.new('desktop', None))
+    foot = slab('desktop_foot', 0.17, 0.15, 0.007, 0.012, bev=0.002, mat=M['alu']); foot.parent = root; foot.location = (0, 0.01, 0)
+    arm = box('desktop_arm', (0.09, 0.012, 0.29), (0, 0.045, 0.152), M['alu'], bev=0.003, rot=(math.radians(11.7), 0, 0)); arm.parent = root
+    SW, SH = 0.520, 0.2925                      # active area
+    BS, BT, BC, T = 0.0135, 0.016, 0.035, 0.0115  # side, top and chin bezels, panel thickness
+    PW, PH = SW + 2 * BS, SH + BT + BC
+    tilt = link(bpy.data.objects.new('desktop_tilt', None)); tilt.parent = root
+    tilt.location = (0, 0, 0.095 + PH / 2); tilt.rotation_euler = (math.radians(85), 0, 0)
+    body = slab('desktop_panel', PW, PH, T, 0.008, bev=0.0015, mat=M['alu_dark']); body.parent = tilt; body.location = (0, 0, -T)
+    face = plane('desktop_face', PW - 0.002, PH - 0.002, (0, 0, 0.0002), mat=M['black_glass']); face.parent = tilt
+    scr = plane('desktop_screen', SW, SH, (0, (BC - BT) / 2, 0.0004),
+                mat=textured('desktop_screen', os.path.join(PAGES, page + '.png'), emit=farg('--screen', 3.0), rough=0.1, coat=1.0), uv='fit')
     scr.parent = tilt
-    root.location = DEV; root.rotation_euler = (0, 0, face_yaw)
-    return root
-
-def laptop():
-    root = link(bpy.data.objects.new('laptop', None))
-    W, D, T, R = 0.312, 0.221, 0.0155, 0.012
-    base = slab('laptop_base', W, D, T, R, bev=0.0035, mat=M['alu']); base.parent = root
-    box('laptop_well', (0.272, 0.112, 0.001), (0, -0.028, T + 0.0003), M['key']).parent = root
-    pitch, ks = 0.0192, 0.0165
+    # keyboard and mouse on the receptionist's side
+    KY, pitch, ks = -0.3, 0.0192, 0.0165
+    box('keyboard', (0.285, 0.118, 0.007), (0, KY, 0.0035), M['alu'], bev=0.002).parent = root
     for r in range(6):
         for c in range(14):
             if r == 0 and 5 <= c <= 9: continue
-            w = ks if not (r == 0 and c == 4) else pitch * 6 - (pitch - ks)
-            x = (c - 6.5) * pitch if not (r == 0 and c == 4) else (6.5 - 6.5) * pitch
-            box(f'key_{r}_{c}', (w, ks, 0.0012), (x, -0.028 - (r - 2.5) * pitch, T + 0.0012), M['key'], bev=0.0004).parent = root
-    box('trackpad', (0.13, 0.08, 0.0004), (0, 0.058, T + 0.0002), M['alu_dark']).parent = root
-    hinge = link(bpy.data.objects.new('hinge', None)); hinge.parent = root
-    hinge.location = (0, -D / 2 + 0.006, T); hinge.rotation_euler = (math.radians(farg('--lid', 105)), 0, 0)
-    lid = slab('laptop_lid', W, D, 0.0045, R, bev=0.002, mat=M['alu']); lid.parent = hinge; lid.location = (0, D / 2 - 0.006, 0)
-    face = plane('laptop_face', W - 0.012, D - 0.012, (0, D / 2 - 0.006, -0.0002), (math.pi, 0, 0), mat=M['black_glass']); face.parent = hinge
-    sw = W - 0.026
-    scr = plane('laptop_screen', sw, sw * 1600 / 2560, (0, D / 2 - 0.006 + 0.004, -0.0004), (math.pi, 0, math.pi),
-                mat=textured('laptop_screen', os.path.join(PAGES, 'report.png'), emit=farg('--screen', 3.0), rough=0.1, coat=1.0), uv='fit')
-    scr.parent = hinge
-    root.location = DEV; root.rotation_euler = (0, 0, face_yaw + math.pi)
+            space = r == 0 and c == 4
+            w = pitch * 6 - (pitch - ks) if space else ks
+            x = 0.0 if space else (c - 6.5) * pitch
+            box(f'key_{r}_{c}', (w, ks, 0.0012), (x, KY + (r - 2.5) * pitch, 0.0076), M['key'], bev=0.0004).parent = root
+    mouse = slab('mouse', 0.057, 0.11, 0.012, 0.0265, bev=0.004, mat=M['alu']); mouse.parent = root; mouse.location = (0.24, KY + 0.01, 0)
+    root.location = DEV; root.rotation_euler = (0, 0, math.pi)
     return root
 
-if NIGHT:
-    tablet_on_stand()
-else:
-    laptop()
-    # the owner's coffee
+desktop('bookings' if NIGHT else 'report')
+if not NIGHT:
+    # the owner's coffee, to the right of the keyboard
+    MUG = (DEV[0] - 0.36, DEV[1] + 0.26, TOP)
     mug = lathe('mug', [(0, 0), (0.036, 0), (0.04, 0.006), (0.041, 0.09), (0.037, 0.092), (0.035, 0.08)], mat=M['ceramic'], cap_top=False)
-    mug.location = (DEV[0] + 0.3, DEV[1] - 0.02, TOP)
-    cof = lathe('coffee', [(0, 0.074), (0.035, 0.074)], mat=M['coffee'], cap_bottom=False, cap_top=False); cof.location = mug.location
-    bpy.ops.mesh.primitive_torus_add(major_radius=0.026, minor_radius=0.0065, location=(DEV[0] + 0.3 + 0.045, DEV[1] - 0.02, TOP + 0.048), rotation=(math.pi / 2, 0, 0))
+    mug.location = MUG
+    cof = lathe('coffee', [(0, 0.074), (0.035, 0.074)], mat=M['coffee'], cap_bottom=False, cap_top=False); cof.location = MUG
+    bpy.ops.mesh.primitive_torus_add(major_radius=0.026, minor_radius=0.0065, location=(MUG[0] - 0.045, MUG[1], TOP + 0.048), rotation=(math.pi / 2, 0, 0))
     handle = bpy.context.active_object; assign(handle, M['ceramic']); smooth(handle)
 
 # business cards in a brass holder, and a vase with stems
 holder = box('card_holder', (0.1, 0.03, 0.025), (0.25, 0.16, TOP + 0.0125), M['brass'], bev=0.003)
 card = plane('card', 0.089, 0.051, (0.25, 0.163, TOP + 0.045), (math.radians(70), 0, math.pi), mat=textured('card', os.path.join(PAGES, 'card.png'), rough=0.6), uv='fit')
-prop('ceramic_vase_02', (0.78, 0.4, TOP), scale=0.8)
-prop('anthurium_botany_01', (0.78, 0.4, TOP + 0.2), scale=0.3)
+prop('ceramic_vase_02', (-0.98, 0.18, TOP), scale=0.8)
+prop('anthurium_botany_01', (-0.98, 0.18, TOP + 0.2), scale=0.3)
 # ================================================================= the street outside
 plane('pavement', 30, 14, (0, Y0 - 7.1, -0.12), mat=M['pavement'])
 facade = plane('facade', 40, 7, (0, Y0 - 14, 2.5), (math.pi / 2, 0, 0))
@@ -508,13 +496,14 @@ else:
 light('wall_wash', 'SPOT', (LOGO[0], Y0 + 0.7, H - 0.05), farg('--wash', 45 if NIGHT else 140), color=(1.0, 0.8, 0.6), size=0.04, aim=(LOGO[0], Y0, 1.3), spot=(70, 0.9))
 light('portal', 'AREA', ((GX0 + GX1) / 2, GY + 0.05, (GZ0 + GZ1) / 2), 1, size=GX1 - GX0, size_y=GZ1 - GZ0, aim=((GX0 + GX1) / 2, 0, (GZ0 + GZ1) / 2)).data.cycles.is_portal = True
 
-# ================================================================= camera: the receptionist's eye
+# ================================================================= camera: behind the receptionist's seat, looking straight down the room
+CAM = varg('--cam', '0.15,1.85,1.62')
 cd = bpy.data.cameras.new('cam'); cam = link(bpy.data.objects.new('cam', cd)); scene.camera = cam
 cd.lens = farg('--lens', 24); cd.sensor_width = 36
-LOOK = varg('--look', '0.7,-2.4,1.15')
+LOOK = varg('--look', '0.15,-3.0,1.35')
 cam.location = CAM; cam.rotation_euler = (Vector(LOOK) - Vector(CAM)).to_track_quat('-Z', 'Y').to_euler()
 cd.dof.use_dof = True; cd.dof.aperture_fstop = farg('--fstop', 4.0)
-cd.dof.focus_distance = (Vector(CAM) - Vector((DEV[0], DEV[1], TOP + 0.12))).length
+cd.dof.focus_distance = (Vector(CAM) - Vector((DEV[0], DEV[1], TOP + 0.26))).length
 
 bpy.context.view_layer.update()
 if MODE == 'probe':

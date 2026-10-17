@@ -14,14 +14,14 @@ html,body{{margin:0;width:{w}px;height:{h}px;overflow:hidden}}*{{box-sizing:bord
 
 PAGES = []
 
-# ---------------------------------------------------------------- booking tablet, 23:14, the night before
+# ---------------------------------------------------------------- the booking calendar on the reception desktop, 23:14, the night before
 stylists = ['Adwoa', 'Nana Ama', 'Esi']
 blocks = {  # (start hour, length h, client, service, new?)
     'Adwoa': [(9, 4, 'Akua B.', 'Knotless braids'), (13.5, 1.5, 'Dzifa O.', 'Silk press'), (15.5, 2.5, 'Maame S.', 'Locs retwist')],
     'Nana Ama': [(9, 1, 'Efua K.', 'Gel manicure'), (10, 1.5, 'Akosua M.', 'Silk press', True), (12, 1, 'Yaa D.', 'Pedicure'), (14, 1.5, 'Abena T.', 'Facial', True), (16, 1, 'Lamisi A.', 'Gel manicure')],
     'Esi': [(9.5, 1.5, 'Naa K.', 'Facial'), (11.5, 3, 'Selasi G.', 'Bridal trial', True), (15, 1, 'Ama P.', 'Brow shaping'), (16.5, 1.5, 'Kukua E.', 'Hydrafacial')],
 }
-H0, H1, ROWH = 9, 19, 118
+H0, H1, ROWH = 9, 19, 100
 cols = ''
 for s in stylists:
     items = ''
@@ -31,16 +31,16 @@ for s in stylists:
         items += f'<div class="bk{" new" if new else ""}" style="top:{top}px;height:{hh}px"><b>{client}</b><span>{svc}</span>{"<em>Booked overnight</em>" if new else ""}</div>'
     cols += f'<div class="col"><div class="ch">{s}</div><div class="cb">{items}</div></div>'
 hours = ''.join(f'<div class="hr" style="top:{(h - H0) * ROWH}px">{h:02d}:00</div>' for h in range(H0, H1 + 1))
-PAGES.append(page('tablet', 2388, 1668, f'''
+PAGES.append(page('bookings', 2560, 1440, f'''
 body{{background:#f6f2ea;font-family:Lato,sans-serif;color:{INK}}}
 .top{{height:150px;background:{GREEN};color:{CREAM};display:flex;align-items:center;justify-content:space-between;padding:0 70px}}
 .wm{{font-family:Marcellus,serif;font-size:54px;letter-spacing:.16em}}
 .st{{font-size:34px;opacity:.75}} .st b{{font-size:44px;opacity:1;margin-left:24px}}
-.sub{{display:flex;justify-content:space-between;align-items:baseline;padding:44px 70px 22px}}
+.sub{{display:flex;justify-content:space-between;align-items:baseline;padding:36px 70px 18px}}
 .sub h1{{font-size:64px;margin:0;font-weight:700}} .sub p{{margin:0;font-size:34px;color:#6a6a62}} .sub p b{{color:{GREEN}}}
 .grid{{position:relative;margin:0 70px;display:grid;grid-template-columns:150px 1fr 1fr 1fr;gap:22px}}
-.hours{{position:relative;height:{(H1 - H0) * ROWH}px}} .hr{{position:absolute;font-size:26px;color:#9a978e;transform:translateY(-14px)}}
-.ch{{font-size:34px;font-weight:700;padding-bottom:16px;border-bottom:3px solid #e4ddcf;margin-bottom:6px}}
+.hours{{position:relative;margin-top:70px;height:{(H1 - H0) * ROWH}px}} .hr{{position:absolute;font-size:26px;color:#9a978e;transform:translateY(-14px)}}
+.ch{{height:64px;font-size:34px;font-weight:700;border-bottom:3px solid #e4ddcf;margin-bottom:6px}}
 .cb{{position:relative;height:{(H1 - H0) * ROWH}px;background:repeating-linear-gradient(#fff 0,#fff {ROWH - 2}px,#ebe5d9 {ROWH - 2}px,#ebe5d9 {ROWH}px)}}
 .bk{{position:absolute;left:8px;right:8px;background:#e6ece6;border-left:10px solid {GREEN};border-radius:12px;padding:16px 22px;overflow:hidden}}
 .bk b{{display:block;font-size:32px}} .bk span{{font-size:28px;color:#555}}
@@ -52,26 +52,26 @@ body{{background:#f6f2ea;font-family:Lato,sans-serif;color:{INK}}}
 <div class="grid"><div class="hours">{hours}</div>{cols}</div>
 <div class="toast"><small>NEW BOOKING · 23:14</small><p>Selasi G. booked a bridal trial with Esi, Friday 11:30. Deposit of GHS 300 paid.</p></div>'''))
 
-# ---------------------------------------------------------------- the month's report, on the laptop in the morning
+# ---------------------------------------------------------------- the month's report, on the same desktop in the morning
 bars = [2, 1, 1, 0, 0, 1, 2, 3, 2, 3, 4, 3, 2, 3, 4, 5, 6, 9, 11, 12, 10, 8, 6, 4]  # bookings by hour of day, 00..23
 after = lambda h: h >= 19 or h < 9
 mx = max(bars)
 chart = ''.join(f'<div class="b{" a" if after(h) else ""}" style="height:{v / mx * 100:.1f}%"></div>' for h, v in enumerate(bars))
-PAGES.append(page('report', 2560, 1600, f'''
+PAGES.append(page('report', 2560, 1440, f'''
 body{{background:#0f0e0d;color:#f3ebe0;font-family:Lato,sans-serif}}
 .bar{{height:60px;background:#171615;display:flex;align-items:center;padding:0 36px;gap:14px}} .bar i{{width:18px;height:18px;border-radius:50%;background:#3a3836}}
-.w{{padding:100px 150px}}
+.w{{padding:80px 150px}}
 .l{{font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:.22em;color:#B87333}}
 h1{{font-size:118px;line-height:1;margin:26px 0 0;font-weight:700;letter-spacing:-.02em}}
 .s{{font-size:36px;color:rgba(243,235,224,.6);margin-top:20px}}
-.g{{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:90px;border-top:1px solid rgba(243,235,224,.12);padding-top:56px}}
+.g{{display:grid;grid-template-columns:repeat(4,1fr);gap:60px;margin-top:70px;border-top:1px solid rgba(243,235,224,.12);padding-top:56px}}
 .k{{font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.16em;color:rgba(243,235,224,.45);line-height:1.5}}
 .v{{font-size:120px;font-weight:700;margin-top:20px;letter-spacing:-.02em}} .v small{{font-size:44px;font-weight:400;color:rgba(243,235,224,.6);margin-right:12px}}
 .n{{font-size:28px;color:rgba(243,235,224,.5);margin-top:10px}}
-.c{{margin-top:80px}} .ct{{display:flex;justify-content:space-between;font-size:28px;color:rgba(243,235,224,.55)}} .ct b{{color:#B87333;font-weight:400}}
+.c{{margin-top:60px}} .ct{{display:flex;justify-content:space-between;font-size:28px;color:rgba(243,235,224,.55)}} .ct b{{color:#B87333;font-weight:400}}
 .ch{{display:flex;align-items:flex-end;gap:14px;height:230px;margin-top:26px}} .ch .b{{flex:1;background:#3a3633;border-radius:6px 6px 0 0}} .ch .b.a{{background:#B87333}}
 .ax{{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:20px;color:rgba(243,235,224,.35);margin-top:12px}}
-.f{{position:absolute;bottom:80px;left:150px;right:150px;display:flex;justify-content:space-between;font-size:28px;color:rgba(243,235,224,.45)}} .f b{{color:#B87333}}
+.f{{position:absolute;bottom:64px;left:150px;right:150px;display:flex;justify-content:space-between;font-size:28px;color:rgba(243,235,224,.45)}} .f b{{color:#B87333}}
 ''', f'''<div class="bar"><i></i><i></i><i></i></div><div class="w">
 <div class="l">REVENUE SYSTEM REPORT · OCTOBER</div><h1>Sika &amp; Shea</h1><div class="s">What the system caught this month, in real numbers.</div>
 <div class="g">
