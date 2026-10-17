@@ -2,8 +2,13 @@ import Link from 'next/link';
 
 const DIRECTIONS = [
   {
+    href: '/lab/every-month',
+    name: 'D: Every month (Zera)',
+    line: 'One month of a business Zera runs, played out on the laptop and the phone on its counter, then proved in numbers.',
+  },
+  {
     href: '/lab/after-hours',
-    name: 'C: After hours',
+    name: 'C: After hours (Orella’s hero)',
     line: 'One sale lands on a phone after closing, while nobody is there. Then the real screens behind it.',
   },
   {

@@ -24,6 +24,7 @@ export default function HeaderWrapper() {
     '/products/market-monopoly',
     '/lab',
     '/lab/after-hours',
+    '/lab/every-month',
     '/lab/blueprint',
     '/lab/statement',
   ];
