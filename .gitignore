@@ -54,3 +54,11 @@ sanity/dist
 
 #Playwright
 .playwright-mcp
+
+# Blender set pipeline: downloaded CC0 assets, rendered screens and renders stay local
+tools/set/assets/
+tools/set/renders/
+tools/set/screens/*.png
+tools/set/brand/pages/
+tools/set/brand/check-*.png
+tools/set/assets-fetch.log
