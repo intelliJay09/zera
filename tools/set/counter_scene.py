@@ -351,14 +351,15 @@ halo = text('logo_halo', 'SIKA & SHEA', 'Marcellus-Regular.ttf', 0.24, (LOGO[0],
 halo.visible_camera = False; halo.visible_glossy = False
 text('logo_tag', 'SKIN  ·  HAIR  ·  NAILS', 'Lato-Regular.ttf', 0.052, (LOGO[0], Y0 + 0.004, LOGO[2] - 0.27), (math.pi / 2, 0, math.pi), M['brass'], extrude=0.0012, spacing=1.5)
 
-# waiting area under the logo
-prop('modern_arm_chair_01', (LOGO[0] - 0.75, Y0 + 0.62, 0), rot_z=math.pi)
-prop('modern_arm_chair_01', (LOGO[0] + 0.75, Y0 + 0.62, 0), rot_z=math.pi)
-tr, tobjs = prop('side_table_01', (LOGO[0], Y0 + 0.4, 0), scale=0.85)
+# waiting area under the logo: two chairs and a side table, set toward the side wall so a plant stands clear of them by the glass
+SEAT = LOGO[0] + 0.18
+prop('modern_arm_chair_01', (SEAT - 0.75, Y0 + 0.62, 0), rot_z=math.pi)
+prop('modern_arm_chair_01', (SEAT + 0.75, Y0 + 0.62, 0), rot_z=math.pi)
+tr, tobjs = prop('side_table_01', (SEAT, Y0 + 0.4, 0), scale=0.85)
 tmn, tmx = bbox(tobjs)
-prop('ceramic_vase_04', (LOGO[0] - 0.05, Y0 + 0.4, tmx.z))
-prop('anthurium_botany_01', (LOGO[0] - 0.05, Y0 + 0.4, tmx.z + 0.18), scale=0.35)
-prop('pachira_aquatica_01', (X1 - 0.35, Y0 + 0.45, 0), rot_z=0.4, keep=lambda n: n.endswith('_c'))
+prop('ceramic_vase_04', (SEAT - 0.05, Y0 + 0.4, tmx.z))
+prop('anthurium_botany_01', (SEAT - 0.05, Y0 + 0.4, tmx.z + 0.18), scale=0.35)
+prop('potted_plant_02', (GX1 - 0.1, Y0 + 0.45, 0))
 
 # ================================================================= retail shelves on the right wall, lit from beneath
 def product(kind, label, loc, rot_z=math.pi):
