@@ -425,7 +425,7 @@ face_yaw = math.atan2(CAM[0] - DEV[0], -(CAM[1] - DEV[1]))  # yaw that turns a -
 def tablet_on_stand():
     root = link(bpy.data.objects.new('tablet_stand', None))
     base = slab('stand_base', 0.13, 0.11, 0.008, 0.02, bev=0.002, mat=M['alu']); base.parent = root
-    arm = box('stand_arm', (0.05, 0.012, 0.13), (0, 0.02, 0.07), M['alu'], bev=0.003, rot=(math.radians(18), 0, 0)); arm.parent = root
+    arm = box('stand_arm', (0.05, 0.012, 0.12), (0, 0.05, 0.064), M['alu'], bev=0.003, rot=(math.radians(-10), 0, 0)); arm.parent = root
     tilt = link(bpy.data.objects.new('tablet_tilt', None)); tilt.parent = root
     tilt.location = (0, 0.035, 0.14); tilt.rotation_euler = (math.radians(72), 0, 0)
     W, D, T = 0.2476, 0.1785, 0.0059
