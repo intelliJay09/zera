@@ -17,7 +17,7 @@ export default function AfterHoursDirection() {
               01 · The booking page
             </p>
             <h2 className="mt-5 font-display text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
-              This is where she booked.
+              Bookings like that come through this page.
             </h2>
             <p className="mt-6 max-w-md text-lg text-cream-200/75 sm:text-xl">
               The booking page Zera built for Finest Dietitian in Accra. Fourteen services, each with its

@@ -27,7 +27,7 @@ const SCREEN = {
   glassWidth: 585,
 };
 
-const HERO_LINE = 'Most of your sales will come in while you are busy.';
+const HERO_LINE = 'Zera catches the revenue your business is already losing.';
 
 interface Event {
   time: string;
@@ -48,28 +48,28 @@ const EVENTS: Event[] = [
     app: 'WhatsApp',
     title: 'Ama',
     text: 'Hi, do you have anything on Saturday afternoon?',
-    line: 'An enquiry comes in after closing.',
+    line: 'An enquiry comes in after closing. This is the lead that usually goes unanswered.',
   },
   {
     time: '21:52',
     app: 'WhatsApp',
     title: 'Reply sent',
     text: 'Saturday 2:00 pm is open. You can book and pay here.',
-    line: 'It is answered at once. Nobody is at the desk.',
+    line: 'It’s answered at once, and nobody is at the desk.',
   },
   {
     time: '21:55',
     app: 'Bookings',
     title: 'New booking',
     text: 'Saturday, 2:00 pm. General consultation, 45 min.',
-    line: 'She picks the slot herself.',
+    line: 'Ama books Saturday at 2pm, on the booking page.',
   },
   {
     time: '21:56',
     app: 'Paystack',
     title: 'Payment received',
     text: 'GHS 600.00 from Ama',
-    line: 'And pays before she puts the phone down.',
+    line: 'She pays GHS 600 before she puts the phone down.',
   },
 ];
 
@@ -259,12 +259,13 @@ export default function AfterHoursStage() {
         >
           <h1
             ref={heroRef}
-            className="max-w-[16ch] font-display text-[9.5vw] font-bold leading-[0.98] tracking-tight text-cream-200 sm:text-[6vw] lg:text-[4.6vw]"
+            className="max-w-[18ch] font-display text-[9.5vw] font-bold leading-[0.98] tracking-tight text-cream-200 sm:text-[6vw] lg:text-[4.6vw]"
           >
             {HERO_LINE}
           </h1>
           <p className="mt-6 max-w-md text-base text-cream-200/70 sm:text-lg">
-            Zera builds the system that takes them anyway. Scroll to watch one sale land.
+            The lead that goes unanswered, the customer who quietly stops buying. Scroll to watch the
+            first one get caught.
           </p>
           <Link
             href="/systems-audit"
@@ -294,8 +295,9 @@ export default function AfterHoursStage() {
             Nobody was awake for this.
           </p>
           <p className="mt-6 max-w-md text-lg text-cream-200/75 sm:text-xl">
-            In one client’s last cohort, 70% of payments came in outside working hours: before 8am,
-            after 9pm or at the weekend. Not one was missed.
+            Zera builds the system that catches that lead, and the customer who quietly stops buying,
+            then proves it every month in real numbers. In one client’s last cohort, 70% of payments
+            came in outside working hours: before 8am, after 9pm or at the weekend. Not one was missed.
           </p>
           <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-cream-200/40">
             The sale above is a demonstration. GHS 600 is a real price from a booking page Zera built.
