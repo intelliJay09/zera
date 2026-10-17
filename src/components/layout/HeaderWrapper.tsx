@@ -23,6 +23,7 @@ export default function HeaderWrapper() {
     '/products/growth-system',
     '/products/market-monopoly',
     '/lab',
+    '/lab/after-hours',
     '/lab/blueprint',
     '/lab/statement',
   ];

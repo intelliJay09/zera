@@ -2,6 +2,11 @@ import Link from 'next/link';
 
 const DIRECTIONS = [
   {
+    href: '/lab/after-hours',
+    name: 'C: After hours',
+    line: 'One sale lands on a phone after closing, while nobody is there. Then the real screens behind it.',
+  },
+  {
     href: '/lab/blueprint',
     name: 'A: The Blueprint',
     line: 'The site is the drawing set for a revenue system, and it drafts itself as you scroll.',

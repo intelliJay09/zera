@@ -6,6 +6,10 @@
  */
 @import "tailwindcss" source("..");
 
+/* `live:` = JavaScript is running and the visitor allows motion. Scroll stages position and hide
+   their layers only under this variant, so the page stays complete and stacked without either. */
+@custom-variant live (@media (scripting: enabled) and (prefers-reduced-motion: no-preference));
+
 /* CSS Variables - Must be OUTSIDE @layer for Tailwind v4 */
 :root {
   --background: hsl(0 0% 100%);
